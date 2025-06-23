@@ -1,11 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ error: string }>;
-}) {
-  const params = await searchParams;
+export default function Page({ searchParams }) {
+  const error = searchParams?.error;
 
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
@@ -18,9 +14,9 @@ export default async function Page({
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {params?.error ? (
+              {error ? (
                 <p className="text-sm text-muted-foreground">
-                  Code error: {params.error}
+                  Code error: {error}
                 </p>
               ) : (
                 <p className="text-sm text-muted-foreground">
