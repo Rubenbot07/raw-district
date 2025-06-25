@@ -40,6 +40,8 @@ export const updateUserMetadata = async (formData) => {
     if (error) {
         throw new Error(error.message)
     }
+
+    redirect('/profile')
 }
 
 const signInWithGoogle = signInWith('google')

@@ -1,5 +1,4 @@
 import { Geist } from "next/font/google";
-import { AuthProvider } from "@/app/context/AuthContext";
 import "./globals.css";
 
 
@@ -20,9 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-          <AuthProvider>
             {children}
-          </AuthProvider>
       </body>
     </html>
   );
