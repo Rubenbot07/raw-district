@@ -1,7 +1,7 @@
 'use client'
 import { signInWithGoogle } from "@/utils/actions"
 
-export const AuthForm = ({ buttonText = 'Sign in with Google', next = '/' }) => {
+export const AuthForm = () => {
     const handleGoogleSignIn = async () => {
         await signInWithGoogle(next)
     }
@@ -9,7 +9,7 @@ export const AuthForm = ({ buttonText = 'Sign in with Google', next = '/' }) => 
         <div>
             <form>
                 <button formAction={handleGoogleSignIn} type="submit" className="btn btn-primary">
-                    {buttonText}
+                    Sign in with Google
                 </button>
             </form>
         </div>

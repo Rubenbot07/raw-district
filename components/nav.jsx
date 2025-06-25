@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { AuthButton } from "./auth-button"
-import { hasEnvVars } from "@/lib/utils"
-import { EnvVarWarning } from "./env-var-warning"
+
 export const Nav = () => {
     return (
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
@@ -11,7 +10,7 @@ export const Nav = () => {
               <div className="flex items-center gap-2">
               </div>
             </div>
-            {!hasEnvVars ? <EnvVarWarning /> : <AuthButton />}
+            <AuthButton />
           </div>
         </nav>
     )

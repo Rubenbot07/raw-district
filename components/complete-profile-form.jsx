@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { supabase } from "@/lib/supabase/supabaseClient";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -38,7 +39,7 @@ export default function CompleteProfileForm() {
     try {
       // 1. Actualizar el nombre en la tabla users (user_metadata)
       const { error: updateUserError } = await supabase.auth.updateUser({
-        data: { full_name: fullName },
+        data: { full_name: fullName, address, phone },
       });
       if (updateUserError) throw updateUserError;
 

@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
+import { useAuth } from "../app/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { AuthForm } from "./auth-form";
+import { data } from "autoprefixer";
 export function SignUpForm({ className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,11 +42,16 @@ export function SignUpForm({ className, ...props }) {
         email,
         password,
         options: {
+          data : {
+            full_name: data.full_name,
+            address: data.address,
+            phone: data.phone,
+          },
           emailRedirectTo: `${window.location.origin}/protected`,
-        },
+        }
       });
       if (error) throw error;
-      router.push("/auth/sign-up-success");
+      router.push("/auth/complete-profile-information");
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
@@ -110,7 +116,6 @@ export function SignUpForm({ className, ...props }) {
               </Link>
             </div>
           </form>
-<AuthForm buttonText="Sign up with Google" next="/auth/complete-profile-information" />
         </CardContent>
       </Card>
     </div>

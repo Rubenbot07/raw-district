@@ -5,6 +5,7 @@ import { hasEnvVars } from "@/lib/utils";
 import ProductsPage from '@/components/products';
 import Link from "next/link";
 import { Nav } from "@/components/nav";
+import CategoriesWrapper from "@/components/categories-wrapper";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="flex-1 w-full flex flex-col gap-20 items-center">
         <Nav />
         <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
+          <CategoriesWrapper />
           <ProductsPage />
         </div>
 
@@ -27,7 +29,6 @@ export default function Home() {
               Supabase
             </a>
           </p>
-          <ThemeSwitcher />
         </footer>
       </div>
     </main>
