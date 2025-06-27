@@ -1,6 +1,7 @@
 'use client'
 import { supabase } from "@/lib/supabase/supabaseClient"
 import { ProductCartItem } from "./product-cart-item"
+
 export const Cart =  ({cart, cartItems}) => {
     const removeFromCart = async (itemId) => {
         const { error } = await supabase
@@ -24,8 +25,8 @@ export const Cart =  ({cart, cartItems}) => {
                     <ProductCartItem product={item.products} quantity={item.quantity} removeFromCart={() => removeFromCart(item.id)}/>
                 </li>
                 ))}
-                <p>Total: {cart[0].total_price}</p>
-                <p>Quantity: {cart[0].total_quantity}</p>
+                <p>Total: {cart.total_price}</p>
+                <p>Quantity: {cart.total_quantity}</p>
             </ul>
             ) : (
                 <p>Your cart is empty.</p>
