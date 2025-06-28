@@ -44,6 +44,11 @@ export const updateUserMetadata = async (formData) => {
     redirect('/profile')
 }
 
+export async function logoutAction() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+}
+
 const signInWithGoogle = signInWith('google')
 
 export { signInWithGoogle }

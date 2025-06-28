@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { LogoutButton } from "./logout-button";
-
 export async function AuthButton({ user }) {
-
   return user ? (
     <div className="flex items-center gap-4">
       <Link href="/profile">

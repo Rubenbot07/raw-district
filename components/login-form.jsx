@@ -27,6 +27,7 @@ export function LoginForm({ className, ...props }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     const supabase = createClient();
+    console.log('client created')
     setIsLoading(true);
     setError(null);
 

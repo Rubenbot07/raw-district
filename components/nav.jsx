@@ -2,13 +2,16 @@ import Link from "next/link"
 import { AuthButton } from "./auth-button"
 import { CartWrapper } from "./cart-wrapper"
 import { createClient } from "@/lib/supabase/server";
+import { cookies } from "next/headers";
 
 export const Nav = async () => {
-    const supabase = await createClient();
-  
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+        const supabase = await createClient(cookies());
+    
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      
+      const userId = user ? user.id : null;
 
     return (
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
@@ -18,8 +21,8 @@ export const Nav = async () => {
               <div className="flex items-center gap-2">
               </div>
             </div>
-            <AuthButton user={user} />
-            <CartWrapper userId={user?.id}/>
+            <AuthButton user={user}/>
+            <CartWrapper userId={userId}/>
           </div>
         </nav>
     )

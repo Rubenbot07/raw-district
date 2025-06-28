@@ -1,5 +1,6 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
+import { Nav } from "@/components/nav";
 
 
 const defaultUrl = process.env.VERCEL_URL
@@ -15,10 +16,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
+        <Nav />
         {children}
       </body>
     </html>

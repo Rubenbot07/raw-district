@@ -1,4 +1,3 @@
-import { Nav } from "@/components/nav";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { ProductCard } from "@/components/product-card";
 
@@ -31,7 +30,6 @@ export default async function Page({ params }) {
 
     return (
         <div className="">
-            <Nav />
             <div className="w-full max-w-sm">
                 <h1>Category</h1>
                 <p>{slug}</p>
