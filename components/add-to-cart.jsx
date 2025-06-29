@@ -23,7 +23,7 @@ export const AddToCartButton = ({ product }) => {
             .channel('public:product_sizes')
             .on(
                 'postgres_changes',
-                { event: '*', schema: 'public', table: 'product_sizes', filter: `product_id=eq.${product.id}` },
+                { event: '*', schema: 'public', table: 'product_sizes',  },
                 (payload) => {
                     console.log('Change received!', payload);
                     fetchSizes();
