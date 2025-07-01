@@ -17,7 +17,6 @@ export const AddToCartButton = ({ product }) => {
     // Trae tallas y suscríbete a cambios realtime
     useEffect(() => {
         fetchSizes();
-
         const channel = supabase
             .channel('public:product_sizes')
             .on(
