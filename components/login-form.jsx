@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,6 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AuthForm } from "@/components/auth-form";
+import { signInWithEmail } from "@/actions/sign-in-email";
 
 export function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
@@ -26,18 +26,15 @@ export function LoginForm({ className, ...props }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const supabase = createClient();
-    console.log('client created')
+
     setIsLoading(true);
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) throw error;
+      const user = await signInWithEmail({ email, password });
+      console.log("user", user);
       router.push("/");
+      router.refresh();
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {

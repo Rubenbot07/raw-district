@@ -1,5 +1,5 @@
 "use client";
-import { logoutAction } from "@/utils/actions";
+import { logoutAction } from "@/actions/logout";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 

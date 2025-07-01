@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,15 +12,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { signUp } from "@/actions/sign-up";
+import { createCart } from "@/actions/create-cart";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { data } from "autoprefixer";
+import { useState, useTransition } from "react";
+
 export function SignUpForm({ className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
   const handleSignUp = async (e) => {
@@ -34,29 +36,21 @@ export function SignUpForm({ className, ...props }) {
       setIsLoading(false);
       return;
     }
-
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data : {
-            full_name: data.full_name,
-            address: data.address,
-            phone: data.phone,
-          },
-          emailRedirectTo: `${window.location.origin}/protected`,
-        }
-      });
-      if (error) throw error;
-      router.push("/auth/complete-profile-information");
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "An error occurred");
-    } finally {
-      setIsLoading(false);
+    
+    startTransition(async () => {
+      try {
+        await signUp({ email, password });
+        await createCart();
+        router.push("/auth/complete-profile-information");
+        
+      } catch (error) {
+        setError(error instanceof Error ? error.message : "An error occurred");
+      } finally {
+        setIsLoading(false);
+      }
     }
+    );
   };
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -103,8 +97,8 @@ export function SignUpForm({ className, ...props }) {
                 />
               </div>
               {error && <p className="text-sm text-red-500">{error}</p>}
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Creating an account..." : "Sign up"}
+              <Button type="submit" className="w-full" disabled={isLoading || isPending}>
+                {(isLoading || isPending) ? "Creating an account..." : "Sign up"}
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">

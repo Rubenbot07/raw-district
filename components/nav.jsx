@@ -1,17 +1,13 @@
 import Link from "next/link"
 import { AuthButton } from "./auth-button"
 import { CartWrapper } from "./cart-wrapper"
-import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
+import { getUser } from "@/actions/get-user"
 
 export const Nav = async () => {
-        const supabase = await createClient(cookies());
-    
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      
-      const userId = user ? user.id : null;
+    const { user, error } = await getUser();
+
+    const userId = user ? user.id : null;
+    console.log(user)
 
     return (
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">

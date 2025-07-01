@@ -1,7 +1,11 @@
-import { supabase } from "@/lib/supabase/supabaseClient"
+import { getCategories } from "@/actions/get-categories"
 import { CategoryCard } from "./category-card"
 export default async function CategoriesWrapper() {
-    const { data: categories, error } = await supabase.from('categories').select('*')
+    const { categories, error } = await getCategories()
+    if (error) {
+        console.error('Error fetching categories:', error)
+        return <div>Error loading categories</div>
+    }
     return (
         <section>
             <h1 className='text-2xl text-red-500'>Categories</h1>

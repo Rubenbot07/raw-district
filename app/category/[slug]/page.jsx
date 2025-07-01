@@ -1,32 +1,17 @@
-import { supabase } from "@/lib/supabase/supabaseClient";
-import { ProductCard } from "@/components/product-card";
+import { getCategoryBySlug } from '@/actions/get-categories-slug';
+import { getProductsByCategory } from '@/actions/get-products-category';
+import { ProductCard } from '@/components/product-card';
 
 export default async function Page({ params }) {
     const { slug } = await params;
 
-    // Primero, busca la categoría por slug para obtener su id
-    const { data: category, error: catError } = await supabase
-        .from('categories')
-        .select('id')
-        .eq('slug', slug)
-        .single();
+    const category = await getCategoryBySlug(slug);
 
     if (!category) {
-        return (
-            <div>
-                <h1>Category not found</h1>
-            </div>
-        )
+        return <h1>Category not found</h1>;
     }
-    const { data: prodData, error: prodError } = await supabase
-        .from('products')
-        .select(`*,
-        product_images(
-            image_url,
-            thumbnail_url,
-            position
-        )`)
-        .eq('category_id', category.id);
+
+    const products = await getProductsByCategory(category.id);
 
     return (
         <div className="">
@@ -34,7 +19,7 @@ export default async function Page({ params }) {
                 <h1>Category</h1>
                 <p>{slug}</p>
                 <ul>
-                    {prodData?.map(product => (
+                    {products?.map(product => (
                         <li key={product?.id}>
                             <ProductCard product={product} />
                         </li>

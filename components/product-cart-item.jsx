@@ -14,7 +14,6 @@ export const ProductCartItem = ({ product, quantity, itemId, size }) => {
               //Optionally, you can trigger a re-fetch of the cart items here
           }
       }
-      console.log('ProductCartItem:', product, quantity, itemId)
   return (
     <div className="bg-white p-4 rounded shadow-md flex items-center gap-4">
       <div>

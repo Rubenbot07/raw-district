@@ -1,5 +1,5 @@
 'use client'
-import { signInWithGoogle } from "@/utils/actions"
+import { signInWithGoogle } from "@/actions/sign-in-google"
 
 export const AuthForm = () => {
     const handleGoogleSignIn = async () => {

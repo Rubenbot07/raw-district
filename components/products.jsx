@@ -1,18 +1,11 @@
-import { supabase } from '@/lib/supabase/supabaseClient'
 import { ProductCard } from './product-card'
+import { getProducts } from '@/actions/get-products'
 export default async function ProductsPage() {
-  const { data: products, error } = await supabase
-    .from('products')
-    .select(`*,
-    categories(
-      name
-    ),
-    product_images(
-      image_url,
-      thumbnail_url,
-      position
-    )
-`)
+  const { products, error } = await getProducts()
+  if (error) {
+    console.error('Error fetching products:', error)
+    return <div>Error loading products</div>
+  }
 
   return (
     <div>

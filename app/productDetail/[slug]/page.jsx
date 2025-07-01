@@ -1,27 +1,9 @@
-import { supabase } from '@/lib/supabase/supabaseClient';
+import { getProductDetail } from '@/actions/get-product-detail';
 import { ProductDetailView } from '@/components/product-detail-view';
 export default async function ProductDetailPage({ params }) {
     const { slug } = await params;
     // Fetch product details based on the slug
-    const { data: product, error } = await supabase
-        .from('products')
-        .select(`*,
-        product_images(
-            image_url,
-            thumbnail_url,
-            position
-        ),
-        categories(
-            name
-        ),
-        product_sizes(
-            size,
-            id,
-            stock,
-            sku
-        )`)
-        .eq('slug', slug)
-        .single();
+    const { product, error } = await getProductDetail(slug);
 
     if (error || !product) {
         return (

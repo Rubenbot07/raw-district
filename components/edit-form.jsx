@@ -1,5 +1,5 @@
 'use server'
-import { updateUserMetadata } from '@/utils/actions'
+import { updateUserMetadata } from '@/actions/update-user-metadata'
 import Form from 'next/form'
 export const EditForm = async ({ userInfo }) => {
     return (

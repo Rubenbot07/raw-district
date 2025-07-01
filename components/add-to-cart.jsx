@@ -2,28 +2,27 @@
 import { useEffect, useState } from "react";
 import { SizesSelect } from "./sizes-select";
 import { supabase } from "@/lib/supabase/supabaseClient";
+import { getSizesProduct } from "@/actions/get-sizes-product";
 
 export const AddToCartButton = ({ product }) => {
     const [selectedSize, setSelectedSize] = useState(null);
-    const [sizes, setSizes] = useState(product.product_sizes);
+    const [sizes, setSizes] = useState(product.product_sizes || []);
 
-    // Real-time subscription to product_sizes changes
+    // Función para traer tallas desde el action
+    const fetchSizes = async () => {
+        const { sizes, error } = await getSizesProduct(product.id);
+        if (!error && sizes) setSizes(sizes);
+    };
+
+    // Trae tallas y suscríbete a cambios realtime
     useEffect(() => {
-        // Refetch sizes from Supabase
-        const fetchSizes = async () => {
-            const { data } = await supabase
-                .from('product_sizes')
-                .select('*')
-                .eq('product_id', product.id);
-            if (data) setSizes(data);
-        };
+        fetchSizes();
 
-        // Subscribe to realtime changes
         const channel = supabase
             .channel('public:product_sizes')
             .on(
                 'postgres_changes',
-                { event: '*', schema: 'public', table: 'product_sizes',  },
+                { event: '*', schema: 'public', table: 'product_sizes' },
                 (payload) => {
                     console.log('Change received!', payload);
                     fetchSizes();
@@ -31,7 +30,6 @@ export const AddToCartButton = ({ product }) => {
             )
             .subscribe();
 
-        // Cleanup
         return () => {
             supabase.removeChannel(channel);
         };

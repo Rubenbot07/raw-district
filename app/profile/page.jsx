@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
-
+import { getUser } from "@/actions/get-user";
 
 export default async function Profile() {
   
-  const supabase = await createClient();
-  const { data: { user }, error } = await supabase.auth.getUser();
+  const { user, error } = await getUser();
 
   if (error) {
     console.error("Error fetching user:", error);
