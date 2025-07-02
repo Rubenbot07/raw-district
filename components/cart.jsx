@@ -3,12 +3,12 @@ import { ProductCartItem } from "./product-cart-item"
 import { useState, useEffect } from "react";
 import { getCartItems } from "@/actions/get-cart-items";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { useRouter } from "next/navigation";
+import { useCartContext } from "@/app/context/addCartContext";
 
 export const Cart =  ({cart}) => {
     const [open, setOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
-    const router = useRouter();
+    const { cartUpdated, setCartUpdated } = useCartContext();
     useEffect(() => {
         if(!cart) {
             setCartItems([]);
@@ -22,7 +22,11 @@ export const Cart =  ({cart}) => {
         fetchCartItems();
 
         const channel = supabase
-        .channel('public:cart_items')
+        .channel(`cart_items_${cart.id}`, {
+             config: {
+                broadcast: { self: true }
+            }
+        })
         .on(
             'postgres_changes',
             { event: '*', schema: 'public', table: 'cart_items' },
@@ -39,13 +43,25 @@ export const Cart =  ({cart}) => {
     };        
     }, [cart?.id]);
 
+     useEffect(() => {
+        if (cartUpdated) {
+            const fetchCartItems = async () => {
+                const items = await getCartItems(cart.id);
+                setCartItems(items);
+            };
+
+            fetchCartItems();
+            setCartUpdated(false); // Reset del flag
+        }
+    }, [cartUpdated]);
+
 
     return (
         <div className="">
             <button onClick={() => setOpen(!open)} className="mb-4">
                 Shopping Cart
             </button>
-            <div className={`absolute top-20 right-0 bg-white h-auto w-auto flex flex-col items-center justify-center p-4 shadow-lg ${open ? 'block' : 'hidden'}`}>
+            <div className={`z-50 absolute top-20 right-0 bg-white h-auto w-auto flex flex-col items-center justify-center p-4 shadow-lg ${open ? 'block' : 'hidden'}`}>
                 {cartItems && cartItems.length ? (
                     <ul className='flex flex-col gap-4'>
                         {cartItems.map((item) => (
@@ -53,8 +69,8 @@ export const Cart =  ({cart}) => {
                             <ProductCartItem product={item.products} quantity={item.quantity} itemId={item.id}/>
                         </li>
                         ))}
-                        <p>Total: {cart?.total_price}</p>
-                        <p>Quantity: {cart?.total_quantity}</p>
+                        {/* <p>Total: {cart?.total_price}</p>
+                        <p>Quantity: {cart?.total_quantity}</p> */}
                     </ul>
                     ) : (
                         <p>Your cart is empty.</p>

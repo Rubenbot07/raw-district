@@ -1,7 +1,7 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
-
+import { CartProvider } from '@/app/context/addCartContext';
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -20,8 +20,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-        <Nav />
-        {children}
+        <CartProvider>
+          <Nav />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

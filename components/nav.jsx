@@ -7,7 +7,6 @@ export const Nav = async () => {
     const { user, error } = await getUser();
 
     const userId = user ? user.id : null;
-    console.log(user)
 
     return (
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">

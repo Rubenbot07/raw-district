@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { SizesSelect } from "./sizes-select";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { getSizesProduct } from "@/actions/get-sizes-product";
+import { AddToCartButton } from "./add-to-cart-button";
 
-export const AddToCartButton = ({ product }) => {
-    const [selectedSize, setSelectedSize] = useState(null);
+export const SizesWrapper = ({ product }) => {
+    const [selectedSize, setSelectedSize] = useState(product.product_sizes[0]);
     const [sizes, setSizes] = useState(product.product_sizes || []);
 
     // Función para traer tallas desde el action
@@ -33,23 +34,15 @@ export const AddToCartButton = ({ product }) => {
             supabase.removeChannel(channel);
         };
     }, [product.id]);
-
     return (
         <div>
             <SizesSelect
                 sizes={sizes}
                 selectedSize={selectedSize}
                 onSelectSize={setSelectedSize}
+                setSelectedSize={setSelectedSize}
             />
-            <button
-                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
-                disabled={!selectedSize}
-                onClick={() => {
-                    alert(`Agregado al carrito: talla ${selectedSize?.size}`);
-                }}
-            >
-                Add to cart
-            </button>
+            <AddToCartButton product_size_id={selectedSize.id} productId={product.id} unit_price={product.price} />
         </div>
     );
 };

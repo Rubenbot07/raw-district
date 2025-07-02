@@ -1,9 +1,8 @@
-import { AddToCartButton } from "./add-to-cart";
+import { SizesWrapper } from "./sizes-wrapper";
 export const ProductDetailView = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
     const image2 = product?.product_images.find((image) => image?.position === 2);
     const image3 = product?.product_images.find((image) => image?.position === 3);
-    console.log("ProductDetailView rendered with product:", product);
     return (
         <div>
             product view
@@ -35,7 +34,7 @@ export const ProductDetailView = ({ product }) => {
             <p className="text-xl font-semibold mt-4">Price: ${product.price}</p>
             <p className="text-lg mt-2">Category: {product.categories?.name}</p>
             <div>
-                <AddToCartButton product={product} />
+                <SizesWrapper product={product} />
             </div>
         </div>
     )
