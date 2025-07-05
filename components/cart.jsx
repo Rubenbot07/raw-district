@@ -8,6 +8,8 @@ import { useCartContext } from "@/app/context/addCartContext";
 export const Cart =  ({cart}) => {
     const [open, setOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(cart?.total_price || 0);
+    const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
     const { cartUpdated, setCartUpdated } = useCartContext();
     useEffect(() => {
         if(!cart) {
@@ -21,7 +23,7 @@ export const Cart =  ({cart}) => {
 
         fetchCartItems();
 
-        const channel = supabase
+        const cartItemsChannel = supabase
         .channel(`cart_items_${cart.id}`, {
              config: {
                 broadcast: { self: true }
@@ -33,27 +35,40 @@ export const Cart =  ({cart}) => {
             (payload) => {
                 console.log('Change received!', payload);
                 fetchCartItems();
-                // router.refresh();
             }
         )
         .subscribe();
 
+        const cartChannel = supabase
+        .channel(`cart_${cart.id}`)
+        .on(
+            'postgres_changes',
+            { event: '*', schema: 'public', table: 'cart' },
+                (payload) => {
+                    if (payload.new) {
+                        setTotalPrice(payload.new.total_price);
+                        setTotalQuantity(payload.new.total_quantity);
+                    }
+                }
+        )
+        .subscribe();
+
     return () => {
-        supabase.removeChannel(channel);
+        supabase.removeChannel(cartItemsChannel);
+        supabase.removeChannel(cartChannel);
     };        
     }, [cart?.id]);
 
-     useEffect(() => {
-        if (cartUpdated) {
+    useEffect(() => {
+        if (cartUpdated && cart) {
             const fetchCartItems = async () => {
                 const items = await getCartItems(cart.id);
                 setCartItems(items);
             };
-
             fetchCartItems();
-            setCartUpdated(false); // Reset del flag
+            setCartUpdated(false);
         }
-    }, [cartUpdated]);
+    }, [cartUpdated, cart]);
 
 
     return (
@@ -69,8 +84,8 @@ export const Cart =  ({cart}) => {
                             <ProductCartItem product={item.products} quantity={item.quantity} itemId={item.id}/>
                         </li>
                         ))}
-                        {/* <p>Total: {cart?.total_price}</p>
-                        <p>Quantity: {cart?.total_quantity}</p> */}
+                        <p>Total: {totalPrice}</p>
+                        <p>Quantity: {totalQuantity}</p>
                     </ul>
                     ) : (
                         <p>Your cart is empty.</p>
