@@ -69,7 +69,7 @@ export const Cart =  ({cart}) => {
             setCartUpdated(false);
         }
     }, [cartUpdated, cart]);
-
+    console.log('cartItems', cartItems);
 
     return (
         <div className="">
@@ -81,7 +81,7 @@ export const Cart =  ({cart}) => {
                     <ul className='flex flex-col gap-4'>
                         {cartItems.map((item) => (
                         <li key={item.id} className="cart-item">
-                            <ProductCartItem product={item.products} quantity={item.quantity} itemId={item.id}/>
+                            <ProductCartItem product={item.products} quantity={item.quantity} itemId={item.id} sizeId={item.product_size_id}/>
                         </li>
                         ))}
                         <p>Total: {totalPrice}</p>

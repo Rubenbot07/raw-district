@@ -1,7 +1,7 @@
 'use client'
 import { getActiveCart } from "./get-active-cart";
 import { getUser } from "./get-user";
-import { supabase } from "../lib/supabase/supabaseClient";
+import { supabase } from "@/lib/supabase/supabaseClient";
 
 export const addToCart = async ({ productId, quantity = 1, unit_price, product_size_id }) => {
     const { user, error: userError } = await getUser();
