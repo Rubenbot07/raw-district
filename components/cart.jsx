@@ -6,11 +6,10 @@ import { supabase } from "@/lib/supabase/supabaseClient";
 import { useCartContext } from "@/app/context/addCartContext";
 
 export const Cart =  ({cart}) => {
-    const [open, setOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(cart?.total_price || 0);
     const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
-    const { cartUpdated, setCartUpdated } = useCartContext();
+    const { cartUpdated, setCartUpdated, openCart, setOpenCart } = useCartContext();
     useEffect(() => {
         if(!cart) {
             setCartItems([]);
@@ -69,14 +68,13 @@ export const Cart =  ({cart}) => {
             setCartUpdated(false);
         }
     }, [cartUpdated, cart]);
-    console.log('cartItems', cartItems);
 
     return (
         <div className="">
-            <button onClick={() => setOpen(!open)} className="mb-4">
+            <button onClick={() => setOpenCart(!openCart)} className="mb-4">
                 Shopping Cart
             </button>
-            <div className={`z-50 absolute top-20 right-0 bg-white h-auto w-auto flex flex-col items-center justify-center p-4 shadow-lg ${open ? 'block' : 'hidden'}`}>
+            <div className={`z-50 absolute top-20 right-0 bg-white h-auto w-auto flex flex-col items-center justify-center p-4 shadow-lg ${openCart ? 'block' : 'hidden'}`}>
                 {cartItems && cartItems.length ? (
                     <ul className='flex flex-col gap-4'>
                         {cartItems.map((item) => (
