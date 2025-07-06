@@ -108,7 +108,7 @@ export const Cart =  ({cart}) => {
     {/* Botón para abrir el carrito */}
     <button
       onClick={() => setOpenCart(true)}
-      className=" z-40 bg-blue-600 text-white px-4 py-2 rounded shadow"
+      className=" text-black px-4 py-2 rounded shadow"
     >
       Shopping Cart
     </button>
