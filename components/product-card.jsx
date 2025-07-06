@@ -57,11 +57,11 @@ return (
             <h2>{product?.name}</h2>
         </Link>
         <button 
-            className={`absolute z-40 bottom-14 right-2 bg-white text-black px-4 py-2 rounded transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"} `} 
+            className={`absolute flex z-40 bottom-14 right-2 bg-white text-black px-4 py-2 rounded transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"} `} 
             onClick={(e) => handleQuickAdd(e)}
             value={product?.id}
             >
-                Add 🛒
+             Add
         </button>
     </div>
 );
