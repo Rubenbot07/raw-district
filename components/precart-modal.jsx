@@ -3,6 +3,7 @@ import { useCartContext } from "@/app/context/addCartContext";
 import { useState, useEffect } from "react";
 import { getProductDetail } from "@/actions/get-product-detail";
 import { SizesWrapper } from "./sizes-wrapper";
+import { InfinitiveLoopSlider } from "./infinitive-loop-slider";
 export const PreCartModal = () => {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ export const PreCartModal = () => {
      fetchProduct();
     }, [selectedProductSlug])
 
-    console.log('product', product)
+
 
     return (
         <>
@@ -51,6 +52,7 @@ export const PreCartModal = () => {
             <div className="flex flex-col gap-4">
                 {product && product.product_sizes && (
                     <div>
+                        <InfinitiveLoopSlider productImages={product.product_images} />
                         <p>{product.name}</p>
                         <SizesWrapper product={product} />
                     </div>
@@ -58,4 +60,5 @@ export const PreCartModal = () => {
             </div>
             </div>
     </>
-)}
+)
+}
