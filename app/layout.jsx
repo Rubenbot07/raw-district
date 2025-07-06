@@ -1,6 +1,7 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { PreCartModal } from "@/components/precart-modal";
 import { CartProvider } from '@/app/context/addCartContext';
 
 const defaultUrl = process.env.VERCEL_URL
@@ -22,6 +23,7 @@ export default async function RootLayout({ children }) {
       <body className={`${geistSans.className} antialiased`}>
         <CartProvider>
           <Nav />
+          <PreCartModal />
           {children}
         </CartProvider>
       </body>

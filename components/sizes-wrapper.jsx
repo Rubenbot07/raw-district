@@ -6,7 +6,7 @@ import { getSizesProduct } from "@/actions/get-sizes-product";
 import { AddToCartButton } from "./add-to-cart-button";
 
 export const SizesWrapper = ({ product }) => {
-    const [selectedSize, setSelectedSize] = useState(product.product_sizes[0]);
+    const [selectedSize, setSelectedSize] = useState(product?.product_sizes[0]);
     const [sizes, setSizes] = useState(product.product_sizes || []);
 
     // Función para traer tallas desde el action

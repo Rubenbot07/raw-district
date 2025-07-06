@@ -6,10 +6,21 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cartUpdated, setCartUpdated] = useState(false);
-    const [openCart, setOpenCart] = useState([]);
+    const [openCart, setOpenCart] = useState(false);
+    const [openPreCart, setOpenPreCart] = useState(false);
+    const [selectedProductSlug, setSelectedProductSlug] = useState(null);
 
     return (
-        <CartContext.Provider value={{ cartUpdated, setCartUpdated, openCart, setOpenCart }}>
+        <CartContext.Provider value={{ 
+            cartUpdated,
+            setCartUpdated,
+            openCart,
+            setOpenCart,
+            openPreCart, 
+            setOpenPreCart,
+            selectedProductSlug,
+            setSelectedProductSlug
+        }}>
             {children}
         </CartContext.Provider>
     );

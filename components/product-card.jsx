@@ -1,16 +1,19 @@
 'use client'
 
 import { useState } from "react";
+import { useCartContext } from "@/app/context/addCartContext";
 import Link from "next/link";
 
 export const ProductCard = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
     const image2 = product?.product_images.find((image) => image?.position === 2);
     const [hovered, setHovered] = useState(false);
+    const { setOpenPreCart, setSelectedProductSlug } = useCartContext();
 
     const handleQuickAdd = (e) => {
         e.stopPropagation();
-        alert("Quick add clicked for product:");
+        setSelectedProductSlug(product.slug);
+        setOpenPreCart(true);
     };
 
 return (
@@ -54,8 +57,9 @@ return (
             <h2>{product?.name}</h2>
         </Link>
         <button 
-            className={`absolute z-50 bottom-14 right-2 bg-white text-black px-4 py-2 rounded transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"} `} 
+            className={`absolute z-40 bottom-14 right-2 bg-white text-black px-4 py-2 rounded transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"} `} 
             onClick={(e) => handleQuickAdd(e)}
+            value={product?.id}
             >
                 Add 🛒
         </button>

@@ -15,6 +15,7 @@ export default function Home() {
         <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
 
           <CategoriesWrapper />
+          
           <ProductsPage />
         </div>
 
