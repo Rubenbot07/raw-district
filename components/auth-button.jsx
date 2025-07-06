@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { LogoutButton } from "./logout-button";
+import { UserIcon } from './icons/user-icon'
 export async function AuthButton({ user }) {
   return user ? (
     <div className="flex items-center gap-4">
       <Link href="/profile">
-        Hey, {user.email}!
+        <UserIcon />
       </Link>
       <LogoutButton />
     </div>
