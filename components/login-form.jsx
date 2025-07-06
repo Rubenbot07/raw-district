@@ -31,8 +31,7 @@ export function LoginForm({ className, ...props }) {
     setError(null);
 
     try {
-      const user = await signInWithEmail({ email, password });
-      console.log("user", user);
+      await signInWithEmail({ email, password });
       router.push("/");
       router.refresh();
     } catch (error) {

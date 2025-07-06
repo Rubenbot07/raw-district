@@ -3,7 +3,7 @@ import { getActiveCart } from "./get-active-cart";
 import { getUser } from "./get-user";
 import { supabase } from "@/lib/supabase/supabaseClient";
 
-export const addToCart = async ({ productId, quantity = 1, unit_price, product_size_id }) => {
+export const addToCart = async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false }) => {
     const { user, error: userError } = await getUser();
     if (!user) {
         return { data: null, error: userError?.message || "User not authenticated." };
@@ -42,15 +42,17 @@ export const addToCart = async ({ productId, quantity = 1, unit_price, product_s
     }
 
     if (existingItems) {
+        const newQuantity = replaceQuantity
+            ? quantity
+            : existingItems.quantity + quantity;
         const { data, error } = await supabase
             .from("cart_items")
-            .update({ quantity: existingItems.quantity + 1 })
+            .update({ quantity: newQuantity })
             .eq("id", existingItems.id)
             .select()
             .single();
         return { data, error };
     } else {
-        // Si no existe, inserta nuevo
         const { data, error } = await supabase
             .from("cart_items")
             .insert({ product_id: productId, cart_id: cart.id, quantity, unit_price, product_size_id })

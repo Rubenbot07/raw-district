@@ -6,7 +6,6 @@ import { getSizeById } from "@/actions/get-size-by-id";
 import { useState, useEffect } from "react";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(quantity);
   const [productSize, setProductSize] = useState(null);
   const { setCartUpdated } = useCartContext();
   useEffect(() => {
@@ -17,6 +16,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         return;
       }
       setProductSize(size);
+      // setCartUpdated(false);
     };
     fetchProductSize();
   }, [sizeId]);
@@ -27,10 +27,10 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         productId: product.id,
         quantity: newQuantity,
         unit_price: product.price,
-        product_size_id: sizeId
+        product_size_id: sizeId,
+        replaceQuantity: true
       });
       setCartUpdated(true);
-      setValue(newQuantity);
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
@@ -50,7 +50,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         <p>Price: ${product.price}</p>
         <p>Size: {productSize?.size}</p>
         <div onClick={() => setOpen(!open)} className="relative flex items-center justify-between gap-2 border border-black p-3 max-w-24">
-          <button>{value}</button>
+          <button>{quantity}</button>
           <span>⬇️</span>
           <ul className={`absolute top-full left-0 h-24 w-full border border-black bg-white overflow-y-scroll px-3 ${open ? "block" : "hidden"}`}>
             <li onClick={() => handleQuantityChange(1)}>1</li>
