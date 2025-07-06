@@ -32,7 +32,7 @@ export function LoginForm({ className, ...props }) {
 
     try {
       await signInWithEmail({ email, password });
-      router.push("/");
+      window.location.href = "/";
       router.refresh();
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred");
