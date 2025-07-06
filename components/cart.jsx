@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getCartItems } from "@/actions/get-cart-items";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { useCartContext } from "@/app/context/addCartContext";
-
+import { CartIcon } from './icons/CartIcon'
 export const Cart =  ({cart}) => {
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(cart?.total_price || 0);
@@ -108,9 +108,10 @@ export const Cart =  ({cart}) => {
     {/* Botón para abrir el carrito */}
     <button
       onClick={() => setOpenCart(true)}
-      className=" text-black px-4 py-2 rounded shadow"
+      className="px-4 py-2 relative"
     >
-      Shopping Cart
+      <CartIcon />
+      <span className="absolute top-1 right-2 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
     </button>
   </>
     )
