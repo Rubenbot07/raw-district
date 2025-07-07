@@ -15,6 +15,8 @@ export const CartProvider = ({ children }) => {
     const [selectedProductSlug, setSelectedProductSlug] = useState(null);
     const [cart, setCart] = useState(null);
     const [cartItems, setCartItems] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(cart?.total_price || 0);
+    const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
     const { user } = useUserContext();
 
 
@@ -23,6 +25,8 @@ export const CartProvider = ({ children }) => {
             const activeCart = await getActiveCart(user?.id);
             if(activeCart) {
                 setCart(activeCart);
+                setTotalPrice(activeCart.total_price || 0);
+                setTotalQuantity(activeCart.total_quantity || 0);
             }
 
             const items = await getCartItems(activeCart.id);
@@ -36,7 +40,12 @@ export const CartProvider = ({ children }) => {
 
         loadCart();
         const channel = supabase
-        .channel('public:cart_items')
+        .channel('public:cart_items', {
+            config: {
+                broadcast: {self: true}
+            }
+        })
+
         .on(
             'postgres_changes',
             { event: '*', schema: 'public', table: 'cart_items' },
@@ -47,11 +56,39 @@ export const CartProvider = ({ children }) => {
         )
         .subscribe();
 
+        const cartChannel = supabase
+        .channel(`cart_${cart?.id}`)
+        .on(
+            'postgres_changes',
+            { event: '*', schema: 'public', table: 'cart' },
+                (payload) => {
+                    if (payload.new) {
+                        setTotalPrice(payload.new.total_price);
+                        setTotalQuantity(payload.new.total_quantity);
+                    }
+                }
+        )
+        .subscribe();
+
         return () => {
         supabase.removeChannel(channel);
+        supabase.removeChannel(cartChannel);
         };
-    }, [user?.id])
+    }, [user?.id, cart?.id]);
 
+        useEffect(() => {
+        if (cartUpdated && cart) {
+            const fetchCartItems = async () => {
+                const items = await getCartItems(cart.id);
+                const activeCart = await getActiveCart(user?.id);
+                setCartItems(items);
+                setTotalPrice(activeCart?.total_price);
+                setTotalQuantity(activeCart?.total_quantity);
+            };
+            fetchCartItems();
+            setCartUpdated(false);
+        }
+    }, [cartUpdated, cart, user?.id]);
     return (
         <CartContext.Provider value={{ 
             cartUpdated,
@@ -65,7 +102,11 @@ export const CartProvider = ({ children }) => {
             cart,
             setCart,
             cartItems,
-            setCartItems
+            setCartItems,
+            totalPrice,
+            setTotalPrice,
+            totalQuantity,
+            setTotalQuantity
         }}>
             {children}
         </CartContext.Provider>

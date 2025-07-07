@@ -6,70 +6,8 @@ import { supabase } from "@/lib/supabase/supabaseClient";
 import { useCartContext } from "@/app/context/CartContext";
 import { useUserContext } from "@/app/context/UserContext";
 import { CartIcon } from './icons/cart-icon'
-export const Cart =  ({cart}) => {
-    const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(cart?.total_price || 0);
-    const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
-    const { cartUpdated, setCartUpdated, openCart, setOpenCart } = useCartContext();
-    const { user } = useUserContext();
-    useEffect(() => {
-        if(!cart) {
-            setCartItems([]);
-            return
-        };
-        const fetchCartItems = async () => {
-            const cartItems = await getCartItems(cart.id);
-            setCartItems(cartItems);
-        }
-
-        fetchCartItems();
-
-        const cartItemsChannel = supabase
-        .channel(`cart_items_${cart.id}`, {
-             config: {
-                broadcast: { self: true }
-            }
-        })
-        .on(
-            'postgres_changes',
-            { event: '*', schema: 'public', table: 'cart_items' },
-            (payload) => {
-                console.log('Change received!', payload);
-                fetchCartItems();
-            }
-        )
-        .subscribe();
-
-        const cartChannel = supabase
-        .channel(`cart_${cart.id}`)
-        .on(
-            'postgres_changes',
-            { event: '*', schema: 'public', table: 'cart' },
-                (payload) => {
-                    if (payload.new) {
-                        setTotalPrice(payload.new.total_price);
-                        setTotalQuantity(payload.new.total_quantity);
-                    }
-                }
-        )
-        .subscribe();
-
-    return () => {
-        supabase.removeChannel(cartItemsChannel);
-        supabase.removeChannel(cartChannel);
-    };        
-    }, [cart?.id]);
-
-    useEffect(() => {
-        if (cartUpdated && cart) {
-            const fetchCartItems = async () => {
-                const items = await getCartItems(cart.id);
-                setCartItems(items);
-            };
-            fetchCartItems();
-            setCartUpdated(false);
-        }
-    }, [cartUpdated, cart]);
+export const Cart =  () => {
+    const { openCart, setOpenCart, cartItems, totalPrice, totalQuantity } = useCartContext();
 
     return (
 <>

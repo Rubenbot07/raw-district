@@ -6,7 +6,6 @@ import { useCartContext } from "@/app/context/CartContext";
 
 export function AddToCartButton({ product_size_id, productId, quantity = 1, unit_price }) {
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const { setCartUpdated } = useCartContext();
   const handleAddToCart = async () => {
     setLoading(true);
@@ -19,7 +18,6 @@ export function AddToCartButton({ product_size_id, productId, quantity = 1, unit
       });
       setCartUpdated(true);
       console.log('Product added to cart successfully');
-      // Aquí puedes mostrar feedback al usuario si lo deseas
     } catch (error) {
       console.error('Error adding to cart:', error);
     } finally {
