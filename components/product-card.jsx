@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { useCartContext } from "@/app/context/addCartContext";
+import { useCartContext } from "@/app/context/CartContext";
 import Link from "next/link";
 
 export const ProductCard = ({ product }) => {

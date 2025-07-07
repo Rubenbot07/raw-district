@@ -1,5 +1,5 @@
 'use client'
-import { useCartContext } from "@/app/context/addCartContext";
+import { useCartContext } from "@/app/context/CartContext";
 import { useState, useEffect } from "react";
 import { getProductDetail } from "@/actions/get-product-detail";
 import { SizesWrapper } from "./sizes-wrapper";

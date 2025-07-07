@@ -1,5 +1,5 @@
 'use client';
-import { useCartContext } from "@/app/context/addCartContext";
+import { useCartContext } from "@/app/context/CartContext";
 import { removeFromCart } from "@/actions/remove-from-cart";
 import { addToCart } from "@/actions/add-to-cart";
 import { getSizeById } from "@/actions/get-size-by-id";

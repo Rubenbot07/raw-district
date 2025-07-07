@@ -2,7 +2,7 @@
 import { addToCart } from "@/actions/add-to-cart";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useCartContext } from "@/app/context/addCartContext";
+import { useCartContext } from "@/app/context/CartContext";
 
 export function AddToCartButton({ product_size_id, productId, quantity = 1, unit_price }) {
   const [loading, setLoading] = useState(false);

@@ -2,8 +2,8 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { PreCartModal } from "@/components/precart-modal";
-import { CartProvider } from '@/app/context/addCartContext';
-
+import { Providers } from '@/app/context/Providers'
+import { getUser } from "@/actions/get-user";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -18,14 +18,17 @@ const geistSans = Geist({
 });
 
 export default async function RootLayout({ children }) {
+  const { user } = await getUser();
+
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-        <CartProvider>
+        <Providers initialUser={user}>
           <Nav />
           <PreCartModal />
           {children}
-        </CartProvider>
+        </Providers>
       </body>
     </html>
   );

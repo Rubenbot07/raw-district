@@ -3,13 +3,15 @@ import { ProductCartItem } from "./product-cart-item"
 import { useState, useEffect } from "react";
 import { getCartItems } from "@/actions/get-cart-items";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { useCartContext } from "@/app/context/addCartContext";
+import { useCartContext } from "@/app/context/CartContext";
+import { useUserContext } from "@/app/context/UserContext";
 import { CartIcon } from './icons/cart-icon'
 export const Cart =  ({cart}) => {
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(cart?.total_price || 0);
     const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
     const { cartUpdated, setCartUpdated, openCart, setOpenCart } = useCartContext();
+    const { user } = useUserContext();
     useEffect(() => {
         if(!cart) {
             setCartItems([]);
