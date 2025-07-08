@@ -144,6 +144,16 @@ export const CartProvider = ({ children }) => {
           )
         );
     };
+
+    // Calcula la cantidad total de productos en el carrito localmente
+    const getCartTotalQuantityLocal = () => {
+        return cartItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
+    };
+
+    // Calcula el precio total del carrito localmente
+    const getCartTotalPriceLocal = () => {
+        return cartItems.reduce((acc, item) => acc + ((item.unit_price || 0) * (item.quantity || 0)), 0);
+    };
     return (
         <CartContext.Provider value={{ 
             cartUpdated,
@@ -164,7 +174,9 @@ export const CartProvider = ({ children }) => {
             setTotalQuantity,
             addToCart,
             updateItemQuantityLocal,
-            addToCartLocal
+            addToCartLocal,
+            getCartTotalQuantityLocal,
+            getCartTotalPriceLocal
         }}>
             {children}
         </CartContext.Provider>

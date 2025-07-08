@@ -7,7 +7,9 @@ import { useCartContext } from "@/app/context/CartContext";
 import { useUserContext } from "@/app/context/UserContext";
 import { CartIcon } from './icons/cart-icon'
 export const Cart =  () => {
-    const { openCart, setOpenCart, cartItems, totalPrice, totalQuantity } = useCartContext();
+    const { openCart, setOpenCart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
+    const totalPrice = getCartTotalPriceLocal()
+    const totalQuantity = getCartTotalQuantityLocal()
     return (
 <>
     {/* Fondo semitransparente cuando el carrito está abierto */}
