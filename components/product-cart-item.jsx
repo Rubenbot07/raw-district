@@ -57,7 +57,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
     <div className="bg-white p-4 rounded shadow-md flex items-center gap-4">
       <div className="flex gap-4">
         <figure className="w-20 h-20 py-2">
-          <img src={product.product_images[0].image_url} alt={product.name} />
+          <img src={product.product_images[0].thumbnail_url} alt={product.name} />
         </figure>
         <div className="flex flex-col gap-1">
           <h3 className="text-xs">{product.name}</h3>

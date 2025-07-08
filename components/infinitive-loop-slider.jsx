@@ -13,7 +13,7 @@ export const InfinitiveLoopSlider = ({ productImages }) => {
         <div className="flex flex-col items-center">
             <div className="w-64 h-64 overflow-hidden mb-4">
                 <img
-                src={productImages[currentIndexImage].image_url}
+                src={productImages[currentIndexImage].thumbnail_url}
                 alt={`Slide ${currentIndexImage + 1}`}
                 className="w-full h-full object-cover rounded-xl"
                 />
