@@ -8,7 +8,6 @@ import { useUserContext } from "@/app/context/UserContext";
 import { CartIcon } from './icons/cart-icon'
 export const Cart =  () => {
     const { openCart, setOpenCart, cartItems, totalPrice, totalQuantity } = useCartContext();
-
     return (
 <>
     {/* Fondo semitransparente cuando el carrito está abierto */}

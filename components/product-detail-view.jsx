@@ -6,6 +6,9 @@ export const ProductDetailView = ({ product }) => {
     return (
         <div>
             product view
+            <div>
+                <SizesWrapper product={product} />
+            </div>
             <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
             <p className="text-lg mb-4">{product.description}</p>
             <div className="flex flex-col gap-4">
@@ -33,9 +36,7 @@ export const ProductDetailView = ({ product }) => {
             </div>
             <p className="text-xl font-semibold mt-4">Price: ${product.price}</p>
             <p className="text-lg mt-2">Category: {product.categories?.name}</p>
-            <div>
-                <SizesWrapper product={product} />
-            </div>
+
         </div>
     )
 }

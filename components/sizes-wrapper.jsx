@@ -42,7 +42,7 @@ export const SizesWrapper = ({ product }) => {
                 onSelectSize={setSelectedSize}
                 setSelectedSize={setSelectedSize}
             />
-            <AddToCartButton product_size_id={selectedSize.id} productId={product.id} unit_price={product.price} />
+            <AddToCartButton product={product} product_size_id={selectedSize.id} productId={product.id} unit_price={product.price} />
         </div>
     );
 };

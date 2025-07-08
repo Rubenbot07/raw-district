@@ -1,16 +1,14 @@
 'use client';
 import { useCartContext } from "@/app/context/CartContext";
 import { removeFromCart } from "@/actions/remove-from-cart";
-import { addToCart } from "@/actions/add-to-cart";
 import { getSizeById } from "@/actions/get-size-by-id";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "./icons/chevron-down-icon";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [open, setOpen] = useState(false);
   const [productSize, setProductSize] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [rotate, setRotate] = useState(false);
-  const { setCartUpdated } = useCartContext();
+  const { setCartUpdated, addToCart, updateItemQuantityLocal } = useCartContext();
   const formatedPrice = product.price.toLocaleString('es-CO')
   useEffect(() => {
     const fetchProductSize = async () => {
@@ -26,9 +24,11 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   }, [sizeId]);
 
   const handleQuantityChange = async (newQuantity) => {
-    setLoading(true);
+    const previousQuantity = quantity;
+    updateItemQuantityLocal(itemId, newQuantity);
     try {
       await addToCart({
+        product,
         productId: product.id,
         quantity: newQuantity,
         unit_price: product.price,
@@ -36,9 +36,9 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         replaceQuantity: true
       });
       setCartUpdated(true);
-      setLoading(false);
     } catch (error) {
       console.error("Error adding to cart:", error);
+      updateItemQuantityLocal(itemId, previousQuantity);
     }
   }
   const handleRemoveFromCart = async (itemId) => {
@@ -64,7 +64,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
           <p className="text-xs"> <strong>Size: </strong> {productSize?.size}</p>
           <p className="text-sm font-semibold">${formatedPrice}</p>
           <div onClick={handleAnimation} className="relative flex items-center justify-between gap-2 border border-black p-2 max-w-24">
-            <button disabled={loading} className="disabled:opacity-50">{quantity}</button>
+            <button>{quantity}</button>
             <span className={`transform transition-transform duration-300 ${rotate ? "rotate-180" : ""}`} onClick={() => setRotate(!rotate)}><ChevronDown /></span>
             <ul className={`absolute top-full left-0 h-24 w-full border border-black bg-white overflow-y-scroll px-3 ${open ? "block" : "hidden"}`}>
               {[...Array(10)].map((_, i) => (

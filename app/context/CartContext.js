@@ -5,6 +5,7 @@ import { getCartItems } from '@/actions/get-cart-items';
 import { getActiveCart } from '@/actions/get-active-cart';
 import { useUserContext } from './UserContext'; 
 import { supabase } from '@/lib/supabase/supabaseClient';
+import { addToCart as addToCartAction } from '@/actions/add-to-cart';
 
 const CartContext = createContext();
 
@@ -89,6 +90,60 @@ export const CartProvider = ({ children }) => {
             setCartUpdated(false);
         }
     }, [cartUpdated, cart, user?.id]);
+
+    const addToCart = async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false }) => {
+        try {
+            await addToCartAction({ productId, quantity, unit_price, product_size_id, replaceQuantity });
+        } catch (error) {
+            console.error(error);
+            setCartItems(prevItems => prevItems.filter(item => item.product_id !== productId));
+            setTotalPrice(prevPrice => prevPrice - unit_price);
+            setTotalQuantity(prevQuantity => prevQuantity - quantity);
+        }
+    }
+
+    const addToCartLocal = ({ product, quantity = 1, product_size_id }) => {
+        const itemId = crypto.randomUUID();
+      
+        setCartItems((prevItems) => {
+          const existingItem = prevItems.find(
+            item =>
+              item.product_id === product.id &&
+              item.product_size_id === product_size_id
+          );
+      
+          if (existingItem) {
+            return prevItems.map(item =>
+              item.product_id === product.id && item.product_size_id === product_size_id
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+            );
+          } else {
+            return [
+              ...prevItems,
+              {
+                id: itemId,
+                cart_id: null,
+                product_id: product.id,
+                product_size_id,
+                quantity,
+                unit_price: product.price,
+                added_at: new Date().toISOString(),
+                products: product,
+              },
+            ];
+          }
+        });
+      };
+    const updateItemQuantityLocal = (itemId, newQuantity) => {
+        setCartItems((prevItems) =>
+          prevItems.map((item) =>
+            item.id === itemId
+              ? { ...item, quantity: newQuantity }
+              : item
+          )
+        );
+    };
     return (
         <CartContext.Provider value={{ 
             cartUpdated,
@@ -106,7 +161,10 @@ export const CartProvider = ({ children }) => {
             totalPrice,
             setTotalPrice,
             totalQuantity,
-            setTotalQuantity
+            setTotalQuantity,
+            addToCart,
+            updateItemQuantityLocal,
+            addToCartLocal
         }}>
             {children}
         </CartContext.Provider>
