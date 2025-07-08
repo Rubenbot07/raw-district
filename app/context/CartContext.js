@@ -6,6 +6,7 @@ import { getActiveCart } from '@/actions/get-active-cart';
 import { useUserContext } from './UserContext'; 
 import { supabase } from '@/lib/supabase/supabaseClient';
 import { addToCart as addToCartAction } from '@/actions/add-to-cart';
+import { removeFromCart as removeFromCartAction } from '@/actions/remove-from-cart';
 
 const CartContext = createContext();
 
@@ -91,6 +92,14 @@ export const CartProvider = ({ children }) => {
         }
     }, [cartUpdated, cart, user?.id]);
 
+    const removeFromCart = async (itemId) => {
+        try {
+            await removeFromCartAction(itemId)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const addToCart = async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false }) => {
         try {
             await addToCartAction({ productId, quantity, unit_price, product_size_id, replaceQuantity });
@@ -145,6 +154,14 @@ export const CartProvider = ({ children }) => {
         );
     };
 
+    const removeFromCartLocal = (itemId) => {
+         const newCart = [...cartItems]
+         const equalId = (element) => element.id === itemId
+         const index = newCart.findIndex(equalId)
+         newCart.splice(index, 1)
+         setCartItems(newCart)
+    }
+
     // Calcula la cantidad total de productos en el carrito localmente
     const getCartTotalQuantityLocal = () => {
         return cartItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
@@ -176,7 +193,9 @@ export const CartProvider = ({ children }) => {
             updateItemQuantityLocal,
             addToCartLocal,
             getCartTotalQuantityLocal,
-            getCartTotalPriceLocal
+            getCartTotalPriceLocal,
+            removeFromCart,
+            removeFromCartLocal
         }}>
             {children}
         </CartContext.Provider>
