@@ -10,8 +10,8 @@ export const CategoryCard = ({ category }) => {
                 />
                 {/* Overlay oscuro */}
                 <div className="absolute inset-0 bg-black/40"></div>
-                <h2 className="text-4xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10">
-                    {category.name}
+                <h2 className="text-3xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10">
+                    {category.name.toUpperCase()}
                 </h2>
             </div>
         </Link>

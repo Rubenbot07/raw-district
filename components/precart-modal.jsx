@@ -13,6 +13,7 @@ export const PreCartModal = () => {
      const fetchProduct = async () => {
         setProduct([]);
         setLoading(true);
+
         if (!selectedProductSlug) return;
         const { product, error } = await getProductDetail(selectedProductSlug);
         if (error) {

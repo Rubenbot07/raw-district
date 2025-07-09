@@ -1,15 +1,14 @@
 'use client'
 import { ProductCartItem } from "./product-cart-item"
-import { useState, useEffect } from "react";
-import { getCartItems } from "@/actions/get-cart-items";
-import { supabase } from "@/lib/supabase/supabaseClient";
 import { useCartContext } from "@/app/context/CartContext";
-import { useUserContext } from "@/app/context/UserContext";
 import { CartIcon } from './icons/cart-icon'
+import { CheckoutButton } from '@/components/checkout-button'
+import { formatPrice } from '@/utils/formatPrice'
 export const Cart =  () => {
     const { openCart, setOpenCart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
     const totalPrice = getCartTotalPriceLocal()
     const totalQuantity = getCartTotalQuantityLocal()
+    const formattedPrice = formatPrice(totalPrice)
     return (
 <>
     {/* Fondo semitransparente cuando el carrito está abierto */}
@@ -23,25 +22,34 @@ export const Cart =  () => {
     <div
       className={`
         fixed top-0 right-0 z-50 h-full w-[350px] max-w-full bg-white shadow-lg transition-transform duration-300
-        flex flex-col items-center justify-start p-4
+        flex flex-col justify-start
         ${openCart ? 'translate-x-0' : 'translate-x-full'}
       `}
       style={{ willChange: 'transform' }}
     >
-      <button onClick={() => setOpenCart(false)} className="mb-4 self-end">
-        Close
-      </button>
-      <h2 className="mb-4 text-lg font-bold">Shopping Cart</h2>
+      <div className="flex justify-between w-full px-4 py-3 items-center border-b-[1px] border-gray-300">
+        <h2 className="text-MD font-bold">YOUR CART ({totalQuantity})</h2>
+        <button onClick={() => setOpenCart(false)}>
+          Close
+        </button>
+      </div>
       {cartItems && cartItems.length ? (
-        <ul className="flex flex-col gap-4 w-full">
-          {cartItems.map((item) => (
-            <li key={item.id} className="cart-item">
-              <ProductCartItem product={item.products} quantity={item.quantity} itemId={item.id} sizeId={item.product_size_id}/>
-            </li>
-          ))}
-          <p>Total: {totalPrice}</p>
-          <p>Quantity: {totalQuantity}</p>
-        </ul>
+        <div>
+          <ul className="flex flex-col gap-4 w-full">
+            {cartItems.map((item) => (
+              <li key={item.id} className="cart-item border-b-[1px] border-gray-300">
+                <ProductCartItem product={item.products} quantity={item.quantity} itemId={item.id} sizeId={item.product_size_id}/>
+              </li>
+            ))}
+          </ul>
+          <div className="p-4 flex flex-col gap-4">
+            <div className="flex justify-between items-center w-full">
+              <p className="font-semibold">TOTAL</p>
+              <p className="font-semibold text-xl">{formattedPrice}</p>
+            </div>
+            <CheckoutButton />
+          </div>
+        </div>
       ) : (
         <p>Your cart is empty.</p>
       )}
@@ -54,6 +62,7 @@ export const Cart =  () => {
       <CartIcon />
       <span className="absolute top-1 right-2 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
     </button>
+
   </>
     )
 }

@@ -3,12 +3,13 @@ import { useCartContext } from "@/app/context/CartContext";
 import { getSizeById } from "@/actions/get-size-by-id";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "./icons/chevron-down-icon";
+import { formatPrice } from "@/utils/formatPrice";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [open, setOpen] = useState(false);
   const [productSize, setProductSize] = useState(null);
   const [rotate, setRotate] = useState(false);
   const { cartItems, setCartItems, setCartUpdated, addToCart, updateItemQuantityLocal, removeFromCart, removeFromCartLocal } = useCartContext();
-  const formattedPrice = product.price.toLocaleString('es-CO')
+  const formattedPrice = formatPrice(product.price)  
   useEffect(() => {
     const fetchProductSize = async () => {
       const { size, error } = await getSizeById(sizeId);
@@ -56,15 +57,15 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
     setOpen(!open);
   }
   return (
-    <div className="bg-white p-4 rounded shadow-md flex items-center gap-4">
+    <div className="bg-white p-4 flex items-center gap-4">
       <div className="flex gap-4">
         <figure className="w-20 h-20 py-2">
           <img src={product.product_images[0].thumbnail_url} alt={product.name} />
         </figure>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <h3 className="text-xs">{product.name}</h3>
           <p className="text-xs"> <strong>Size: </strong> {productSize?.size}</p>
-          <p className="text-sm font-semibold">${formattedPrice}</p>
+          <p className="text-sm font-semibold">{formattedPrice}</p>
           <div onClick={handleAnimation} className="relative flex items-center justify-between gap-2 border border-black p-2 max-w-24">
             <button>{quantity}</button>
             <span className={`transform transition-transform duration-300 ${rotate ? "rotate-180" : ""}`} onClick={() => setRotate(!rotate)}><ChevronDown /></span>
@@ -78,9 +79,9 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
           </div>
           <button
             onClick={() => handleRemoveFromCart(itemId)}
-            className="text-black text-start"
+            className="text-black text-start text-xs"
           >
-            Remove
+            REMOVE
           </button>
         </div>
       </div>

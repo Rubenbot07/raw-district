@@ -4,11 +4,13 @@ import { useCartContext } from "@/app/context/CartContext";
 
 export function AddToCartButton({ product, product_size_id, productId, quantity = 1, unit_price }) {
   const [loading, setLoading] = useState(false)
-  const { setCartUpdated, addToCart, addToCartLocal, cartItems, setCartItems } = useCartContext();
+  const { setCartUpdated, addToCart, addToCartLocal, cartItems, setCartItems, setOpenCart, setOpenPreCart } = useCartContext();
   const handleAddToCart = async () => {
     setLoading(true)
     const previousCart = [...cartItems];
     addToCartLocal({ product, productId, quantity, product_size_id, unit_price });
+    setOpenCart(true)
+    setOpenPreCart(false)
     try {
       await addToCart({
         productId,

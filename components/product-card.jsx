@@ -61,7 +61,7 @@ return (
             onClick={(e) => handleQuickAdd(e)}
             value={product?.id}
             >
-             Add
+             ADD
         </button>
     </div>
 );
