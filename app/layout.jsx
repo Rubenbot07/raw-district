@@ -4,6 +4,7 @@ import { Nav } from "@/components/nav";
 import { PreCartModal } from "@/components/precart-modal";
 import { Providers } from '@/app/context/Providers'
 import { getUser } from "@/actions/get-user";
+import { ProgressBar } from '@/components/progress-bar'
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -26,6 +27,7 @@ export default async function RootLayout({ children }) {
       <body className={`${geistSans.className} antialiased`}>
         <Providers initialUser={user}>
           <Nav />
+          <ProgressBar />
           <PreCartModal />
           {children}
         </Providers>
