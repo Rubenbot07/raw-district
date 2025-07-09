@@ -12,6 +12,12 @@ export const getProducts = cache (async () => {
       image_url,
       thumbnail_url,
       position
+    ),
+    product_sizes(
+      id,
+      size,
+      stock,
+      sku
     )
 `)
 
