@@ -1,7 +1,8 @@
 'use server';
+import { cache } from 'react';
 import { supabase } from '@/lib/supabase/supabaseClient';
 
-export async function getProductsByCategory(categoryId) {
+export const getProductsByCategory = cache (async(categoryId) => {
     
     const { data, error } = await supabase
         .from('products')
@@ -16,4 +17,4 @@ export async function getProductsByCategory(categoryId) {
     if (error) return [];
 
     return data;
-}
+})

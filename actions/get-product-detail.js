@@ -1,7 +1,8 @@
 'use server'
 import { supabase } from '@/lib/supabase/supabaseClient';
+import { cache } from 'react';
 
-export const getProductDetail = async (slug) => {
+export const getProductDetail = cache(async (slug) => {
         const { data: product, error } = await supabase
         .from('products')
         .select(`*,
@@ -26,4 +27,4 @@ export const getProductDetail = async (slug) => {
         product,
         error
     }
-}
+})

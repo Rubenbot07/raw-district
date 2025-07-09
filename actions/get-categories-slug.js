@@ -1,7 +1,8 @@
 'use server';
+import { cache } from 'react'
 import { supabase } from '@/lib/supabase/supabaseClient';
 
-export async function getCategoryBySlug(slug) {
+export const getCategoryBySlug = cache(async (slug) => {
     
     const { data, error } = await supabase
         .from('categories')
@@ -12,4 +13,4 @@ export async function getCategoryBySlug(slug) {
     if (error || !data) return null;
 
     return data;
-}
+})
