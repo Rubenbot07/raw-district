@@ -1,5 +1,6 @@
+import { CheckoutInfo } from "@/components/checkout-info"
 export default function Page() {
     return (
-        <div>Checkouts</div>
+        <div><CheckoutInfo /></div>
     )
 }
