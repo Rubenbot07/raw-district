@@ -21,7 +21,6 @@ export async function getCartItems(cartId) {
       )
     `)
     .eq('cart_id', cartId);
-
   if (error) throw new Error(error.message);
   return data;
 }
