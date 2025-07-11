@@ -4,14 +4,15 @@ import { useCartContext } from "@/app/context/CartContext";
 import { CartIcon } from './icons/cart-icon'
 import { CheckoutButton } from '@/components/checkout-button'
 import { formatPrice } from '@/utils/formatPrice'
+import { usePathname } from "next/navigation";
 export const Cart =  () => {
     const { cart, openCart, setOpenCart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
     const totalPrice = getCartTotalPriceLocal()
     const totalQuantity = getCartTotalQuantityLocal()
     const formattedPrice = formatPrice(totalPrice)
+    const pathname = usePathname();
     return (
 <>
-    {/* Fondo semitransparente cuando el carrito está abierto */}
     {openCart && (
       <div
         className="fixed inset-0 bg-black bg-opacity-40 z-40"
@@ -57,7 +58,7 @@ export const Cart =  () => {
     {/* Botón para abrir el carrito */}
     <button
       onClick={() => setOpenCart(true)}
-      className="px-4 py-2 relative"
+      className={`${((pathname.startsWith('/auth/')) || pathname.startsWith('/checkouts') || pathname.startsWith('/profile')) ? 'hidden' : 'block'} px-4 py-2 relative`}
     >
       <CartIcon />
       <span className="absolute top-1 right-2 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>

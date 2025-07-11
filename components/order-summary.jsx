@@ -7,9 +7,11 @@ import { useState } from "react";
 import { OrderSummaryDetail } from "@/components/order-summary-detail";
 export const OrderSummary = () => {
     const [open, setOpen] = useState(false);
-    const { cart, cartItems } = useCartContext();
-    const formattedPrice = formatPrice(cart?.total_price || 0)
-    const tax = (cart?.total_price || 0) * 0.19
+    const { cart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
+    const totalPrice = getCartTotalPriceLocal() || 0;
+    const totalQuantity = getCartTotalQuantityLocal() || 0;
+    const formattedPrice = formatPrice(totalPrice || 0)
+    const tax = ( totalPrice || 0) * 0.19
     return (
         <section className="max-w-xl lg:max-w-5xl mx-auto">
             <div onClick={() => setOpen(!open)} className=" lg:hidden bg-gray-100 p-4">
@@ -24,13 +26,13 @@ export const OrderSummary = () => {
             {open &&
                 <div className="lg:hidden">
                     <OrderSummaryCart cart={cart} cartItems={cartItems}>
-                        <OrderSummaryDetail totalPrice={formattedPrice} totalQuantity={cart?.total_quantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
+                        <OrderSummaryDetail totalPrice={formattedPrice} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
                     </OrderSummaryCart>
                 </div>
             }
             <div className="hidden lg:block">
                 <OrderSummaryCart cartItems={cartItems} >
-                    <OrderSummaryDetail totalPrice={formattedPrice} totalQuantity={cart?.total_quantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
+                    <OrderSummaryDetail totalPrice={formattedPrice} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
                 </OrderSummaryCart>
             </div>
         </section>

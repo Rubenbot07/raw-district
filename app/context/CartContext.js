@@ -21,7 +21,6 @@ export const CartProvider = ({ children }) => {
     const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
     const { user } = useUserContext();
 
-    console.log(user)
     useEffect(() => {
         const loadCart = async () => {
             const activeCart = await getActiveCart(user?.id);

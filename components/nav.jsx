@@ -5,7 +5,6 @@ import { getUser } from "@/actions/get-user"
 
 export const Nav = async () => {
     const { user, error } = await getUser();
-
     const userId = user ? user.id : null;
 
     return (

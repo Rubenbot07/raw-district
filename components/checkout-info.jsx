@@ -30,10 +30,11 @@ export const CheckoutInfo = () => {
         phone: "",
     });
     const [open, setOpen] = useState(false);
-    const { cart, cartItems, setCartItems, setCart, setCartUpdated } = useCartContext();
+    const { cart, cartItems, setCartItems, setCart, setCartUpdated, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
+    const totalPrice = getCartTotalPriceLocal() || 0;
+    const totalQuantity = getCartTotalQuantityLocal() || 0;
     const { user } = useUserContext();
 
-    console.log(cart)
     const handleInfo = async () => {
         const createOrders = async (shipping_address_id) => {
             const status = payment === "mercado_pago" ? "paid" : "pending";
@@ -116,7 +117,7 @@ export const CheckoutInfo = () => {
             </div>
             {open && <OrderSummaryCart cartItems={cartItems}/>}
             <div className='lg:hidden'>
-                <OrderSummaryDetail totalPrice={formatPrice(cart?.total_price || 0)} totalQuantity={cart?.total_quantity} shippingPrice={formatPrice(50000)} tax={formatPrice((cart?.total_price || 0) * 0.19)} />
+                <OrderSummaryDetail totalPrice={formatPrice(totalPrice || 0)} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice((cart?.total_price || 0) * 0.19)} />
             </div>
             <button className="bg-black text-white py-3 text-center rounded-[8px]" onClick={handleInfo}>Buy Now</button>
         </section>

@@ -1,6 +1,4 @@
 import { formatPrice } from "@/utils/formatPrice";
-import { getSizeById } from "@/actions/get-size-by-id";
-import { OrderSummaryDetail } from "@/components/order-summary-detail";
 export const OrderSummaryCart = ({cartItems, children}) => {
 
     
