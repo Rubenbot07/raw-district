@@ -21,7 +21,7 @@ export const CartProvider = ({ children }) => {
     const [totalQuantity, setTotalQuantity] = useState(cart?.total_quantity || 0);
     const { user } = useUserContext();
 
-
+    console.log(user)
     useEffect(() => {
         const loadCart = async () => {
             const activeCart = await getActiveCart(user?.id);
@@ -71,18 +71,18 @@ export const CartProvider = ({ children }) => {
                 }
         )
         .subscribe();
-
         return () => {
         supabase.removeChannel(channel);
         supabase.removeChannel(cartChannel);
         };
-    }, [user?.id, cart?.id]);
+    }, [user?.id, cart?.id, cartUpdated]);
 
         useEffect(() => {
         if (cartUpdated && cart) {
             const fetchCartItems = async () => {
                 const items = await getCartItems(cart.id);
                 const activeCart = await getActiveCart(user?.id);
+                setCart(activeCart);
                 setCartItems(items);
                 setTotalPrice(activeCart?.total_price);
                 setTotalQuantity(activeCart?.total_quantity);

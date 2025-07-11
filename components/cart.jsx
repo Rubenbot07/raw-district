@@ -5,7 +5,7 @@ import { CartIcon } from './icons/cart-icon'
 import { CheckoutButton } from '@/components/checkout-button'
 import { formatPrice } from '@/utils/formatPrice'
 export const Cart =  () => {
-    const { openCart, setOpenCart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
+    const { cart, openCart, setOpenCart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
     const totalPrice = getCartTotalPriceLocal()
     const totalQuantity = getCartTotalQuantityLocal()
     const formattedPrice = formatPrice(totalPrice)

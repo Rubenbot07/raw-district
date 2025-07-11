@@ -12,9 +12,13 @@ import { useUserContext } from '@/app/context/UserContext';
 import { useState, useEffect } from 'react';
 import { createAddress } from '@/actions/create-address';
 import { createOrder } from '@/actions/create-order';
+import { createOrderItems } from '@/actions/create-order-items';
+import { updateCart } from '@/actions/update-cart';
+import { useRouter } from 'next/navigation';
 export const CheckoutInfo = () => {
     const [delivery, setDelivery] = useState("shipping");
     const [payment, setPayment] = useState("mercado_pago");
+    const router = useRouter();
     const [formData, setFormData] = useState({
         name: "",
         surname: "",
@@ -26,13 +30,14 @@ export const CheckoutInfo = () => {
         phone: "",
     });
     const [open, setOpen] = useState(false);
-    const { cart, cartItems } = useCartContext();
+    const { cart, cartItems, setCartItems, setCart, setCartUpdated } = useCartContext();
     const { user } = useUserContext();
 
+    console.log(cart)
     const handleInfo = async () => {
         const createOrders = async (shipping_address_id) => {
             const status = payment === "mercado_pago" ? "paid" : "pending";
-            const { data, error} = await createOrder({
+            const { order, error} = await createOrder({
                 status: status,
                 user_id: user.id,
                 shipping_address_id: shipping_address_id,
@@ -43,6 +48,17 @@ export const CheckoutInfo = () => {
             if (error) {
                 console.error("Error creating order:", error);
             }
+
+            await createOrderItems({
+                orderId: order.id,
+                orderItems: cartItems,
+                cartId: cart.id
+            });
+            const newCart = await updateCart(cart.id);
+            setCartItems([]);
+            setCart(newCart)
+            setCartUpdated(true);
+            router.push(`/`);
         }
         if(delivery === "shipping") {
             const { address, error } = await createAddress({
@@ -59,7 +75,6 @@ export const CheckoutInfo = () => {
             if (error) {
                 console.error("Error creating address:", error);
             }
-            console.log(address)
             createOrders(address.id);
         }
         if(delivery === "pickup") {

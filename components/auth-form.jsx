@@ -3,7 +3,7 @@ import { signInWithGoogle } from "@/actions/sign-in-google"
 
 export const AuthForm = () => {
     const handleGoogleSignIn = async () => {
-        await signInWithGoogle(next)
+        await signInWithGoogle()
     }
     return (
         <div>

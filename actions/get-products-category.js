@@ -11,6 +11,9 @@ export const getProductsByCategory = cache (async(categoryId) => {
                 image_url,
                 thumbnail_url,
                 position
+            ),
+            categories(
+                name
             )`)
         .eq('category_id', categoryId);
 

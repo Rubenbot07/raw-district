@@ -16,6 +16,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AuthForm } from "@/components/auth-form";
 import { signInWithEmail } from "@/actions/sign-in-email";
+import { getUser } from "@/actions/get-user";
+import { createCart } from "@/actions/create-cart";
 
 export function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
@@ -32,6 +34,10 @@ export function LoginForm({ className, ...props }) {
 
     try {
       await signInWithEmail({ email, password });
+      const user = await getUser();
+      if(user) {
+        await createCart(user.id);
+      }
       window.location.href = "/";
       router.refresh();
     } catch (error) {

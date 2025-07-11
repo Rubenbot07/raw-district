@@ -17,6 +17,12 @@ export async function getCartItems(cartId) {
           image_url,
           thumbnail_url,
           position
+        ),
+        product_sizes (
+          id,
+          size,
+          stock,
+          sku
         )
       )
     `)
