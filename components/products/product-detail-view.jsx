@@ -1,4 +1,4 @@
-import { SizesWrapper } from "./sizes-wrapper";
+import { SizesWrapper } from "@/components/categories/sizes-wrapper";
 export const ProductDetailView = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
     const image2 = product?.product_images.find((image) => image?.position === 2);

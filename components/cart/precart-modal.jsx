@@ -2,8 +2,8 @@
 import { useCartContext } from "@/app/context/CartContext";
 import { useState, useEffect } from "react";
 import { getProductDetail } from "@/actions/get-product-detail";
-import { SizesWrapper } from "./sizes-wrapper";
-import { InfinitiveLoopSlider } from "./infinitive-loop-slider";
+import { SizesWrapper } from "@/components/categories/sizes-wrapper";
+import { InfinitiveLoopSlider } from "@/components/cart/infinitive-loop-slider";
 export const PreCartModal = () => {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(false);

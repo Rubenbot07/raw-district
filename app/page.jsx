@@ -1,12 +1,5 @@
-import { EnvVarWarning } from "@/components/env-var-warning";
-import { AuthButton } from "@/components/auth-button";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { hasEnvVars } from "@/lib/utils";
-import ProductsPage from '@/components/products';
-import Link from "next/link";
-import { Nav } from "@/components/nav";
-import CategoriesWrapper from "@/components/categories-wrapper";
-import { CartWrapper } from "@/components/cart-wrapper";
+import ProductsPage from '@/components/products/products';
+import CategoriesWrapper from "@/components/categories/categories-wrapper";
 
 export default function Home() {
   return (

@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { AuthForm } from "@/components/auth-form";
+import { AuthForm } from "@/components/user-session/auth-form";
 import { signInWithEmail } from "@/actions/sign-in-email";
 import { getUser } from "@/actions/get-user";
 import { createCart } from "@/actions/create-cart";

@@ -1,5 +1,5 @@
 import { getProductDetail } from '@/actions/get-product-detail';
-import { ProductDetailView } from '@/components/product-detail-view';
+import { ProductDetailView } from '@/components/products/product-detail-view';
 export default async function ProductDetailPage({ params }) {
     const { slug } = await params;
     // Fetch product details based on the slug

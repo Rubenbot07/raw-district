@@ -1,8 +1,8 @@
 'use client'
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { LogoutButton } from "./logout-button";
-import { UserIcon } from './icons/user-icon'
+import { Button } from "@/components/ui/button";
+import { LogoutButton } from "@/components/user-session/logout-button";
+import { UserIcon } from '@/components/icons/user-icon'
 import { usePathname } from "next/navigation";
 import { useUserContext } from "@/app/context/UserContext";
 export function AuthButton() {

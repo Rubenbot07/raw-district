@@ -1,7 +1,7 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
-import { PreCartModal } from "@/components/precart-modal";
+import { PreCartModal } from "@/components/cart/precart-modal";
 import { Providers } from '@/app/context/Providers'
 import { getUser } from "@/actions/get-user";
 import { ProgressBar } from '@/components/progress-bar'

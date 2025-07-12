@@ -1,4 +1,4 @@
-import { Cart } from '@/components/cart';
+import { Cart } from '@/components/cart/cart';
 import { getActiveCart } from '@/actions/get-active-cart';
 
 export const CartWrapper = async ({ userId }) => {    

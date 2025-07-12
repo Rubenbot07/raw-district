@@ -2,7 +2,7 @@
 import { useCartContext } from "@/app/context/CartContext";
 import { getSizeById } from "@/actions/get-size-by-id";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "./icons/chevron-down-icon";
+import { ChevronDown } from "@/components/icons/chevron-down-icon";
 import { formatPrice } from "@/utils/formatPrice";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [open, setOpen] = useState(false);

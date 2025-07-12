@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { AuthButton } from "./auth-button"
-import { CartWrapper } from "./cart-wrapper"
+import { AuthButton } from "@/components/user-session/auth-button"
+import { CartWrapper } from "@/components/cart/cart-wrapper"
 import { getUser } from "@/actions/get-user"
 
 export const Nav = async () => {

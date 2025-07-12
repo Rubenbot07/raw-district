@@ -1,4 +1,4 @@
-import { EditForm } from '@/components/edit-form'
+import { EditForm } from '@/components/profile/edit-form'
 import { createClient } from '@/lib/supabase/server'
 import { getUser } from '@/actions/get-user'
 export default async function EditFormPage () {

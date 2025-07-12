@@ -1,4 +1,4 @@
-import { ProductCard } from './product-card'
+import { ProductCard } from '@/components/products/product-card'
 import { getProducts } from '@/actions/get-products'
 export default async function ProductsPage() {
   const { products, error } = await getProducts()

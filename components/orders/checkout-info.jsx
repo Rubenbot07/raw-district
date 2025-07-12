@@ -1,11 +1,11 @@
 'use client'
-import { DeliveryOptions } from '@/components/delivery-options';
-import { StoreBranches } from '@/components/store-branches';
-import { PurchaseForm } from './purchase-form';
-import { Payment } from '@/components/payment';
+import { DeliveryOptions } from '@/components/orders/delivery-options';
+import { StoreBranches } from '@/components/orders/store-branches';
+import { PurchaseForm } from '@/components/orders/purchase-form';
+import { Payment } from '@/components/orders/payment';
 import { ChevronDown } from '@/components/icons/chevron-down-icon';
-import { OrderSummaryDetail } from '@/components/order-summary-detail';
-import { OrderSummaryCart } from '@/components/order-summary-cart';
+import { OrderSummaryDetail } from '@/components/orders/order-summary-detail';
+import { OrderSummaryCart } from '@/components/orders/order-summary-cart';
 import { formatPrice } from '@/utils/formatPrice';  
 import { useCartContext } from '@/app/context/CartContext';
 import { useUserContext } from '@/app/context/UserContext';

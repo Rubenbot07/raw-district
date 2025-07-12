@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useState } from "react";
-import { SizesSelect } from "./sizes-select";
+import { SizesSelect } from "@/components/categories/sizes-select";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { getSizesProduct } from "@/actions/get-sizes-product";
-import { AddToCartButton } from "./add-to-cart-button";
+import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 
 export const SizesWrapper = ({ product }) => {
     const [selectedSize, setSelectedSize] = useState(product?.product_sizes[0]);

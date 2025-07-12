@@ -1,8 +1,8 @@
 'use client'
-import { ProductCartItem } from "./product-cart-item"
+import { ProductCartItem } from "@/components/cart/product-cart-item"
 import { useCartContext } from "@/app/context/CartContext";
-import { CartIcon } from './icons/cart-icon'
-import { CheckoutButton } from '@/components/checkout-button'
+import { CartIcon } from '@/components/icons/cart-icon'
+import { CheckoutButton } from '@/components/cart/checkout-button'
 import { formatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
 export const Cart =  () => {

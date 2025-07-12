@@ -1,6 +1,6 @@
 import { getCategoryBySlug } from '@/actions/get-categories-slug';
 import { getProductsByCategory } from '@/actions/get-products-category';
-import { ProductCard } from '@/components/product-card';
+import { ProductCard } from '@/components/products/product-card';
 
 export default async function Page({ params }) {
     const { slug } = await params;

@@ -1,5 +1,5 @@
-import { CheckoutInfo } from "@/components/checkout-info"
-import { OrderSummary } from "@/components/order-summary"
+import { CheckoutInfo } from "@/components/orders/checkout-info"
+import { OrderSummary } from "@/components/orders/order-summary"
 export default function Page() {
     return (
         <section>

@@ -2,9 +2,9 @@
 import { useCartContext } from "@/app/context/CartContext";
 import { formatPrice } from "@/utils/formatPrice";
 import { ChevronDown } from "@/components/icons/chevron-down-icon";
-import { OrderSummaryCart } from "@/components/order-summary-cart";
+import { OrderSummaryCart } from "@/components/orders/order-summary-cart";
 import { useState } from "react";
-import { OrderSummaryDetail } from "@/components/order-summary-detail";
+import { OrderSummaryDetail } from "@/components/orders/order-summary-detail";
 export const OrderSummary = () => {
     const [open, setOpen] = useState(false);
     const { cart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
