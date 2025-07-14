@@ -1,4 +1,4 @@
-import { SelectableOptions } from "@/components/orders/selectable-options";
+import { SelectableOptions } from "@/components/checkout/selectable-options";
 import { RedirectIcon } from "@/components/icons/redirect-icon";
 import { useState } from "react";
 export const Payment = ({payment, setPayment}) => {

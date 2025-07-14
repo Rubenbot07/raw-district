@@ -1,14 +1,21 @@
 'use client';
-import { useCartContext } from "@/app/context/CartContext";
 import { getSizeById } from "@/actions/get-size-by-id";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "@/components/icons/chevron-down-icon";
 import { formatPrice } from "@/utils/formatPrice";
+import { useCartStore } from "@/app/stores/cartStore";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [open, setOpen] = useState(false);
   const [productSize, setProductSize] = useState(null);
   const [rotate, setRotate] = useState(false);
-  const { cartItems, setCartItems, setCartUpdated, addToCart, updateItemQuantityLocal, removeFromCart, removeFromCartLocal } = useCartContext();
+  const cartItems = useCartStore((state) => state.cartItems);
+  const setCartItems = useCartStore((state) => state.setCartItems);
+  const setCartUpdated = useCartStore((state) => state.setCartUpdated);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const removeFromCartLocal = useCartStore((state) => state.removeFromCartLocal);
+  const updateItemQuantityLocal = useCartStore((state) => state.updateItemQuantityLocal);
+
   const formattedPrice = formatPrice(product.price)  
   useEffect(() => {
     const fetchProductSize = async () => {

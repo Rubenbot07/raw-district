@@ -1,12 +1,17 @@
 'use client'
 import { ProductCartItem } from "@/components/cart/product-cart-item"
-import { useCartContext } from "@/app/context/CartContext";
 import { CartIcon } from '@/components/icons/cart-icon'
 import { CheckoutButton } from '@/components/cart/checkout-button'
 import { formatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
+import { useCartUIStore } from "@/app/stores/cartUIStore";
+import { useCartStore } from "@/app/stores/cartStore";
 export const Cart =  () => {
-    const { cart, openCart, setOpenCart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
+    const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
+    const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
+    const cartItems = useCartStore((state) => state.cartItems);
+    const openCart = useCartUIStore((state) => state.openCart);
+    const setOpenCart = useCartUIStore((state) => state.setOpenCart);
     const totalPrice = getCartTotalPriceLocal()
     const totalQuantity = getCartTotalQuantityLocal()
     const formattedPrice = formatPrice(totalPrice)

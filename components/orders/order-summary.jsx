@@ -1,40 +1,14 @@
-'use client'
-import { useCartContext } from "@/app/context/CartContext";
-import { formatPrice } from "@/utils/formatPrice";
-import { ChevronDown } from "@/components/icons/chevron-down-icon";
-import { OrderSummaryCart } from "@/components/orders/order-summary-cart";
-import { useState } from "react";
-import { OrderSummaryDetail } from "@/components/orders/order-summary-detail";
-export const OrderSummary = () => {
-    const [open, setOpen] = useState(false);
-    const { cart, cartItems, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
-    const totalPrice = getCartTotalPriceLocal() || 0;
-    const totalQuantity = getCartTotalQuantityLocal() || 0;
-    const formattedPrice = formatPrice(totalPrice || 0)
-    const tax = ( totalPrice || 0) * 0.19
+import { OrderSummaryItem } from "@/components/orders/order-summary-item"
+export const OrderSummary = ({orderItems}) => {
+
     return (
-        <section className="max-w-xl lg:max-w-5xl mx-auto">
-            <div onClick={() => setOpen(!open)} className=" lg:hidden bg-gray-100 p-4">
-                <div className="flex justify-between items-center">
-                    <div className="text-sm flex items-center gap-2 ">
-                        <span>Order Summary</span>
-                        <span><ChevronDown /></span>
-                    </div>
-                    <p className="font-medium text-xl">{formattedPrice}</p>
-                </div>
-            </div>
-            {open &&
-                <div className="lg:hidden">
-                    <OrderSummaryCart cart={cart} cartItems={cartItems}>
-                        <OrderSummaryDetail totalPrice={formattedPrice} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
-                    </OrderSummaryCart>
-                </div>
-            }
-            <div className="hidden lg:block">
-                <OrderSummaryCart cartItems={cartItems} >
-                    <OrderSummaryDetail totalPrice={formattedPrice} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
-                </OrderSummaryCart>
-            </div>
+        <section className="flex flex-col gap-2 max-w-4xl mx-auto p-4">
+            Order Summary
+            <ul className="flex flex-col border-[1px] border-black rounded-[8px]">
+                {orderItems?.map(item => (
+                    <OrderSummaryItem key={item.id} productId={item.product_id} quantity={item.quantity} size={item.size} unit_price={item.unit_price} subtotal={item.subtotal} />
+                ))}
+            </ul>
         </section>
     )
 }

@@ -1,15 +1,19 @@
 'use client'
 
 import { useState } from "react";
-import { useCartContext } from "@/app/context/CartContext";
 import Link from "next/link";
-
+import { useCartUIStore } from "@/app/stores/cartUIStore";
+import { useCartStore } from "@/app/stores/cartStore";
 export const ProductCard = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
     const image2 = product?.product_images.find((image) => image?.position === 2);
     const [hovered, setHovered] = useState(false);
-    const { setOpenPreCart, setSelectedProductSlug, addToCart, setOpenCart, setUpdatedCart, addToCartLocal } = useCartContext();
-
+    const setOpenCart = useCartUIStore((state) => state.setOpenCart);
+    const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
+    const setSelectedProductSlug = useCartUIStore((state) => state.setSelectedProductSlug);
+    const addToCart = useCartStore((state) => state.addToCart);
+    const setCartUpdated = useCartStore((state) => state.setCartUpdated);
+    const addToCartLocal = useCartStore((state) => state.addToCartLocal);
     const handleQuickAdd = async (e) => {
         e.stopPropagation();
         if(product?.categories.name === 'Caps') {
@@ -25,12 +29,13 @@ export const ProductCard = ({ product }) => {
                     unit_price: product?.price,
                     product_size_id: product?.product_sizes[0]?.id
                 })
-                setUpdatedCart(true)
+                setCartUpdated(true)
             } catch(error) {
                 console.log(error)
             }
 
         } else {
+            console.log('not caps')
             setSelectedProductSlug(product.slug);
             setOpenPreCart(true);
             console.log(product)

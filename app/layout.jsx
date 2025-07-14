@@ -5,6 +5,8 @@ import { PreCartModal } from "@/components/cart/precart-modal";
 import { Providers } from '@/app/context/Providers'
 import { getUser } from "@/actions/get-user";
 import { ProgressBar } from '@/components/progress-bar'
+import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
+import { Car } from "lucide-react";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -25,12 +27,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-        <Providers initialUser={user}>
           <Nav />
-          <ProgressBar />
-          <PreCartModal />
           {children}
-        </Providers>
+          <GlobalSetupProvider />
       </body>
     </html>
   );

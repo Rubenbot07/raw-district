@@ -1,7 +1,7 @@
 'use client'
 import { ShippingIcon } from "@/components/icons/shipping-icon";
 import { PickupIcon } from "@/components/icons/pickup-icon";
-import { SelectableOptions } from "@/components/orders/selectable-options";
+import { SelectableOptions } from "@/components/checkout/selectable-options";
 export const DeliveryOptions = ({delivery, setDelivery}) => {
     return (
         <section className="flex flex-col gap-2 w-full">

@@ -1,5 +1,5 @@
 
-export const OrderSummaryDetail = ({totalPrice, totalQuantity, shippingPrice, tax}) => {
+export const CheckoutSummaryDetail = ({totalPrice, totalQuantity, shippingPrice, tax}) => {
     return (
         <section className="flex flex-col gap-3 px-2">
             <div className="flex justify-between text-sm">

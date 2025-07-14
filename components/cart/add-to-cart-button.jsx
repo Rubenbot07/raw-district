@@ -1,14 +1,20 @@
 'use client';
 import { useState } from "react";
-import { useCartContext } from "@/app/context/CartContext";
-
+import { useCartStore } from "@/app/stores/cartStore";
+import { useCartUIStore } from "@/app/stores/cartUIStore";
 export function AddToCartButton({ product, product_size_id, productId, quantity = 1, unit_price }) {
   const [loading, setLoading] = useState(false)
-  const { setCartUpdated, addToCart, addToCartLocal, cartItems, setCartItems, setOpenCart, setOpenPreCart } = useCartContext();
+  const setCartUpdated = useCartStore((state) => state.setCartUpdated);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cartItems = useCartStore((state) => state.cartItems);
+  const setCartItems = useCartStore((state) => state.setCartItems);
+  const setOpenCart = useCartUIStore((state) => state.setOpenCart);
+  const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
+  const addToCartLocal = useCartStore((state) => state.addToCartLocal);
   const handleAddToCart = async () => {
     setLoading(true)
     const previousCart = [...cartItems];
-    addToCartLocal({ product, productId, quantity, product_size_id, unit_price });
+    addToCartLocal({ product, productId, quantity, product_size_id});
     setOpenCart(true)
     setOpenPreCart(false)
     try {

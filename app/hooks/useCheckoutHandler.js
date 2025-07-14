@@ -3,8 +3,9 @@ import { createOrder } from '@/actions/create-order';
 import { createOrderItems } from '@/actions/create-order-items';
 import { updateCart } from '@/actions/update-cart';
 
-export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router }) => {
+export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading }) => {
   const handleCheckout = async ({ delivery, payment, formData }) => {
+    setLoading(true);
     const createOrders = async (shipping_address_id) => {
       const status = payment === "mercado_pago" ? "paid" : "pending";
       const { order, error } = await createOrder({
@@ -28,6 +29,7 @@ export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCar
       setCartItems([]);
       setCart(newCart);
       setCartUpdated(true);
+      setLoading(false);
       router.push('/');
     };
 

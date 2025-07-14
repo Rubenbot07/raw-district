@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { LogoutButton } from "@/components/user-session/logout-button";
 import { UserIcon } from '@/components/icons/user-icon'
 import { usePathname } from "next/navigation";
-import { useUserContext } from "@/app/context/UserContext";
+import { useUserStore } from "@/app/stores/userStore";
 export function AuthButton() {
-  const { user } = useUserContext();
+  const user = useUserStore((state) => state.user);
   const pathname = usePathname();
   return (
     <section>

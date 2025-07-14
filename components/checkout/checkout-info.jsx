@@ -1,29 +1,36 @@
 'use client'
-import { DeliveryOptions } from '@/components/orders/delivery-options';
-import { StoreBranches } from '@/components/orders/store-branches';
-import { PurchaseForm } from '@/components/orders/purchase-form';
-import { Payment } from '@/components/orders/payment';
+import { DeliveryOptions } from '@/components/checkout/delivery-options';
+import { StoreBranches } from '@/components/checkout/store-branches';
+import { PurchaseForm } from '@/components/checkout/purchase-form';
+import { Payment } from '@/components/checkout/payment';
 import { ChevronDown } from '@/components/icons/chevron-down-icon';
-import { OrderSummaryDetail } from '@/components/orders/order-summary-detail';
-import { OrderSummaryCart } from '@/components/orders/order-summary-cart';
+import { CheckoutSummaryDetail } from '@/components/checkout/checkout-summary-detail';
+import { CheckoutSummaryCart } from '@/components/checkout/checkout-summary-cart';
 import { formatPrice } from '@/utils/formatPrice';  
-import { useCartContext } from '@/app/context/CartContext';
-import { useUserContext } from '@/app/context/UserContext';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCheckoutHandler } from '@/app/hooks/useCheckoutHandler';
+import { useUserStore } from '@/app/stores/userStore';
+import { useCartStore } from '@/app/stores/cartStore';
 export const CheckoutInfo = () => {
   const [delivery, setDelivery] = useState("shipping");
   const [payment, setPayment] = useState("mercado_pago");
   const [formData, setFormData] = useState({ name: "", surname: "", identification: "", address: "", city: "", state: "", zip: "", phone: "" });
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const { cart, cartItems, setCartItems, setCart, setCartUpdated, getCartTotalPriceLocal, getCartTotalQuantityLocal } = useCartContext();
-  const { user } = useUserContext();
+  const user = useUserStore((state) => state.user);
+  const cart = useCartStore((state) => state.cart);
+  const cartItems = useCartStore((state) => state.cartItems);
+  const setCartItems = useCartStore((state) => state.setCartItems);
+  const setCart = useCartStore((state) => state.setCart);
+  const setCartUpdated = useCartStore((state) => state.setCartUpdated);
+  const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
+  const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
   const router = useRouter();
 
   const { handleCheckout } = useCheckoutHandler({
-    user, cart, cartItems, setCartItems, setCart, setCartUpdated, router
+    user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading
   });
 
   const totalPrice = getCartTotalPriceLocal() || 0;
@@ -56,10 +63,10 @@ export const CheckoutInfo = () => {
         </div>
       </div>
 
-      {open && <OrderSummaryCart cartItems={cartItems} />}
+      {open && <CheckoutSummaryCart cartItems={cartItems} />}
 
       <div className='lg:hidden'>
-        <OrderSummaryDetail
+        <CheckoutSummaryDetail
           totalPrice={formatPrice(totalPrice)}
           totalQuantity={totalQuantity}
           shippingPrice={formatPrice(50000)}
@@ -68,7 +75,7 @@ export const CheckoutInfo = () => {
       </div>
 
       <button className="bg-black text-white py-3 text-center rounded-[8px]" onClick={handleBuyNow}>
-        Buy Now
+        {loading ? "Loading..." : "Buy Now"}
       </button>
     </section>
   );

@@ -1,5 +1,5 @@
 import { formatPrice } from "@/utils/formatPrice";
-export const OrderSummaryCart = ({cartItems, children}) => {
+export const CheckoutSummaryCart = ({cartItems, children}) => {
 
     
 
