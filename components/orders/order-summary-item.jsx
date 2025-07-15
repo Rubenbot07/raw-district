@@ -16,10 +16,11 @@ export const OrderSummaryItem = ({productId, quantity, size, unit_price, subtota
         };
         fetchProduct();
     }, [productId]);
+
     
     return (
-        <div className="flex justify-between items-center gap-2 p-3">
-            <div className="flex gap-2">
+        <div className="flex justify-between items-center gap-4 py-3 flex-wrap border-b-[1px] border-gray-300 last:border-b-0">
+            <div className="flex gap-3">
                 <div className="w-14 h-14 min-w-14">
                     <img className="w-full h-full object-cover rounded-xl" src={product?.product_images[0].thumbnail_url} alt={product?.name} />
                 </div>

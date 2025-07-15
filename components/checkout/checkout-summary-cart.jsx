@@ -1,7 +1,6 @@
 import { formatPrice } from "@/utils/formatPrice";
 export const CheckoutSummaryCart = ({cartItems, children}) => {
 
-    
 
     return (
         <section className="flex flex-col gap-4 px-2">

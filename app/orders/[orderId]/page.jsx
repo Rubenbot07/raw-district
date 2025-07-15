@@ -10,7 +10,7 @@ export default async function Page({ params }) {
 
     return (
         <section>
-            <OrderSummary orderItems={data} />
+            <OrderSummary orderItems={data} orderId={orderId} />
         </section>
     )
 }
