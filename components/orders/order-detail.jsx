@@ -1,6 +1,6 @@
 import { formatPrice } from "@/utils/formatPrice";
 
-export const OrderPickupDetail = ({quantity, total, paymentMethod, status}) => {
+export const OrderDetail = ({quantity, total, paymentMethod, shipping_method, status}) => {
     const tax = formatPrice(Number(total) * 19 / 100 || 0)
     const totalPrice = formatPrice(total || 0)
     return (
@@ -11,7 +11,7 @@ export const OrderPickupDetail = ({quantity, total, paymentMethod, status}) => {
             </div>
             <div className="flex justify-between">
                 <span>Shipping</span>
-                <span>Pickup</span>
+                <span>{shipping_method === 'shipping' ? 'Standard' : 'Pickup'}</span>
             </div>
             <div className="flex justify-between">
                 <span>Payment</span>

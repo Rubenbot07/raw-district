@@ -4,7 +4,6 @@ export const getOrderItems = async (orderId) => {
         .from('order_items')
         .select('*')
         .eq('order_id', orderId)
-        console.log(data)
     return {
         data,
         error

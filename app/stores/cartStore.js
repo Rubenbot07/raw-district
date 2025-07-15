@@ -22,7 +22,6 @@ export const useCartStore = create((set, get) => ({
     if (!activeCart) return;
 
     const items = await getCartItems(activeCart.id);
-    console.log('items', items);
     set({
       cart: activeCart,
       cartItems: items || [],
