@@ -1,4 +1,4 @@
-import CompleteProfileForm from "@/components/complete-profile-form";
+import {  CompleteProfileForm } from "@/components/profile/complete-profile-form";
 
 export default function Page() {
   return (

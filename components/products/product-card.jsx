@@ -1,5 +1,4 @@
 'use client'
-
 import { useState } from "react";
 import Link from "next/link";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
@@ -49,7 +48,7 @@ return (
         onMouseLeave={() => setHovered(false)}
     >
         <Link 
-            href={`/productDetail/${product.slug}`} 
+            href={`/productDetail/${product.slug}`}
         >
             <div className="relative overflow-hidden rounded-lg">
                 

@@ -1,12 +1,7 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
-import { PreCartModal } from "@/components/cart/precart-modal";
-import { Providers } from '@/app/context/Providers'
-import { getUser } from "@/actions/get-user";
-import { ProgressBar } from '@/components/progress-bar'
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
-import { Car } from "lucide-react";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -20,8 +15,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export default async function RootLayout({ children }) {
-  const { user } = await getUser();
+export default function RootLayout({ children }) {
 
 
   return (

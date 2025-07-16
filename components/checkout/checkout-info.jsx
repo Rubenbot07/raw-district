@@ -44,7 +44,7 @@ export const CheckoutInfo = () => {
     <section className="bg-white h-auto w-auto flex flex-col gap-7 lg:border-r-[1px] p-4">
       <div className='flex flex-col gap-2 border-b-[1px] border-gray-400 py-3'>
         <p className='font-light text-sm text-gray-500'>Account</p>
-        <p>{user.email}</p>
+        <p>{user?.email}</p>
       </div>
 
       <DeliveryOptions delivery={delivery} setDelivery={setDelivery} />

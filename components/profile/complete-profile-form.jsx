@@ -6,7 +6,7 @@ import Form from "next/form";
 import { completeUserProfile } from "@/actions/complete-user-profile";
 
 
-export default async function CompleteProfileForm() {
+export const CompleteProfileForm = () => {
   return (
     <div className="flex flex-col gap-6 max-w-md mx-auto">
       <Card>
