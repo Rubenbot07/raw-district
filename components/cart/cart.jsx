@@ -1,6 +1,7 @@
 'use client'
 import { ProductCartItem } from "@/components/cart/product-cart-item"
-import { CartIcon } from '@/components/icons/cart-icon'
+import { X } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { CheckoutButton } from '@/components/cart/checkout-button'
 import { formatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
@@ -36,7 +37,7 @@ export const Cart =  () => {
       <div className="flex justify-between w-full px-4 py-3 items-center border-b-[1px] border-gray-300">
         <h2 className="text-MD font-bold">YOUR CART ({totalQuantity})</h2>
         <button onClick={() => setOpenCart(false)}>
-          Close
+          <X />
         </button>
       </div>
       {cartItems && cartItems.length ? (
@@ -65,7 +66,7 @@ export const Cart =  () => {
       onClick={() => setOpenCart(true)}
       className={`${((pathname.startsWith('/auth/')) || pathname.startsWith('/checkouts') || pathname.startsWith('/profile')) ? 'hidden' : 'block'} px-4 py-2 relative`}
     >
-      <CartIcon />
+      <ShoppingCart />
       <span className="absolute top-1 right-2 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
     </button>
 

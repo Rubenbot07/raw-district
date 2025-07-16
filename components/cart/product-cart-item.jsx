@@ -1,7 +1,7 @@
 'use client';
 import { getSizeById } from "@/actions/get-size-by-id";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "@/components/icons/chevron-down-icon";
+import { ChevronDown } from "lucide-react";
 import { formatPrice } from "@/utils/formatPrice";
 import { useCartStore } from "@/app/stores/cartStore";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
@@ -75,7 +75,9 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
           <p className="text-sm font-semibold">{formattedPrice}</p>
           <div onClick={handleAnimation} className="relative flex items-center justify-between gap-2 border border-black p-2 max-w-24">
             <button>{quantity}</button>
-            <span className={`transform transition-transform duration-300 ${rotate ? "rotate-180" : ""}`} onClick={() => setRotate(!rotate)}><ChevronDown /></span>
+            <span className={`transform transition-transform duration-300 ${rotate ? "rotate-180" : ""}`} onClick={() => setRotate(!rotate)}>
+              <ChevronDown />
+            </span>
             <ul className={`absolute top-full left-0 h-24 w-full border border-black bg-white overflow-y-scroll px-3 ${open ? "block" : "hidden"}`}>
               {[...Array(10)].map((_, i) => (
                   <li key={i} onClick={() => handleQuantityChange(i + 1)}>

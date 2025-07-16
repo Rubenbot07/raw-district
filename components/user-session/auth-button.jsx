@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LogoutButton } from "@/components/user-session/logout-button";
-import { UserIcon } from '@/components/icons/user-icon'
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/app/stores/userStore";
+import { CircleUserRound } from "lucide-react";
 export function AuthButton() {
   const user = useUserStore((state) => state.user);
   const pathname = usePathname();
@@ -14,7 +14,7 @@ export function AuthButton() {
           user && (
           <div className="flex items-center gap-4">
             <Link href="/profile">
-              <UserIcon />
+              <CircleUserRound />
             </Link>
             <LogoutButton />
           </div>

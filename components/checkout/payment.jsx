@@ -1,5 +1,5 @@
 import { SelectableOptions } from "@/components/checkout/selectable-options";
-import { RedirectIcon } from "@/components/icons/redirect-icon";
+import { AppWindow } from "lucide-react";
 import { useState } from "react";
 export const Payment = ({payment, setPayment}) => {
     const [openWallet, setOpenWallet] = useState(true);
@@ -29,7 +29,7 @@ export const Payment = ({payment, setPayment}) => {
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openWallet ? 'max-h-[250px]' : 'max-h-0'} border-x-[1px] border-gray-300  bg-gray-100`}>
                     <div className="flex flex-col gap-3 items-center mx-auto p-4 max-w-[300px]">
-                       <RedirectIcon />
+                       <AppWindow size={100} color="gray"/>
                        <p className="font-light text-sm text-center">
                             After clicking  "Pay Now", you will be redirected to Mercado Pago to complete your purchase safety.
                         </p> 

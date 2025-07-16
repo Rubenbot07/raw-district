@@ -3,7 +3,7 @@ import { DeliveryOptions } from '@/components/checkout/delivery-options';
 import { StoreBranches } from '@/components/checkout/store-branches';
 import { PurchaseForm } from '@/components/checkout/purchase-form';
 import { Payment } from '@/components/checkout/payment';
-import { ChevronDown } from '@/components/icons/chevron-down-icon';
+import { ChevronDown } from 'lucide-react';
 import { CheckoutSummaryDetail } from '@/components/checkout/checkout-summary-detail';
 import { CheckoutSummaryCart } from '@/components/checkout/checkout-summary-cart';
 import { formatPrice } from '@/utils/formatPrice';  
@@ -18,6 +18,7 @@ export const CheckoutInfo = () => {
   const [formData, setFormData] = useState({ name: "", surname: "", identification: "", address: "", city: "", state: "", zip: "", phone: "" });
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [rotate, setRotate] = useState(false);
 
   const user = useUserStore((state) => state.user);
   const cart = useCartStore((state) => state.cart);
@@ -58,8 +59,10 @@ export const CheckoutInfo = () => {
       <div className='flex justify-between items-center p-3 lg:hidden'>
         <h2 className="font-normal text-2xl">Order Summary</h2>
         <div onClick={() => setOpen(!open)} className="flex gap-2 items-center text-sm cursor-pointer">
-          <span>Show</span>
-          <ChevronDown />
+          <span onClick={() => setRotate(!rotate)}>Show</span>
+          <span className={`transition-transform ${rotate ? 'rotate-180' : ''}`}>
+            <ChevronDown/>
+          </span>
         </div>
       </div>
 
