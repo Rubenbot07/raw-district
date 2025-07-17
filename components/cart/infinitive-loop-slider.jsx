@@ -13,7 +13,7 @@ export const InfinitiveLoopSlider = ({ productImages }) => {
     };
     return (
         <div 
-            className="relative overflow-hidden"
+            className="relative overflow-hidden hidden md:block"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -28,13 +28,13 @@ export const InfinitiveLoopSlider = ({ productImages }) => {
             <div className="flex justify-between w-full px-2 absolute top-1/2">
                 <button
                 onClick={handlePrev}
-                className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform -translate-x-20 transition-transform duration-300 ease-in-out ${isHovered ? 'translate-x-1' : ''}`}
+                className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform -translate-x-20 transition-transform duration-300 ease-in-out ${isHovered ? 'translate-x-2' : ''}`}
                 >
                 <ArrowLeft />
                 </button>
                 <button
                 onClick={handleNext}
-                className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform translate-x-20 transition-transform duration-300 ease-in-out ${isHovered ? '-translate-x-1' : ''}`}
+                className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform translate-x-20 transition-transform duration-300 ease-in-out ${isHovered ? '-translate-x-2' : ''}`}
                 >
                 <ArrowRight />
                 </button>

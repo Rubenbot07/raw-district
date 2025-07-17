@@ -36,10 +36,10 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
 
   return (
     <button
-      className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
+      className=" px-4 py-2 bg-black text-white text-sm w-full"
       onClick={handleAddToCart}
     >
-      {loading ? 'Loading' : 'Add To Cart'}
+      {loading ? 'Loading' : 'ADD TO CART'}
     </button>
   );
 }

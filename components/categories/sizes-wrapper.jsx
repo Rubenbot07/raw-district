@@ -4,16 +4,23 @@ import { SizesSelect } from "@/components/categories/sizes-select";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { getSizesProduct } from "@/actions/get-sizes-product";
 import { AddToCartButton } from "@/components/cart/add-to-cart-button";
+import { useProductSelectionStore } from "@/app/stores/productSelectionStore"
 
 export const SizesWrapper = ({ product }) => {
-    const [selectedSize, setSelectedSize] = useState(product?.product_sizes[0]);
-    const [sizes, setSizes] = useState(product.product_sizes || []);
-
+    const selectedSize = useProductSelectionStore((state) => state.selectedSize);
+    const setSelectedSize = useProductSelectionStore((state) => state.setSelectedSize);
+    const [sizes, setSizes] = useState(product.product_sizes);
     // Función para traer tallas desde el action
     const fetchSizes = async () => {
         const { sizes, error } = await getSizesProduct(product.id);
         if (!error && sizes) setSizes(sizes);
+        setSelectedSize(null)
     };
+    
+    useEffect(() => {
+        if(!selectedSize) setSelectedSize(product.product_sizes[0]);
+    }, [sizes, selectedSize, setSelectedSize]);
+
 
     // Trae tallas y suscríbete a cambios realtime
     useEffect(() => {
@@ -34,6 +41,9 @@ export const SizesWrapper = ({ product }) => {
             supabase.removeChannel(channel);
         };
     }, [product.id]);
+
+    if(!selectedSize) return null
+
     return (
         <div>
             <SizesSelect
@@ -42,7 +52,6 @@ export const SizesWrapper = ({ product }) => {
                 onSelectSize={setSelectedSize}
                 setSelectedSize={setSelectedSize}
             />
-            <AddToCartButton product={product} product_size_id={selectedSize.id} productId={product.id} unit_price={product.price} />
         </div>
     );
 };

@@ -1,25 +1,30 @@
 'use client';
 export const SizesSelect = ({ sizes, selectedSize, onSelectSize }) => {
 
+
     return (
-        <div className="flex flex-wrap gap-2">
-            {sizes.map((size) => (
-                <div key={size.id} className="flex items-center">
-                    <p>{size.stock}</p>
-                    <button
-                        disabled={size.stock <= 0}
-                        type="button"
-                        className={`disabled:opacity-50 inline-block px-3 py-1 rounded-full mr-2 mb-2 cursor-pointer
-                            ${selectedSize?.id === size.id
-                                ? "bg-blue-600 text-white"
-                                : "bg-gray-200 text-gray-800"}
-                        `}
-                        onClick={() => onSelectSize(size)}
-                    >
-                        {size.size}
-                    </button>
-                </div>
-            ))}
+        <div className="flex justify-between">
+            <div>
+                <p className="text-sm font-semibold">Size</p>
+                <p className="text-xs">{selectedSize.size}</p>
+            </div>
+            <div className="flex gap-2 px-4">
+                {sizes.map((size) => (
+                        <button
+                            key={size.id}
+                            disabled={size.stock <= 0}
+                            type="button"
+                            className={`w-10 border-[1px] border-black disabled:opacity-50 inline-block text-xs cursor-pointer
+                                ${selectedSize?.id === size.id
+                                    ? "bg-black text-white"
+                                    : "bg-white text-black"}
+                            `}
+                            onClick={() => onSelectSize(size)}
+                        >
+                            {size.size}
+                        </button>
+                ))}
+            </div>
         </div>
     )
 };

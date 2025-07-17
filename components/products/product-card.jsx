@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useCartStore } from "@/app/stores/cartStore";
+import { formatPrice } from "@/utils/formatPrice";
 export const ProductCard = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
     const image2 = product?.product_images.find((image) => image?.position === 2);
@@ -43,7 +44,7 @@ export const ProductCard = ({ product }) => {
 
 return (
     <div 
-        className="relative border border-gray-200 rounded-lg w-[300px] max-w-[300px] md:w-[400px] h-auto cursor-pointer"
+        className="relative w-[300px] max-w-[300px] md:w-[400px] h-auto cursor-pointer"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
     >
@@ -79,10 +80,13 @@ return (
                     />
                 )}
             </div>
-            <h2>{product?.name}</h2>
+            <div className="flex flex-col text-xs gap-1 py-3">
+                <p className="leading-relaxed min-h-[calc(1em*1.625*2)] line-clamp-2">{product?.name}</p>
+                <p>{formatPrice(product?.price)}</p>
+            </div>
         </Link>
         <button 
-            className={`absolute flex z-40 bottom-14 right-2 text-xs bg-white text-black px-4 py-2 rounded transition-opacity duration-500 ${hovered ? "opacity-100" : "opacity-0"} `} 
+            className={`w-full border-[1px] border-black text-center md:w-28 md:border-none md:absolute z-40 bottom-14 right-2 text-xs bg-white text-black px-4 py-2  transition-opacity duration-500 ${hovered ? "md:opacity-100" : "md:opacity-0"} `} 
             onClick={(e) => handleQuickAdd(e)}
             value={product?.id}
             >

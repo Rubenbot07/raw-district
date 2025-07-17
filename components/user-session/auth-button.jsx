@@ -1,10 +1,9 @@
 'use client'
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LogoutButton } from "@/components/user-session/logout-button";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/app/stores/userStore";
-import { CircleUserRound } from "lucide-react";
+import { UserWrapper} from '@/components/user-wrapper';
 export function AuthButton() {
   const user = useUserStore((state) => state.user);
   const pathname = usePathname();
@@ -12,12 +11,7 @@ export function AuthButton() {
     <section>
         {
           user && (
-          <div className="flex items-center gap-4">
-            <Link href="/profile">
-              <CircleUserRound />
-            </Link>
-            <LogoutButton />
-          </div>
+            <UserWrapper />
           )
         }
         {

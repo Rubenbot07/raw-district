@@ -28,9 +28,9 @@ export const Cart =  () => {
     )}
     <div
       className={`
-        fixed top-0 right-0 z-50 h-full w-[350px] max-w-full bg-white shadow-lg transition-transform duration-300
+        fixed top-0 right-0 z-50 h-full w-full md:w-[350px] max-w-full bg-white shadow-lg transition-transform duration-500 ease-in-out
         flex flex-col justify-start
-        ${openCart ? 'translate-x-0' : 'translate-x-full'}
+        ${openCart ? 'translate-x-0 opacity-100' : 'translate-x-full'}
       `}
       style={{ willChange: 'transform' }}
     >
@@ -64,10 +64,10 @@ export const Cart =  () => {
     {/* Botón para abrir el carrito */}
     <button
       onClick={() => setOpenCart(true)}
-      className={`${((pathname.startsWith('/auth/')) || pathname.startsWith('/checkouts') || pathname.startsWith('/profile')) ? 'hidden' : 'block'} px-4 py-2 relative`}
+      className={`${((pathname.startsWith('/auth/')) || pathname.startsWith('/checkouts') || pathname.startsWith('/profile')) ? 'hidden' : 'block'} px-2 py-2 relative`}
     >
-      <ShoppingCart />
-      <span className="absolute top-1 right-2 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
+      <ShoppingCart strokeWidth={1.5}/>
+      <span className="absolute top-1 right-0 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
     </button>
 
   </>
