@@ -16,6 +16,7 @@ import { signUp } from "@/actions/sign-up";
 import { createCart } from "@/actions/create-cart";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import {  useUserStore } from "@/app/stores/userStore";
 
 export function SignUpForm({ className, ...props }) {
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ export function SignUpForm({ className, ...props }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const fetchUser = useUserStore.getState().fetchUser;
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -41,7 +43,10 @@ export function SignUpForm({ className, ...props }) {
       try {
         await signUp({ email, password });
         await createCart();
+        await fetchUser();
+        setTimeout(() => {
         router.push("/auth/complete-profile-information");
+      }, 300);
         
       } catch (error) {
         setError(error instanceof Error ? error.message : "An error occurred");

@@ -5,8 +5,7 @@ import Link from "next/link";
 import { LogoutButton } from "@/components/user-session/logout-button";
 import { useUserStore } from "@/app/stores/userStore";
 import { useState } from "react";
-export const UserWrapper = () => {
-    const user = useUserStore((state) => state.user);
+export const UserWrapper = ({user}) => {
     const [open, setOpen] = useState(false);
     const [rotate, setRotate] = useState(false);
 

@@ -6,7 +6,6 @@ export const completeUserProfile = async (formData) => {
     const fullName = formData.get("fullName");
     const address = formData.get("address");
     const phone = formData.get("phone");
-
     const { data: { session } } = await supabase.auth.getSession()
 
     if (!session) {
@@ -18,9 +17,7 @@ export const completeUserProfile = async (formData) => {
     });
     if (updateUserError) {
         throw new Error(updateUserError.message);
-        console.error("Error updating user metadata:", updateUserError);
     }
 
     redirect("/");
-
 }

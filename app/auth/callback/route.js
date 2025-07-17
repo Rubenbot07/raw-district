@@ -16,6 +16,12 @@ export async function GET(request) {
       const { user } = await getUser()
       if (user) {
         await createCart()
+        const { full_name, address, phone } = user.user_metadata || {}
+        const isIncomplete = !full_name || !address || !phone
+
+        if (isIncomplete) {
+          next = '/auth/complete-profile-information'
+        }
       }
 
       const forwardedHost = request.headers.get('x-forwarded-host')

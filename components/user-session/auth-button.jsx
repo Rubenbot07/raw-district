@@ -2,16 +2,15 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import { useUserStore } from "@/app/stores/userStore";
 import { UserWrapper} from '@/components/user-wrapper';
-export function AuthButton() {
-  const user = useUserStore((state) => state.user);
+
+export function AuthButton({user}) {
   const pathname = usePathname();
   return (
     <section>
         {
           user && (
-            <UserWrapper />
+            <UserWrapper user={user}/>
           )
         }
         {

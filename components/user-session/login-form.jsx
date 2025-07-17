@@ -18,12 +18,14 @@ import { AuthForm } from "@/components/user-session/auth-form";
 import { signInWithEmail } from "@/actions/sign-in-email";
 import { getUser } from "@/actions/get-user";
 import { createCart } from "@/actions/create-cart";
+import { useUserStore } from "@/app/stores/userStore";
 
 export function LoginForm({ className, ...props }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const fetchUser = useUserStore.getState().fetchUser;
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -38,8 +40,8 @@ export function LoginForm({ className, ...props }) {
       if(user) {
         await createCart(user.id);
       }
-      window.location.href = "/";
-      router.refresh();
+      await fetchUser();
+      router.push("/");
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {

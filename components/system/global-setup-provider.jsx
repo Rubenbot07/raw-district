@@ -6,6 +6,7 @@ import { ProgressBar } from '@/components/progress-bar';
 import { PreCartModal } from '@/components/cart/precart-modal';
 
 export const GlobalSetupProvider = () => {
+
   return (
     <>
       <CartSetup />

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";

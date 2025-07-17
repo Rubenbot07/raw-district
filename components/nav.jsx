@@ -4,9 +4,8 @@ import { CartWrapper } from "@/components/cart/cart-wrapper"
 import { getUser } from "@/actions/get-user"
 
 export const Nav = async () => {
-    const { user, error } = await getUser();
+    const { user } = await getUser();
     const userId = user ? user.id : null;
-
     return (
         <nav className="w-full flex justify-center h-16">
           <div className="w-full max-w-5xl flex justify-between items-center p-3 text-sm">
