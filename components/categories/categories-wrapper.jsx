@@ -8,7 +8,6 @@ export default async function CategoriesWrapper() {
     }
     return (
         <section>
-            <h1 className='text-2xl text-red-500'>Categories</h1>
             <ul className="flex flex-wrap">
                 {categories?.map(category => (
                     <li key={category.id}>

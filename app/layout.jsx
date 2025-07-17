@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { MarqueeBanner } from '@/components/marquee-banner';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
+          <MarqueeBanner />
           <Nav />
           {children}
           <GlobalSetupProvider />

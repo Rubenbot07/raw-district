@@ -1,14 +1,19 @@
 import ProductsPage from '@/components/products/products';
 import CategoriesWrapper from "@/components/categories/categories-wrapper";
+import { RotatingBanner } from "@/components/rotating-banner";
+import { MarqueeBanner } from '@/components/marquee-banner';
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center">
-      <div className="flex-1 w-full flex flex-col gap-20 items-center">
-        <div className="flex-1 flex flex-col gap-20 py-5 px-8 ">
-
-          <CategoriesWrapper />
-          
+      <div className="w-full flex flex-col gap-10 items-center">
+        <div className="flex flex-col gap-10 py-5 max-w-full">
+          <RotatingBanner />
+          <CategoriesWrapper /> 
+          <MarqueeBanner>
+              <p className='pl-10'><strong>BY DREAMERS,</strong> FOR DREAMERS</p>
+              <p><strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA</p>
+          </MarqueeBanner>
           <ProductsPage />
         </div>
 
