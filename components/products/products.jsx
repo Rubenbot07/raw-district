@@ -8,13 +8,12 @@ export default async function ProductsPage() {
   }
 
   return (
-    <div className='mx-auto max-w-[1700px]'>
-      <h1>Productos</h1>
-      <ul className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-2 mx-auto gap-4 '>
+    <div className='mx-auto max-w-[1700px] xl:max-w-[2000px]'>
+      <ul className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 px-2 mx-auto gap-4 '>
         {products?.map(product => (
-          <div key={product.id} className='flex gap-3 lg:mx-auto'>
+          <li key={product.id} className='flex gap-3 lg:mx-auto'>
             <ProductCard product={product} />
-          </div>
+          </li>
         ))}
       </ul>
     </div>

@@ -57,6 +57,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      screens: {
+        'mxl': '1680px',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
