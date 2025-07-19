@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
 import Marquee from "react-fast-marquee"
-export const MarqueeBanner = ({children, speed}) => {
+export const MarqueeBanner = ({children, speed, z=50}) => {
     const contentDefault = (
     <>
       <p className="pl-10">
@@ -20,7 +20,7 @@ export const MarqueeBanner = ({children, speed}) => {
       speed={speed}
       gradient={false}
       pauseOnHover
-      className="flex w-full text-[10px] lg:text-[12px] overflow-hidden bb"
+      className={`flex w-full text-[10px] lg:text-[12px] py-2 overflow-hidden z-${z} bg-white`}
       autoFill={true}
 
     >

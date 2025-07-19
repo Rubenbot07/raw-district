@@ -10,7 +10,7 @@ export default function Home() {
         <div className="flex flex-col gap-10 py-5 max-w-full">
           <RotatingBanner />
           <CategoriesWrapper /> 
-          <MarqueeBanner>
+          <MarqueeBanner z={10}>
               <p className='pl-10'><strong>BY DREAMERS,</strong> FOR DREAMERS</p>
               <p><strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA</p>
           </MarqueeBanner>

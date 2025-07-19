@@ -1,5 +1,4 @@
 export const dynamic = 'force-dynamic'
-import { Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { MarqueeBanner } from '@/components/marquee-banner';
@@ -11,18 +10,13 @@ const defaultUrl = process.env.VERCEL_URL
 // Si necesitas metadata, puedes exportarla como objeto JS, pero Next.js solo la usa en .ts/.tsx
 // export const metadata = { ... }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
 
 export default function RootLayout({ children }) {
 
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+      <body>
           <MarqueeBanner />
           <Nav />
           {children}

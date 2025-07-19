@@ -64,10 +64,10 @@ export const Cart =  () => {
     {/* Botón para abrir el carrito */}
     <button
       onClick={() => setOpenCart(true)}
-      className={`${((pathname.startsWith('/auth/')) || pathname.startsWith('/checkouts') || pathname.startsWith('/profile')) ? 'hidden' : 'block'} px-2 py-2 relative`}
+      className={`${((pathname.startsWith('/auth/')) || pathname.startsWith('/checkouts') || pathname.startsWith('/profile')) ? 'hidden' : 'block'} px-1 py-2 relative`}
     >
       <ShoppingCart strokeWidth={1.5}/>
-      <span className="absolute top-1 right-0 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
+      <span className="absolute top-1 -right-1 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">{totalQuantity}</span>
     </button>
 
   </>

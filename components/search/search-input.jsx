@@ -1,0 +1,82 @@
+'use client'
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { SearchSuggestions } from '@/components/search/search-suggestions';
+import { Search } from "lucide-react"
+import { X } from "lucide-react"
+import { ArrowRight } from 'lucide-react';
+import { PopularSearches } from '@/components/search/popular-searches';
+
+export const SearchInput = ({onClose}) => {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const router = useRouter();
+
+  const handleClose = () => {
+    setQuery('');
+    onClose();
+  };
+
+  useEffect(() => {
+    const fetchResults = async (query) => {
+      if (!query.trim()) {
+        setResults([]);
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/search-products?query=${query}`);
+        if (!res.ok) throw new Error('Fetch error');
+        const data = await res.json();
+        setResults(data.results || []);
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+        setResults([]);
+      }
+    };
+
+    const delayDebounce = setTimeout(() => {
+      fetchResults(query);
+    }, 500); // Debounce to avoid too many requests
+
+    return () => clearTimeout(delayDebounce);
+  }, [query]);
+
+  const handleSearch = () => {
+    onClose();
+    if (query.trim()) {
+      router.push(`/search?query=${query}`);
+    }
+  };
+
+  return (
+    <div className=" relative w-full p-4 lg:w-3/4 mx-auto">
+        <div className='flex items-center gap-5'>
+            <Search />
+            <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Buscar productos..."
+                className="w-full px-3 py-1 rounded outline-none"
+            />
+            {query.length > 0 && (
+                <button onClick={() => setQuery('')}>Clear</button>
+            )}
+            <button onClick={handleClose}><X /></button>
+        </div>
+        <div className='flex flex-col w-full gap-x-4 md:flex-row'>
+            <PopularSearches onClose={handleClose}/>
+            {results.length > 0 && (
+                <SearchSuggestions suggestions={results} onClose={onClose}/>
+            )}
+        </div>
+        {query.length > 0 && (    
+            <button onClick={handleSearch} className="flex items-center gap-2 px-4 py-2 border-[1px] border-black">
+                <span>Search "{query}"</span>
+                <span><ArrowRight size={10}/></span>
+            </button>
+        )}
+    </div>
+  );
+};

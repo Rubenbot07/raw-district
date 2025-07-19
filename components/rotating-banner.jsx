@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const messages = [
-  { id: 1, content: "PAY SECURELY WITH MERCADO PAGO" },
-  { id: 2, content: "NEED HELP? ", link: { href: "https://web.whatsapp.com/", text: "Escríbenos aquí" } },
-  { id: 3, content: "FREE SHIPPING FOR PURCHASES OVER $200,000" },
+  { id: 1, content: <><strong>PAY SECURELY</strong> WITH MERCADO PAGO</> },
+  { id: 2, content: <><strong>NEED HELP? </strong></>, link: { href: "https://web.whatsapp.com/", text: "Write to us here" } },
+  { id: 3, content: <><strong>FREE SHIPPING</strong> FOR PURCHASES OVER $200,000</> },
 ]
 
 export const RotatingBanner = () => {
@@ -19,7 +19,7 @@ export const RotatingBanner = () => {
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % messages.length)
         setIsVisible(true)
-      }, 300) // Tiempo de fade-out antes de cambiar el mensaje
+      }, 300) 
     }, 4000)
 
     return () => clearInterval(interval)
