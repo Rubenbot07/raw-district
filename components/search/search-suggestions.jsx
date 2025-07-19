@@ -6,6 +6,7 @@ export const SearchSuggestions = ({suggestions, onClose}) => {
             <ul className='flex gap-2'>
                 {
                     suggestions.map(suggestion => (
+                        
                         <li key={suggestion.id} onClick={onClose}>
                             <SearchProductCard product={suggestion} />
                         </li>

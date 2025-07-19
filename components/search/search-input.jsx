@@ -37,7 +37,7 @@ export const SearchInput = ({onClose}) => {
 
     const delayDebounce = setTimeout(() => {
       fetchResults(query);
-    }, 500); // Debounce to avoid too many requests
+    }, 300); // Debounce to avoid too many requests
 
     return () => clearTimeout(delayDebounce);
   }, [query]);
@@ -45,7 +45,7 @@ export const SearchInput = ({onClose}) => {
   const handleSearch = () => {
     onClose();
     if (query.trim()) {
-      router.push(`/search?query=${query}`);
+      router.push(`/search?query=${query}&limit=8`);
     }
   };
 
@@ -61,7 +61,7 @@ export const SearchInput = ({onClose}) => {
                 className="w-full px-3 py-1 rounded outline-none"
             />
             {query.length > 0 && (
-                <button onClick={() => setQuery('')}>Clear</button>
+                <button className='text-[10px]' onClick={() => setQuery('')}>CLEAR</button>
             )}
             <button onClick={handleClose}><X /></button>
         </div>

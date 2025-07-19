@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase/supabaseClient'
 export async function GET(request) {
   const { searchParams } = new URL(request.url)
   const query = searchParams.get('query')
-
+  const limit = parseInt(searchParams.get('limit')) || 3
   if (!query || query.trim() === '') {
     return new Response(JSON.stringify({ results: [] }), {
       status: 200,
@@ -14,14 +14,17 @@ export async function GET(request) {
   const { data, error } = await supabase
     .from('products')
     .select(`
-        id, name, slug, price,
+        *,
+        categories(
+            name
+        ),
         product_images(
             thumbnail_url,
             position
         )
         `)
     .ilike('name', `%${query}%`)
-    .limit(3)
+    .limit(limit)
 
   if (error) {
     return new Response(JSON.stringify({ error: error.message }), {
