@@ -6,6 +6,11 @@ import { UserWrapper} from '@/components/user-wrapper';
 
 export function AuthButton({user}) {
   const pathname = usePathname();
+
+  const hiddenOnRoutes = ['/auth']
+  const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
+
+    if(shouldHide) return null
   return (
     <section>
         {

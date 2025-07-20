@@ -2,8 +2,15 @@
 import { Search } from "lucide-react"
 import { useState } from "react"
 import { SearchInput } from '@/components/search/search-input'
+import { usePathname } from "next/navigation"
 export const SearchWrapper = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+
+    const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders']
+     const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
+
+    if(shouldHide) return null
     return (
         <>
             <Search strokeWidth={1.5} onClick={() => setIsOpen(!isOpen)}/> 
