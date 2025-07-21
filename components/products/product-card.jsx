@@ -44,7 +44,8 @@ export const ProductCard = ({ product }) => {
     };
 
 return (
-<div
+  <li className="flex gap-3 lg:mx-auto">
+    <div
       className="relative w-[300px] max-w-[300px] lg:w-[240px] lg:max-w-[240px] xl:w-[300px] xl:max-w-[300px] 2xl:w-[280px] 2xl:max-w-[280px] mxl:w-[320px] mxl:max-w-[320px] h-auto cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -95,5 +96,6 @@ return (
         {product.categories.name === 'Caps' ? 'ADD TO CART' : 'ADD'}
       </button>
     </div>
+  </li>
 );
 };

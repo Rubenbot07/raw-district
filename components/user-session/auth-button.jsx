@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import { UserWrapper} from '@/components/user-wrapper';
+import { UserWrapper } from '@/components/profile/user-wrapper';
 
 export function AuthButton({user}) {
   const pathname = usePathname();

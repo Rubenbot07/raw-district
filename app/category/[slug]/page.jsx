@@ -1,6 +1,7 @@
 import { getCategoryBySlug } from '@/actions/get-categories-slug';
 import { getProductsByCategory } from '@/actions/get-products-category';
 import { ProductCard } from '@/components/products/product-card';
+import { ProductsLayout } from '@/components/products/products-layout';
 
 export default async function Page({ params }) {
     const { slug } = await params;
@@ -14,18 +15,12 @@ export default async function Page({ params }) {
     const products = await getProductsByCategory(category.id);
 
     return (
-        <div className="">
-            <div className="w-full max-w-sm">
-                <h1>Category</h1>
-                <p>{slug}</p>
-                <ul>
+            <div className="flex flex-col">
+                <ProductsLayout>
                     {products?.map(product => (
-                        <li key={product?.id}>
-                            <ProductCard product={product} />
-                        </li>
+                            <ProductCard key={product.id} product={product} />
                     ))}
-                </ul>
+                </ProductsLayout>
             </div>
-        </div>
     );
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { SearchPageInput } from '@/components/search/search-page-input'
 import { ProductCard } from '@/components/products/product-card'
+import { ProductsLayout } from '@/components/products/products-layout'
 
 export default function SearchPage() {
   const searchParams = useSearchParams()
@@ -43,14 +44,11 @@ export default function SearchPage() {
       {loading ? (
         <p className="text-gray-500">Cargando...</p>
       ) : results.length > 0 ? (
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 px-2 mx-auto gap-4">
+        <ProductsLayout>
           {results.map((product) => (
-            <li key={product.id} className="flex gap-3 lg:mx-auto">
-              <ProductCard product={product} />
-              {/* Agrega más detalles si lo deseas */}
-            </li>
+              <ProductCard key={product.id} product={product} />
           ))}
-        </ul>
+        </ProductsLayout>
       ) : (
         <p>No products found</p>
       )}

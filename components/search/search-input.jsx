@@ -45,7 +45,7 @@ export const SearchInput = ({onClose}) => {
   const handleSearch = () => {
     onClose();
     if (query.trim()) {
-      router.push(`/search?query=${query}&limit=8`);
+      router.push(`/search?query=${query}`);
     }
   };
 

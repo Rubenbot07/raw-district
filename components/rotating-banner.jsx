@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const messages = [
   { id: 1, content: <><strong>PAY SECURELY</strong> WITH MERCADO PAGO</> },
-  { id: 2, content: <><strong>NEED HELP? </strong></>, link: { href: "https://web.whatsapp.com/", text: "Write to us here" } },
+  { id: 2, content: <><strong>NEED HELP? </strong></>, link: { href: "https://wa.me/3006870774", text: "Write to us here" } },
   { id: 3, content: <><strong>FREE SHIPPING</strong> FOR PURCHASES OVER $200,000</> },
 ]
 

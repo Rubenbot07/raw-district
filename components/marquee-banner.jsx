@@ -6,7 +6,7 @@ export const MarqueeBanner = ({children, speed, z=50}) => {
     <>
       <p className="pl-10">
         <strong>BUY BY WHATSAPP</strong>{" "}
-        <Link className="underline" href="https://web.whatsapp.com/" target="_blank">
+        <Link className="underline" href="https://wa.me/3006870774" target="_blank">
           +57 300 687 0774
         </Link>{" "}           
       </p>
