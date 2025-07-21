@@ -3,6 +3,7 @@ import "./globals.css";
 import { Nav } from "@/components/nav";
 import { MarqueeBanner } from '@/components/marquee-banner';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
+import { BodyScrollLock } from "@/components/body-scroll-lock";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body>
           <MarqueeBanner />
           <Nav />
+          <BodyScrollLock />
           {children}
           <GlobalSetupProvider />
       </body>
