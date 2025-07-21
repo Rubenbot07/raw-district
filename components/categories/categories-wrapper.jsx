@@ -1,5 +1,6 @@
 import { getCategories } from "@/actions/get-categories"
 import { CategoryCard } from '@/components/categories/category-card.jsx'
+import { CategoryInfinitiveLoopSlider } from '@/components/categories/categories-infinity-loop-slider.jsx'
 export default async function CategoriesWrapper() {
     const { categories, error } = await getCategories()
     if (error) {
@@ -7,14 +8,8 @@ export default async function CategoriesWrapper() {
         return <div>Error loading categories</div>
     }
     return (
-        <section>
-            <ul className="flex flex-wrap">
-                {categories?.map(category => (
-                    <li key={category.id}>
-                        <CategoryCard category={category} />
-                    </li>
-                ))}
-            </ul>
+        <section className="w-full">
+            <CategoryInfinitiveLoopSlider categories={categories} />
         </section>
     )
 }

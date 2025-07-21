@@ -28,7 +28,7 @@ export const RotatingBanner = () => {
   const message = messages[index]
 
   return (
-    <div className={` w-full text-black  text text-center py-2 text-[12px] transition-opacity duration-500 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'} `}>
+    <div className={` w-full text-black  text text-center py-2 text-[10px] xl:text-[12px] transition-opacity duration-500 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'} `}>
       {message.link ? (
         <>
           {message.content}

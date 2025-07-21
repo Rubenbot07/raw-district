@@ -12,16 +12,18 @@
 box-shadow: 0 0 10px #353535, 0 0 5px #353535;
 }
 
-@layer utilities {
-  .hover-pause:hover {
-    animation-play-state: paused;
-  }
-  @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
-  }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE y Edge */
+  scrollbar-width: none;     /* Firefox */
+}
 
-  .animate-marquee {
-    animation: marquee 25s linear infinite;
-  }
+.show-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+.show-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
 }
