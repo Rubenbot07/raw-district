@@ -17,7 +17,7 @@ export const Cart =  () => {
     const totalQuantity = getCartTotalQuantityLocal()
     const formattedPrice = formatPrice(totalPrice)
     const pathname = usePathname();
-    const hiddenOnRoutes = ['/auth', '/profile']
+    const hiddenOnRoutes = ['/auth', '/checkouts', '/orders', '/profile']
     const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
     if(shouldHide) return null
   return (

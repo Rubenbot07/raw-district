@@ -42,7 +42,9 @@ export default function SearchPage() {
         <p>{results.length} results have been found for "{query}"</p>
       </div>
       {loading ? (
-        <p className="text-gray-500">Cargando...</p>
+        <div className='w-full text-center p-8'>
+          <p className="text-gray-500">Cargando...</p>
+        </div>
       ) : results.length > 0 ? (
         <ProductsLayout>
           {results.map((product) => (
@@ -50,7 +52,9 @@ export default function SearchPage() {
           ))}
         </ProductsLayout>
       ) : (
-        <p>No products found</p>
+        <div className='w-full text-center p-8'>
+          <p>Sorry, no results found for "{query}"</p>
+        </div>
       )}
     </section>
   )

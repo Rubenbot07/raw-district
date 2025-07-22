@@ -9,20 +9,32 @@ export const Nav = async () => {
     const { user } = await getUser();
     const userId = user ? user.id : null;
     return (
-        <nav className="w-full flex justify-between h-16 items-center md:px-8 relative" >
-          <div className="w-full h-auto flex justify-between items-center p-3 text-sm">
-            <div>menu</div>
-            <div className="">
-              <Link href={"/"}>
-                <Image src='/LogoRD.webp' alt="" width={200} height={26} />
-              </Link>
-            </div>
-            <div className="flex items-center gap-1 md:gap-2">
-              <AuthButton user={user}/>
-              <SearchWrapper />
-              <CartWrapper userId={userId}/>
-            </div>
+<nav className="w-full h-16 flex items-center md:px-8 relative">
+      <div className="w-full flex justify-between items-center p-3 text-sm">
+
+        {/* 🧭 Left: Search (mobile only) */}
+        <p>Menu</p>
+        <div className="flex items-center md:hidden">
+          <SearchWrapper />
+        </div>
+
+        {/* 🏷 Center: Logo */}
+        <div className="flex justify-center">
+          <Link href="/">
+            <Image src="/LogoRD.webp" alt="" width={200} height={26} />
+          </Link>
+        </div>
+
+        {/* 🛍 Right: Auth, Cart, Search (desktop only) */}
+        <div className="flex items-center gap-1 md:gap-2">
+          <AuthButton user={user} />
+          <div className="hidden md:block">
+            <SearchWrapper />
           </div>
-        </nav>
+          <CartWrapper userId={userId} />
+        </div>
+        
+      </div>
+    </nav>
     )
 }
