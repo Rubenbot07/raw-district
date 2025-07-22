@@ -8,7 +8,7 @@ export default function Page() {
                     <CheckoutSummary />
                 </div>
                 <CheckoutInfo />
-                <div className="hidden lg:block lg:col-start-2 p-8">
+                <div className="hidden lg:block lg:col-start-2 p-8 h-screen overflow-y-auto sticky top-0">
                     <CheckoutSummary />
                 </div>
             </div>
