@@ -15,10 +15,7 @@ export default async function ProductDetailPage({ params }) {
     }
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Product Detail</h1>
-      <p>Product details will be displayed here.</p>
-        <p className="text-lg mt-2">Product Slug: {slug}</p>
+    <div className='pt-16'>
         <ProductDetailView product={product} />
     </div>
   );

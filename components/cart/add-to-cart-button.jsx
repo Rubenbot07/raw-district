@@ -36,7 +36,7 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
 
   return (
     <button
-      className=" px-4 py-2 bg-black text-white text-sm w-full"
+      className=" px-4 py-2 bg-white border-[1px] border-black text-sm w-full"
       onClick={handleAddToCart}
     >
       {loading ? 'Loading' : 'ADD TO CART'}

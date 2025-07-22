@@ -3,10 +3,10 @@ export const SizesSelect = ({ sizes, selectedSize, onSelectSize }) => {
 
 
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between max-w-xs">
             <div>
-                <p className="text-sm font-semibold">Size</p>
-                <p className="text-xs">{selectedSize.size}</p>
+                <p className="text-xs font-semibold">Size</p>
+                <p className="text-[10px] font-medium">{selectedSize.size}</p>
             </div>
             <div className="flex gap-2 px-4">
                 {sizes.map((size) => (

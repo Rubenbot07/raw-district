@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { SizesSelect } from "@/components/categories/sizes-select";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { getSizesProduct } from "@/actions/get-sizes-product";
-import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore"
 
 export const SizesWrapper = ({ product }) => {
