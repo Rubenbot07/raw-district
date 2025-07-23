@@ -4,37 +4,47 @@ import { CartWrapper } from "@/components/cart/cart-wrapper"
 import { getUser } from "@/actions/get-user"
 import { SearchWrapper } from "@/components/search/search-wrapper"
 import Image from "next/image"
+import { AlignJustify } from "lucide-react"
 
 export const Nav = async () => {
     const { user } = await getUser();
     const userId = user ? user.id : null;
     return (
-<nav className="w-full h-16 flex items-center md:px-8 relative">
-      <div className="w-full flex justify-between items-center p-3 text-sm">
+      <nav className="w-full h-16 flex items-center md:px-8">
+        <div className="w-full grid grid-cols-4 items-center p-3 text-sm relative">
 
-        {/* 🧭 Left: Search (mobile only) */}
-        <p>Menu</p>
-        <div className="flex items-center md:hidden">
-          <SearchWrapper />
-        </div>
-
-        {/* 🏷 Center: Logo */}
-        <div className="flex justify-center">
-          <Link href="/">
-            <Image src="/LogoRD.webp" alt="" width={200} height={26} />
-          </Link>
-        </div>
-
-        {/* 🛍 Right: Auth, Cart, Search (desktop only) */}
-        <div className="flex items-center gap-1 md:gap-2">
-          <AuthButton user={user} />
-          <div className="hidden md:block">
-            <SearchWrapper />
+          {/* 🧭 Left: Search (mobile only) */}
+          <div className="flex items-center gap-2 col-start-1">
+            <ul className="hidden md:flex gap-2">
+              <li>Categories</li>
+              <li>Gifts</li>
+              <li>About</li>
+            </ul>
+            <div className="md:hidden">
+              <AlignJustify size={20} />
+            </div>
+            <div className="flex  items-center md:hidden">
+              <SearchWrapper />
+            </div>
           </div>
-          <CartWrapper userId={userId} />
+
+          {/* 🏷 Center: Logo */}
+          <div className="flex items-center justify-center col-start-2 col-span-2">
+            <Link href="/">
+              <Image src="/LogoRD.webp" alt="" width={200} height={26} className="cursor-pointer"/>
+            </Link>
+          </div>
+
+          {/* 🛍 Right: Auth, Cart, Search (desktop only) */}
+          <div className="flex items-center gap-1 md:gap-2 col-start-4 justify-end">
+            <AuthButton user={user} />
+            <div className="hidden md:block">
+              <SearchWrapper />
+            </div>
+            <CartWrapper userId={userId} />
+          </div>
+          
         </div>
-        
-      </div>
-    </nav>
+      </nav>
     )
 }
