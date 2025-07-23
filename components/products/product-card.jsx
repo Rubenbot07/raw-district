@@ -87,7 +87,7 @@ return (
       </Link>
 
       <button
-        className={`w-full border-[1px] border-black text-center md:w-28 md:border-none md:absolute z-40 md:bottom-24 right-2 text-xs bg-white text-black px-4 py-2 transition-opacity duration-500 ${
+        className={`w-full border-[1px] border-black text-center md:w-32 md:border-none md:absolute z-40 md:bottom-24 right-2 text-xs bg-white text-black px-4 py-2 transition-opacity duration-500 ${
           hovered ? "md:opacity-100" : "md:opacity-0"
         }`}
         onClick={(e) => handleQuickAdd(e)}
