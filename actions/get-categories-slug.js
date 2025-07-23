@@ -6,7 +6,7 @@ export const getCategoryBySlug = cache(async (slug) => {
     
     const { data, error } = await supabase
         .from('categories')
-        .select('id')
+        .select('id, name')
         .eq('slug', slug)
         .single();
 
