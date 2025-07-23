@@ -2,6 +2,7 @@
 import { ProductCartItem } from "@/components/cart/product-cart-item"
 import { X } from "lucide-react";
 import { ShoppingCart } from "lucide-react";
+import { Frown } from "lucide-react";
 import { CheckoutButton } from '@/components/cart/checkout-button'
 import { formatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
@@ -62,7 +63,10 @@ export const Cart =  () => {
             </div>
           </div>
         ) : (
-          <p>Your cart is empty.</p>
+          <div className="flex flex-col items-center justify-center w-full h-full gap-4">
+            <Frown size={80} strokeWidth={1.5} color="gray"/>
+            <p>Your cart is empty.</p>
+          </div>
         )}
       </div>
       {/* Botón para abrir el carrito */}
