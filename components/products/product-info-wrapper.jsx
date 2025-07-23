@@ -12,8 +12,6 @@ import { CircleAlert } from "lucide-react";
 
 export const ProductInfoWrapper = ({ product, children }) => {
     const selectedSize = useProductSelectionStore((state) => state.selectedSize);
-    console.log(selectedSize);
-    console.log(product);
     return (
         <div className="flex flex-col gap-8 lg:w-3/4 xl:w-4/6 xl:mx-auto p-2">
             <div className="flex flex-col text-start gap-4">
@@ -69,6 +67,7 @@ export const ProductInfoWrapper = ({ product, children }) => {
                     <span>Doubts? Write to us (+57) 3006870774</span>
                 </div>
             </div>
+
         </div>
     );
 }

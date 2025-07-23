@@ -7,7 +7,7 @@ export default async function ProductDetailPage({ params }) {
 
     if (error || !product) {
         return (
-            <div>
+            <div className="flex flex-col items-center justify-center h-screen">
                 <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
                 <p className="text-red-500">The product you are looking for does not exist.</p>
             </div>
@@ -15,7 +15,7 @@ export default async function ProductDetailPage({ params }) {
     }
 
   return (
-    <div className='pt-16'>
+    <div className='md:pt-16'>
         <ProductDetailView product={product} />
     </div>
   );

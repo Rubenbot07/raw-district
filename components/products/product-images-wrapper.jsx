@@ -4,7 +4,7 @@ export const ProductImagesWrapper = ({ product }) => {
     const image2 = product?.product_images.find((image) => image?.position === 2);
     const image3 = product?.product_images.find((image) => image?.position === 3);
     return (
-        <div className="flex flex-col gap-4 w-full">
+        <div className="hidden flex-col gap-4 w-full md:flex">
             {image1 && (
             <div className="relative w-full aspect-[4/5] rounded-lg shadow-lg">
                 <Image
