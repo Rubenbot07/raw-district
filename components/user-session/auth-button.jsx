@@ -19,16 +19,17 @@ export function AuthButton({user}) {
           )
         }
         {
-          !user && !pathname.startsWith('/auth/') &&
-            <div className="flex gap-2">
-              <Button asChild size="sm" variant="outline">
-                <Link href="/auth/login">Sign in</Link>
-              </Button>
-              <Button asChild size="sm" variant="default">
-                <Link href="/auth/sign-up">Sign up</Link>
-              </Button>
-            </div>
-        }
-          
+          !user &&
+            <UserWrapper>
+              <div className="flex flex-col gap-2 w-16">
+                <div>
+                  <Link href="/auth/login">Sign in</Link>
+                </div>
+                <div>
+                  <Link href="/auth/sign-up">Sign up</Link>
+                </div>
+              </div>
+            </UserWrapper>
+        }      
     </section>
 )}
