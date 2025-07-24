@@ -25,14 +25,14 @@ export const ProductInfoWrapper = ({ product, children }) => {
                 </div>
             }
             {
-                selectedSize?.stock <= 5 &&
+                selectedSize?.stock <= 5 || product.product_sizes[0].stock <= 5 &&
                 <div className="flex gap-2 items-center">
                     <CircleAlert size={20} color="#f79554"/>
-                    <p className="text-xs">Hurry, only {selectedSize.stock} left in stock</p>
+                    <p className="text-xs">Hurry, only {selectedSize?.stock || product.product_sizes[0].stock } left in stock</p>
                 </div>
             }
             <div className="grid grid-cols-2 gap-3 py-4">
-                <AddToCartButton  product={product} productId={product.id} product_size_id={selectedSize?.id} unit_price={product.price} />
+                <AddToCartButton  product={product} productId={product.id} product_size_id={selectedSize?.id || product.product_sizes[0].id} unit_price={product.price} />
                 <CheckoutButton />
             </div>
 

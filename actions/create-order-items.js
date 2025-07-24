@@ -1,5 +1,5 @@
 import { supabase } from "../lib/supabase/supabaseClient";
-export const createOrderItems = async ({orderItems, orderId, cartId}) => {
+export const createOrderItems = async ({orderItems, orderId}) => {
     
     const itemsPayload = orderItems.map((item) => ({
         order_id: orderId,
