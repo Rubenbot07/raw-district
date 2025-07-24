@@ -12,7 +12,7 @@ const defaultUrl = process.env.VERCEL_URL
 // Si necesitas metadata, puedes exportarla como objeto JS, pero Next.js solo la usa en .ts/.tsx
 // export const metadata = { ... }
 
-const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-work-sans' });
+const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-work-sans', display: 'swap' });
 
 export default function RootLayout({ children }) {
 

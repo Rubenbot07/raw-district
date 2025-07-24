@@ -1,4 +1,4 @@
-'use client'
+'use server';
 import { getActiveCart } from "./get-active-cart";
 import { getUser } from "./get-user";
 import { supabase } from "@/lib/supabase/supabaseClient";
@@ -19,13 +19,13 @@ export const addToCart = async ({ productId, quantity = 1, unit_price, product_s
 
     if (error) {
         console.error(error)
-        return; 
+        return { data: null, error: error.message }; 
     }
 
     const availableStock = data
 
     if (availableStock < quantity) {
-        alert(`There is only ${availableStock} units available for this product size.`);
+        console.error(`There is only ${availableStock} units available for this product size.`);
         return 
     }
 
