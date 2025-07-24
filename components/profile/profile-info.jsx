@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 export const ProfileInfo = ({user}) => {
     return (
-        <section className="flex flex-col gap-8 mx-auto lg:max-w-4xl p-4">
+        <section className="flex flex-col gap-8 mx-auto lg:max-w-4xl p-4 h-screen">
             <div className="flex items-center gap-2">
                 <Link href="/">
                     <ArrowLeft size={20}/>

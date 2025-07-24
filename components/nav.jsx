@@ -3,6 +3,7 @@ import { AuthButton } from "@/components/user-session/auth-button"
 import { CartWrapper } from "@/components/cart/cart-wrapper"
 import { getUser } from "@/actions/get-user"
 import { SearchWrapper } from "@/components/search/search-wrapper"
+import { GiftsNav } from "@/components/gifs/gifts-nav"
 import Image from "next/image"
 import { AlignJustify } from "lucide-react"
 
@@ -15,10 +16,19 @@ export const Nav = async () => {
 
           {/* 🧭 Left: Search (mobile only) */}
           <div className="flex items-center gap-2 col-start-1">
-            <ul className="hidden md:flex gap-2">
-              <li>Categories</li>
-              <li>Gifts</li>
-              <li>About</li>
+            <ul className="hidden md:flex gap-4 cursor-pointer">
+              <li className="relative">
+                    <GiftsNav />
+                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+              </li>
+              <li className="relative group">
+                    <span>About</span>
+                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+              </li>
+              <li className="relative group">
+                    <span>Brand</span>
+                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+              </li>
             </ul>
             <div className="md:hidden">
               <AlignJustify size={20} />

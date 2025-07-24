@@ -3,6 +3,7 @@ import "./globals.css";
 import { Work_Sans } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { MarqueeBanner } from '@/components/marquee-banner';
+import { Footer } from '@/components/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 import { BodyScrollLock } from "@/components/body-scroll-lock";
 const defaultUrl = process.env.VERCEL_URL
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
           <BodyScrollLock />
           {children}
           <GlobalSetupProvider />
+        <Footer />
       </body>
     </html>
   );

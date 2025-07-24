@@ -3,7 +3,6 @@ import CategoriesWrapper from "@/components/categories/categories-wrapper";
 import { RotatingBanner } from "@/components/rotating-banner";
 import { MarqueeBanner } from '@/components/marquee-banner';
 import { TrustBadges } from '@/components/trust-badges';
-import { Footer } from '@/components/footer';
 
 export default function Home() {
   return (
@@ -18,8 +17,15 @@ export default function Home() {
           </MarqueeBanner>
           <ProductsPage />
           <TrustBadges />
+          <RotatingBanner 
+            contentMessages={
+              [
+                { id: 1, content: <><strong>RAWDISTRIC</strong> TURNED INTO A BRAND</> },
+                { id: 2, content: <>COLOMBIAN BRANDS YOU SHOULD KNOWN</>}
+              ]
+            }
+          />
         </div>
-        <Footer />
       </div>
     </main>
   );
