@@ -16,7 +16,7 @@ export const Nav = async () => {
           <NavOptions />
 
           {/* 🏷 Center: Logo */}
-          <div className="flex items-center justify-center col-start-2 col-span-2 absolute left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center justify-center col-start-2 col-span-2">
             <Link href="/">
               <Image src="/LogoRD.webp" alt="" width={200} height={26} className="cursor-pointer"/>
             </Link>

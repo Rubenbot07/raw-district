@@ -3,6 +3,19 @@ import { LinkedinIcon } from '@/components/icons/linkedin-icon';
 import { CircleDollarSign } from "lucide-react";
 import Link from "next/link";
 export const Footer = () => {
+    const footerLinks = [
+        { label: '© RAWDISTRIC SAS 2025', href: '/' },
+        { label: 'Track your order', href: '/' },
+        { label: 'Privacy Policy', href: '/' },
+        { label: 'Shipping Policy', href: '/' },
+        { label: 'Frequently Asked Questions (FAQs)', href: '/' },
+        { label: 'Exchanges and Returns', href: '/' },
+        { label: 'Terms & Conditions', href: '/' },
+        { label: 'About', href: '/' },
+        { label: 'Contact', href: '/' },
+        { label: 'Instagram', href: 'https://www.instagram.com/rawdistic/' },
+        { label: 'Linkedin', href: 'https://www.linkedin.com/company/rawdistic/' },
+    ];
     return (
         <footer className="w-full flex flex-col items-start border-t gap-16 p-16">
             <div className="flex flex-col md:flex-row w-full gap-y-8 items-start">
@@ -31,17 +44,11 @@ export const Footer = () => {
                 </div>
             </div>
             <div className="flex flex-wrap gap-4 text-xs">
-                <span>© RAWDISTRIC SAS 2025</span>
-                <span>Track your order</span>
-                <span>Privacy Policy</span>
-                <span>Shipping Policy</span>
-                <span>Frequently Asked Questions (FAQs)</span>
-                <span>Exchanges and Returns</span>
-                <span>Terms & Conditions</span>
-                <span>About</span>
-                <span>Contact</span>
-                <span>Instagram</span>
-                <span>Linkedin</span>
+                {footerLinks.map((link, index) => (
+                    <Link key={index} href={link.href} className="hover:underline">
+                        {link.label}
+                    </Link>
+                ))}
             </div>
             <div className="flex w-full justify-end items-center gap-2">
                 <div>

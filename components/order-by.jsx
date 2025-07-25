@@ -44,8 +44,8 @@ export const OrderBy = () => {
   };
 
   return (
-    <div className="flex items-center relative w-full justify-end">
-      <button onClick={toggleDropdown} className="flex items-center gap-2 p-8">
+    <div className="flex items-center relative w-full justify-end ">
+      <button onClick={toggleDropdown} className="flex items-center gap-2 px-8 py-4">
         <span>{selectedOption}</span>
         <ChevronDown
           size={16}
@@ -54,7 +54,7 @@ export const OrderBy = () => {
       </button>
 
       <ul
-        className={`absolute top-20 right-0 transform ${
+        className={`absolute top-12 right-0 transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md p-4 w-48 z-10 text-xs flex flex-col gap-2`}
       >
