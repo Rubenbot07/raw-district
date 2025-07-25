@@ -6,6 +6,7 @@ import { SearchWrapper } from "@/components/search/search-wrapper"
 import { GiftsNav } from "@/components/gifs/gifts-nav"
 import Image from "next/image"
 import { AlignJustify } from "lucide-react"
+import { NavOptions } from "@/components/nav-options"
 
 export const Nav = async () => {
     const { user } = await getUser();
@@ -15,28 +16,7 @@ export const Nav = async () => {
         <div className="w-full grid grid-cols-4 items-center p-3 text-sm relative">
 
           {/* 🧭 Left: Search (mobile only) */}
-          <div className="flex items-center gap-2 col-start-1">
-            <ul className="hidden md:flex gap-4 cursor-pointer">
-              <li className="relative">
-                    <GiftsNav />
-                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </li>
-              <li className="relative group">
-                    <span>About</span>
-                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </li>
-              <li className="relative group">
-                    <span>Brand</span>
-                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </li>
-            </ul>
-            <div className="md:hidden">
-              <AlignJustify size={20} />
-            </div>
-            <div className="flex  items-center md:hidden">
-              <SearchWrapper />
-            </div>
-          </div>
+          <NavOptions />
 
           {/* 🏷 Center: Logo */}
           <div className="flex items-center justify-center col-start-2 col-span-2 absolute left-1/2 transform -translate-x-1/2">

@@ -1,5 +1,5 @@
-import { Instagram } from "lucide-react";
-import { Linkedin } from "lucide-react";
+import { InstagramIcon } from '@/components/icons/instagram-icon';
+import { LinkedinIcon } from '@/components/icons/linkedin-icon';
 import { CircleDollarSign } from "lucide-react";
 import Link from "next/link";
 export const Footer = () => {
@@ -12,10 +12,10 @@ export const Footer = () => {
                     </div>
                     <div className="flex gap-4 p-4">
                         <Link href={'https://www.instagram.com/rawdistic/'}>
-                            <Instagram size={20}/>
+                            <InstagramIcon width={20} height={20} strokeWidth={1.8}/>
                         </Link>
                         <Link href={'https://www.linkedin.com/company/rawdistic/'}>
-                            <Linkedin  size={20}/>
+                            <LinkedinIcon  width={20} height={20}/>
                         </Link>
                     </div>
                 </div>
