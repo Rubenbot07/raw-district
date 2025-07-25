@@ -1,6 +1,6 @@
 'use client'
 import { AlignJustify } from "lucide-react"
-import { GiftsNav } from "./gifs/gifts-nav"
+import { GiftsNav } from "@/components/nav/gifts-nav"
 import { SearchWrapper } from "@/components/search/search-wrapper"
 import { usePathname } from "next/navigation"
 export const NavOptions = () => {

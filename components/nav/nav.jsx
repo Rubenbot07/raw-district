@@ -3,18 +3,15 @@ import { AuthButton } from "@/components/user-session/auth-button"
 import { CartWrapper } from "@/components/cart/cart-wrapper"
 import { getUser } from "@/actions/get-user"
 import { SearchWrapper } from "@/components/search/search-wrapper"
-import { GiftsNav } from "@/components/gifs/gifts-nav"
 import Image from "next/image"
-import { AlignJustify } from "lucide-react"
-import { NavOptions } from "@/components/nav-options"
+import { NavOptions } from "@/components/nav/nav-options"
 
 export const Nav = async () => {
     const { user } = await getUser();
     const userId = user ? user.id : null;
     return (
-      <nav className="w-full h-16 flex items-center md:px-8">
+      <nav className="w-full h-16 flex items-center md:px-8 bg-white sticky top-0 z-50">
         <div className="w-full grid grid-cols-4 items-center p-3 text-sm relative">
-
           {/* 🧭 Left: Search (mobile only) */}
           <NavOptions />
 

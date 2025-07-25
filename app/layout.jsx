@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 import "./globals.css";
 import { Work_Sans } from "next/font/google";
-import { Nav } from "@/components/nav";
+import { Nav } from "@/components/nav/nav";
 import { MarqueeBanner } from '@/components/marquee-banner';
 import { Footer } from '@/components/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
