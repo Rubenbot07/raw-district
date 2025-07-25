@@ -29,7 +29,7 @@ export const GiftsNav = () => {
                 </li>
                 <li className="relative group w-fit">
                     <span>
-                        less than $300.000    
+                        Less than $300.000    
                     </span>
                     <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
                 </li>

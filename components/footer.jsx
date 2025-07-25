@@ -24,7 +24,7 @@ export const Footer = () => {
                     <ul className="text-sm">
                         <li>RAWDISTRIC</li>
                         <li>NIT: 000 000 000</li>
-                        <li>+57 321 274 6511</li>
+                        <li>+57 300 687 0774</li>
                         <li>support@rawdistic.com</li>
                         <li>Dosquebradas, Colombia</li>
                     </ul>
