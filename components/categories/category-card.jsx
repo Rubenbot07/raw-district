@@ -4,7 +4,7 @@ import Image from "next/image";
 export const CategoryCard = ({ category }) => {
   return (
     <Link
-      href={`/category/${category.slug}`}
+      href={`/category/?category=${category.slug}`}
       className="w-[90vw] flex-shrink-0 max-w-md md:w-[40vw] xl:max-w-none xl:w-full"
     >
       <div className="relative group w-full aspect-[3/4] lg:aspect-[4/3] xl:aspect-[3/4] overflow-hidden rounded-lg border border-gray-200">

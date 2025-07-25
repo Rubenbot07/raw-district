@@ -4,7 +4,13 @@ import { RotatingBanner } from "@/components/rotating-banner";
 import { MarqueeBanner } from '@/components/marquee-banner';
 import { TrustBadges } from '@/components/trust-badges';
 
-export default function Home() {
+export default async function Home({ searchParams }) {
+  const { price_lt, category, sort } = await searchParams || {};
+    const filters = {
+        price_lt: price_lt || null,
+        category: category || null,
+        sort: sort || null,
+  };
   return (
     <main className="min-h-screen flex flex-col items-center w-full">
       <div className="w-full flex flex-col gap-10 items-center">
@@ -15,7 +21,7 @@ export default function Home() {
               <p className='pl-10'><strong>BY DREAMERS,</strong> FOR DREAMERS</p>
               <p><strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA</p>
           </MarqueeBanner>
-          <ProductsPage />
+          <ProductsPage filters={filters}/>
           <TrustBadges />
           <RotatingBanner 
             contentMessages={

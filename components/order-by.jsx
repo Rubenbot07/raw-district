@@ -1,24 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 
-export const OrderBy = ({ price = null }) => {
+export const OrderBy = () => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
   const [rotated, setRotated] = useState(false);
   const [selectedOption, setSelectedOption] = useState('Order by');
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-    setRotated((prev) => !prev);
-  };
-
-  const handleSelect = (label) => {
-    setSelectedOption(label);
-    setIsOpen(false);
-    setRotated(false);
-  };
 
   const options = [
     { label: 'Price, lower to higher', value: 'price_asc' },
@@ -26,6 +19,29 @@ export const OrderBy = ({ price = null }) => {
     { label: 'Alphabetically, A,Z', value: 'name_asc' },
     { label: 'Alphabetically, Z,A', value: 'name_desc' },
   ];
+
+  // Actualizar la etiqueta al cargar la página o cambiar `sort`
+  useEffect(() => {
+    const sort = searchParams.get('sort');
+    const option = options.find((o) => o.value === sort);
+    if (option) {
+      setSelectedOption(option.label);
+    } else {
+      setSelectedOption('Order by');
+    }
+  }, [searchParams]);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    setRotated(!rotated);
+  };
+
+  // Construir la URL preservando todos los query params actuales
+  const buildUrl = (sort) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('sort', sort);
+    return `${pathname}?${params.toString()}`;
+  };
 
   return (
     <div className="flex items-center relative w-full justify-end">
@@ -44,10 +60,7 @@ export const OrderBy = ({ price = null }) => {
       >
         {options.map((opt) => (
           <li key={opt.value} className="cursor-pointer hover:underline">
-            <Link
-              href={`/gifts?price_lt=${price}&sort=${opt.value}`}
-              onClick={() => handleSelect(opt.label)}
-            >
+            <Link scroll={false} href={buildUrl(opt.value)} onClick={() => setSelectedOption(opt.label)}>
               {opt.label}
             </Link>
           </li>
