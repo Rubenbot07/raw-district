@@ -1,7 +1,9 @@
 import { create } from 'zustand';
 import { getCartItems } from '@/actions/get-cart-items';
 import { getActiveCart } from '@/actions/get-active-cart';
+import { getQuickCart } from '@/actions/get-quick-cart';
 import { addToCart as addToCartAction } from '@/actions/add-to-cart';
+import { createCart } from '@/actions/create-cart';
 import { removeFromCart as removeFromCartAction } from '@/actions/remove-from-cart';
 
 export const useCartStore = create((set, get) => ({
@@ -10,6 +12,41 @@ export const useCartStore = create((set, get) => ({
   totalPrice: 0,
   totalQuantity: 0,
   cartUpdated: false,
+  originalCart: null,
+
+  saveOriginalCart: () => {
+    const currentCart = get().cart;
+    if (currentCart) {
+      set({ originalCart: { ...currentCart } });
+    }
+    return currentCart;
+  },
+
+  createQuickCart: async () => {
+    const newCart = await createCart({ type: 'quick' });
+    if (newCart) {
+      set({
+        cart: newCart,
+        cartItems: [],
+        totalPrice: 0,
+        totalQuantity: 0,
+        cartUpdated: false,
+      });
+    }
+  },
+
+  restoreOriginalCart: () => {
+    const original = get().originalCart;
+    if (original) {
+      set({
+        cart: { ...original },
+        cartItems: [],
+        totalPrice: original.total_price || 0,
+        totalQuantity: original.total_quantity || 0,
+        cartUpdated: false,
+      });
+    }
+  },
 
   setCart: (cart) => set({ cart }),
   setCartItems: (items) => set({ cartItems: items }),
@@ -17,18 +54,23 @@ export const useCartStore = create((set, get) => ({
   setTotalQuantity: (qty) => set({ totalQuantity: qty }),
   setCartUpdated: (value) => set({ cartUpdated: value }),
 
-  loadCart: async (userId) => {
-    const activeCart = await getActiveCart(userId);
-    if (!activeCart) return;
+loadCart: async (userId, type = "active") => {
+  let cart;
+  if (type === "quick") {
+    cart = await getQuickCart(userId);
+  } else {
+    cart = await getActiveCart(userId);
+  }
+  if (!cart) return;
 
-    const items = await getCartItems(activeCart.id);
-    set({
-      cart: activeCart,
-      cartItems: items || [],
-      totalPrice: activeCart.total_price || 0,
-      totalQuantity: activeCart.total_quantity || 0,
-    });
-  },
+  const items = await getCartItems(cart.id);
+  set({
+    cart,
+    cartItems: items || [],
+    totalPrice: cart.total_price || 0,
+    totalQuantity: cart.total_quantity || 0,
+  });
+},
 
   refreshCartIfUpdated: async (userId) => {
     const { cartUpdated, cart } = get();
@@ -46,9 +88,9 @@ export const useCartStore = create((set, get) => ({
     });
   },
 
-  addToCart: async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false }) => {
+  addToCart: async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false, type = "active" }) => {
     try {
-      await addToCartAction({ productId, quantity, unit_price, product_size_id, replaceQuantity });
+      await addToCartAction({ productId, quantity, unit_price, product_size_id, replaceQuantity, type });
       set({ cartUpdated: true });
     } catch (error) {
       console.error(error);

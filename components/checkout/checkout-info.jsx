@@ -26,6 +26,7 @@ export const CheckoutInfo = () => {
   const setCartItems = useCartStore((state) => state.setCartItems);
   const setCart = useCartStore((state) => state.setCart);
   const setCartUpdated = useCartStore((state) => state.setCartUpdated);
+  const restoreOriginalCart = useCartStore((state) => state.restoreOriginalCart);
   const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
   const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
   const router = useRouter();
@@ -33,7 +34,6 @@ export const CheckoutInfo = () => {
   const { handleCheckout } = useCheckoutHandler({
     user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading
   });
-
   const totalPrice = getCartTotalPriceLocal() || 0;
   const totalQuantity = getCartTotalQuantityLocal() || 0;
 

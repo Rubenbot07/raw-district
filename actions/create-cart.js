@@ -1,33 +1,32 @@
-'use server';
-import { supabase } from '@/lib/supabase/supabaseClient';
-import { getUser } from '@/actions/get-user';
-
-export const createCart = async () => {
+'use server'
+import { getUser } from "@/actions/get-user";
+import { supabase } from "@/lib/supabase/supabaseClient";
+export const createCart = async ({ type = 'active' } = {}) => {
     const { user, error } = await getUser();
     if (!user) throw new Error(error?.message || 'User not authenticated');
 
-    // Buscar si ya existe un cart activo para el usuario
-    const { data: existingCart, error: fetchError } = await supabase
-        .from('cart')
-        .select('*')
-        .eq('user_id', user.id)
-        .eq('status', 'active')
-        .single();
+    // Si el tipo es 'active', busca si ya existe uno
+    if (type === 'active') {
+        const { data: existingCart, error: fetchError } = await supabase
+            .from('cart')
+            .select('*')
+            .eq('user_id', user.id)
+            .eq('status', 'active')
+            .single();
 
-    if (fetchError && fetchError.code !== 'PGRST116') {
-        // PGRST116: No rows found, lo ignoramos porque significa que no hay cart activo
-        throw new Error(`Error fetching cart: ${fetchError.message}`);
+        if (fetchError && fetchError.code !== 'PGRST116') {
+            throw new Error(`Error fetching cart: ${fetchError.message}`);
+        }
+
+        if (existingCart) {
+            return existingCart;
+        }
     }
 
-    if (existingCart) {
-        // Ya existe un cart activo, no creamos uno nuevo
-        return existingCart;
-    }
-
-    // Si no existe, creamos uno nuevo
+    // Crea el carrito (puede ser 'active', 'quick', etc.)
     const { data: newCart, error: insertError } = await supabase
         .from('cart')
-        .insert({ user_id: user.id, status: 'active' })
+        .insert({ user_id: user.id, status: type })
         .select()
         .single();
 

@@ -4,6 +4,7 @@ import { createOrderItems } from '@/actions/create-order-items';
 import { updateCart } from '@/actions/update-cart';
 
 export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading }) => {
+  console.log(cart, cartItems)
   const handleCheckout = async ({ delivery, payment, formData }) => {
     setLoading(true);
     const createOrders = async (shipping_address_id) => {

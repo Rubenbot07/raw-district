@@ -1,8 +1,8 @@
 'use client'
 import { formatPrice } from "@/utils/formatPrice";
 import { AddToCartButton } from "@/components/cart/add-to-cart-button";
-import { CheckoutButton } from "@/components/cart/checkout-button";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore"
+import { BuyNow } from "@/components/buy-now";
 import { Truck } from "lucide-react";
 import { Medal } from "lucide-react";
 import { Shield } from "lucide-react";
@@ -12,6 +12,7 @@ import { CircleAlert } from "lucide-react";
 
 export const ProductInfoWrapper = ({ product, children }) => {
     const selectedSize = useProductSelectionStore((state) => state.selectedSize);
+
     return (
         <div className="flex flex-col gap-8 lg:w-3/4 xl:w-4/6 xl:mx-auto p-2">
             <div className="flex flex-col text-start gap-4">
@@ -33,7 +34,7 @@ export const ProductInfoWrapper = ({ product, children }) => {
             }
             <div className="grid grid-cols-2 gap-3 py-4">
                 <AddToCartButton  product={product} productId={product.id} product_size_id={selectedSize?.id || product.product_sizes[0].id} unit_price={product.price} />
-                <CheckoutButton />
+                <BuyNow productId={product?.id} quantity={1} unit_price={product?.price} product_size_id={selectedSize?.id || product?.product_sizes[0].id}/>
             </div>
 
             <div className="flex flex-col gap-2">
