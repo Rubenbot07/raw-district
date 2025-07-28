@@ -2,8 +2,11 @@ import { createAddress } from '@/actions/create-address';
 import { createOrder } from '@/actions/create-order';
 import { createOrderItems } from '@/actions/create-order-items';
 import { updateCart } from '@/actions/update-cart';
+import { useCartStore } from '../stores/cartStore';
 
 export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading }) => {
+  const restoreOriginalCart = useCartStore((state) => state.restoreOriginalCart);
+  const loadCart = useCartStore((state) => state.loadCart);
   console.log(cart, cartItems)
   const handleCheckout = async ({ delivery, payment, formData }) => {
     setLoading(true);
@@ -17,6 +20,10 @@ export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCar
         shipping_method: delivery,
         total_price: cart.total_price,
       });
+      if(cart.status === 'quick') {
+        restoreOriginalCart();
+        await loadCart(user.id, "active");
+      }
 
       if (error) throw new Error("Error creating order");
 
@@ -31,6 +38,7 @@ export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCar
       setCart(newCart);
       setCartUpdated(true);
       setLoading(false);
+      router.refresh();
       router.push('/');
     };
 

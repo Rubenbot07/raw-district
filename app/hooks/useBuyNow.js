@@ -28,7 +28,9 @@ export const useBuyNow = ({ productId, quantity, unit_price, product_size_id, se
             // Recarga los items y totales del carrito rápido
             await loadCart(quickCart.user_id, 'quick');
 
-            router.push('/checkouts');
+            if (useCartStore.getState().cart?.status === "quick") {
+                router.push('/checkouts');
+            }
         } catch (error) {
             console.error('Error during Buy Now:', error);
         } finally {

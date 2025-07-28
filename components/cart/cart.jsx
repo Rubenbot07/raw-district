@@ -20,6 +20,7 @@ export const Cart =  () => {
     const pathname = usePathname();
     const hiddenOnRoutes = ['/auth', '/checkouts', '/orders', '/profile']
     const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
+  
     if(shouldHide) return null
 
   return (

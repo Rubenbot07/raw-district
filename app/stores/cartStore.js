@@ -5,7 +5,7 @@ import { getQuickCart } from '@/actions/get-quick-cart';
 import { addToCart as addToCartAction } from '@/actions/add-to-cart';
 import { createCart } from '@/actions/create-cart';
 import { removeFromCart as removeFromCartAction } from '@/actions/remove-from-cart';
-
+import { deleteCart } from '@/actions/delete-cart';
 export const useCartStore = create((set, get) => ({
   cart: null,
   cartItems: [],
@@ -35,18 +35,39 @@ export const useCartStore = create((set, get) => ({
     }
   },
 
-  restoreOriginalCart: () => {
+  restoreOriginalCart: async () => {
     const original = get().originalCart;
     if (original) {
-      set({
-        cart: { ...original },
-        cartItems: [],
-        totalPrice: original.total_price || 0,
-        totalQuantity: original.total_quantity || 0,
-        cartUpdated: false,
-      });
-    }
+    // Recarga los items del cart activo
+    const items = await getCartItems(original.id);
+    set({
+      cart: { ...original },
+      cartItems: items || [],
+      totalPrice: original.total_price || 0,
+      totalQuantity: original.total_quantity || 0,
+      cartUpdated: false,
+    });
+    console.log("Cart restored from original:", original);
+  }
   },
+
+  deleteQuickCart: async (cartId) => {
+    const originalCart = get().originalCart;
+    const error = await deleteCart(cartId);
+    if (error) {
+      console.error("Error deleting quick cart:", error);
+      return;
+    }
+    const items = await getCartItems(originalCart?.id || cartId);
+    
+    set({
+      cart: originalCart ? { ...originalCart } : null,
+      cartItems: items || [],
+      totalPrice: originalCart ? originalCart.total_price : 0,
+      totalQuantity: originalCart ? originalCart.total_quantity : 0,
+      cartUpdated: false,
+    });
+},
 
   setCart: (cart) => set({ cart }),
   setCartItems: (items) => set({ cartItems: items }),
@@ -58,6 +79,7 @@ loadCart: async (userId, type = "active") => {
   let cart;
   if (type === "quick") {
     cart = await getQuickCart(userId);
+    console.log("Quick cart loaded:", cart);
   } else {
     cart = await getActiveCart(userId);
   }
@@ -76,14 +98,20 @@ loadCart: async (userId, type = "active") => {
     const { cartUpdated, cart } = get();
     if (!cartUpdated || !cart) return;
 
-    const items = await getCartItems(cart.id);
-    const activeCart = await getActiveCart(userId);
-
+    let cartToUpdate;
+    if (cart.status === "quick") {
+      cartToUpdate = await getQuickCart(userId);
+    } else {
+      cartToUpdate = await getActiveCart(userId);
+    }
+    
+    const items = await getCartItems(cartToUpdate.id);
+    console.log(items)
     set({
-      cart: activeCart,
+      cart: cartToUpdate,
       cartItems: items,
-      totalPrice: activeCart?.total_price || 0,
-      totalQuantity: activeCart?.total_quantity || 0,
+      totalPrice: cartToUpdate?.total_price || 0,
+      totalQuantity: cartToUpdate?.total_quantity || 0,
       cartUpdated: false,
     });
   },
@@ -91,7 +119,7 @@ loadCart: async (userId, type = "active") => {
   addToCart: async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false, type = "active" }) => {
     try {
       await addToCartAction({ productId, quantity, unit_price, product_size_id, replaceQuantity, type });
-      set({ cartUpdated: true });
+      set({ cartUpdated: false });
     } catch (error) {
       console.error(error);
       const currentItems = get().cartItems;

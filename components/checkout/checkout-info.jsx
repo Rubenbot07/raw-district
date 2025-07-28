@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import { useCheckoutHandler } from '@/app/hooks/useCheckoutHandler';
 import { useUserStore } from '@/app/stores/userStore';
 import { useCartStore } from '@/app/stores/cartStore';
+import { useEffect } from 'react';
 export const CheckoutInfo = () => {
   const [delivery, setDelivery] = useState("shipping");
   const [payment, setPayment] = useState("mercado_pago");
@@ -19,25 +20,46 @@ export const CheckoutInfo = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [rotate, setRotate] = useState(false);
-
   const user = useUserStore((state) => state.user);
   const cart = useCartStore((state) => state.cart);
+  const deleteQuickCart = useCartStore((state) => state.deleteQuickCart);
   const cartItems = useCartStore((state) => state.cartItems);
   const setCartItems = useCartStore((state) => state.setCartItems);
   const setCart = useCartStore((state) => state.setCart);
   const setCartUpdated = useCartStore((state) => state.setCartUpdated);
-  const restoreOriginalCart = useCartStore((state) => state.restoreOriginalCart);
   const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
   const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
   const router = useRouter();
-
   const { handleCheckout } = useCheckoutHandler({
     user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading
   });
   const totalPrice = getCartTotalPriceLocal() || 0;
   const totalQuantity = getCartTotalQuantityLocal() || 0;
+  useEffect(() => {
+  return () => {
+    if (cart?.status === 'quick') {
+      console.log('[cleanup] Abandonando checkout, eliminando cart quick');
+      deleteQuickCart(cart.id);
+    }
+  };
+}, [cart?.status]);
 
-  const handleBuyNow = () => {
+useEffect(() => {
+  const handleBeforeUnload = () => {
+    if (cart?.status === 'quick') {
+      const payload = JSON.stringify({ cartId: cart.id });
+      const blob = new Blob([payload], { type: 'application/json' });
+
+      navigator.sendBeacon('/api/delete-cart', blob);
+    }
+  };
+
+  window.addEventListener('beforeunload', handleBeforeUnload);
+  return () => {
+    window.removeEventListener('beforeunload', handleBeforeUnload);
+  };
+}, [cart?.status]);
+  const handleBuyNow = async () => {
     handleCheckout({ delivery, payment, formData }).catch(console.error);
   };
 
