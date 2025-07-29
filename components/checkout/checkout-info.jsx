@@ -1,28 +1,22 @@
 'use client'
-import { DeliveryOptions } from '@/components/checkout/delivery-options';
-import { StoreBranches } from '@/components/checkout/store-branches';
-import { PurchaseForm } from '@/components/checkout/purchase-form';
-import { Payment } from '@/components/checkout/payment';
-import { ChevronDown } from 'lucide-react';
-import { CheckoutSummaryDetail } from '@/components/checkout/checkout-summary-detail';
-import { CheckoutSummaryCart } from '@/components/checkout/checkout-summary-cart';
-import { formatPrice } from '@/utils/formatPrice';  
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useCheckoutForm } from '@/app/hooks/useCheckoutForm';
+import { useQuickCartCleanup } from '@/app/hooks/useQuickCartCleanup';
 import { useCheckoutHandler } from '@/app/hooks/useCheckoutHandler';
 import { useUserStore } from '@/app/stores/userStore';
 import { useCartStore } from '@/app/stores/cartStore';
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryCart, CheckoutSummaryDetail } from '@/components/checkout';
+import { ChevronDown } from 'lucide-react';
+import { formatPrice } from '@/utils/formatPrice';  
 export const CheckoutInfo = () => {
-  const [delivery, setDelivery] = useState("shipping");
-  const [payment, setPayment] = useState("mercado_pago");
-  const [formData, setFormData] = useState({ name: "", surname: "", identification: "", address: "", city: "", state: "", zip: "", phone: "" });
+  const { delivery, setDelivery, payment, setPayment, formData, setFormData } = useCheckoutForm();
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [rotate, setRotate] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const user = useUserStore((state) => state.user);
   const cart = useCartStore((state) => state.cart);
-  const deleteQuickCart = useCartStore((state) => state.deleteQuickCart);
   const cartItems = useCartStore((state) => state.cartItems);
   const setCartItems = useCartStore((state) => state.setCartItems);
   const setCart = useCartStore((state) => state.setCart);
@@ -30,35 +24,13 @@ export const CheckoutInfo = () => {
   const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
   const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
   const router = useRouter();
-  const { handleCheckout } = useCheckoutHandler({
-    user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading
-  });
+  const { handleCheckout } = useCheckoutHandler({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading });
+
+  useQuickCartCleanup(); // 👈 hook personalizado
+
   const totalPrice = getCartTotalPriceLocal() || 0;
   const totalQuantity = getCartTotalQuantityLocal() || 0;
-  useEffect(() => {
-  return () => {
-    if (cart?.status === 'quick') {
-      console.log('[cleanup] Abandonando checkout, eliminando cart quick');
-      deleteQuickCart(cart.id);
-    }
-  };
-}, [cart?.status]);
 
-useEffect(() => {
-  const handleBeforeUnload = () => {
-    if (cart?.status === 'quick') {
-      const payload = JSON.stringify({ cartId: cart.id });
-      const blob = new Blob([payload], { type: 'application/json' });
-
-      navigator.sendBeacon('/api/delete-cart', blob);
-    }
-  };
-
-  window.addEventListener('beforeunload', handleBeforeUnload);
-  return () => {
-    window.removeEventListener('beforeunload', handleBeforeUnload);
-  };
-}, [cart?.status]);
   const handleBuyNow = async () => {
     handleCheckout({ delivery, payment, formData }).catch(console.error);
   };
