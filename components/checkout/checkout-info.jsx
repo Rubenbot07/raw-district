@@ -6,13 +6,10 @@ import { useUserStore } from '@/app/stores/userStore';
 import { useCartStore } from '@/app/stores/cartStore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryCart, CheckoutSummaryDetail } from '@/components/checkout';
-import { ChevronDown } from 'lucide-react';
+import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryCart, CheckoutSummaryDetail, CheckoutSummaryDown } from '@/components/checkout';
 import { formatPrice } from '@/utils/formatPrice';  
 export const CheckoutInfo = () => {
   const { delivery, setDelivery, payment, setPayment, formData, setFormData } = useCheckoutForm();
-  const [open, setOpen] = useState(false);
-  const [rotate, setRotate] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const user = useUserStore((state) => state.user);
@@ -50,17 +47,7 @@ export const CheckoutInfo = () => {
 
       <Payment payment={payment} setPayment={setPayment} />
 
-      <div className='flex justify-between items-center p-3 lg:hidden'>
-        <h2 className="font-normal text-2xl">Order Summary</h2>
-        <div onClick={() => setOpen(!open)} className="flex gap-2 items-center text-sm cursor-pointer">
-          <span onClick={() => setRotate(!rotate)}>Show</span>
-          <span className={`transition-transform ${rotate ? 'rotate-180' : ''}`}>
-            <ChevronDown/>
-          </span>
-        </div>
-      </div>
-
-      {open && <CheckoutSummaryCart cartItems={cartItems} />}
+      <CheckoutSummaryDown cartItems={cartItems}/>
 
       <div className='lg:hidden'>
         <CheckoutSummaryDetail

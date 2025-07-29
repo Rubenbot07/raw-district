@@ -2,6 +2,7 @@ export { BuyButton } from './buy-button';
 export { CheckoutSummaryCart } from './checkout-summary-cart';
 export { CheckoutSummary } from './checkout-summary';
 export { CheckoutSummaryDetail } from './checkout-summary-detail';
+export { CheckoutSummaryDown } from './checkout-summary-down';
 export { DeliveryOptions } from './delivery-options';
 export { PurchaseForm } from './purchase-form';
 export { Payment } from './payment';

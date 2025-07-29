@@ -1,5 +1,5 @@
 import { CheckoutInfo } from "@/components/checkout/checkout-info"
-import { CheckoutSummary } from "@/components/checkout/checkout-summary"
+import { CheckoutSummary } from "@/components/checkout/checkout-summary";
 export default function Page() {
     return (
         <section>
