@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useCartStore } from "@/app/stores/cartStore";
 import { formatPrice } from "@/utils/formatPrice";
+import { toast } from "react-toastify";
 import Image from "next/image";
 export const ProductCard = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
@@ -30,6 +31,7 @@ export const ProductCard = ({ product }) => {
                     unit_price: product?.price,
                     product_size_id: product?.product_sizes[0]?.id
                 })
+                toast.success('Product added to cart successfully')
                 setCartUpdated(true)
             } catch(error) {
                 console.log(error)

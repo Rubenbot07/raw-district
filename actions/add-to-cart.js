@@ -41,7 +41,6 @@ export const addToCart = async ({
     const availableStock = data;
 
     if (availableStock < quantity) {
-        console.error(`There is only ${availableStock} units available for this product size.`);
         return { data: null, error: `Only ${availableStock} units available.` };
     }
 

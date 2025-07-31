@@ -116,21 +116,28 @@ loadCart: async (userId, type = "active") => {
     });
   },
 
-  addToCart: async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false, type = "active" }) => {
-    try {
-      await addToCartAction({ productId, quantity, unit_price, product_size_id, replaceQuantity, type });
-      set({ cartUpdated: false });
-    } catch (error) {
-      console.error(error);
-      const currentItems = get().cartItems;
-      const filteredItems = currentItems.filter(item => item.product_id !== productId);
-      set({
-        cartItems: filteredItems,
-        totalPrice: get().totalPrice - unit_price,
-        totalQuantity: get().totalQuantity - quantity,
-      });
+addToCart: async ({ productId, quantity = 1, unit_price, product_size_id, replaceQuantity = false, type = "active" }) => {
+  try {
+    const response = await addToCartAction({
+      productId,
+      quantity,
+      unit_price,
+      product_size_id,
+      replaceQuantity,
+      type,
+    });
+
+    if (response.error) {
+      return { success: false, error: response.error };
     }
-  },
+
+    set({ cartUpdated: true });
+    return { success: true, data: response.data };
+  } catch (err) {
+    console.error("Unexpected error in addToCart store:", err);
+    return { success: false, error: "Unexpected error occurred." };
+  }
+},
 
   removeFromCart: async (itemId) => {
     try {

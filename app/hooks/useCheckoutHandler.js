@@ -3,6 +3,7 @@ import { createOrder } from '@/actions/create-order';
 import { createOrderItems } from '@/actions/create-order-items';
 import { updateCart } from '@/actions/update-cart';
 import { useCartStore } from '../stores/cartStore';
+import { toast } from 'react-toastify';
 
 export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading }) => {
   const restoreOriginalCart = useCartStore((state) => state.restoreOriginalCart);
@@ -38,6 +39,7 @@ export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCar
       setCart(newCart);
       setCartUpdated(true);
       setLoading(false);
+      toast.success('Checkout completed successfully');
       router.refresh();
       router.push('/');
     };

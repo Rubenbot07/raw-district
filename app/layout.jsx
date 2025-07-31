@@ -1,5 +1,7 @@
 export const dynamic = 'force-dynamic'
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { Work_Sans } from "next/font/google";
 import { Nav } from "@/components/nav/nav";
 import { MarqueeBanner } from '@/components/marquee-banner';
@@ -26,7 +28,8 @@ export default function RootLayout({ children }) {
           <BodyScrollLock />
           {children}
           <GlobalSetupProvider />
-        <Footer />
+          <ToastContainer position="top-left" autoClose={3000} />
+          <Footer />
       </body>
     </html>
   );

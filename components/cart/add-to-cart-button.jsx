@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useCartStore } from "@/app/stores/cartStore";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
+import { toast } from "react-toastify";
 export function AddToCartButton({ product, product_size_id, productId, quantity = 1, unit_price }) {
   const [loading, setLoading] = useState(false)
   const setCartUpdated = useCartStore((state) => state.setCartUpdated);
@@ -11,28 +12,31 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
   const setOpenCart = useCartUIStore((state) => state.setOpenCart);
   const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
   const addToCartLocal = useCartStore((state) => state.addToCartLocal);
-  const handleAddToCart = async () => {
-    setLoading(true)
-    const previousCart = [...cartItems];
-    addToCartLocal({ product, productId, quantity, product_size_id});
-    setOpenCart(true)
-    setOpenPreCart(false)
-    try {
-      await addToCart({
-        productId,
-        quantity,
-        unit_price,
-        product_size_id
-      });
-      setCartUpdated(true);
-      console.log('Product added to cart successfully');
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-      setCartItems(previousCart);
-    } finally {
-      setLoading(false)
-    }
-  };
+const handleAddToCart = async () => {
+  setLoading(true);
+
+  const previousCart = [...cartItems];
+  addToCartLocal({ product, productId, quantity, product_size_id });
+  setOpenCart(true);
+  setOpenPreCart(false);
+
+  const result = await addToCart({
+    productId,
+    quantity,
+    unit_price,
+    product_size_id,
+  });
+
+  if (!result.success) {
+    setCartItems(previousCart);
+    toast.error("Failed to add product to cart");
+  } else {
+    setCartUpdated(true);
+    toast.success("Product added to cart successfully");
+  }
+
+  setLoading(false);
+};
 
   return (
     <button

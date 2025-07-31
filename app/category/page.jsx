@@ -3,6 +3,11 @@ import { getProducts } from '@/actions/get-products';
 import { FilteredProducts } from '@/components/filtered-products';
 
 export default async function Page({ searchParams }) {
+    const page = parseInt(searchParams?.page) || 1;
+    const perPage = 15;
+    const from = (page - 1) * perPage;
+    const to = from + perPage - 1;
+    const currentPage = Math.floor(from / 15) + 1;
     const { price_lt, category, sort } = await searchParams || {};
     const categoryInfo = await getCategoryBySlug(category);
     const filters = {
@@ -11,7 +16,7 @@ export default async function Page({ searchParams }) {
         sort: sort || null,
     };
 
-    const { products, error } = await getProducts(filters);
+    const { products, error, total } = await getProducts(filters);
     if (error) {
         return <div>Error loading products: {error.message}</div>;
     }
@@ -21,7 +26,7 @@ export default async function Page({ searchParams }) {
                 <div className='text-center border-[1px] border-gray-300 py-2'>
                     <h1 className="text-md font-medium">{categoryInfo.name}</h1>
                 </div>
-                <FilteredProducts products={products} filters={filters}/>
+                <FilteredProducts products={products} filters={filters} currentPage={currentPage} total={total}/>
             </div>
     );
 }
