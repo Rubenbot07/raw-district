@@ -10,7 +10,7 @@ export const getProducts = cache(async (filters = {}, { from = 0, to = 14 } = {}
       categories(name),
       product_images(image_url, thumbnail_url, position),
       product_sizes(id, size, stock, sku)
-    `)
+    `, { count: 'exact' })
     .range(from, to);
 
   // Filtros dinámicos
@@ -34,6 +34,6 @@ export const getProducts = cache(async (filters = {}, { from = 0, to = 14 } = {}
     query = query.order('name', { ascending: false });
   }
 
-  const { data: products, error } = await query;
-  return { products, error };
+  const { data: products, error,  count } = await query;
+  return { products, error, total: count };
 });

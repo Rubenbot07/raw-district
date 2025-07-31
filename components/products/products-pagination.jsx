@@ -1,10 +1,9 @@
 'use client'
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export const ProductsPagination =  ({ currentPage }) => {
+export const ProductsPagination =  ({ currentPage, totalPages }) => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const totalPages = 4
 
     const goToPage = (page) => {
         const params = new URLSearchParams(searchParams.toString());

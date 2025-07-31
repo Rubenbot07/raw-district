@@ -12,13 +12,13 @@ export default async function GiftsFilterPage({ searchParams }) {
         category: category || null,
         sort: sort || null,
     };
-    const { products, error } = await getProducts(filters, { from, to });
+    const { products, error, total } = await getProducts(filters, { from, to });
     if (error) {
         return <div>Error loading products: {error.message}</div>;
     }
     return (
         <div>
-            <FilteredProducts products={products} filters={filters} currentPage={currentPage}/>
+            <FilteredProducts products={products} filters={filters} currentPage={currentPage} total={total}/>
         </div>
     )
 

@@ -1,8 +1,8 @@
 import { getProducts } from '@/actions/get-products'
 import { FilteredProducts } from '@/components/filtered-products'
-export default async function ProductsPage({ filters, from, to  }) {
-  
-  const { products, error } = await getProducts(filters, { from, to });
+import { ProductsPagination } from '@/components/products/products-pagination'
+export default async function ProductsPage({ filters, from = 0, to = 14 }) {
+  const { products, error, total } = await getProducts(filters, { from, to });
   const currentPage = Math.floor(from / 15) + 1;
   if (error) {
     console.error('Error fetching products:', error)
@@ -11,8 +11,6 @@ export default async function ProductsPage({ filters, from, to  }) {
 
 
   return (
-    <>
-      <FilteredProducts products={products} filters={filters} currentPage={currentPage}/>
-    </>
+      <FilteredProducts products={products} filters={filters} currentPage={currentPage} total={total}/>
   )
 }
