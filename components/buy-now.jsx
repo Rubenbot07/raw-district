@@ -1,10 +1,18 @@
+'use client'
 import { useBuyNow } from '@/app/hooks/useBuyNow';
 import { useState } from 'react';
+import { useUserStore } from '@/app/stores/userStore';
 
 export const BuyNow = ({productId, quantity = 1, unit_price, product_size_id}) => {
+    const user = useUserStore((state) => state.user);
+    console.log(user)
     const [loading, setLoading] = useState(false);
-    const { handleBuyNow, restoreOriginalCart, deleteQuickCart } = useBuyNow({productId, quantity, unit_price, product_size_id, setLoading });
+    const { handleBuyNow, restoreOriginalCart } = useBuyNow({productId, quantity, unit_price, product_size_id, setLoading });
     const handleClick = async () => {
+        if (!user) {
+            console.log('User not authenticated');
+            return;
+        }
         try {
             await handleBuyNow();
         } catch (error) {

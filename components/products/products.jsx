@@ -1,16 +1,18 @@
-import { ProductCard } from '@/components/products/product-card'
 import { getProducts } from '@/actions/get-products'
-import { ProductsLayout } from '@/components/products/products-layout'
 import { FilteredProducts } from '@/components/filtered-products'
-export default async function ProductsPage({ filters }) {
-
-  const { products, error } = await getProducts(filters)
+export default async function ProductsPage({ filters, from, to  }) {
+  
+  const { products, error } = await getProducts(filters, { from, to });
+  const currentPage = Math.floor(from / 15) + 1;
   if (error) {
     console.error('Error fetching products:', error)
     return <div>Error loading products</div>
   }
 
+
   return (
-      <FilteredProducts products={products} filters={filters}/>
+    <>
+      <FilteredProducts products={products} filters={filters} currentPage={currentPage}/>
+    </>
   )
 }

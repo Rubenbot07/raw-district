@@ -2,7 +2,7 @@
 import { cache } from 'react';
 import { supabase } from '../lib/supabase/supabaseClient';
 
-export const getProducts = cache(async (filters = {}) => {
+export const getProducts = cache(async (filters = {}, { from = 0, to = 14 } = {}) => {
   let query = supabase
     .from('products')
     .select(`
@@ -10,7 +10,8 @@ export const getProducts = cache(async (filters = {}) => {
       categories(name),
       product_images(image_url, thumbnail_url, position),
       product_sizes(id, size, stock, sku)
-    `);
+    `)
+    .range(from, to);
 
   // Filtros dinámicos
   if (filters.price_lt) {

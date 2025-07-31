@@ -4,8 +4,12 @@ import { RotatingBanner } from "@/components/rotating-banner";
 import { MarqueeBanner } from '@/components/marquee-banner';
 import { TrustBadges } from '@/components/trust-badges';
 
-export default async function Home({ searchParams }) {
-  const { price_lt, category, sort } = await searchParams || {};
+export default function Home({ searchParams }) {
+  const page = parseInt( searchParams?.page) || 1;
+  const perPage = 15;
+  const from = (page - 1) * perPage;
+  const to = from + perPage - 1;
+  const { price_lt, category, sort } =  searchParams || {};
     const filters = {
         price_lt: price_lt || null,
         category: category || null,
@@ -21,7 +25,7 @@ export default async function Home({ searchParams }) {
               <p className='pl-10'><strong>BY DREAMERS,</strong> FOR DREAMERS</p>
               <p><strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA</p>
           </MarqueeBanner>
-          <ProductsPage filters={filters}/>
+          <ProductsPage filters={filters} from={from} to={to}/>
           <TrustBadges />
           <RotatingBanner 
             contentMessages={
