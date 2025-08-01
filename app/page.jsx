@@ -1,8 +1,8 @@
-import ProductsPage from '@/components/products/products';
+import { Products } from '@/components/products/products';
 import CategoriesWrapper from "@/components/categories/categories-wrapper";
-import { RotatingBanner } from "@/components/rotating-banner";
-import { MarqueeBanner } from '@/components/marquee-banner';
-import { TrustBadges } from '@/components/trust-badges';
+import { RotatingBanner } from "@/components/banners/rotating-banner";
+import { MarqueeBanner } from '@/components/banners/marquee-banner';
+import { TrustBadges } from '@/components/sections/trust-badges';
 
 export default function Home({ searchParams }) {
   const page = parseInt( searchParams?.page) || 1;
@@ -25,7 +25,7 @@ export default function Home({ searchParams }) {
               <p className='pl-10'><strong>BY DREAMERS,</strong> FOR DREAMERS</p>
               <p><strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA</p>
           </MarqueeBanner>
-          <ProductsPage filters={filters} from={from} to={to}/>
+          <Products filters={filters} from={from} to={to}/>
           <TrustBadges />
           <RotatingBanner 
             contentMessages={

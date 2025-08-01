@@ -1,9 +1,5 @@
 import { SizesWrapper } from "@/components/categories/sizes-wrapper";
-import { ProductImagesWrapper } from "@/components/products/product-images-wrapper";
-import { ProductInfoWrapper } from "@/components/products/product-info-wrapper";
-import { ProductImageSlider } from "@/components/products/product-image-slider";
-import { ProductShippingInfo } from "@/components/products/product-shipping-info";
-import { ProductFAQsInfo } from "@/components/products/product-faqs-info";
+import { ProductImagesWrapper, ProductInfoWrapper, ProductImageSlider, ProductShippingInfo, ProductFAQsInfo } from "@/components/products"
 export const ProductDetailView = ({ product }) => {
 
   return (

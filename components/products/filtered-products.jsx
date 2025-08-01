@@ -1,6 +1,6 @@
 import { ProductsLayout } from "@/components/products/products-layout";
 import { ProductCard } from "@/components/products/product-card";
-import { OrderBy } from "@/components/order-by";
+import { OrderBy } from "@/components/features/order-by";
 import { ProductsPagination } from '@/components/products/products-pagination'
 
 export const FilteredProducts = ({ products, filters, currentPage, total}) => {

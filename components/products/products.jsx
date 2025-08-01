@@ -1,7 +1,6 @@
 import { getProducts } from '@/actions/get-products'
-import { FilteredProducts } from '@/components/filtered-products'
-import { ProductsPagination } from '@/components/products/products-pagination'
-export default async function ProductsPage({ filters, from = 0, to = 14 }) {
+import { FilteredProducts } from '@/components/products/filtered-products'
+export const Products = async ({ filters, from = 0, to = 14 }) => {
   const { products, error, total } = await getProducts(filters, { from, to });
   const currentPage = Math.floor(from / 15) + 1;
   if (error) {

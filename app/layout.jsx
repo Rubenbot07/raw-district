@@ -4,10 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { Work_Sans } from "next/font/google";
 import { Nav } from "@/components/nav/nav";
-import { MarqueeBanner } from '@/components/marquee-banner';
-import { Footer } from '@/components/footer';
+import { MarqueeBanner } from '@/components/banners/marquee-banner';
+import { Footer } from '@/components/footer/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
-import { BodyScrollLock } from "@/components/body-scroll-lock";
+import { BodyScrollLock } from "@/components/system/body-scroll-lock";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";

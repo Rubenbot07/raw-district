@@ -21,7 +21,7 @@ export const SearchWrapper = () => {
                 aria-label="Close cart overlay"
             />
             )}
-            <div className={`fixed right-0 top-0 z-40 bg-white w-full min-h-32 px-4 pt-8 pb-4 transform  transition-all duration-500 ease-in-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+            <div className={`fixed right-0 top-0 z-50 bg-white w-full min-h-32 px-4 pt-8 pb-4 transform  transition-all duration-500 ease-in-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
                 <SearchInput onClose={() => setIsOpen(false)} />
             </div>
         </>

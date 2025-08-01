@@ -1,0 +1,11 @@
+export { ProductCard } from "@/components/products/product-card";
+export { ProductDetailView } from "@/components/products/product-detail-view";
+export { ProductImageSlider } from "@/components/products/product-image-slider";
+export { ProductImagesWrapper } from "@/components/products/product-images-wrapper";
+export { ProductInfoWrapper } from "@/components/products/product-info-wrapper";
+export { ProductShippingInfo } from "@/components/products/product-shipping-info";
+export { ProductFAQsInfo } from "@/components/products/product-faqs-info";
+export { ProductsLayout } from "@/components/products/products-layout";
+export { ProductsPagination } from "@/components/products/products-pagination";
+export { Products }  from "@/components/products/products";
+export { BuyNow } from "@/components/products/buy-now";

@@ -2,12 +2,8 @@
 import { formatPrice } from "@/utils/formatPrice";
 import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore"
-import { BuyNow } from "@/components/buy-now";
-import { Truck } from "lucide-react";
-import { Medal } from "lucide-react";
-import { Shield } from "lucide-react";
-import { MessagesSquare } from "lucide-react";
-import { CircleAlert } from "lucide-react";
+import { BuyNow } from "@/components/products/buy-now";
+import { Truck, Medal, Shield, MessagesSquare, CircleAlert } from "lucide-react";
 
 
 export const ProductInfoWrapper = ({ product, children }) => {

@@ -1,16 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { SearchSuggestions } from '@/components/search/search-suggestions';
-import { Search } from "lucide-react"
-import { X } from "lucide-react"
-import { ArrowRight } from 'lucide-react';
-import { PopularSearches } from '@/components/search/popular-searches';
+import { SearchSuggestions, PopularSearches, SearchModalButton } from '@/components/search';
+import { Search, X } from "lucide-react";
+
 
 export const SearchInput = ({onClose}) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const router = useRouter();
 
   const handleClose = () => {
     setQuery('');
@@ -42,12 +38,6 @@ export const SearchInput = ({onClose}) => {
     return () => clearTimeout(delayDebounce);
   }, [query]);
 
-  const handleSearch = () => {
-    onClose();
-    if (query.trim()) {
-      router.push(`/search?query=${query}`);
-    }
-  };
 
   return (
     <div className=" relative w-full p-4 lg:w-3/4 mx-auto">
@@ -71,12 +61,7 @@ export const SearchInput = ({onClose}) => {
                 <SearchSuggestions suggestions={results} onClose={onClose}/>
             )}
         </div>
-        {query.length > 0 && (    
-            <button onClick={handleSearch} className="flex items-center gap-2 px-4 py-2 border-[1px] border-black">
-                <span>Search "{query}"</span>
-                <span><ArrowRight size={10}/></span>
-            </button>
-        )}
+        <SearchModalButton query={query} onClose={onClose} />
     </div>
   );
 };

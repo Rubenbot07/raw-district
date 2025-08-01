@@ -1,6 +1,5 @@
 'use client'
-import { CircleUserRound } from "lucide-react";
-import { ChevronDown } from "lucide-react";
+import { CircleUserRound, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { LogoutButton } from "@/components/user-session/logout-button";
 import { useState } from "react";

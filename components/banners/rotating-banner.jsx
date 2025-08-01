@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { q } from 'framer-motion/client'
 
 const messages = [
   { id: 1, content: <><strong>PAY SECURELY</strong> WITH MERCADO PAGO</> },

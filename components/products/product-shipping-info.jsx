@@ -1,8 +1,5 @@
 'use client'
-import { Truck } from "lucide-react";
-import { MessagesSquare } from "lucide-react";
-import { Mail } from "lucide-react";
-import { Minus } from "lucide-react";
+import { Truck, Mail, MessagesSquare, Minus } from "lucide-react";
 import { useState } from "react";
 
 export const ProductShippingInfo = () => {

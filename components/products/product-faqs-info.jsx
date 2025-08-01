@@ -1,8 +1,5 @@
 'use client'
-import { Heart } from "lucide-react";
-import { WashingMachine } from "lucide-react";
-import { Shield } from "lucide-react";
-import { Minus } from "lucide-react";
+import { Heart, WashingMachine, Shield, Minus } from "lucide-react";
 import { useState } from "react";
 
 export const ProductFAQsInfo = () => {

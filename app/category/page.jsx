@@ -1,6 +1,6 @@
 import { getCategoryBySlug } from '@/actions/get-categories-slug';
 import { getProducts } from '@/actions/get-products';
-import { FilteredProducts } from '@/components/filtered-products';
+import { FilteredProducts } from '@/components/products/filtered-products';
 
 export default async function Page({ searchParams }) {
     const page = parseInt(searchParams?.page) || 1;
@@ -16,7 +16,7 @@ export default async function Page({ searchParams }) {
         sort: sort || null,
     };
 
-    const { products, error, total } = await getProducts(filters);
+    const { products, error, total } = await getProducts(filters, { from, to });
     if (error) {
         return <div>Error loading products: {error.message}</div>;
     }
