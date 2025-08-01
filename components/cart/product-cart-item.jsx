@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { formatPrice } from "@/utils/formatPrice";
 import { useCartStore } from "@/app/stores/cartStore";
+import { useUserStore } from "@/app/stores/userStore";
 import { toast } from "react-toastify";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [open, setOpen] = useState(false);
@@ -16,6 +17,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const removeFromCartLocal = useCartStore((state) => state.removeFromCartLocal);
   const updateItemQuantityLocal = useCartStore((state) => state.updateItemQuantityLocal);
+  const user = useUserStore((state) => state.user);
 
   const formattedPrice = formatPrice(product.price)  
   useEffect(() => {
@@ -34,7 +36,8 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const handleQuantityChange = async (newQuantity) => {
     const previousQuantity = quantity;
     updateItemQuantityLocal(itemId, newQuantity);
-    const result = await addToCart({
+    if(user) {
+      const result = await addToCart({
         product,
         productId: product.id,
         quantity: newQuantity,
@@ -45,12 +48,14 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
 
       if (!result.success) {
         updateItemQuantityLocal(itemId, previousQuantity);
-        toast.error("Failed to update product quantity in cart");
+        toast.error("Failed to update product quantity in cart" + result.error);
         
-      } else {
-        setCartUpdated(true);
-        toast.success(`Product quantity updated successfully to ${newQuantity}`);
       }
+    }
+
+    setCartUpdated(true);
+    toast.success(`Product quantity updated successfully to ${newQuantity}`);
+
   }
   const handleRemoveFromCart = async (itemId) => {
     const previousCart = [...cartItems]

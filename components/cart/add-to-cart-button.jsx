@@ -1,5 +1,6 @@
 'use client';
 import { useState } from "react";
+import { useUserStore } from "@/app/stores/userStore";
 import { useCartStore } from "@/app/stores/cartStore";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { toast } from "react-toastify";
@@ -12,29 +13,32 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
   const setOpenCart = useCartUIStore((state) => state.setOpenCart);
   const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
   const addToCartLocal = useCartStore((state) => state.addToCartLocal);
-const handleAddToCart = async () => {
+  const user = useUserStore((state) => state.user);
+
+
+  const handleAddToCart = async () => {
   setLoading(true);
 
   const previousCart = [...cartItems];
   addToCartLocal({ product, productId, quantity, product_size_id });
   setOpenCart(true);
   setOpenPreCart(false);
+  if(user) {
+      const result = await addToCart({
+        productId,
+        quantity,
+        unit_price,
+        product_size_id,
+      });
 
-  const result = await addToCart({
-    productId,
-    quantity,
-    unit_price,
-    product_size_id,
-  });
-
-  if (!result.success) {
-    setCartItems(previousCart);
-    toast.error("Failed to add product to cart");
-  } else {
-    setCartUpdated(true);
-    toast.success("Product added to cart successfully");
+    if (!result.success) {
+      setCartItems(previousCart);
+      toast.error("Failed to add product to cart" + result.error);
+    }
   }
 
+  setCartUpdated(true);
+  toast.success("Product added to cart successfully");
   setLoading(false);
 };
 

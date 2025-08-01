@@ -3,7 +3,6 @@ import { CircleUserRound } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { LogoutButton } from "@/components/user-session/logout-button";
-import { useUserStore } from "@/app/stores/userStore";
 import { useState } from "react";
 export const UserWrapper = ({user, children}) => {
     const [open, setOpen] = useState(false);
