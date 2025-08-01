@@ -1,9 +1,6 @@
 'use client'
-import { ProductCartItem } from "@/components/cart/product-cart-item"
-import { X } from "lucide-react";
-import { ShoppingCart } from "lucide-react";
-import { Frown } from "lucide-react";
-import { CheckoutButton } from '@/components/cart/checkout-button'
+import { ProductCartItem, CheckoutButton } from "@/components/cart";
+import { X, ShoppingCart, Frown } from "lucide-react";
 import { formatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
 import { useCartUIStore } from "@/app/stores/cartUIStore";

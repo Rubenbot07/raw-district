@@ -2,10 +2,8 @@
 import { getSizeById } from "@/actions/get-size-by-id";
 import { CartItemQuantityHandler } from "@/components/cart/cart-item-quantity-handler";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
 import { formatPrice } from "@/utils/formatPrice";
 import { useCartStore } from "@/app/stores/cartStore";
-import { useUserStore } from "@/app/stores/userStore";
 import { toast } from "react-toastify";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [productSize, setProductSize] = useState(null);

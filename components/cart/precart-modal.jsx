@@ -1,13 +1,11 @@
 'use client'
 import { useState, useEffect } from "react";
+import { InfinitiveLoopSlider, PreCartModalLoadingSkeleton, AddToCartButton } from "@/components/cart";
 import { getProductDetail } from "@/actions/get-product-detail";
 import { SizesWrapper } from "@/components/categories/sizes-wrapper";
-import { InfinitiveLoopSlider } from "@/components/cart/infinitive-loop-slider";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore";
 import { formatPrice } from "@/utils/formatPrice";
-import { AddToCartButton } from "./add-to-cart-button";
-import { PreCartModalLoadingSkeleton } from "@/components/cart/precart-modal-loading-skeleton";
 import { X } from "lucide-react";
 export const PreCartModal = () => {
     const [product, setProduct] = useState([]);
