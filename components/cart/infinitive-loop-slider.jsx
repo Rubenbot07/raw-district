@@ -35,7 +35,7 @@ export const InfinitiveLoopSlider = ({ productImages }) => {
                 </button>
                 <button
                 onClick={handleNext}
-                className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform translate-x-20 transition-transform duration-300 ease-in-out ${isHovered ? '-translate-x-1' : ''}`}
+                className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform transition-transform duration-300 ease-in-out ${isHovered ? '-translate-x-2' : 'translate-x-20'}`}
                 >
                 <ArrowRight />
                 </button>
