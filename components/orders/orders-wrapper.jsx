@@ -20,7 +20,10 @@ export const OrdersWrapper = () => {
         fetchOrders()
     }, [user])
     return (
-        <section className="bg-white h-auto w-auto flex flex-col gap-7 p-4">
+        <section className="bg-white h-auto min-h-96 w-auto flex flex-col gap-7 p-4">
+            { orders.length === 0 && (
+                <p className="flex items-center justify-center text-gray-500 h-96">You have no orders yet.</p>
+            )}
             <ul className="flex flex-col gap-4">
             {
                 orders?.map(order => {

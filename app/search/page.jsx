@@ -42,7 +42,7 @@ export default function SearchPage() {
         <p>{results.length} results have been found for "{query}"</p>
       </div>
       {loading ? (
-        <div className='w-full text-center p-8'>
+        <div className='w-full h-screen text-center p-8'>
           <p className="text-gray-500">Cargando...</p>
         </div>
       ) : results.length > 0 ? (
