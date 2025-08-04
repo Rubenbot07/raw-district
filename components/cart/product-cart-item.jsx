@@ -40,30 +40,46 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   }
 
   return (
-    <div className="bg-white p-4 flex items-center gap-4">
-      <div className="flex gap-4">
-        <figure className="w-20 h-20 py-2">
-          <img src={product.product_images[0].thumbnail_url} alt={product.name} />
-        </figure>
-        <div className="flex flex-col gap-2">
-          <h3 className="text-xs">{product.name}</h3>
-          <p className="text-xs"> <strong>Size: </strong> {productSize?.size}</p>
-          <p className="text-sm font-semibold">{formattedPrice}</p>
-          <CartItemQuantityHandler
-            product={product}
-            sizeId={sizeId}
-            itemId={itemId}
-            quantity={quantity}
-            setCartUpdated={setCartUpdated}
-          />
-          <button
-            onClick={() => handleRemoveFromCart(itemId)}
-            className="text-black text-start text-xs"
-          >
-            REMOVE
-          </button>
-        </div>
+     <article
+      className="bg-white p-4 flex items-center gap-4"
+      aria-label={`Cart item: ${product.name}`}
+    >
+      <figure className="w-20 h-20 py-2" aria-hidden="true">
+        <img
+          src={product.product_images[0]?.thumbnail_url}
+          alt={`Thumbnail of ${product.name}`}
+          className="w-full h-full object-cover"
+        />
+      </figure>
+
+      <div className="flex flex-col gap-2 w-full">
+        <header className="text-xs font-medium" id={`product-name-${itemId}`}>
+          {product.name}
+        </header>
+
+        <p className="text-xs">
+          <strong>Size:</strong> {productSize?.size}
+        </p>
+
+        <p className="text-sm font-semibold">{formattedPrice}</p>
+
+        {/* Quantity selector */}
+        <CartItemQuantityHandler
+          product={product}
+          sizeId={sizeId}
+          itemId={itemId}
+          quantity={quantity}
+          setCartUpdated={setCartUpdated}
+        />
+
+        <button
+          onClick={() => handleRemoveFromCart(itemId)}
+          className="text-black text-start text-xs underline focus:outline-black focus-visible:ring-2"
+          aria-label={`Remove ${product.name} from cart`}
+        >
+          REMOVE
+        </button>
       </div>
-    </div>
+    </article>
   );
 }

@@ -6,5 +6,4 @@ export { CheckoutButton } from "@/components/cart/checkout-button";
 export { InfinitiveLoopSlider } from "@/components/cart/infinitive-loop-slider"
 export { PreCartModalLoadingSkeleton } from "@/components/cart/precart-modal-loading-skeleton";
 export { PreCartModal } from "@/components/cart/precart-modal";
-export { ProductDetailServer } from "@/components/cart/precart-product-detail-server";
 export { CartWrapper } from "@/components/cart/cart-wrapper";

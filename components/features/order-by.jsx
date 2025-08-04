@@ -55,12 +55,14 @@ export const OrderBy = () => {
 
       <ul
         className={`absolute top-12 right-0 transform ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+          isOpen ? 'translate-x-0 flex' : 'translate-x-full'
         } transition-all duration-300 ease-in-out bg-white shadow-lg rounded-md p-4 w-48 z-10 text-xs flex flex-col gap-2`}
+        aria-hidden={!isOpen}
+        tabIndex={isOpen ? 0 : -1}
       >
         {options.map((opt) => (
           <li key={opt.value} className="cursor-pointer hover:underline">
-            <Link scroll={false} href={buildUrl(opt.value)} onClick={() => setSelectedOption(opt.label)}>
+            <Link tabIndex={isOpen ? 0 : -1} scroll={false} href={buildUrl(opt.value)} onClick={() => setSelectedOption(opt.label)}>
               {opt.label}
             </Link>
           </li>

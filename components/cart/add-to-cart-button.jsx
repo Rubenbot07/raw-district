@@ -44,10 +44,13 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
 
   return (
     <button
-      className=" px-4 py-2 bg-white border-[1px] border-black text-sm w-full"
+      className="px-4 py-2 bg-white border border-black text-sm w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-black disabled:opacity-50"
       onClick={handleAddToCart}
+      disabled={loading}
+      aria-busy={loading}
+      aria-label={loading ? "Adding product to cart" : "Add product to cart"}
     >
-      {loading ? 'Loading' : 'ADD TO CART'}
+      {loading ? "Loading…" : "ADD TO CART"}
     </button>
   );
 }

@@ -10,6 +10,7 @@ export const ProductCard = ({ product }) => {
     const image1 = product?.product_images.find((image) => image?.position === 1);
     const image2 = product?.product_images.find((image) => image?.position === 2);
     const [hovered, setHovered] = useState(false);
+    const [onFocus, setOnFocus] = useState(false);
     const setOpenCart = useCartUIStore((state) => state.setOpenCart);
     const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
     const setSelectedProductSlug = useCartUIStore((state) => state.setSelectedProductSlug);
@@ -89,11 +90,16 @@ return (
       </Link>
 
       <button
-        className={`w-full border-[1px] border-black text-center md:w-32 md:border-none md:absolute z-40 md:bottom-24 right-2 text-xs bg-white text-black px-4 py-2 transition-opacity duration-500 ${
-          hovered ? "md:opacity-100" : "md:opacity-0"
-        }`}
+        className={`w-full border-[1px] border-black text-center md:w-32 md:border-none md:absolute z-40 md:bottom-24 right-2 text-xs bg-white text-black px-4 py-2 transition-opacity duration-500 
+        ${hovered ? "md:opacity-100" : "md:opacity-0"}
+        ${onFocus ? "md:opacity-100 outline outline-2 outline-black" : ""}
+        `}
         onClick={(e) => handleQuickAdd(e)}
         value={product?.id}
+        onFocus={() => {
+          setOnFocus(true)}
+        }
+        onBlur={() => setOnFocus(false)}
       >
         {product.categories.name === 'Caps' ? 'ADD TO CART' : 'ADD'}
       </button>

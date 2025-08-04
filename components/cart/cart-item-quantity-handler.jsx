@@ -1,56 +1,101 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 import { ChevronDown } from "lucide-react";
 import { useCartStore } from "@/app/stores/cartStore";
 import { useUserStore } from "@/app/stores/userStore";
-export const CartItemQuantityHandler = ({product, sizeId, itemId, quantity, setCartUpdated }) => {
-    const addToCart = useCartStore((state) => state.addToCart);
-    const updateItemQuantityLocal = useCartStore((state) => state.updateItemQuantityLocal);
-    const user = useUserStore((state) => state.user);
-    const [open, setOpen] = useState(false);
-    const [rotate, setRotate] = useState(false);
-    const handleQuantityChange = async (newQuantity) => {
+
+export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, setCartUpdated }) => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  const updateItemQuantityLocal = useCartStore((state) => state.updateItemQuantityLocal);
+  const user = useUserStore((state) => state.user);
+  const [open, setOpen] = useState(false);
+  const buttonRef = useRef(null);
+
+  const handleQuantityChange = async (newQuantity) => {
     const previousQuantity = quantity;
     updateItemQuantityLocal(itemId, newQuantity);
-    if(user) {
+
+    if (user) {
       const result = await addToCart({
         product,
         productId: product.id,
         quantity: newQuantity,
         unit_price: product.price,
         product_size_id: sizeId,
-        replaceQuantity: true
+        replaceQuantity: true,
       });
 
       if (!result.success) {
         updateItemQuantityLocal(itemId, previousQuantity);
-        toast.error("Failed to update product quantity in cart" + result.error);
-        
+        toast.error("Failed to update product quantity in cart: " + result.error);
+        return;
       }
     }
 
     setCartUpdated(true);
-    toast.success(`Product quantity updated successfully to ${newQuantity}`);
+    toast.success(`Product quantity updated to ${newQuantity}`);
+    setOpen(false);
+    buttonRef.current?.focus(); // Devuelve el foco al botón principal
+  };
 
-  }
 
-    const handleAnimation = () => {
-        setRotate(!rotate);
-        setOpen(!open);
-    }
-    return (
-        <div onClick={handleAnimation} className="relative flex items-center justify-between gap-2 border border-black p-2 max-w-24">
-            <button>{quantity}</button>
-            <span className={`transform transition-transform duration-300 ${rotate ? "rotate-180" : ""}`} onClick={() => setRotate(!rotate)}>
-              <ChevronDown />
-            </span>
-            <ul className={`absolute top-full left-0 h-24 w-full border border-black bg-white overflow-y-scroll px-3 ${open ? "block" : "hidden"}`}>
-              {[...Array(10)].map((_, i) => (
-                  <li key={i} onClick={() => handleQuantityChange(i + 1)}>
-                    {i + 1}
-                  </li>
-              ))}
-            </ul>
-          </div>
-    ) 
-}
+
+  // Cerrar al hacer clic fuera del componente
+
+  return (
+    <div
+      className="relative inline-block w-full max-w-24"
+    >
+      {/* Botón principal */}
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label="Change quantity"
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex items-center justify-between w-full border border-black p-2"
+        ref={buttonRef}
+      >
+        {quantity}
+        <ChevronDown
+          className={`ml-2 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {/* Lista desplegable de cantidades */}
+      {open && (
+        <ul
+          role="listbox"
+          aria-label="Select quantity"
+          tabIndex={-1}
+          className="absolute z-10 mt-1 w-full border border-black bg-white shadow-md max-h-40 overflow-y-auto text-sm"
+        >
+          {[...Array(10)].map((_, i) => {
+            const value = i + 1;
+            return (
+              <li
+                key={value}
+                role="option"
+                aria-selected={value === quantity}
+                tabIndex={0}
+                className={`px-3 py-1 cursor-pointer hover:bg-gray-100 focus:bg-gray-100 ${
+                  value === quantity ? "font-semibold" : ""
+                }`}
+                onClick={() => handleQuantityChange(value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleQuantityChange(value);
+                  }
+                }}
+              >
+                {value}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+};
