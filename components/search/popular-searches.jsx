@@ -5,13 +5,13 @@ export const PopularSearches = ({onClose}) => {
                 <p className='py-1 border-b-[1px] border-gray-300'>Popular searches</p>
                 <ul className='flex flex-col gap-2 py-4'>
                     <li onClick={onClose}>
-                        <Link href='/category/t-shirts'>T-shirts</Link>
+                        <Link href='/category/?category=t-shirts'>T-shirts</Link>
                     </li>
                     <li onClick={onClose}>
-                        <Link href='/category/hoodies'>Hoodies</Link>
+                        <Link href='/category/?category=hoodies'>Hoodies</Link>
                     </li>
                     <li onClick={onClose}>
-                        <Link href='/category/caps'>Caps</Link>
+                        <Link href='/category/?category=caps'>Caps</Link>
                     </li>
                 </ul>
             </div>
