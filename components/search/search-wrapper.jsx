@@ -13,8 +13,7 @@ export const SearchWrapper = () => {
   const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders'];
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
 
-  if (shouldHide) return null;
-
+  
   // Esc: cerrar modal
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -22,14 +21,14 @@ export const SearchWrapper = () => {
         setIsOpen(false);
       }
     };
-
+    
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
     }
-
+    
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
-
+  
   // Devuelve foco al botón al cerrar
   const handleClose = () => {
     setIsOpen(false);
@@ -37,7 +36,8 @@ export const SearchWrapper = () => {
       buttonRef.current?.focus();
     }, 0);
   };
-
+  if (shouldHide) return null;
+  
   return (
     <>
       <button
