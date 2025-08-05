@@ -1,46 +1,79 @@
-'use client'
+'use client';
 import { formatPrice } from "@/utils/formatPrice";
 import { ChevronDown } from "lucide-react";
 import { CheckoutSummaryCart } from "@/components/checkout/checkout-summary-cart";
 import { useState } from "react";
 import { CheckoutSummaryDetail } from "@/components/checkout/checkout-summary-detail";
 import { useCartStore } from "@/app/stores/cartStore";
+
 export const CheckoutSummary = () => {
-    const [open, setOpen] = useState(false);
-    const [rotate, setRotate] = useState(false);
-    const cart = useCartStore((state) => state.cart);
-    const cartItems = useCartStore((state) => state.cartItems);
-    const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
-    const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
-    const totalPrice = getCartTotalPriceLocal() || 0;
-    const totalQuantity = getCartTotalQuantityLocal() || 0;
-    const formattedPrice = formatPrice(totalPrice || 0)
-    const tax = ( totalPrice || 0) * 0.19
-    return (
-        <section className="max-w-xl lg:max-w-5xl mx-auto">
-            <div onClick={() => setOpen(!open)} className=" lg:hidden bg-gray-100 p-4">
-                <div className="flex justify-between items-center"  onClick={() => setRotate(!rotate)}>
-                    <div className="text-sm flex items-center gap-2 ">
-                        <span>Order Summary</span>
-                        <span className={`transform transition-transform duration-300 ${rotate ? "rotate-180" : ""}`}>
-                            <ChevronDown />
-                        </span>
-                    </div>
-                    <p className="font-medium text-xl">{formattedPrice}</p>
-                </div>
-            </div>
-            {open &&
-                <div className="lg:hidden">
-                    <CheckoutSummaryCart cart={cart} cartItems={cartItems}>
-                        <CheckoutSummaryDetail totalPrice={formattedPrice} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
-                    </CheckoutSummaryCart>
-                </div>
-            }
-            <div className="hidden lg:block">
-                <CheckoutSummaryCart cartItems={cartItems} >
-                    <CheckoutSummaryDetail totalPrice={formattedPrice} totalQuantity={totalQuantity} shippingPrice={formatPrice(50000)} tax={formatPrice(tax)} />
-                </CheckoutSummaryCart>
-            </div>
-        </section>
-    )
-}
+  const [open, setOpen] = useState(false);
+
+  const cart = useCartStore((state) => state.cart);
+  const cartItems = useCartStore((state) => state.cartItems);
+  const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
+  const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
+
+  const totalPrice = getCartTotalPriceLocal() || 0;
+  const totalQuantity = getCartTotalQuantityLocal() || 0;
+  const formattedPrice = formatPrice(totalPrice);
+  const tax = totalPrice * 0.19;
+
+  return (
+    <section className="max-w-xl lg:max-w-5xl mx-auto" aria-labelledby="checkout-summary-title">
+      <h2 id="checkout-summary-title" className="sr-only">Checkout Summary</h2>
+
+      {/* Mobile Accordion Button */}
+      <div className="lg:hidden bg-gray-100 p-4">
+        <button
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls="checkout-summary-mobile"
+          className="w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-black"
+        >
+          <div className="text-sm flex items-center gap-2">
+            <span>Order Summary</span>
+            <span
+              className={`transform transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            >
+              <ChevronDown />
+            </span>
+          </div>
+          <p className="font-medium text-xl">{formattedPrice}</p>
+        </button>
+      </div>
+
+      {/* Mobile Collapsible Summary */}
+      {open && (
+        <div
+          id="checkout-summary-mobile"
+          className="lg:hidden"
+          role="region"
+          aria-label="Order summary details"
+        >
+          <CheckoutSummaryCart cart={cart} cartItems={cartItems}>
+            <CheckoutSummaryDetail
+              totalPrice={formattedPrice}
+              totalQuantity={totalQuantity}
+              shippingPrice={formatPrice(50000)}
+              tax={formatPrice(tax)}
+            />
+          </CheckoutSummaryCart>
+        </div>
+      )}
+
+      {/* Desktop Summary */}
+      <div className="hidden lg:block" role="region" aria-label="Order summary details for desktop">
+        <CheckoutSummaryCart cartItems={cartItems}>
+          <CheckoutSummaryDetail
+            totalPrice={formattedPrice}
+            totalQuantity={totalQuantity}
+            shippingPrice={formatPrice(50000)}
+            tax={formatPrice(tax)}
+          />
+        </CheckoutSummaryCart>
+      </div>
+    </section>
+  );
+};

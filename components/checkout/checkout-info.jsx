@@ -33,23 +33,30 @@ export const CheckoutInfo = () => {
   };
 
   return (
-    <section className="bg-white h-auto w-auto flex flex-col gap-7 lg:border-r-[1px] p-4">
-      <div className='flex flex-col gap-2 border-b-[1px] border-gray-400 py-3'>
-        <p className='font-light text-sm text-gray-500'>Account</p>
-        <p>{user?.email}</p>
+    <section
+      className="bg-white h-auto w-auto flex flex-col gap-7 lg:border-r-[1px] p-4"
+      aria-labelledby="checkout-heading"
+    >
+      <h2 id="checkout-heading" className="sr-only">Checkout information</h2>
+
+      <div className="flex flex-col gap-2 border-b-[1px] border-gray-400 py-3">
+        <p className="font-light text-sm text-gray-500">Account</p>
+        <p aria-label={`Current user email: ${user?.email}`}>{user?.email}</p>
       </div>
 
       <DeliveryOptions delivery={delivery} setDelivery={setDelivery} />
-      {delivery === "shipping"
-        ? <PurchaseForm formData={formData} setFormData={setFormData} />
-        : <StoreBranches />
-      }
+
+      {delivery === "shipping" ? (
+        <PurchaseForm formData={formData} setFormData={setFormData} />
+      ) : (
+        <StoreBranches />
+      )}
 
       <Payment payment={payment} setPayment={setPayment} />
 
-      <CheckoutSummaryDown cartItems={cartItems}/>
+      <CheckoutSummaryDown cartItems={cartItems} />
 
-      <div className='lg:hidden'>
+      <div className="lg:hidden">
         <CheckoutSummaryDetail
           totalPrice={formatPrice(totalPrice)}
           totalQuantity={totalQuantity}
@@ -58,9 +65,26 @@ export const CheckoutInfo = () => {
         />
       </div>
 
-      <button className="bg-black text-white py-3 text-center rounded-[8px]" onClick={handleBuyNow}>
+      <button
+        onClick={handleBuyNow}
+        disabled={loading}
+        aria-busy={loading}
+        aria-label={loading ? "Processing your order" : "Buy now"}
+        className={`bg-black text-white py-3 text-center rounded-[8px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition ${
+          loading ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
+      >
         {loading ? "Loading..." : "Buy Now"}
       </button>
+
+      {/* Región accesible para lectores de pantalla */}
+      <span
+        className="sr-only"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        {loading ? "Processing your order" : ""}
+      </span>
     </section>
   );
 };
