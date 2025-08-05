@@ -1,34 +1,33 @@
-'use client'
+'use client';
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserWrapper } from '@/components/profile/user-wrapper';
 
-export function AuthButton({user}) {
+export function AuthButton({ user }) {
   const pathname = usePathname();
 
-  const hiddenOnRoutes = ['/auth']
-  const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
+  const hiddenOnRoutes = ['/auth'];
+  const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
 
-    if(shouldHide) return null
+  if (shouldHide) return null;
+
   return (
-    <section>
-        {
-          user && (
-            <UserWrapper user={user}/>
-          )
-        }
-        {
-          !user &&
-            <UserWrapper>
-              <div className="flex flex-col gap-2 w-16">
-                <div>
-                  <Link href="/auth/login">Sign in</Link>
-                </div>
-                <div>
-                  <Link href="/auth/sign-up">Sign up</Link>
-                </div>
-              </div>
-            </UserWrapper>
-        }      
-    </section>
-)}
+    <nav aria-label="User navigation">
+      {user ? (
+        <UserWrapper user={user} />
+      ) : (
+        <UserWrapper>
+          <div className="flex flex-col gap-2 w-16">
+            <div>
+              <Link href="/auth/login">Sign in</Link>
+            </div>
+            <div>
+              <Link href="/auth/sign-up">Sign up</Link>
+            </div>
+          </div>
+        </UserWrapper>
+      )}
+    </nav>
+  );
+}

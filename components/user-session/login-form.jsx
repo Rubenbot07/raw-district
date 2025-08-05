@@ -1,16 +1,5 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,7 +9,7 @@ import { getUser } from "@/actions/get-user";
 import { createCart } from "@/actions/create-cart";
 import { useUserStore } from "@/app/stores/userStore";
 
-export function LoginForm({ className, ...props }) {
+export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -30,14 +19,13 @@ export function LoginForm({ className, ...props }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     setIsLoading(true);
     setError(null);
 
     try {
       await signInWithEmail({ email, password });
       const user = await getUser();
-      if(user) {
+      if (user) {
         await createCart(user.id);
       }
       await fetchUser();
@@ -50,64 +38,88 @@ export function LoginForm({ className, ...props }) {
   };
 
   return (
-    <div className={cn("flex flex-col gap-", className)} {...props}>
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleLogin}>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="/auth/forgot-password"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </Link>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              {error && <p className="text-sm text-red-500">{error}</p>}
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Logging in..." : "Login"}
-              </Button>
-            </div>
-            <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+    <section
+      aria-labelledby="login-title"
+      className="max-w-md mx-auto border border-gray-200 rounded-lg p-6"
+    >
+      <h1 id="login-title" className="text-2xl font-semibold mb-2">
+        Login
+      </h1>
+      <p className="text-sm text-gray-600 mb-6">
+        Enter your email below to login to your account.
+      </p>
+
+      <form onSubmit={handleLogin} noValidate>
+        <div className="flex flex-col gap-6">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              required
+              placeholder="m@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-md"
+              autoComplete="email"
+              aria-required="true"
+            />
+          </div>
+
+          <div>
+            <div className="flex justify-between items-center mb-1">
+              <label htmlFor="password" className="text-sm font-medium">
+                Password
+              </label>
               <Link
-                href="/auth/sign-up"
-                className="underline underline-offset-4"
+                href="/auth/forgot-password"
+                className="text-sm underline hover:text-blue-600"
               >
-                Sign up
+                Forgot your password?
               </Link>
             </div>
-          </form>
-          <AuthForm />
-        </CardContent>
-      </Card>
-    </div>
+            <input
+              id="password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-md"
+              autoComplete="current-password"
+              aria-required="true"
+            />
+          </div>
+
+          {error && (
+            <p className="text-sm text-red-600" role="alert">
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full py-2 px-4 bg-black text-white rounded-md hover:bg-gray-900 disabled:opacity-50"
+            aria-disabled={isLoading}
+            aria-busy={isLoading}
+          >
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </div>
+
+        <p className="mt-4 text-center text-sm">
+          Don’t have an account?{" "}
+          <Link href="/auth/sign-up" className="underline hover:text-blue-600">
+            Sign up
+          </Link>
+        </p>
+      </form>
+
+      <div className="mt-6">
+        <AuthForm />
+      </div>
+    </section>
   );
 }
