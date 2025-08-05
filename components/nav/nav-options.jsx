@@ -1,38 +1,55 @@
-'use client'
-import { GiftsNavDesktop } from "@/components/nav/gifts-nav-desktop"
-import { SearchWrapper } from "@/components/search/search-wrapper"
-import { BurguerMenu } from "@/components/nav/burguer-menu"
-import { usePathname } from "next/navigation"
+'use client';
+import { GiftsNavDesktop } from "@/components/nav/gifts-nav-desktop";
+import { SearchWrapper } from "@/components/search/search-wrapper";
+import { BurguerMenu } from "@/components/nav/burguer-menu";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export const NavOptions = () => {
-    const pathname = usePathname();
-    const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders']
-     const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
+  const pathname = usePathname();
+  const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders'];
+  const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
 
-    if(shouldHide) return null
+  if (shouldHide) return null;
 
-    return (
-        <div className="flex items-center gap-2 col-start-1">
-            <ul className="hidden md:flex gap-4 cursor-pointer">
-              <li className="relative">
-                    <GiftsNavDesktop />
-                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </li>
-              <li className="relative group">
-                    <span>About</span>
-                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </li>
-              <li className="relative group">
-                    <span>Brand</span>
-                    <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </li>
-            </ul>
-            <div className="md:hidden">
-              <BurguerMenu />
-            </div>
-            <div className="flex  items-center md:hidden">
-              <SearchWrapper />
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="flex items-center gap-2 col-start-1">
+      {/* Desktop Navigation */}
+      <nav aria-label="Main navigation" className="hidden md:flex">
+        <ul className="flex gap-4">
+          <li>
+            <GiftsNavDesktop />
+          </li>
+
+          <li className="relative group">
+            <Link
+              href="/about"
+              className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
+            >
+              About
+            </Link>
+          </li>
+
+          <li className="relative group">
+            <Link
+              href="/brand"
+              className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
+            >
+              Brand
+            </Link>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div className="md:hidden">
+        <BurguerMenu />
+      </div>
+
+      {/* Mobile Search */}
+      <div className="md:hidden flex items-center">
+        <SearchWrapper />
+      </div>
+    </div>
+  );
+};
