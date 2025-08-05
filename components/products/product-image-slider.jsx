@@ -8,6 +8,7 @@ export const ProductImageSlider = ({ productImages, productName }) => {
 
   return (
     <div className="md:hidden w-full p-4 flex flex-col gap-4">
+      {/* Imagen principal */}
       <div className="relative w-full aspect-[4/5] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
@@ -29,16 +30,27 @@ export const ProductImageSlider = ({ productImages, productName }) => {
         </AnimatePresence>
       </div>
 
+      {/* Miniaturas */}
       <div className="flex gap-4 justify-center">
         {productImages.map((image, index) => (
-          <div key={index} onClick={() => setCurrentImage(index)} className="cursor-pointer">
-            <img src={image.thumbnail_url} alt={productName} />
+          <button
+            key={index}
+            onClick={() => setCurrentImage(index)}
+            className="cursor-pointer"
+            aria-label={`Product image ${index + 1} of ${productImages.length}`}
+          >
+            {/* aria-hidden evita que screen reader lea alt repetido */}
+            <img
+              src={image.thumbnail_url}
+              alt={productName}
+              aria-hidden="true"
+            />
             <div
               className={`${
                 currentImage === index ? 'border-gray-400' : 'border-none'
               } border-2 mt-2`}
             ></div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
