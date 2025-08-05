@@ -1,41 +1,65 @@
 'use client';
+
 import { useState, useEffect } from "react";
 import { getProductById } from "@/actions/get-product-by-id";
 import { formatPrice } from "@/utils/formatPrice";
-export const OrderSummaryItem = ({productId, quantity, size, unit_price, subtotal}) => {
-    
-    const [product, setProduct] = useState(null);
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const { product } = await getProductById(productId);
-                setProduct(product);
-            } catch (error) {
-                console.error("Error fetching product:", error);
-            }
-        };
-        fetchProduct();
-    }, [productId]);
 
-    
+export const OrderSummaryItem = ({ productId, quantity, size, unit_price, subtotal }) => {
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { product } = await getProductById(productId);
+        setProduct(product);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchProduct();
+  }, [productId]);
+
+  if (!product) {
     return (
-        <div className="flex justify-between items-center gap-4 py-3 flex-wrap border-b-[1px] border-gray-300 last:border-b-0">
-            <div className="flex gap-3">
-                <div className="w-14 h-14 min-w-14">
-                    <img className="w-full h-full object-cover rounded-xl" src={product?.product_images[0].thumbnail_url} alt={product?.name} />
-                </div>
-                <div className="flex flex-col justify-center">
-                    <span className="text-sm">
-                        {product?.name}
-                    </span>
-                    <span className="text-xs">
-                        {size}
-                    </span>
-                </div>
-            </div>
-            <div>
-                <span>Total: {formatPrice(subtotal)} ({quantity})</span>
-            </div>
+      <div className="py-3 text-sm text-gray-500">
+        Loading product...
+      </div>
+    );
+  }
+
+  const imageUrl = product?.product_images?.[0]?.thumbnail_url;
+
+  return (
+    <div
+      className="flex justify-between items-center gap-4 py-3 flex-wrap border-b border-gray-300 last:border-b-0"
+      role="listitem"
+    >
+      {/* Left: Image + Name */}
+      <div className="flex gap-3 items-start w-full sm:w-auto">
+        <div className="w-14 h-14 min-w-14">
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={product.name}
+              className="w-full h-full object-cover rounded-xl"
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-200 rounded-xl" aria-hidden="true" />
+          )}
         </div>
-    )
-}
+        <div className="flex flex-col justify-center">
+          <span className="text-sm font-medium">{product.name}</span>
+          <span className="text-xs text-gray-500">Size: {size}</span>
+        </div>
+      </div>
+
+      {/* Right: Price & Quantity */}
+      <div className="text-sm text-right sm:text-left">
+        <span>
+          Total: {formatPrice(subtotal)}{" "}
+          <span className="text-gray-500">({quantity})</span>
+        </span>
+      </div>
+    </div>
+  );
+};
