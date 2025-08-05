@@ -1,50 +1,76 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import Form from "next/form";
+'use client';
+import Form from 'next/form';
 import { completeUserProfile } from "@/actions/complete-user-profile";
-
 
 export const CompleteProfileForm = () => {
   return (
-    <div className="flex flex-col gap-6 max-w-md mx-auto">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">Complete your profile</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Form action={completeUserProfile} className="flex flex-col gap-6">
+    <section
+      className="flex flex-col gap-6 max-w-md mx-auto"
+      aria-labelledby="complete-profile-title"
+    >
+      <div className="border border-gray-200 shadow-md rounded-[8px]">
+        <div className="p-4 border-b border-gray-200">
+          <h2 id="complete-profile-title" className="text-2xl font-semibold">
+            Complete your profile
+          </h2>
+        </div>
+
+        <Form
+          action={completeUserProfile}
+          className="flex flex-col gap-6 p-4"
+          aria-describedby="profile-fields"
+        >
+          <fieldset className="flex flex-col gap-6" aria-labelledby="profile-fields">
+            <legend className="sr-only">User profile fields</legend>
+
             <div>
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input
+              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
                 id="fullName"
                 name="fullName"
+                type="text"
                 required
+                className="mt-1 block w-full border border-gray-300 rounded-[8px] p-2 focus:outline-none focus:ring-2 focus:ring-black"
               />
             </div>
+
             <div>
-              <Label htmlFor="address">Address</Label>
-              <Input
+              <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+                Address
+              </label>
+              <input
                 id="address"
                 name="address"
+                type="text"
                 required
+                className="mt-1 block w-full border border-gray-300 rounded-[8px] p-2 focus:outline-none focus:ring-2 focus:ring-black"
               />
             </div>
+
             <div>
-              <Label htmlFor="phone">Phone</Label>
-              <Input
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                Phone
+              </label>
+              <input
                 id="phone"
                 name="phone"
+                type="tel"
                 required
+                className="mt-1 block w-full border border-gray-300 rounded-[8px] p-2 focus:outline-none focus:ring-2 focus:ring-black"
               />
             </div>
-            <Button type="submit" className="w-full">
-              Complete Profile
-            </Button>
-          </Form>
-        </CardContent>
-      </Card>
-    </div>
+          </fieldset>
+
+          <button
+            type="submit"
+            className="w-full bg-black text-white py-2 rounded-[8px] font-medium hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
+          >
+            Complete Profile
+          </button>
+        </Form>
+      </div>
+    </section>
   );
-}
+};
