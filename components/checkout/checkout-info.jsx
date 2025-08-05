@@ -6,11 +6,12 @@ import { useUserStore } from '@/app/stores/userStore';
 import { useCartStore } from '@/app/stores/cartStore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryCart, CheckoutSummaryDetail, CheckoutSummaryDown } from '@/components/checkout';
+import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryDetail, CheckoutSummaryDown, BuyButton } from '@/components/checkout';
 import { formatPrice } from '@/utils/formatPrice';  
 export const CheckoutInfo = () => {
   const { delivery, setDelivery, payment, setPayment, formData, setFormData } = useCheckoutForm();
   const [loading, setLoading] = useState(false);
+  const [invalidFields, setInvalidFields] = useState([]);
 
   const user = useUserStore((state) => state.user);
   const cart = useCartStore((state) => state.cart);
@@ -23,14 +24,42 @@ export const CheckoutInfo = () => {
   const router = useRouter();
   const { handleCheckout } = useCheckoutHandler({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading });
 
-  useQuickCartCleanup(); // 👈 hook personalizado
+  useQuickCartCleanup(); // 👈 this hook is used to clean the quick cart if user doesn't finish the checkout
 
   const totalPrice = getCartTotalPriceLocal() || 0;
   const totalQuantity = getCartTotalQuantityLocal() || 0;
 
-  const handleBuyNow = async () => {
-    handleCheckout({ delivery, payment, formData }).catch(console.error);
-  };
+const handleBuyNow = async () => {
+  console.log(invalidFields)
+  if (delivery === "shipping") {
+    const requiredFields = [
+      "name", "surname", "identification",
+      "address", "city", "state", "zip", "phone"
+    ];
+
+    const invalids = requiredFields.filter((field) => {
+      const value = formData[field];
+      return !value || value.trim() === "";
+    });
+
+    if (invalids.length > 0) {
+      setInvalidFields(invalids);
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    setInvalidFields([]); // limpiar errores si todo está bien
+  }
+
+  try {
+    setLoading(true);
+    await handleCheckout({ delivery, payment, formData });
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section
@@ -47,7 +76,7 @@ export const CheckoutInfo = () => {
       <DeliveryOptions delivery={delivery} setDelivery={setDelivery} />
 
       {delivery === "shipping" ? (
-        <PurchaseForm formData={formData} setFormData={setFormData} />
+        <PurchaseForm formData={formData} setFormData={setFormData} invalidFields={invalidFields} />
       ) : (
         <StoreBranches />
       )}
@@ -64,19 +93,7 @@ export const CheckoutInfo = () => {
           tax={formatPrice((cart?.total_price || 0) * 0.19)}
         />
       </div>
-
-      <button
-        onClick={handleBuyNow}
-        disabled={loading}
-        aria-busy={loading}
-        aria-label={loading ? "Processing your order" : "Buy now"}
-        className={`bg-black text-white py-3 text-center rounded-[8px] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition ${
-          loading ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
-      >
-        {loading ? "Loading..." : "Buy Now"}
-      </button>
-
+      <BuyButton onClick={handleBuyNow} loading={loading} />
       {/* Región accesible para lectores de pantalla */}
       <span
         className="sr-only"

@@ -1,4 +1,4 @@
-export const PurchaseForm = ({ formData, setFormData }) => {
+export const PurchaseForm = ({ formData, setFormData, invalidFields = [] }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -20,9 +20,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                             placeholder="Name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                            className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                            ${invalidFields.includes("name")
+                                ? "border-red-500 bg-red-50"
+                                : "border-gray-400"
+                            }`}
                             required
                         />
+                        <span aria-live="polite" className={`${invalidFields.includes("name") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                     </div>
                     <div className="w-full md:w-1/2">
                         <label htmlFor="surname" className="sr-only">Surname</label>
@@ -33,9 +38,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                             placeholder="Surname"
                             value={formData.surname}
                             onChange={handleChange}
-                            className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                            className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                            ${invalidFields.includes("surname")
+                                ? "border-red-500 bg-red-50"
+                                : "border-gray-400"
+                            }`}
                             required
                         />
+                        <span aria-live="polite" className={`${invalidFields.includes("surname") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                     </div>
                 </div>
 
@@ -49,9 +59,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                         placeholder="Cedula, ID or NIT"
                         value={formData.identification}
                         onChange={handleChange}
-                        className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                        className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                        ${invalidFields.includes("identification")
+                            ? "border-red-500 bg-red-50"
+                            : "border-gray-400"
+                        }`}
                         required
                     />
+                    <span aria-live="polite" className={`${invalidFields.includes("identification") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                 </div>
 
                 {/* Address */}
@@ -64,9 +79,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                         placeholder="Address"
                         value={formData.address}
                         onChange={handleChange}
-                        className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                        className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                        ${invalidFields.includes("address")
+                            ? "border-red-500 bg-red-50"
+                            : "border-gray-400"
+                        }`}
                         required
                     />
+                    <span aria-live="polite" className={`${invalidFields.includes("address") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                 </div>
 
                 {/* City + State + Zip */}
@@ -80,9 +100,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                             placeholder="City"
                             value={formData.city}
                             onChange={handleChange}
-                            className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                            className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                            ${invalidFields.includes("city")
+                                ? "border-red-500 bg-red-50"
+                                : "border-gray-400"
+                            }`}
                             required
                         />
+                        <span aria-live="polite" className={`${invalidFields.includes("city") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                     </div>
                     <div className="w-full md:w-1/3">
                         <label htmlFor="state" className="sr-only">State</label>
@@ -93,9 +118,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                             placeholder="State"
                             value={formData.state}
                             onChange={handleChange}
-                            className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                            className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                            ${invalidFields.includes("state")
+                                ? "border-red-500 bg-red-50"
+                                : "border-gray-400"
+                            }`}
                             required
                         />
+                        <span aria-live="polite" className={`${invalidFields.includes("state") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                     </div>
                     <div className="w-full md:w-1/3">
                         <label htmlFor="zip" className="sr-only">Zip Code</label>
@@ -107,9 +137,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                             placeholder="Zip Code"
                             value={formData.zip}
                             onChange={handleChange}
-                            className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                            className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                            ${invalidFields.includes("zip")
+                                ? "border-red-500 bg-red-50"
+                                : "border-gray-400"
+                            }`}
                             required
                         />
+                        <span aria-live="polite" className={`${invalidFields.includes("zip") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                     </div>
                 </div>
 
@@ -124,9 +159,14 @@ export const PurchaseForm = ({ formData, setFormData }) => {
                         placeholder="Phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="p-3 border border-gray-400 rounded-[8px] w-full placeholder-gray-500"
+                        className={`p-3 border rounded-[8px] w-full placeholder-gray-500 
+                        ${invalidFields.includes("phone")
+                            ? "border-red-500 bg-red-50"
+                            : "border-gray-400"
+                        }`}
                         required
                     />
+                    <span aria-live="polite" className={`${invalidFields.includes("phone") ? "text-red-500 block" : "hidden"}`}>Required field</span>
                 </div>
             </form>
 
