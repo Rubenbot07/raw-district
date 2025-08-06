@@ -3,7 +3,7 @@ import { ProductImagesWrapper, ProductInfoWrapper, ProductImageSlider, ProductSh
 export const ProductDetailView = ({ product }) => {
 
   return (
-<main aria-labelledby="product-title" className="px-4 md:px-6 lg:px-8">
+<main aria-labelledby="product-title" className="px-4 md:px-0">
       <article>
         <div className="grid grid-cols-1 md:grid-cols-2 py-4 md:py-8 gap-8 lg:gap-16">
           {/* Carrusel de imágenes principal */}

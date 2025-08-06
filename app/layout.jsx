@@ -22,11 +22,13 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning className={workSans.variable}>
-      <body className="font-sans">
+      <body className="font-sans min-h-screen flex flex-col">
           <MarqueeBanner />
           <Nav />
           <BodyScrollLock />
-          {children}
+          <main className="flex-grow">
+            {children}
+          </main>
           <GlobalSetupProvider />
           <ToastContainer position="top-left" autoClose={3000} />
           <Footer />

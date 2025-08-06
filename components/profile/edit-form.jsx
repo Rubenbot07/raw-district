@@ -4,10 +4,6 @@ import { updateUserMetadata } from '@/actions/update-user-metadata'
 export const EditForm = async ({ userInfo }) => {
   return (
     <section aria-labelledby="edit-profile-heading">
-      <h2 id="edit-profile-heading" className="text-2xl font-medium mb-4">
-        Edit Profile
-      </h2>
-
       <form action={updateUserMetadata} className='flex flex-col gap-4'>
         <fieldset className='flex flex-col gap-2 p-4 bg-gray-100 rounded-[8px] text-sm'>
           <legend className="sr-only">Edit contact information</legend>

@@ -1,40 +1,72 @@
 import { Products } from '@/components/products/products';
-import CategoriesWrapper from "@/components/categories/categories-wrapper";
-import { RotatingBanner } from "@/components/banners/rotating-banner";
+import CategoriesWrapper from '@/components/categories/categories-wrapper';
+import { RotatingBanner } from '@/components/banners/rotating-banner';
 import { MarqueeBanner } from '@/components/banners/marquee-banner';
 import { TrustBadges } from '@/components/sections/trust-badges';
 
 export default function Home({ searchParams }) {
-  const page = parseInt( searchParams?.page) || 1;
+  const page = parseInt(searchParams?.page, 10) || 1;
   const perPage = 15;
+
   const from = (page - 1) * perPage;
   const to = from + perPage - 1;
-  const { price_lt, category, sort } =  searchParams || {};
-    const filters = {
-        price_lt: price_lt || null,
-        category: category || null,
-        sort: sort || null,
+
+  const filters = {
+    price_lt: searchParams?.price_lt ?? null,
+    category: searchParams?.category ?? null,
+    sort: searchParams?.sort ?? null,
   };
+
   return (
     <main className="min-h-screen flex flex-col items-center w-full">
       <div className="w-full flex flex-col gap-10 items-center">
         <div className="flex flex-col gap-10 py-5 max-w-full">
-          <RotatingBanner />
-          <CategoriesWrapper /> 
-          <MarqueeBanner z={10}>
-              <p className='pl-10'><strong>BY DREAMERS,</strong> FOR DREAMERS</p>
-              <p><strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA</p>
-          </MarqueeBanner>
-          <Products filters={filters} from={from} to={to}/>
-          <TrustBadges />
-          <RotatingBanner 
-            contentMessages={
-              [
-                { id: 1, content: <><strong>RAWDISTRIC</strong> TURNED INTO A BRAND</> },
-                { id: 2, content: <>COLOMBIAN BRANDS YOU SHOULD KNOWN</>}
-              ]
-            }
-          />
+          
+          <header aria-label="Main Banners">
+            <RotatingBanner />
+          </header>
+
+          <section aria-label="Categories">
+            <CategoriesWrapper />
+          </section>
+
+          <section aria-label="Brand Statement">
+            <MarqueeBanner z={10}>
+              <p className="pl-10">
+                <strong>BY DREAMERS,</strong> FOR DREAMERS
+              </p>
+              <p>
+                <strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA
+              </p>
+            </MarqueeBanner>
+          </section>
+
+          <section aria-label="Product List" className="w-full">
+            <Products filters={filters} from={from} to={to} />
+          </section>
+
+          <section aria-label="Trust Badges">
+            <TrustBadges />
+          </section>
+
+          <footer aria-label="Secondary Banner">
+            <RotatingBanner
+              contentMessages={[
+                {
+                  id: 1,
+                  content: (
+                    <>
+                      <strong>RAWDISTRIC</strong> TURNED INTO A BRAND
+                    </>
+                  ),
+                },
+                {
+                  id: 2,
+                  content: <>COLOMBIAN BRANDS YOU SHOULD KNOW</>,
+                },
+              ]}
+            />
+          </footer>
         </div>
       </div>
     </main>

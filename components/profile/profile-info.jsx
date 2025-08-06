@@ -5,7 +5,7 @@ import Link from "next/link";
 export const ProfileInfo = ({ user }) => {
   return (
     <section
-      className="flex flex-col gap-8 mx-auto lg:max-w-4xl p-4 h-screen"
+      className="flex flex-col gap-8 mx-auto w-full lg:max-w-4xl p-4 h-screen"
       aria-labelledby="profile-heading"
     >
       <div className="flex items-center gap-2">

@@ -8,25 +8,51 @@ export default async function Page({ searchParams }) {
     const from = (page - 1) * perPage;
     const to = from + perPage - 1;
     const currentPage = Math.floor(from / 15) + 1;
-    const { price_lt, category, sort } = await searchParams || {};
+
+    const { price_lt, category, sort } = searchParams || {};
     const categoryInfo = await getCategoryBySlug(category);
+
     const filters = {
         price_lt: price_lt || null,
-        category: categoryInfo.id || null,
+        category: categoryInfo?.id || null,
         sort: sort || null,
     };
 
     const { products, error, total } = await getProducts(filters, { from, to });
+
     if (error) {
-        return <div>Error loading products: {error.message}</div>;
+        return (
+            <div
+                role="alert"
+                className="text-red-600 bg-red-50 border border-red-200 p-4 rounded-md"
+            >
+                <p className="font-semibold">Error loading products:</p>
+                <p>{error.message}</p>
+            </div>
+        );
     }
 
     return (
-            <div className="flex flex-col gap-4 py-10">
-                <div className='text-center border-[1px] border-gray-300 py-2'>
-                    <h1 className="text-md font-medium">{categoryInfo.name}</h1>
-                </div>
-                <FilteredProducts products={products} filters={filters} currentPage={currentPage} total={total}/>
-            </div>
+        <main
+            className="flex flex-col gap-4 py-10"
+            aria-label={`Products in category ${categoryInfo?.name || 'All'}`}
+        >
+            <header
+                className="text-center border border-gray-300 py-2"
+                role="region"
+                aria-labelledby="category-title"
+            >
+                <h1 id="category-title" className="text-lg font-semibold">
+                    {categoryInfo?.name || 'All Products'}
+                </h1>
+            </header>
+
+            <FilteredProducts
+                products={products}
+                filters={filters}
+                currentPage={currentPage}
+                total={total}
+            />
+        </main>
     );
 }

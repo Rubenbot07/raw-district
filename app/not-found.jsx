@@ -1,10 +1,17 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-const NotFound = () => {
-    return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center text-black text-center px-4">
-      <h1 className="text-4xl font-bold mb-4">Page not found</h1>
-      <p className="text-base mb-6">
+
+export default function NotFound() {
+  return (
+    <main
+      className="min-h-screen bg-white flex flex-col items-center justify-center text-black text-center px-4"
+      role="alert"
+      aria-labelledby="not-found-title"
+    >
+      <h1 id="not-found-title" className="text-4xl font-bold mb-4">
+        Page not found
+      </h1>
+      <p className="text-base mb-6 max-w-md">
         Sorry, we couldn&apos;t find the page you&apos;re looking for.
       </p>
       <Link
@@ -14,8 +21,6 @@ const NotFound = () => {
         <ArrowLeft size={16} />
         Back to Home
       </Link>
-    </div>
-    );
-};
-
-export default NotFound;
+    </main>
+  )
+}

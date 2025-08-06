@@ -44,9 +44,6 @@ export const MarqueeBanner = ({ children, speed, z = 50 }) => {
       >
         <div className="w-full flex gap-10">{children || contentDefault}</div>
       </Marquee>
-      <div className="sr-only" aria-live="polite">
-        BUY BY WHATSAPP +57 300 687 0774. RETURNS FREE. FREE SHIPPING FOR PURCHASES OVER $200,000. ASK BEFORE 3PM IN DOSQUEBRADAS AND RECEIVE SAME DAY.
-      </div>
     </div>
   );
 };

@@ -47,7 +47,6 @@ export const Cart =  () => {
   return (
     <>
       {/* Carrito con focus trap */}
-      {openCart && (
         <FocusTrap
         active={openCart}
         focusTrapOptions={{
@@ -58,13 +57,16 @@ export const Cart =  () => {
         >
           <div>
             <div
-              className="fixed inset-0 bg-black bg-opacity-40 z-40"
+              className={`fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300 ${
+                openCart ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
               onClick={() => setOpenCart(false)}
               aria-label="Close cart overlay"
             />
             <div
               ref={cartRef}
               role="dialog"
+              inert={!openCart ? true : false}
               aria-modal="true"
               aria-label="Shopping cart"
               tabIndex={-1}
@@ -120,7 +122,6 @@ export const Cart =  () => {
             </div>
           </div>
         </FocusTrap>
-      )}
 
       {/* Botón flotante para abrir carrito */}
       <button
