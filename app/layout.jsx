@@ -8,6 +8,7 @@ import { MarqueeBanner } from '@/components/banners/marquee-banner';
 import { Footer } from '@/components/footer/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 import { BodyScrollLock } from "@/components/system/body-scroll-lock";
+import SplashScreen  from "@/components/splash-screen";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -53,15 +54,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={workSans.variable}>
       <body className="font-sans min-h-screen flex flex-col">
-          <MarqueeBanner />
-          <Nav />
-          <BodyScrollLock />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <GlobalSetupProvider />
-          <ToastContainer position="top-left" autoClose={3000} />
-          <Footer />
+          <SplashScreen>
+            <MarqueeBanner />
+            <Nav />
+            <BodyScrollLock />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <GlobalSetupProvider />
+            <ToastContainer position="top-left" autoClose={3000} />
+            <Footer />
+          </SplashScreen>
       </body>
     </html>
   );

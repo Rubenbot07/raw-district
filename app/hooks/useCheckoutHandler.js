@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading }) => {
   const restoreOriginalCart = useCartStore((state) => state.restoreOriginalCart);
   const loadCart = useCartStore((state) => state.loadCart);
-  console.log(cart, cartItems)
   const handleCheckout = async ({ delivery, payment, formData }) => {
     setLoading(true);
     const createOrders = async (shipping_address_id) => {

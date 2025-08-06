@@ -15,6 +15,19 @@ export const createOrderItems = async ({orderItems, orderId}) => {
     if (error) {
         console.error("Error creating order items:", error);
     }    
+
+    for (const item of itemsPayload) {
+        const { error: stockError } = await supabase.rpc("decrement_stock", {
+        p_product_id: item.product_id,
+        p_size: item.size,
+        p_quantity: item.quantity,
+        });
+
+        if (stockError) {
+        console.error("Error decrementing stock:", stockError);
+        return { orderItems: null, error: stockError };
+        }
+    }
     return {
         orderItems: data,
         error
