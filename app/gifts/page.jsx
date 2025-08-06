@@ -1,6 +1,11 @@
 import { getProducts } from "@/actions/get-products";
 import { FilteredProducts } from "@/components/products/filtered-products";
 
+export const metadata = {
+  title: "Gifts",
+  description: "Gifts page",
+}
+
 export default async function GiftsFilterPage({ searchParams }) {
   const page = parseInt(searchParams?.page) || 1;
   const perPage = 15;

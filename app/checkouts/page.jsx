@@ -1,6 +1,11 @@
 import { CheckoutInfo } from "@/components/checkout/checkout-info";
 import { CheckoutSummary } from "@/components/checkout/checkout-summary";
 
+export const metadata = {
+  title: "Checkout",
+  description: "Checkout page",
+}
+
 export default function Page() {
   return (
     <main

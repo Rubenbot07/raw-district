@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
+export const metadata = {
+  title: "Not Found",
+  description: "Page not found",
+}
+
 export default function NotFound() {
   return (
     <main

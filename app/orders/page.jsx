@@ -1,5 +1,10 @@
 import { OrdersWrapper } from "@/components/orders/orders-wrapper";
 
+export const metadata = {
+  title: "Orders",
+  description: "Orders page",
+}
+
 export default async function Page() {
   return (
     <main

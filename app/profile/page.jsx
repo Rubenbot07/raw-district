@@ -1,6 +1,11 @@
 import { getUser } from "@/actions/get-user";
 import { ProfileInfo } from "@/components/profile/profile-info";
 
+export const metadata = {
+  title: "Profile",
+  description: "Profile page",
+}
+
 export default async function Profile() {
   const { user, error } = await getUser();
 

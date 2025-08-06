@@ -3,6 +3,11 @@ import { getUser } from '@/actions/get-user';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
+export const metadata = {
+  title: "Edit Profile",
+  description: "Edit profile page",
+}
+
 export default async function EditFormPage() {
   const { user, error } = await getUser();
 

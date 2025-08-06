@@ -44,7 +44,6 @@ export const SearchWrapper = () => {
         ref={buttonRef}
         aria-label="Open search"
         onClick={() => setIsOpen(true)}
-        className="p-1"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls="search-panel"

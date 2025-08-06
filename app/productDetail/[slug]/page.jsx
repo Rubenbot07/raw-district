@@ -1,6 +1,23 @@
 import { getProductDetail } from '@/actions/get-product-detail';
 import { ProductDetailView } from '@/components/products/product-detail-view';
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const { product } = await getProductDetail(slug);
+
+  if (!product) {
+    return {
+      title: 'Product not found',
+      description: 'This product does not exist or is unavailable.',
+    };
+  }
+
+  return {
+    title: product.name,
+    description: product.description,
+  };
+}
+
 export default async function ProductDetailPage({ params }) {
   const { slug } = params;
 

@@ -1,6 +1,12 @@
 import { OrderSummary } from "@/components/orders/order-summary";
 import { getOrderItems } from "@/actions/get-order-items";
 
+
+export const metadata = {
+  title: "Order Detail",
+  description: "Order detail page",
+}
+
 export default async function Page({ params }) {
   const { orderId } = params;
 

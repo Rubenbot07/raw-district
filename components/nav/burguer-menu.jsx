@@ -24,7 +24,7 @@ export const BurguerMenu = () => {
         ref={triggerRef}
         aria-label="Open menu"
         onClick={() => setIsOpen(true)}
-        className="p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
+        className="py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
       >
         <AlignJustify size={20} aria-hidden="true" />
       </button>

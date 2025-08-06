@@ -2,6 +2,11 @@ import { getCategoryBySlug } from '@/actions/get-categories-slug';
 import { getProducts } from '@/actions/get-products';
 import { FilteredProducts } from '@/components/products/filtered-products';
 
+export const metadata = {
+    title: 'Category',
+    description: 'Category page',
+}
+
 export default async function Page({ searchParams }) {
     const page = parseInt(searchParams?.page) || 1;
     const perPage = 15;

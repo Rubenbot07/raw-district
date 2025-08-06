@@ -6,6 +6,7 @@ import { SearchPageInput } from '@/components/search/search-page-input';
 import { ProductCard } from '@/components/products/product-card';
 import { ProductsLayout } from '@/components/products/products-layout';
 
+
 export default function SearchPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get('query') || '';

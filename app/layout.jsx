@@ -12,8 +12,38 @@ const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
 
-// Si necesitas metadata, puedes exportarla como objeto JS, pero Next.js solo la usa en .ts/.tsx
-// export const metadata = { ... }
+export const metadata = {
+  title: {
+    default: "Rawdistric",
+    template: "%s | Rawdistric",
+  },
+  description: "Buy fast and easy. Shipping to all Colombia.",
+  metadataBase: new URL(defaultUrl),
+  openGraph: {
+    title: "Rawdistric",
+    description: "Buy fast and easy. Shipping to all Colombia.",
+    url: defaultUrl,
+    siteName: "Rawdistric",
+    images: [
+      {
+        url: "/LogoRD.webp",
+        width: 1200,
+        height: 630,
+        alt: "Rawdistric promotion banner",
+      },
+    ],
+    type: "website",
+    locale: "es_CO",
+  },
+
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
 
 const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-work-sans', display: 'swap' });
 
