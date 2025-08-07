@@ -9,6 +9,7 @@ import { Footer } from '@/components/footer/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 import { BodyScrollLock } from "@/components/system/body-scroll-lock";
 import SplashScreen  from "@/components/splash-screen";
+import { ScrollTopButton } from "@/components/scroll-top-button";
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
             <main className="flex-grow">
               {children}
             </main>
+            <ScrollTopButton />
             <GlobalSetupProvider />
             <ToastContainer position="top-left" autoClose={3000} />
             <Footer />
