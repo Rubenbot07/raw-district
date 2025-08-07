@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { formatPrice } from "@/utils/formatPrice";
 import { useCartStore } from "@/app/stores/cartStore";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const [productSize, setProductSize] = useState(null);
   const cartItems = useCartStore((state) => state.cartItems);
@@ -13,6 +14,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const removeFromCartLocal = useCartStore((state) => state.removeFromCartLocal);
   const formattedPrice = formatPrice(product.price)  
+  const t = useTranslations("Cart");
   
   useEffect(() => {
     const fetchProductSize = async () => {
@@ -58,7 +60,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         </header>
 
         <p className="text-xs">
-          <strong>Size:</strong> {productSize?.size}
+          <strong>{t("size")}:</strong> {productSize?.size}
         </p>
 
         <p className="text-sm font-semibold">{formattedPrice}</p>
@@ -77,7 +79,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
           className="text-black text-start text-xs underline focus:outline-black focus-visible:ring-2"
           aria-label={`Remove ${product.name} from cart`}
         >
-          REMOVE
+          {t("removeFromCart")}
         </button>
       </div>
     </article>

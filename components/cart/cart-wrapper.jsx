@@ -1,7 +1,8 @@
 import { Cart } from '@/components/cart/cart';
+import { useTranslations } from 'next-intl';
 
 export const CartWrapper =  () => {    
-
+  const t = useTranslations("Cart");
   return (
     <section
       role="region"
@@ -10,7 +11,7 @@ export const CartWrapper =  () => {
     >
       {/* Título solo visible para screen readers */}
       <h2 id="cart-section-title" className="sr-only">
-        Shopping Cart
+        {t("title")}
       </h2>
 
       <Cart />

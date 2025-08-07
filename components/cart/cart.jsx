@@ -7,6 +7,7 @@ import { formatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useCartStore } from "@/app/stores/cartStore";
+import { useTranslations } from 'next-intl';
 export const Cart =  () => {
   const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
   const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
@@ -21,6 +22,7 @@ export const Cart =  () => {
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
   const cartRef = useRef(null);
   const closeButtonRef = useRef(null);
+  const t = useTranslations('Cart');
 
   
   // Foco automático en botón de cerrar
@@ -78,7 +80,7 @@ export const Cart =  () => {
               style={{ willChange: 'transform' }}
             >
               <div className="flex justify-between w-full px-4 py-3 items-center border-b-[1px] border-gray-300">
-                <h2 className="text-md font-bold">YOUR CART ({totalQuantity})</h2>
+                <h2 className="text-md font-bold">{t('yourCart')} ({totalQuantity})</h2>
                 <button
                   ref={closeButtonRef}
                   onClick={() => setOpenCart(false)}
@@ -104,10 +106,10 @@ export const Cart =  () => {
                   </ul>
                   <div className="px-4 flex flex-col gap-4 w-full py-2 bg-white">
                     <div className="text-[10px] p-4 bg-gray-100">
-                      <strong>FREE SHIPPING</strong> FOR PURCHASES OVER $200,000
+                      <strong>{t('freeShipping')}</strong> {t('ordersOver')}
                     </div>
                     <div className="flex justify-between items-center w-full">
-                      <p className="font-semibold">TOTAL</p>
+                      <p className="font-semibold">{t('total')}</p>
                       <p className="font-semibold text-xl">{formattedPrice}</p>
                     </div>
                     <CheckoutButton />
@@ -116,7 +118,7 @@ export const Cart =  () => {
               ) : (
                 <div className="flex flex-col items-center justify-center w-full h-full gap-4">
                   <Frown size={80} strokeWidth={1.5} color="gray" />
-                  <p>Your cart is empty.</p>
+                  <p>{t('cartEmpty')}</p>
                 </div>
               )}
             </div>

@@ -5,13 +5,13 @@ import { useSearchParams } from 'next/navigation';
 import { SearchPageInput } from '@/components/search/search-page-input';
 import { ProductCard } from '@/components/products/product-card';
 import { ProductsLayout } from '@/components/products/products-layout';
-
+import { useTranslations } from 'next-intl';
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get('query') || '';
   const limit = searchParams.get('limit') || 10;
-
+  const t = useTranslations("Search");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -43,7 +43,7 @@ export default function SearchPage() {
     >
       <header>
         <h1 id="search-title" className="text-xl font-bold px-4">
-          Search Results
+          {t("title")}
         </h1>
       </header>
 
@@ -55,16 +55,16 @@ export default function SearchPage() {
       >
         {query.trim() ? (
           <p>
-            {results.length} result{results.length !== 1 ? 's' : ''} found for "<strong>{query}</strong>"
+            {results.length} {t("result")}{results.length !== 1 ? 's' : ''} {t("foundFor")} "<strong>{query}</strong>"
           </p>
         ) : (
-          <p className="text-gray-500">Enter a search term to begin.</p>
+          <p className="text-gray-500">{t("enterSearch")}</p>
         )}
       </section>
 
       {loading ? (
         <div className="w-full text-center p-8" role="status" aria-live="polite">
-          <p className="text-gray-500">Loading...</p>
+          <p className="text-gray-500">{t("loading")}</p>
         </div>
       ) : results.length > 0 ? (
         <ProductsLayout>
@@ -74,7 +74,7 @@ export default function SearchPage() {
         </ProductsLayout>
       ) : query.trim() ? (
         <div className="w-full text-center p-8" role="alert">
-          <p>No results found for "<strong>{query}</strong>"</p>
+          <p>{t("notFound")} "<strong>{query}</strong>"</p>
         </div>
       ) : null}
     </main>

@@ -1,5 +1,6 @@
 import { getProductDetail } from '@/actions/get-product-detail';
 import { ProductDetailView } from '@/components/products/product-detail-view';
+import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = params;
-
+  const t = await getTranslations("Product");
   const { product, error } = await getProductDetail(slug);
 
   if (error || !product) {
@@ -30,9 +31,9 @@ export default async function ProductDetailPage({ params }) {
           role="alert"
           className="max-w-md bg-red-50 border border-red-200 p-6 rounded-lg"
         >
-          <h1 className="text-2xl font-bold mb-2 text-red-700">Product Not Found</h1>
+          <h1 className="text-2xl font-bold mb-2 text-red-700">{t("notFound")}</h1>
           <p className="text-red-600">
-            The product you are looking for does not exist or may have been removed.
+              {t("notFoundDescription")}
           </p>
         </section>
       </main>

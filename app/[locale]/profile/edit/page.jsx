@@ -2,6 +2,7 @@ import { EditForm } from '@/components/profile/edit-form';
 import { getUser } from '@/actions/get-user';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
 export const metadata = {
   title: "Edit Profile",
@@ -10,6 +11,7 @@ export const metadata = {
 
 export default async function EditFormPage() {
   const { user, error } = await getUser();
+  const t = await getTranslations("Profile");
 
   if (error) {
     console.error("Error fetching user:", error);
@@ -19,7 +21,7 @@ export default async function EditFormPage() {
           role="alert"
           className="bg-red-100 border border-red-300 text-red-800 rounded-md p-4"
         >
-          <h1 className="text-lg font-semibold mb-2">Error loading profile</h1>
+          <h1 className="text-lg font-semibold mb-2">{t("Error")}</h1>
           <p>{error.message || "We couldn't retrieve your profile information."}</p>
         </section>
       </main>
@@ -40,7 +42,7 @@ export default async function EditFormPage() {
           <ArrowLeft size={20} />
         </Link>
         <h1 id="edit-profile-title" className="text-2xl font-medium">
-          Edit Profile
+          {t("editTitle")}
         </h1>
       </header>
 

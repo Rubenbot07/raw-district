@@ -1,22 +1,24 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
-const messages = [
-  { id: 1, content: <><strong>PAY SECURELY</strong> WITH MERCADO PAGO</> },
-  { id: 2, content: <><strong>NEED HELP?</strong></>, link: { href: "https://wa.me/3006870774", text: "Write to us here" } },
-  { id: 3, content: <><strong>FREE SHIPPING</strong> FOR PURCHASES OVER $200,000</> },
-]
-
-export const RotatingBanner = ({ contentMessages, quickLinks }) => {
+export const RotatingBanner = ({ contentMessages}) => {
+  const t = useTranslations('RotatingBanner')
   const [index, setIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
+
+  const defaultMessages = [
+    { id: 1, content: <><strong>{t('securePayment')}</strong></> },
+    { id: 2, content: <><strong>{t('needHelp')}</strong></>, link: { href: "https://wa.me/3006870774", text: t('writeToUs') } },
+    { id: 3, content: <><strong>{t('freeShipping')}</strong></> },
+  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIsVisible(false)
       setTimeout(() => {
-        setIndex((prev) => (prev + 1) % (contentMessages?.length || messages.length))
+        setIndex((prev) => (prev + 1) % (contentMessages?.length || defaultMessages.length))
         setIsVisible(true)
       }, 300)
     }, 4000)
@@ -24,7 +26,7 @@ export const RotatingBanner = ({ contentMessages, quickLinks }) => {
     return () => clearInterval(interval)
   }, [contentMessages])
 
-  const message = contentMessages ? contentMessages[index] : messages[index]
+  const message = contentMessages ? contentMessages[index] : defaultMessages[index]
 
   return (
     <div

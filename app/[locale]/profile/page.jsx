@@ -1,5 +1,6 @@
 import { getUser } from "@/actions/get-user";
 import { ProfileInfo } from "@/components/profile/profile-info";
+import { getTranslations } from "next-intl/server";
 
 export const metadata = {
   title: "Profile",
@@ -8,6 +9,7 @@ export const metadata = {
 
 export default async function Profile() {
   const { user, error } = await getUser();
+  const t = await getTranslations("Profile");
 
   if (error || !user) {
     console.error("Error fetching user:", error);
@@ -17,7 +19,7 @@ export default async function Profile() {
           role="alert"
           className="bg-red-100 border border-red-300 text-red-800 rounded-md p-4"
         >
-          <h1 className="text-lg font-semibold mb-2">Error loading profile</h1>
+          <h1 className="text-lg font-semibold mb-2">{t("Error")}</h1>
           <p>{error?.message || "We couldn't retrieve your profile information."}</p>
         </section>
       </main>

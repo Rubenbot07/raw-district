@@ -1,19 +1,20 @@
-import { updateSession } from "@/lib/supabase/middleware";
+import createIntlMiddleware from 'next-intl/middleware';
+import { updateSession } from '@/lib/supabase/middleware';
+import { routing } from './i18n/routing';
+
+const intlMiddleware = createIntlMiddleware(routing);
 
 export async function middleware(request) {
-  return await updateSession(request);
+  // ⬇️ Primero ejecutamos updateSession
+  const response = await updateSession(request);
+
+  // ⬇️ Luego ejecutamos el middleware de next-intl sobre esa respuesta
+  return intlMiddleware(request, response);
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
-     * Feel free to modify this pattern to include more paths.
-     */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    // Este patrón cubre la mayoría de rutas, excluyendo estáticos y APIs
+    '/((?!_next|api|trpc|_vercel|.*\\..*).*)',
   ],
 };

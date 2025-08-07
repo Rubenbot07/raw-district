@@ -1,12 +1,16 @@
-'use client'
+'use client';
+
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
+import { useTranslations } from 'next-intl';
 
 export const MarqueeBanner = ({ children, speed, z = 50 }) => {
+  const t = useTranslations('Marquee'); // Namespace: Marquee.json
+
   const contentDefault = (
     <>
       <p className="pl-10">
-        <strong>BUY BY WHATSAPP</strong>{" "}
+        <strong>{t('buyWhatsapp')}</strong>{" "}
         <Link
           className="underline focus:outline-none focus:ring-2 focus:ring-blue-500"
           href="https://wa.me/3006870774"
@@ -14,16 +18,16 @@ export const MarqueeBanner = ({ children, speed, z = 50 }) => {
           rel="noopener noreferrer"
         >
           +57 300 687 0774
-        </Link>{" "}
+        </Link>
       </p>
       <p>
-        RETURNS <strong>FREE.</strong> They apply T&C
+        {t('returns')} <strong>{t('free')}</strong>. {t('terms')}
       </p>
       <p>
-        <strong>FREE SHIPPING </strong>FOR PURCHASES OVER $200,000
+        <strong>{t('freeShipping')}</strong> {t('ordersOver')}
       </p>
       <p>
-        ASK <strong>BEFORE 3PM</strong> IN DOSQUEBRADAS AND RECEIVE SAME DAY
+        {t('askBefore')} <strong>3PM</strong> {t('sameDay')}
       </p>
     </>
   );
@@ -31,12 +35,12 @@ export const MarqueeBanner = ({ children, speed, z = 50 }) => {
   return (
     <div
       role="region"
-      aria-label="Important store announcements"
+      aria-label={t('ariaLabel')}
       className={`relative z-${z}`}
-      >
+    >
       <Marquee
         aria-hidden="true"
-        speed={speed} 
+        speed={speed}
         gradient={false}
         pauseOnHover
         autoFill

@@ -1,0 +1,80 @@
+{
+  "RotatingBanner": {
+    "securePayment": "PAGA SEGURO CON MERCADO PAGO",
+    "needHelp": "¿NECESITAS AYUDA?",
+    "writeToUs": "Escríbenos aquí",
+    "freeShipping": "ENVÍO GRATIS EN COMPRAS SUPERIORES A $200.000",
+    "rawdistricBrand": "RAWDISTRIC SE CONVIRTIÓ EN UNA MARCA",
+    "colombianBrands": "MARCAS COLOMBIANAS QUE DEBES CONOCER"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, no pudimos encontrar la página que estás buscando.",
+    "backToHome": "Volver al inicio"
+  },
+  "Marquee": {
+    "byDreamers": "BY DREAMERS",
+    "forDreamers": "FOR DREAMERS",
+    "streetwearPremium": "STREETWEAR PREMIUM",
+    "madeInColombia": "HECHO EN COLOMBIA",
+    "buyWhatsapp": "COMPRA POR WHATSAPP",
+    "returns": "DEVOLUCIONES",
+    "free": "GRATIS",
+    "terms": "Aplican TyC",
+    "freeShipping": "ENVÍO GRATIS",
+    "ordersOver": "POR COMPRAS SUPERIORES A $200.000",
+    "askBefore": "PREGUNTA ANTES DE",
+    "sameDay": "EN DOSQUEBRADAS Y RECIBE EL MISMO DÍA",
+    "ariaLabel": "Anuncios importantes de la tienda"
+  },
+    "Error": {
+    "LoadingProducts" : "Error al cargar los productos"
+  },
+  "Orders": {
+    "title" : "Ordenes",
+    "loading" : "Cargando ordenes",
+    "noOrders" : "No hay ordenes",
+    "Error" : "Error al cargar las ordenes"
+  },
+  "Product": {
+    "loading" : "Cargando producto",
+    "Error" : "Error al cargar el producto",
+    "notFound" : "Producto no encontrado",
+    "notFoundDescription" : "El producto que buscas no fue encontrado o ha sido eliminado."
+  },
+  "Profile": {
+    "loading" : "Cargando perfil",
+    "Error" : "Error al cargar el perfil",
+    "notFound" : "Perfil no encontrado",
+    "notFoundDescription" : "El perfil que buscas no fue encontrado o ha sido eliminado.",
+    "editTitle" : "Editar perfil"
+  },
+  "Search": {
+    "title" : "Resultados de la busqueda",
+    "result" : "resultado",
+    "foundFor" : "Encontrados para",
+    "enterSearch" : "Ingresa el término de búsqueda para comenzar",
+    "loading" : "Cargando productos",
+    "Error" : "Error al cargar los productos",
+    "notFound" : "No se encontraron resultados"
+  },
+  "Cart": {
+    "title" : "Carrito de compras",
+    "loading" : "Cargando carrito",
+    "Error" : "Error al cargar el carrito",
+    "notFound" : "Carrito no encontrado",
+    "notFoundDescription" : "El carrito que buscas no fue encontrado o ha sido eliminado.",
+    "addToCart" : "AÑADIR AL CARRITO",
+    "removeFromCart" : "REMOVER",
+    "checkout" : "FINALIZAR COMPRA",
+    "loginCheckout" : "Inicia sesión para finalizar la compra",
+    "add" : "AÑADIR",
+    "loadingAddToCart" : "Cargando",
+    "yourCart" : "TU CARRITO",
+    "cartEmpty" : "Tu carrito está vacío",
+    "freeShipping" : "ENVÍO GRATIS",
+    "ordersOver" : "POR COMPRAS SUPERIORES A $200,000",
+    "total" : "TOTAL",
+    "size" : "Talla"
+  }
+}

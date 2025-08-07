@@ -4,7 +4,8 @@ import { useUserStore } from "@/app/stores/userStore";
 import { useCartStore } from "@/app/stores/cartStore";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { toast } from "react-toastify";
-export function AddToCartButton({ product, product_size_id, productId, quantity = 1, unit_price }) {
+import { useTranslations } from "next-intl";
+export const AddToCartButton = ({ product, product_size_id, productId, quantity = 1, unit_price }) => {
   const [loading, setLoading] = useState(false)
   const setCartUpdated = useCartStore((state) => state.setCartUpdated);
   const addToCart = useCartStore((state) => state.addToCart);
@@ -14,6 +15,7 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
   const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
   const addToCartLocal = useCartStore((state) => state.addToCartLocal);
   const user = useUserStore((state) => state.user);
+  const tAddToCart = useTranslations("Cart");
 
 
   const handleAddToCart = async () => {
@@ -48,9 +50,9 @@ export function AddToCartButton({ product, product_size_id, productId, quantity 
       onClick={handleAddToCart}
       disabled={loading}
       aria-busy={loading}
-      aria-label={loading ? "Adding product to cart" : "Add product to cart"}
+      aria-label={loading ? tAddToCart("loadingAddToCart") : tAddToCart("addToCart")}
     >
-      {loading ? "Loading…" : "ADD TO CART"}
+      {loading ? tAddToCart("loadingAddToCart") : tAddToCart("addToCart")}
     </button>
   );
 }

@@ -1,15 +1,25 @@
-export const dynamic = 'force-dynamic'
-import "./globals.css";
+import "@/app/globals.css";
 import 'react-toastify/dist/ReactToastify.css';
+
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { notFound } from 'next/navigation';
 import { ToastContainer } from 'react-toastify';
 import { Work_Sans } from "next/font/google";
+
 import { Nav } from "@/components/nav/nav";
 import { MarqueeBanner } from '@/components/banners/marquee-banner';
 import { Footer } from '@/components/footer/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 import { BodyScrollLock } from "@/components/system/body-scroll-lock";
-import SplashScreen  from "@/components/splash-screen";
+import SplashScreen from "@/components/splash-screen";
 import { ScrollTopButton } from "@/components/scroll-top-button";
+
+const workSans = Work_Sans({
+  subsets: ['latin'],
+  variable: '--font-work-sans',
+  display: 'swap'
+});
+
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -37,7 +47,6 @@ export const metadata = {
     type: "website",
     locale: "es_CO",
   },
-
 };
 
 export const viewport = {
@@ -47,14 +56,19 @@ export const viewport = {
   viewportFit: "cover",
 };
 
-const workSans = Work_Sans({ subsets: ['latin'], variable: '--font-work-sans', display: 'swap' });
+export default async function RootLayout({ children, params }) {
+  const locale = params?.locale || "es";
 
-export default function RootLayout({ children }) {
-
+  // Validar si el locale es válido
+  const supportedLocales = ['es', 'en']; // O importa desde routing
+  if (!hasLocale(supportedLocales, locale)) {
+    notFound();
+  }
 
   return (
-    <html lang="en" suppressHydrationWarning className={workSans.variable}>
+    <html lang={locale} suppressHydrationWarning className={workSans.variable}>
       <body className="font-sans min-h-screen flex flex-col">
+        <NextIntlClientProvider locale={locale}>
           <SplashScreen>
             <MarqueeBanner />
             <Nav />
@@ -67,6 +81,7 @@ export default function RootLayout({ children }) {
             <ToastContainer position="top-left" autoClose={3000} />
             <Footer />
           </SplashScreen>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

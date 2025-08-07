@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/layout.jsx", "app/page.jsx", "components/session/login-form.jsx", "components/auth-button.jsx", "components/ui/button.jsx", "app/auth/login/page.jsx", "app/protected/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[locale]/layouapp/[locale]/page.jsx/page.jsx", "components/session/login-form.jsx", "components/auth-button.jsx", "components/ui/button.jsx", "app/[locale]/auth/login/page.jsx", "app/[locale]/protected/page.jsx"],
   "exclude": ["node_modules"]
 }

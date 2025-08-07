@@ -1,6 +1,7 @@
 import { getCategoryBySlug } from '@/actions/get-categories-slug';
 import { getProducts } from '@/actions/get-products';
 import { FilteredProducts } from '@/components/products/filtered-products';
+import { useTranslations } from 'next-intl';
 
 export const metadata = {
     title: 'Category',
@@ -24,6 +25,7 @@ export default async function Page({ searchParams }) {
     };
 
     const { products, error, total } = await getProducts(filters, { from, to });
+    const tError = useTranslations('Error');
 
     if (error) {
         return (
@@ -31,7 +33,7 @@ export default async function Page({ searchParams }) {
                 role="alert"
                 className="text-red-600 bg-red-50 border border-red-200 p-4 rounded-md"
             >
-                <p className="font-semibold">Error loading products:</p>
+                <p className="font-semibold">{tError('LoadingProducts')}:</p>
                 <p>{error.message}</p>
             </div>
         );

@@ -1,5 +1,6 @@
 import { OrderSummary } from "@/components/orders/order-summary";
 import { getOrderItems } from "@/actions/get-order-items";
+import { getTranslations } from "next-intl/server";
 
 
 export const metadata = {
@@ -12,6 +13,8 @@ export default async function Page({ params }) {
 
   const { data: orderItems, error } = await getOrderItems(orderId);
 
+  const t = await getTranslations("Orders");
+
   if (error) {
     console.error(error);
     return (
@@ -20,7 +23,7 @@ export default async function Page({ params }) {
           role="alert"
           className="bg-red-100 border border-red-300 text-red-800 rounded-md p-4"
         >
-          <h1 className="text-lg font-semibold mb-2">Error loading order</h1>
+          <h1 className="text-lg font-semibold mb-2">{t("Error")} </h1>
           <p>{error.message || "Something went wrong while fetching the order."}</p>
         </section>
       </main>

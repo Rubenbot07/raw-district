@@ -3,6 +3,7 @@ import CategoriesWrapper from '@/components/categories/categories-wrapper';
 import { RotatingBanner } from '@/components/banners/rotating-banner';
 import { MarqueeBanner } from '@/components/banners/marquee-banner';
 import { TrustBadges } from '@/components/sections/trust-badges';
+import { useTranslations } from 'next-intl';
 
 export default function Home({ searchParams }) {
   const page = parseInt(searchParams?.page, 10) || 1;
@@ -16,7 +17,8 @@ export default function Home({ searchParams }) {
     category: searchParams?.category ?? null,
     sort: searchParams?.sort ?? null,
   };
-
+  const tRotatingBanner = useTranslations('RotatingBanner');
+  const tMarquee = useTranslations('Marquee');
   return (
     <main className="min-h-screen flex flex-col items-center w-full">
       <div className="w-full flex flex-col gap-10 items-center">
@@ -25,7 +27,6 @@ export default function Home({ searchParams }) {
           <header aria-label="Main Banners">
             <RotatingBanner />
           </header>
-
           <section aria-label="Categories">
             <CategoriesWrapper />
           </section>
@@ -33,10 +34,10 @@ export default function Home({ searchParams }) {
           <section aria-label="Brand Statement">
             <MarqueeBanner z={10}>
               <p className="pl-10">
-                <strong>BY DREAMERS,</strong> FOR DREAMERS
+                <strong>{tMarquee('byDreamers')},</strong> {tMarquee('forDreamers')}
               </p>
               <p>
-                <strong>STREETWEAR PREMIUM</strong> MADE IN COLOMBIA
+                <strong>{tMarquee('streetwearPremium')}</strong> {tMarquee('madeInColombia')}
               </p>
             </MarqueeBanner>
           </section>
@@ -56,13 +57,13 @@ export default function Home({ searchParams }) {
                   id: 1,
                   content: (
                     <>
-                      <strong>RAWDISTRIC</strong> TURNED INTO A BRAND
+                      {tRotatingBanner("rawdistricBrand")}
                     </>
                   ),
                 },
                 {
                   id: 2,
-                  content: <>COLOMBIAN BRANDS YOU SHOULD KNOW</>,
+                  content: <>{tRotatingBanner("colombianBrands")}</>,
                 },
               ]}
             />

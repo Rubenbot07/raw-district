@@ -3,10 +3,12 @@ import Link from "next/link";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useUserStore } from "@/app/stores/userStore";
 import { Lock } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const CheckoutButton = () => {
   const user = useUserStore((state) => state.user);
   const setOpenCart = useCartUIStore((state) => state.setOpenCart);
+  const t = useTranslations("Cart");
 
   const href = user ? "/checkouts" : "/auth/login";
   const label = user ? "Proceed to checkout" : "Sign in to continue";
@@ -21,7 +23,7 @@ export const CheckoutButton = () => {
       >
       
           <Lock size={20} aria-hidden="true" />
-          <span>{user ? "CHECKOUT" : "LOGIN TO CHECKOUT"}</span>
+          <span>{user ? t("checkout") : t("loginCheckout")}</span>
       </Link>
     </div>
   );
