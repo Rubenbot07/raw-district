@@ -22,6 +22,7 @@ export const Cart =  () => {
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
   const cartRef = useRef(null);
   const closeButtonRef = useRef(null);
+  const tCommon = useTranslations('Common');
   const t = useTranslations('Cart');
 
   
@@ -109,7 +110,7 @@ export const Cart =  () => {
                       <strong>{t('freeShipping')}</strong> {t('ordersOver')}
                     </div>
                     <div className="flex justify-between items-center w-full">
-                      <p className="font-semibold">{t('total')}</p>
+                      <p className="font-semibold">{tCommon('total')}</p>
                       <p className="font-semibold text-xl">{formattedPrice}</p>
                     </div>
                     <CheckoutButton />

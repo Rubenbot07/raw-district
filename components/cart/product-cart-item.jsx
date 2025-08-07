@@ -15,6 +15,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const removeFromCartLocal = useCartStore((state) => state.removeFromCartLocal);
   const formattedPrice = formatPrice(product.price)  
   const t = useTranslations("Cart");
+  const tCommon = useTranslations("Common");
   
   useEffect(() => {
     const fetchProductSize = async () => {
@@ -60,7 +61,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         </header>
 
         <p className="text-xs">
-          <strong>{t("size")}:</strong> {productSize?.size}
+          <strong>{tCommon("size")}:</strong> {productSize?.size}
         </p>
 
         <p className="text-sm font-semibold">{formattedPrice}</p>

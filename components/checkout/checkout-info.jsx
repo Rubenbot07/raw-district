@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryDetail, CheckoutSummaryDown, BuyButton } from '@/components/checkout';
 import { formatPrice } from '@/utils/formatPrice';  
+import { useTranslations } from 'next-intl';
 export const CheckoutInfo = () => {
   const { delivery, setDelivery, payment, setPayment, formData, setFormData } = useCheckoutForm();
   const [loading, setLoading] = useState(false);
@@ -22,6 +23,7 @@ export const CheckoutInfo = () => {
   const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
   const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
   const router = useRouter();
+  const t = useTranslations("Checkout");
   const { handleCheckout } = useCheckoutHandler({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading });
 
   useQuickCartCleanup(); // 👈 this hook is used to clean the quick cart if user doesn't finish the checkout
@@ -66,10 +68,10 @@ const handleBuyNow = async () => {
       className="bg-white h-auto w-auto flex flex-col gap-7 lg:border-r-[1px] p-4"
       aria-labelledby="checkout-heading"
     >
-      <h2 id="checkout-heading" className="sr-only">Checkout information</h2>
+      <h2 id="checkout-heading" className="sr-only">{t("title")}</h2>
 
       <div className="flex flex-col gap-2 border-b-[1px] border-gray-400 py-3">
-        <p className="font-light text-sm text-gray-500">Account</p>
+        <p className="font-light text-sm text-gray-500">{t("account")}</p>
         <p aria-label={`Current user email: ${user?.email}`}>{user?.email}</p>
       </div>
 
@@ -100,7 +102,7 @@ const handleBuyNow = async () => {
         aria-live="assertive"
         aria-atomic="true"
       >
-        {loading ? "Processing your order" : ""}
+        {loading ? t("processing") : ""}
       </span>
     </section>
   );

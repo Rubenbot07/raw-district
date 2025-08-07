@@ -4,11 +4,13 @@ import { SearchWrapper } from "@/components/search/search-wrapper";
 import { BurguerMenu } from "@/components/nav/burguer-menu";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 export const NavOptions = () => {
   const pathname = usePathname();
   const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders'];
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
+  const t = useTranslations('Nav');
 
   if (shouldHide) return null;
 
@@ -26,7 +28,7 @@ export const NavOptions = () => {
               href="/about"
               className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
             >
-              About
+              {t('about')}
             </Link>
           </li>
 
@@ -35,7 +37,7 @@ export const NavOptions = () => {
               href="/brand"
               className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
             >
-              Brand
+              {t('brand')}
             </Link>
           </li>
         </ul>

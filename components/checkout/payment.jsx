@@ -1,12 +1,14 @@
 import { SelectableOptions } from "@/components/checkout/selectable-options";
 import { AppWindow } from "lucide-react";
 import { useState, useId } from "react";
+import { useTranslations } from "next-intl";
 
 export const Payment = ({ payment, setPayment }) => {
     const [openWallet, setOpenWallet] = useState(true);
     const [openCash, setOpenCash] = useState(false);
     const walletId = useId();
     const cashId = useId();
+    const t = useTranslations("Payment");
 
     const handleClick = (target) => {
         if (payment === "mercado_pago" && target === "cash") {
@@ -23,9 +25,9 @@ export const Payment = ({ payment, setPayment }) => {
 
     return (
         <section className="flex flex-col gap-3 group">
-            <h2 id="payment-heading" className="text-lg font-semibold">Payment</h2>
+            <h2 id="payment-heading" className="text-lg font-semibold">{t("title")}</h2>
             <p className="font-light text-gray-500">
-                All transactions are secure and encrypted
+                {t("subTitle")}
             </p>
 
             <div
@@ -66,7 +68,7 @@ export const Payment = ({ payment, setPayment }) => {
                     <div className="flex flex-col gap-3 items-center mx-auto p-4 max-w-[300px]">
                         <AppWindow size={100} color="gray" />
                         <p className="font-light text-sm text-center">
-                            After clicking "Pay Now", you will be redirected to Mercado Pago to complete your purchase safely.
+                            {t("mercadoPagoPayment")}
                         </p>
                     </div>
                 </div>
@@ -83,7 +85,7 @@ export const Payment = ({ payment, setPayment }) => {
                 >
                     <SelectableOptions
                         name="cash_on_delivery"
-                        text="Cash on delivery"
+                        text={t("cashOnDelivery")}
                         value={payment}
                         setValue={setPayment}
                         position="bottom"
@@ -97,9 +99,9 @@ export const Payment = ({ payment, setPayment }) => {
                 >
                     <div className="flex flex-col gap-3 items-center mx-auto p-4 w-full">
                         <p className="font-light text-sm text-justify">
-                            You can pay for the purchase in cash at the time of receiving your order. You must have the exact cash value.
+                            {t("cashPayment")}
                             <br /><br />
-                            CASH is only accepted upon receipt of the package. If you prefer to pay by card or transfer, you must use another payment method when purchasing.
+                            {t("cashPaymentSecond")}
                         </p>
                     </div>
                 </div>

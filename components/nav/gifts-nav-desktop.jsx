@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useTranslations } from 'next-intl';
 
 export const GiftsNavDesktop = () => {
   const priceFilters = [200000, 300000, 400000];
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+
+  const t = useTranslations('Nav');
 
   // Cierra el menú si haces clic fuera
   useEffect(() => {
@@ -38,7 +41,7 @@ export const GiftsNavDesktop = () => {
         onMouseLeave={() => setIsOpen(false)}
         className="cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
       >
-        Gifts
+        {t('gifts')}
         <span className={`absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left transition-transform duration-300 ${
           isOpen ? "scale-x-100" : "scale-x-0"
         }`} />
@@ -57,7 +60,7 @@ export const GiftsNavDesktop = () => {
         <ul className="flex flex-col gap-3">
           <li className="relative group w-fit" role="menuitem">
             <Link href="/gifts?type=gift-cards">
-              Gift cards
+              {t('giftCard')}
             </Link>
             <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </li>
@@ -65,7 +68,7 @@ export const GiftsNavDesktop = () => {
           {priceFilters.map(price => (
             <li key={price} className="relative group w-fit" role="menuitem">
               <Link href={`/gifts?price_lt=${price}`}>
-                Less than ${price.toLocaleString()}
+                {t('lessThan')} ${price.toLocaleString()}
               </Link>
               <span className="absolute left-0 bottom-0 h-[1px] w-full bg-black origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
             </li>

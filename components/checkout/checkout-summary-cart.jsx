@@ -1,13 +1,18 @@
 import { formatPrice } from "@/utils/formatPrice";
+import { useTranslations } from "next-intl";
 
 export const CheckoutSummaryCart = ({ cartItems, children }) => {
+  
+  const t = useTranslations("Checkout");
+  const tCommon = useTranslations("Common");
+
   return (
     <section
       className="flex flex-col gap-4 px-2"
       aria-labelledby="checkout-cart-title"
     >
       <h2 id="checkout-cart-title" className="sr-only">
-        Items in your cart
+        {t("itemsInYourCart")}
       </h2>
 
       <div
@@ -45,7 +50,7 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
 
                 <div>
                   <p className="text-sm font-medium">{item.products.name}</p>
-                  <p className="text-xs text-gray-500">Size: {size}</p>
+                  <p className="text-xs text-gray-500">{tCommon("size")}: {size}</p>
                   <p className="sr-only">Quantity: {item.quantity}</p>
                 </div>
               </div>

@@ -2,25 +2,28 @@ import { InstagramIcon } from '@/components/icons/instagram-icon';
 import { LinkedinIcon } from '@/components/icons/linkedin-icon';
 import { CircleDollarSign } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export const Footer = () => {
+  const t = useTranslations("Footer");
+
   const footerLinks = [
-    { label: '© RAWDISTRIC SAS 2025', href: '/' },
-    { label: 'Track your order', href: '/' },
-    { label: 'Privacy Policy', href: '/' },
-    { label: 'Shipping Policy', href: '/' },
-    { label: 'Frequently Asked Questions (FAQs)', href: '/' },
-    { label: 'Exchanges and Returns', href: '/' },
-    { label: 'Terms & Conditions', href: '/' },
-    { label: 'About', href: '/' },
-    { label: 'Contact', href: '/' },
-    { label: 'Instagram', href: 'https://www.instagram.com/rawdistic/' },
-    { label: 'Linkedin', href: 'https://www.linkedin.com/company/rawdistic/' },
+    { label: t("copyright"), href: "/" },
+    { label: t("trackOrder"), href: "/" },
+    { label: t("privacyPolicy"), href: "/" },
+    { label: t("shippingPolicy"), href: "/" },
+    { label: t("faqs"), href: "/" },
+    { label: t("exchangesReturns"), href: "/" },
+    { label: t("termsConditions"), href: "/" },
+    { label: t("about"), href: "/" },
+    { label: t("contact"), href: "/" },
+    { label: t("instagram"), href: "https://www.instagram.com/rawdistic/" },
+    { label: t("linkedin"), href: "https://www.linkedin.com/company/rawdistic/" }
   ];
 
   return (
     <footer className="w-full flex flex-col items-start border-t gap-16 p-16" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">Footer</h2>
+      <h2 id="footer-heading" className="sr-only">{t("title")}</h2>
 
       <div className="flex flex-col md:flex-row w-full gap-y-8 items-start">
         {/* Marca y redes */}

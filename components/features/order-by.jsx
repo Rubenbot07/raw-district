@@ -4,10 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const OrderBy = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
+
+  const t = useTranslations('OrderBy');
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('Order by');
@@ -16,10 +19,10 @@ export const OrderBy = () => {
   const dropdownRef = useRef(null);
 
   const options = [
-    { label: 'Price, lower to higher', value: 'price_asc' },
-    { label: 'Price, higher to lower', value: 'price_desc' },
-    { label: 'Alphabetically, A,Z', value: 'name_asc' },
-    { label: 'Alphabetically, Z,A', value: 'name_desc' },
+    { label: t('priceLowToHigh'), value: 'price_asc' },
+    { label: t('priceHighToLow'), value: 'price_desc' },
+    { label: t('alphabeticalAZ'), value: 'name_asc' },
+    { label: t('alphabeticalZA'), value: 'name_desc' },
   ];
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export const OrderBy = () => {
     if (option) {
       setSelectedOption(option.label);
     } else {
-      setSelectedOption('Order by');
+      setSelectedOption(t("title"));
     }
   }, [searchParams]);
 

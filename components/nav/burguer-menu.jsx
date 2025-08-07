@@ -5,10 +5,13 @@ import Link from "next/link";
 import { GiftsNavMobile } from "./gifts-nav-mobile";
 import { AlignJustify, X } from "lucide-react";
 import { FocusTrap } from "focus-trap-react";
+import { useTranslations } from 'next-intl';
 
 export const BurguerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef(null);
+
+  const t = useTranslations('Nav');
 
   // Restaurar foco al botón hamburguesa cuando se cierra el menú
   useEffect(() => {
@@ -59,7 +62,7 @@ export const BurguerMenu = () => {
             className="fixed top-0 left-0 z-50 w-full min-h-72 bg-white shadow-lg p-8 rounded-md transition-transform duration-500 ease-in-out translate-y-0 opacity-100"
           >
             <div className="flex justify-between items-center">
-              <h2 id="mobile-menu-title" className="text-base font-semibold">Menu</h2>
+              <h2 id="mobile-menu-title" className="text-base font-semibold">{t("burguerMenu")}</h2>
               <button
                 aria-label="Close menu"
                 onClick={() => setIsOpen(false)}
@@ -79,7 +82,7 @@ export const BurguerMenu = () => {
                   onClick={() => setIsOpen(false)}
                   className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
                 >
-                  About
+                  {t("about")}
                 </Link>
               </li>
               <li>
@@ -88,7 +91,7 @@ export const BurguerMenu = () => {
                   onClick={() => setIsOpen(false)}
                   className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
                 >
-                  Brand
+                  {t("brand")}
                 </Link>
               </li>
             </ul>

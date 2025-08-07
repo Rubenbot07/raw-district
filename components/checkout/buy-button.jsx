@@ -1,5 +1,6 @@
-
+import { useTranslations } from "next-intl"
 export const BuyButton = ({ onClick , loading}) => {
+  const t = useTranslations('Checkout');
   return (
     <button
         onClick={onClick}
@@ -10,7 +11,7 @@ export const BuyButton = ({ onClick , loading}) => {
           loading ? 'opacity-50 cursor-not-allowed' : ''
         }`}
       >
-        {loading ? "Loading..." : "Buy Now!"}
+        {loading ? t('loading') : t('buyButton')}
     </button>
   )
 }

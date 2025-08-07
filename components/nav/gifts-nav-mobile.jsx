@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 export const GiftsNavMobile = ({ onOpen }) => {
   const priceFilters = [200000, 300000, 400000];
   const [isOpen, setIsOpen] = useState(false);
+
+  const t = useTranslations('Nav');
 
   const toggle = () => setIsOpen((prev) => !prev);
 
@@ -17,7 +20,7 @@ export const GiftsNavMobile = ({ onOpen }) => {
         aria-controls="gifts-submenu"
         className="flex items-center gap-1 w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
       >
-        <span>Gifts</span>
+        <span>{t('gifts')}</span>
         <ChevronDown
           size={16}
           className={`transition-transform duration-300 ${
@@ -40,7 +43,7 @@ export const GiftsNavMobile = ({ onOpen }) => {
             onClick={onOpen}
             className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
           >
-            Gift cards
+            {t('giftCard')}
           </Link>
         </li>
         {priceFilters.map((price) => (
@@ -50,7 +53,7 @@ export const GiftsNavMobile = ({ onOpen }) => {
               onClick={onOpen}
               className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
             >
-              Less than ${price.toLocaleString()}
+              {t('lessThan')} ${price.toLocaleString()}
             </Link>
           </li>
         ))}

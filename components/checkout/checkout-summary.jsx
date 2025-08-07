@@ -5,10 +5,12 @@ import { CheckoutSummaryCart } from "@/components/checkout/checkout-summary-cart
 import { useState } from "react";
 import { CheckoutSummaryDetail } from "@/components/checkout/checkout-summary-detail";
 import { useCartStore } from "@/app/stores/cartStore";
+import { useTranslations } from "next-intl";
 
 export const CheckoutSummary = () => {
   const [open, setOpen] = useState(false);
-
+  const t = useTranslations("OrderSummary");
+  const tCheckout = useTranslations("Checkout");
   const cart = useCartStore((state) => state.cart);
   const cartItems = useCartStore((state) => state.cartItems);
   const getCartTotalPriceLocal = useCartStore((state) => state.getCartTotalPriceLocal);
@@ -21,7 +23,7 @@ export const CheckoutSummary = () => {
 
   return (
     <section className="max-w-xl lg:max-w-5xl mx-auto" aria-labelledby="checkout-summary-title">
-      <h2 id="checkout-summary-title" className="sr-only">Checkout Summary</h2>
+      <h2 id="checkout-summary-title" className="sr-only">{tCheckout("title")}</h2>
 
       {/* Mobile Accordion Button */}
       <div className="lg:hidden bg-gray-100 p-4">
@@ -32,7 +34,7 @@ export const CheckoutSummary = () => {
           className="w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-black"
         >
           <div className="text-sm flex items-center gap-2">
-            <span>Order Summary</span>
+            <span>{t("title")}</span>
             <span
               className={`transform transition-transform duration-300 ${open ? "rotate-180" : ""}`}
               aria-hidden="true"

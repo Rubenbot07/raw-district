@@ -1,4 +1,14 @@
 {
+  "Common": {
+    "loading" : "Loading",
+    "size" : "Size",
+    "quantity" : "Quantity",
+    "total" : "Total",
+    "item": "item",
+    "shipping": "Shipping",
+    "pickup": "Pickup",
+    "free": "FREE"
+  },
   "RotatingBanner": {
     "securePayment": "PAY SECURELY WITH MERCADO PAGO",
     "needHelp": "NEED HELP?",
@@ -69,12 +79,100 @@
     "checkout" : "CHECKOUT",
     "loginCheckout" : "LOGIN TO CHECKOUT",
     "add" : "ADD",
-    "loadingAddToCart" : "Loading",
     "yourCart" : "YOUR CART",
     "cartEmpty" : "Your cart is empty",
     "freeShipping" : "FREE SHIPPING",
-    "ordersOver" : "FOR PURCHASES OVER $200,000",
-    "total" : "Total",
-    "size" : "Size"
+    "ordersOver" : "FOR PURCHASES OVER $200,000"
+  },
+  "Categories" : {
+    "loading" : "Loading category",
+    "error" : "Error loading category",
+    "notFound" : "Category not found"
+  },
+  "Sizes" : {
+    "loading" : "Loading size",
+    "editTitle" : "Error loading size",
+    "notFound" : "Size not found",
+    "sizeOptions" :  "Size Options"
+  },
+  "Checkout" : {
+    "title" : "Checkout information",
+    "loading" : "Loading checkout",
+    "Error" : "Error loading checkout",
+    "notFound" : "Checkout not found",
+    "buyButton" : "BUY NOW",
+    "account" : "Account",
+    "processing" : "Processing your order",
+    "itemsInYourCart" : "Items in your cart"
+  },
+  "OrderSummary" : {
+    "title" : "Order summary",
+    "loading" : "Loading order summary",
+    "Error" : "Error loading order summary",
+    "notFound" : "Order summary not found",
+    "free" : "Free",
+    "includes" : "Includes",
+    "taxes" : "in taxes",
+    "show" : "Show",
+    "hide" : "Hide"
+  },
+  "Delivery" : {
+    "title" : "Delivery"
+  },
+  "Payment" : {
+    "title" : "Payment",
+    "subTitle" : "All transactions are secure and encrypted",
+    "cashOnDelivery" : "Cash on delivery",
+    "mercadoPagoPayment" : "After clicking \"Pay Now\", you will be redirected to Mercado Pago to complete your purchase safely.",
+    "cashPayment" : "You can pay for the purchase in cash at the time of receiving your order. You must have the exact cash value.",
+    "cashPaymentSecond" : "CASH is only accepted upon receipt of the package. If you prefer to pay by card or transfer, you must use another payment method when purchasing."
+  },
+  "StoreBranches" : {
+    "title" : "Store branches",
+    "subtitle" : "There is 1 store with stock",
+    "usuallyReady" : "It is usually ready in 4 hours"
+  },
+  "PurchaseForm" : {
+    "title" : "Your Information",
+    "name" : "Name",
+    "surname" : "Surname",
+    "phone" : "Phone",
+    "address" : "Address",
+    "city" : "City",
+    "state" : "State",
+    "zipCode" : "Zip Code",
+    "identification" : "Identification",
+    "fieldRequired" : "This field is required",
+    "description" : "FREE National Delivery (2 to 3 business days main cities. More than 5 business days other municipalities)",
+    "shippingMethod" : "Shipping Method"
+  },
+  "OrderBy": {
+    "title" : "Order by",
+    "priceLowToHigh" : "Price, lower to higher",
+    "priceHighToLow" : "Price, higher to lower",
+    "alphabeticalAZ" : "Alphabetically, A,Z",
+    "alphabeticalZA" : "Alphabetically, Z,A"
+  },
+  "Footer": {
+    "title": "Footer",
+    "copyright": "© RAWDISTRIC SAS 2025",
+    "trackOrder": "Track your order",
+    "privacyPolicy": "Privacy Policy",
+    "shippingPolicy": "Shipping Policy",
+    "faqs": "Frequently Asked Questions (FAQs)",
+    "exchangesReturns": "Exchanges and Returns",
+    "termsConditions": "Terms & Conditions",
+    "about": "About",
+    "contact": "Contact",
+    "instagram": "Instagram",
+    "linkedin": "Linkedin"
+  },
+  "Nav": {
+    "gifts": "Gifts",
+    "about": "About",
+    "brand": "Brand",
+    "burguerMenu" : "Menu",
+    "giftCard": "Gift Cards",
+    "lessThan" : "Less than"
   }
 }

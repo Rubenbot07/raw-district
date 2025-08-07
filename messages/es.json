@@ -1,4 +1,14 @@
 {
+  "Common": {
+    "loading" : "Cargando",
+    "size" : "Talla",
+    "quantity" : "Cantidad",
+    "total" : "Total",
+    "item": "artículo",
+    "shipping" : "Envío",
+    "pickup" : "Retiro",
+    "free" : "GRATIS"
+  },
   "RotatingBanner": {
     "securePayment": "PAGA SEGURO CON MERCADO PAGO",
     "needHelp": "¿NECESITAS AYUDA?",
@@ -69,12 +79,100 @@
     "checkout" : "FINALIZAR COMPRA",
     "loginCheckout" : "Inicia sesión para finalizar la compra",
     "add" : "AÑADIR",
-    "loadingAddToCart" : "Cargando",
     "yourCart" : "TU CARRITO",
     "cartEmpty" : "Tu carrito está vacío",
     "freeShipping" : "ENVÍO GRATIS",
-    "ordersOver" : "POR COMPRAS SUPERIORES A $200,000",
-    "total" : "TOTAL",
-    "size" : "Talla"
+    "ordersOver" : "POR COMPRAS SUPERIORES A $200,000"
+  },
+    "Categories" : {
+    "loading" : "Cargando categorías",
+    "error" : "Error al cargar las categorías",
+    "notFound" : "Categorias no encontradas"
+  },
+    "Sizes" : {
+    "loading" : "Cargando tallas",
+    "editTitle" : "Error al cargar tallas",
+    "notFound" : "Tallas no encontradas",
+    "sizeOptions" :  "Opciones de talla"
+  },
+  "Checkout" : {
+    "title" : "informacion Finalizar compra",
+    "loading" : "Cargando",
+    "Error" : "Error Finalizando compra",
+    "notFound" : "Checkout no encontrado",
+    "buyButton" : "BUY NOW",
+    "account" : "Cuenta",
+    "processing" : "Procesando tu orden",
+    "itemsInYourCart" : "Articulos en tu carrito"
+  },
+    "OrderSummary" : {
+    "title" : "Resumen de la orden",
+    "loading" : "Cargando resumen de la orden",
+    "Error" : "Error al cargar el resumen de la orden",
+    "notFound" : "Resumen de la orden no encontrado",
+    "free" : "Gratis",
+    "includes" : "Incluye",
+    "taxes" : "en impuestos",
+    "show" : "Mostrar",
+    "hide" : "Ocultar"
+  },
+  "Delivery" : {
+    "title" : "Entrega"
+  },
+  "Payment" : {
+    "title" : "Pago",
+    "subTitle" : "Todas las transacciones son seguras y encriptadas",
+    "cashOnDelivery" : "Pago contra entrega",
+    "mercadoPagoPayment" : "Despues de hacer click en \"Pagar ahora\", serás redirigido a Mercado Pago para completar tu compra.",
+    "cashPayment" : "Puedes pagar por la compra en efectivo en el momento de recibir su orden. Debes tener el efectivo exacto",
+    "cashPaymentSecond" : "Solo se acepta EFECTIVO al recibir el paquete. Si prefiere pagar con tarjeta o transferencia, debe utilizar otro método de pago al realizar la compra."
+  },
+  "StoreBranches" : {
+    "title" : "Sucursales",
+    "subtitle" : "Hay 1 tienda con stock",
+    "usuallyReady" : "Está listo usualmente en 4 horas"
+  },
+  "PurchaseForm" : {
+    "title" : "Tu información",
+    "name" : "Nombre",
+    "surname" : "Apellido",
+    "phone" : "Teléfono",
+    "address" : "Dirección",
+    "city" : "Ciudad",
+    "state" : "Estado",
+    "zipCode" : "Código Postal",
+    "identification" : "Cédula",
+    "fieldRequired" : "Este campo es requerido",
+    "description" : "ENVÍO GRATIS (2 a 3 días de entrega en ciudades principales. Mas de 5 días en otras ciudades)",
+    "shippingMethod" : "Método de entrega"
+  },
+    "OrderBy": {
+    "title" : "Ordenar por",
+    "priceLowToHigh" : "Precio, menor a mayor",
+    "priceHighToLow" : "Price, mayor a menor",
+    "alphabeticalAZ" : "Alfabeticamente, A,Z",
+    "alphabeticalZA" : "Alfabeticamente, Z,A"
+  },
+   "Footer": {
+    "title": "Footer",
+    "copyright": "© RAWDISTRIC SAS 2025",
+    "trackOrder": "Rastrea tu pedido",
+    "privacyPolicy": "Política de Privacidad",
+    "shippingPolicy": "Política de Envíos",
+    "faqs": "Preguntas Frecuentes (FAQs)",
+    "exchangesReturns": "Cambios y Devoluciones",
+    "termsConditions": "Términos y Condiciones",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "instagram": "Instagram",
+    "linkedin": "Linkedin"
+  },
+    "Nav": {
+    "gifts": "Regalos",
+    "about": "Acerca de",
+    "brand": "Marca",
+    "burguerMenu" : "Menú",
+    "giftCard": "Tarjeta de regalo",
+    "lessThan" : "Menor a"
   }
 }
