@@ -5,7 +5,7 @@ import { getProductDetail } from "@/actions/get-product-detail";
 import { SizesWrapper } from "@/components/categories/sizes-wrapper";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore";
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
 import { X } from "lucide-react";
 import {FocusTrap} from 'focus-trap-react';
 
@@ -17,6 +17,8 @@ export const PreCartModal = () => {
   const setOpenPreCart = useCartUIStore((state) => state.setOpenPreCart);
   const selectedProductSlug = useCartUIStore((state) => state.selectedProductSlug);
   const closeButtonRef = useRef(null);
+
+  const formattedPrice = useFormatPrice();
 
   useEffect(() => {
     if (!selectedProductSlug) return;
@@ -100,7 +102,7 @@ export const PreCartModal = () => {
                     <InfinitiveLoopSlider productImages={product.product_images} />
                     <div className="flex flex-col gap-6 p-4">
                       <p className="font-medium" id="product-name">{product.name}</p>
-                      <p className="text-xs">{formatPrice(product.price)}</p>
+                      <p className="text-xs">{formattedPrice(product.price)}</p>
                       <SizesWrapper product={product} />
                       <p className="text-xs">{product.description}</p>
                     </div>

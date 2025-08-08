@@ -3,7 +3,7 @@ import { FocusTrap } from 'focus-trap-react';
 import { useRef, useEffect } from 'react';
 import { ProductCartItem, CheckoutButton } from "@/components/cart";
 import { X, ShoppingCart, Frown } from "lucide-react";
-import { formatPrice } from '@/utils/formatPrice'
+import { useFormatPrice } from '@/utils/formatPrice'
 import { usePathname } from "next/navigation";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useCartStore } from "@/app/stores/cartStore";
@@ -16,7 +16,7 @@ export const Cart =  () => {
   const setOpenCart = useCartUIStore((state) => state.setOpenCart);
   const totalPrice = getCartTotalPriceLocal()
   const totalQuantity = getCartTotalQuantityLocal()
-  const formattedPrice = formatPrice(totalPrice)
+  const formattedPrice = useFormatPrice()
   const pathname = usePathname();
   const hiddenOnRoutes = ['/auth', '/checkouts', '/orders', '/profile']
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route))
@@ -111,7 +111,7 @@ export const Cart =  () => {
                     </div>
                     <div className="flex justify-between items-center w-full">
                       <p className="font-semibold">{tCommon('total')}</p>
-                      <p className="font-semibold text-xl">{formattedPrice}</p>
+                      <p className="font-semibold text-xl">{formattedPrice(totalPrice)}</p>
                     </div>
                     <CheckoutButton />
                   </div>

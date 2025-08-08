@@ -1,8 +1,12 @@
 'use client';
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export const ProfileInfo = ({ user }) => {
+  const t = useTranslations("Profile");
+  const tPurchaseForm = useTranslations("PurchaseForm");
+  const tCommon = useTranslations("Common");
   return (
     <section
       className="flex flex-col gap-8 mx-auto w-full lg:max-w-4xl p-4 h-screen"
@@ -13,7 +17,7 @@ export const ProfileInfo = ({ user }) => {
           <ArrowLeft size={20} />
         </Link>
         <h1 id="profile-heading" className="text-2xl font-medium">
-          Profile
+          {t("title")}
         </h1>
       </div>
 
@@ -24,19 +28,19 @@ export const ProfileInfo = ({ user }) => {
       >
         <dl className="grid grid-cols-1 gap-4">
           <div>
-            <dt className="text-gray-600">Name</dt>
+            <dt className="text-gray-600">{tPurchaseForm("name")}</dt>
             <dd>{user?.user_metadata.full_name}</dd>
           </div>
           <div>
-            <dt className="text-gray-600">Email</dt>
+            <dt className="text-gray-600">{tCommon("email")}</dt>
             <dd>{user?.email}</dd>
           </div>
           <div>
-            <dt className="text-gray-600">Address</dt>
+            <dt className="text-gray-600">{tPurchaseForm("address")}</dt>
             <dd>{user?.user_metadata.address}</dd>
           </div>
           <div>
-            <dt className="text-gray-600">Phone</dt>
+          <dt className="text-gray-600">{tPurchaseForm("phone")}</dt>
             <dd>{user?.user_metadata.phone}</dd>
           </div>
         </dl>
@@ -47,7 +51,7 @@ export const ProfileInfo = ({ user }) => {
         className="bg-black text-white py-2 text-center rounded-[8px] self-start w-32"
         aria-label="Edit profile"
       >
-        Edit
+        {t("edit")}
       </Link>
     </section>
   );

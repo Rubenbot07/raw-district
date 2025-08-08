@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useTranslations } from "next-intl";
 
 export function UpdatePasswordForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const tPassword = useTranslations("Password");
 
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
@@ -30,21 +32,21 @@ export function UpdatePasswordForm() {
 
   return (
     <div className="max-w-md w-full mx-auto p-6 bg-white border border-gray-200 rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold mb-2 text-center">Reset Your Password</h2>
+      <h2 className="text-2xl font-semibold mb-2 text-center">{tPassword("resetPassword")}</h2>
       <p className="text-sm text-gray-600 text-center mb-6">
-        Please enter your new password below.
+        {tPassword("enterPasswordBelow")}
       </p>
 
       <form onSubmit={handleUpdatePassword} className="space-y-6">
         <div className="flex flex-col gap-2">
           <label htmlFor="password" className="text-sm font-medium text-gray-700">
-            New password
+            {tPassword("newPassword")}
           </label>
           <input
             id="password"
             type="password"
             required
-            placeholder="New password"
+            placeholder={tPassword("newPassword")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
@@ -64,7 +66,7 @@ export function UpdatePasswordForm() {
             isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:bg-gray-900"
           }`}
         >
-          {isLoading ? "Saving..." : "Save new password"}
+          {isLoading ? tPassword("saving") : tPassword("save")}
         </button>
       </form>
     </div>

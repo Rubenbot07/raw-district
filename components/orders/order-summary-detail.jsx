@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { getAddresses } from "@/actions/get-addresses";
 import { OrderDetail } from "@/components/orders/order-detail";
 import { OrderShippingDetail } from "@/components/orders/order-shipping-detail";
+import { useTranslations } from "next-intl";
 
 export const OrderSummaryDetail = ({ order }) => {
   const [address, setAddress] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const tCommon = useTranslations("Common");
+  const tOrderSummary = useTranslations("OrderSummary");
   useEffect(() => {
     const fetchAddress = async () => {
       if (!order.shipping_address_id) return;
@@ -33,7 +35,7 @@ export const OrderSummaryDetail = ({ order }) => {
 
   return (
     <section aria-labelledby="order-summary-detail" className="flex flex-col gap-4">
-      <h2 id="order-summary-detail" className="sr-only">Order Summary Detail</h2>
+      <h2 id="order-summary-detail" className="sr-only">{tOrderSummary("title2")}</h2>
 
       <OrderDetail
         quantity={order.total_quantity}
@@ -46,7 +48,7 @@ export const OrderSummaryDetail = ({ order }) => {
       {order.shipping_method === 'shipping' && (
         <>
           {isLoading ? (
-            <div className="text-sm text-gray-500">Loading shipping address...</div>
+            <div className="text-sm text-gray-500">{tCommon("loading")}</div>
           ) : (
             address && <OrderShippingDetail address={address} />
           )}

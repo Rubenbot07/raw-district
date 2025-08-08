@@ -3,12 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import { useTranslations } from "next-intl";
 
 export function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const tPassword = useTranslations("Password");
+  const tCommon = useTranslations("Common");
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
@@ -34,9 +37,9 @@ export function ForgotPasswordForm() {
     <div className="max-w-md w-full mx-auto p-6 bg-white border border-gray-200 rounded-md shadow-md">
       {success ? (
         <div role="alert" aria-live="polite" className="space-y-4 text-center">
-          <h2 className="text-2xl font-semibold">Check Your Email</h2>
+          <h2 className="text-2xl font-semibold">{tPassword("checkYourPassword")}</h2>
           <p className="text-sm text-gray-600">
-            If your account exists, we’ve sent password reset instructions to your email.
+            {tPassword("ifHaveAccount")}
           </p>
         </div>
       ) : (
@@ -47,16 +50,16 @@ export function ForgotPasswordForm() {
         >
           <div>
             <h2 id="reset-title" className="text-2xl font-semibold text-center mb-1">
-              Reset Your Password
+              {tPassword("resetPassword")}
             </h2>
             <p className="text-sm text-gray-600 text-center">
-              Enter your email and we’ll send you a link to reset your password.
+              {tPassword("resetPasswordDescription")}
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-sm font-medium text-gray-700">
-              Email
+              {tCommon("email")}
             </label>
             <input
               id="email"
@@ -82,13 +85,13 @@ export function ForgotPasswordForm() {
               isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:bg-gray-900"
             }`}
           >
-            {isLoading ? "Sending..." : "Send Reset Email"}
+            {isLoading ? tPassword("sending") : tPassword("sendResetEmail")}
           </button>
 
           <p className="text-sm text-center text-gray-600 mt-4">
-            Already have an account?{" "}
+            {tCommon("alreadyHaveAccount")}?{" "}
             <Link href="/auth/login" className="text-black underline hover:text-gray-800">
-              Login
+              {tCommon("login")}
             </Link>
           </p>
         </form>

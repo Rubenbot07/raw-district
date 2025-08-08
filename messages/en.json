@@ -7,7 +7,20 @@
     "item": "item",
     "shipping": "Shipping",
     "pickup": "Pickup",
-    "free": "FREE"
+    "free": "FREE",
+    "paid": "PAID",
+    "pending": "PENDING",
+    "cancelled": "CANCELLED",
+    "delivered": "DELIVERED",
+    "returned": "RETURNED",
+    "status": "Status",
+    "standardShipping": "Standard Shipping",
+    "storePickup": "In Store Pickup",
+    "alreadyHaveAccount": "Already have an account",
+    "login": "Login",
+    "signUp": "Sign up",
+    "email": "Email",
+    "password": "Password"
   },
   "RotatingBanner": {
     "securePayment": "PAY SECURELY WITH MERCADO PAGO",
@@ -43,8 +56,11 @@
   "Orders": {
     "title" : "Orders",
     "loading" : "Loading orders",
-    "noOrders" : "No orders found",
-    "Error" : "Error loading orders"
+    "noOrders" : "You have no orders yet",
+    "Error" : "Error loading orders",
+    "order" : "Order",
+    "shippingDetails": "Shipping Details",
+    "noShippingDetails": "No shipping details available"
   },
   "Product": {
     "loading" : "Loading product",
@@ -53,20 +69,35 @@
     "notFoundDescription" : "The product you are looking for does not exist or may have been removed."
   },
   "Profile": {
+    "title" : "Profile",
+    "completeProfile" : "Complete your profile",
+    "profileFields": "User profile fields",
     "loading" : "Loading profile",
     "Error" : "Error loading profile",
     "notFound" : "Profile not found",
     "notFoundDescription" : "The profile you are looking for does not exist or may have been removed.",
-    "editTitle" : "Edit profile"
+    "editTitle" : "Edit contact information",
+    "edit": "Edit",
+    "update": "Update",
+    "guest": "Guest",
+    "userMenu": "User menu",
+    "orders": "Orders",
+    "logout": "Logout",
+    "loginOut" : "Login out"
   },
   "Search": {
     "title" : "Search results",
+    "search" : "Search",
+    "searchProducts" : "Search products",
     "result" : "result",
+    "products" : "Products",
+    "clear" : "CLEAR",
     "foundFor" : "Found for",
     "enterSearch" : "Enter search term to begin",
     "loading" : "Loading products",
     "Error" : "Error loading products",
-    "notFound" : "No results found"
+    "notFound" : "No results found",
+    "popularSearches" : "Popular searches"
   },
   "Cart": {
     "title" : "Shopping Cart",
@@ -89,6 +120,14 @@
     "error" : "Error loading category",
     "notFound" : "Category not found"
   },
+  "Category": {
+    "t-shirts": "T-Shirts",
+    "pants": "Pants",
+    "caps": "Caps",
+    "jackets": "Jackets",
+    "hoodies": "Hoodies",
+    "sweaters": "Sweaters"
+  },
   "Sizes" : {
     "loading" : "Loading size",
     "editTitle" : "Error loading size",
@@ -107,6 +146,7 @@
   },
   "OrderSummary" : {
     "title" : "Order summary",
+    "title2": "Order summary Detail",
     "loading" : "Loading order summary",
     "Error" : "Error loading order summary",
     "notFound" : "Order summary not found",
@@ -134,6 +174,7 @@
   },
   "PurchaseForm" : {
     "title" : "Your Information",
+    "fullName" : "Full name",
     "name" : "Name",
     "surname" : "Surname",
     "phone" : "Phone",
@@ -174,5 +215,53 @@
     "burguerMenu" : "Menu",
     "giftCard": "Gift Cards",
     "lessThan" : "Less than"
+  },
+  "Password" : {
+    "checkYourPassword" : "Check your password",
+    "resetPassword" : "Reset your password",
+    "subtitle" : "Enter your password",
+    "password" : "Password",
+    "resetPasswordDescription" : "Enter your email and we’ll send you a link to reset your password.",
+    "sendResetEmail" : "Send reset email",
+    "sending" : "Sending",
+    "ifHaveAccount" : "If your account exists, we’ve sent password reset instructions to your email.",
+    "enterPasswordBelow" : "Enter your password below",
+    "newPassword" : "New Password",
+    "saving" : "Saving",
+    "save": "Save new password"
+  },
+  "Login": {
+    "enterEmail" : "Enter your email below to login to your account.",
+    "noAccount" : "Don't have an account?",
+    "forgotPassword" : "Forgot your password?",
+    "loginIn": "Login in",
+    "signInGoogle": "Sign in with Google",
+    "authForm": "Authentication form"
+  },
+  "SignUp" : {
+    "createAccount" : "Create new account",
+    "repeatPassword" : "Repeat your password",
+    "creatingAccount" : "Creating account",
+    "noMatch" : "Passwords do not match"
+  },
+  "trustBadges": {
+    "items": [
+      {
+        "title": "SECURE PAYMENTS",
+        "description": "We accept Credit and Money Orders through Mercado Pago."
+      },
+      {
+        "title": "EXPRESS SHIPPING",
+        "description": "In less than 2 days you will have the package in your hands."
+      },
+      {
+        "title": "QUICK AND EASY CHANGES",
+        "description": "You have up to 30 days to make exchanges and/or returns."
+      },
+      {
+        "title": "PREMIUM QUALITY",
+        "description": "All our products are manufactured with the most high quality standards in Colombia."
+      }
+    ]
   }
 }

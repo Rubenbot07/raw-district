@@ -1,8 +1,8 @@
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
 import { useTranslations } from "next-intl";
 
 export const CheckoutSummaryCart = ({ cartItems, children }) => {
-  
+  const formatPrice = useFormatPrice();
   const t = useTranslations("Checkout");
   const tCommon = useTranslations("Common");
 

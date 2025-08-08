@@ -1,10 +1,11 @@
 'use client';
 import { useState } from "react";
 import { logoutAction } from "@/actions/logout";
+import { useTranslations } from "next-intl";
 
 export function LogoutButton() {
   const [loading, setLoading] = useState(false);
-
+  const t = useTranslations("Profile");
   const handleLogout = async () => {
     setLoading(true);
     try {
@@ -24,7 +25,7 @@ export function LogoutButton() {
       disabled={loading}
       className="text-left"
     >
-      {loading ? 'Logging out...' : 'Logout'}
+      {loading ? t('loginOut') : t('logout')}
     </button>
   );
 }

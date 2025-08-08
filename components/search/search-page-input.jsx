@@ -2,10 +2,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 export const SearchPageInput = ({ query }) => {
   const [input, setInput] = useState(query);
   const router = useRouter();
+  const t = useTranslations('Search');
 
   const handleSearch = () => {
     if (input === query) return;
@@ -21,12 +23,12 @@ export const SearchPageInput = ({ query }) => {
       aria-label="Search page input"
     >
       <div className="w-full flex justify-between py-2 px-4 border-[1px] border-r-0 border-gray-300 text-xs">
-        <label htmlFor="search-input" className="sr-only">Search products</label>
+        <label htmlFor="search-input" className="sr-only">{t("searchProducts")}</label>
         <input
           id="search-input"
           type="text"
           className="outline-none w-3/4"
-          placeholder="Search products"
+          placeholder={t("searchProducts")}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           aria-label="Search products"
@@ -38,7 +40,7 @@ export const SearchPageInput = ({ query }) => {
             className="text-[10px]"
             aria-label="Clear search input"
           >
-            CLEAR
+            {t("clear")}
           </button>
         )}
       </div>

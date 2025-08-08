@@ -1,7 +1,7 @@
 import { getCategoryBySlug } from '@/actions/get-categories-slug';
 import { getProducts } from '@/actions/get-products';
 import { FilteredProducts } from '@/components/products/filtered-products';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 export const metadata = {
     title: 'Category',
@@ -14,6 +14,8 @@ export default async function Page({ searchParams }) {
     const from = (page - 1) * perPage;
     const to = from + perPage - 1;
     const currentPage = Math.floor(from / 15) + 1;
+    const tCategory = await getTranslations('Category');
+    const tError = await getTranslations('Error');
 
     const { price_lt, category, sort } = searchParams || {};
     const categoryInfo = await getCategoryBySlug(category);
@@ -25,7 +27,6 @@ export default async function Page({ searchParams }) {
     };
 
     const { products, error, total } = await getProducts(filters, { from, to });
-    const tError = useTranslations('Error');
 
     if (error) {
         return (
@@ -38,7 +39,6 @@ export default async function Page({ searchParams }) {
             </div>
         );
     }
-
     return (
         <main
             className="flex flex-col gap-4 py-10"
@@ -50,7 +50,7 @@ export default async function Page({ searchParams }) {
                 aria-labelledby="category-title"
             >
                 <h1 id="category-title" className="text-lg font-semibold">
-                    {categoryInfo?.name || 'All Products'}
+                    {tCategory(categoryInfo?.slug) || 'All Products'}
                 </h1>
             </header>
 

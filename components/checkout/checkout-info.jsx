@@ -7,13 +7,13 @@ import { useCartStore } from '@/app/stores/cartStore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { DeliveryOptions, StoreBranches, PurchaseForm, Payment, CheckoutSummaryDetail, CheckoutSummaryDown, BuyButton } from '@/components/checkout';
-import { formatPrice } from '@/utils/formatPrice';  
+import { useFormatPrice } from '@/utils/formatPrice';  
 import { useTranslations } from 'next-intl';
 export const CheckoutInfo = () => {
   const { delivery, setDelivery, payment, setPayment, formData, setFormData } = useCheckoutForm();
   const [loading, setLoading] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
-
+  const formatPrice = useFormatPrice();
   const user = useUserStore((state) => state.user);
   const cart = useCartStore((state) => state.cart);
   const cartItems = useCartStore((state) => state.cartItems);

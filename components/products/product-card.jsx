@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useCartUIStore } from "@/app/stores/cartUIStore";
 import { useCartStore } from "@/app/stores/cartStore";
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
 import { toast } from "react-toastify";
 import Image from "next/image";
 
@@ -19,6 +19,8 @@ export const ProductCard = ({ product }) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const setCartUpdated = useCartStore((state) => state.setCartUpdated);
   const addToCartLocal = useCartStore((state) => state.addToCartLocal);
+
+  const formattedPrice = useFormatPrice();
 
   const handleQuickAdd = async (e) => {
     e.stopPropagation();
@@ -91,7 +93,7 @@ export const ProductCard = ({ product }) => {
             >
               {product?.name}
             </p>
-            <p id={priceId}>{formatPrice(product?.price)}</p>
+            <p id={priceId}>{formattedPrice(product?.price)}</p>
           </div>
         </Link>
 

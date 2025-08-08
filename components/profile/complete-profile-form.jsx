@@ -1,8 +1,13 @@
 'use client';
 import Form from 'next/form';
 import { completeUserProfile } from "@/actions/complete-user-profile";
+import { useTranslations } from "next-intl";
 
 export const CompleteProfileForm = () => {
+  const t = useTranslations("Profile");
+  const tCommon = useTranslations("Common");
+  const tPurchaseForm = useTranslations("PurchaseForm");
+  
   return (
     <section
       className="flex flex-col gap-6 max-w-md mx-auto"
@@ -11,7 +16,7 @@ export const CompleteProfileForm = () => {
       <div className="border border-gray-200 shadow-md rounded-[8px]">
         <div className="p-4 border-b border-gray-200">
           <h2 id="complete-profile-title" className="text-2xl font-semibold">
-            Complete your profile
+            {t("completeProfile")}
           </h2>
         </div>
 
@@ -21,11 +26,11 @@ export const CompleteProfileForm = () => {
           aria-describedby="profile-fields"
         >
           <fieldset className="flex flex-col gap-6" aria-labelledby="profile-fields">
-            <legend className="sr-only">User profile fields</legend>
+            <legend className="sr-only">{t("profileFields")}</legend>
 
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                Full Name
+                {tCommon("fullName")}
               </label>
               <input
                 id="fullName"
@@ -38,7 +43,7 @@ export const CompleteProfileForm = () => {
 
             <div>
               <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                Address
+                {tPurchaseForm("address")}
               </label>
               <input
                 id="address"
@@ -51,7 +56,7 @@ export const CompleteProfileForm = () => {
 
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                Phone
+                {tPurchaseForm("phone")}
               </label>
               <input
                 id="phone"
@@ -67,7 +72,7 @@ export const CompleteProfileForm = () => {
             type="submit"
             className="w-full bg-black text-white py-2 rounded-[8px] font-medium hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
           >
-            Complete Profile
+            {t("completeProfile")}
           </button>
         </Form>
       </div>

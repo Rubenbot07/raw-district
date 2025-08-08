@@ -7,7 +7,20 @@
     "item": "artículo",
     "shipping" : "Envío",
     "pickup" : "Retiro",
-    "free" : "GRATIS"
+    "free" : "GRATIS",
+    "paid" : "PAGADO",
+    "pending" : "PENDIENTE",
+    "cancelled" : "CANCELADO",
+    "delivered" : "ENTREGADO",
+    "returned" : "DEVUELTO",
+    "status" : "Estado",
+    "standardShipping" : "Envío standard",
+    "storePickup" : "Retiro en tienda",
+    "alreadyHaveAccount" : "Ya tienes una cuenta",
+    "login" : "Iniciar sesión",
+    "signUp" : "Registrarme",
+    "email" : "Correo",
+    "password" : "Contraseña"
   },
   "RotatingBanner": {
     "securePayment": "PAGA SEGURO CON MERCADO PAGO",
@@ -43,8 +56,11 @@
   "Orders": {
     "title" : "Ordenes",
     "loading" : "Cargando ordenes",
-    "noOrders" : "No hay ordenes",
-    "Error" : "Error al cargar las ordenes"
+    "noOrders" : "No hay ordenes todavía",
+    "Error" : "Error al cargar las ordenes",
+    "order" : "Orden",
+    "shippingDetails": "Detalles de entrega",
+    "noShippingDetails": "No hay detalles de entrega disponibles"
   },
   "Product": {
     "loading" : "Cargando producto",
@@ -53,20 +69,35 @@
     "notFoundDescription" : "El producto que buscas no fue encontrado o ha sido eliminado."
   },
   "Profile": {
+    "title" : "Perfil",
+    "completeProfile" : "Completa tu perfil",
+    "profileFields" : "Campos de perfil de usuario",
     "loading" : "Cargando perfil",
     "Error" : "Error al cargar el perfil",
     "notFound" : "Perfil no encontrado",
     "notFoundDescription" : "El perfil que buscas no fue encontrado o ha sido eliminado.",
-    "editTitle" : "Editar perfil"
+    "editTitle" : "Editar información de contacto",
+    "edit" : "Editar",
+    "update" : "Actualizar",
+    "guest" : "Invitado",
+    "userMenu" : "Menu de usuario",
+    "orders" : "Ordenes",
+    "logout" : "Cerrar sesión",
+    "loginOut" : "Cerrando sesión"
   },
   "Search": {
     "title" : "Resultados de la busqueda",
+    "search" : "Buscar",
+    "searchProducts" : "Buscar productos",
     "result" : "resultado",
+    "products" : "Productos",
+    "clear" : "LIMPIAR",
     "foundFor" : "Encontrados para",
     "enterSearch" : "Ingresa el término de búsqueda para comenzar",
     "loading" : "Cargando productos",
     "Error" : "Error al cargar los productos",
-    "notFound" : "No se encontraron resultados"
+    "notFound" : "No se encontraron resultados",
+    "popularSearches" : "Busquedas populares"
   },
   "Cart": {
     "title" : "Carrito de compras",
@@ -89,6 +120,14 @@
     "error" : "Error al cargar las categorías",
     "notFound" : "Categorias no encontradas"
   },
+  "Category": {
+    "t-shirts": "Camisetas",
+    "pants": "Pantalones",
+    "caps": "Gorras",
+    "jackets": "Chaquetas",
+    "hoodies": "Buzos",
+    "sweaters": "Suéteres"
+  },
     "Sizes" : {
     "loading" : "Cargando tallas",
     "editTitle" : "Error al cargar tallas",
@@ -107,6 +146,7 @@
   },
     "OrderSummary" : {
     "title" : "Resumen de la orden",
+    "title2": "Detalles de la orden",
     "loading" : "Cargando resumen de la orden",
     "Error" : "Error al cargar el resumen de la orden",
     "notFound" : "Resumen de la orden no encontrado",
@@ -134,6 +174,7 @@
   },
   "PurchaseForm" : {
     "title" : "Tu información",
+    "fullName" : "Nombre completo",
     "name" : "Nombre",
     "surname" : "Apellido",
     "phone" : "Teléfono",
@@ -174,5 +215,53 @@
     "burguerMenu" : "Menú",
     "giftCard": "Tarjeta de regalo",
     "lessThan" : "Menor a"
+  },
+  "Password" : {
+    "checkYourPassword" : "Comprueba tu contraseña",
+    "resetPassword" : "Restablece tu contraseña",
+    "subtitle" : "Introduce tu contraseña",
+    "password" : "Contraseña",
+    "resetPasswordDescription" : "Introduce tu correo y te enviaremos un enlace para restablecer tu contraseña.",
+    "sendResetEmail" : "Enviar correo de restablecimiento",
+    "sending" : "Enviando",
+    "ifHaveAccount" : "Si tienes una cuenta, hemos enviado instrucciones de restablecimiento de contraseña a tu correo.",
+    "enterPasswordBelow" : "Introduce tu contraseña abajo",
+    "newPassword" : "Nueva contraseña",
+    "saving" : "Guardando",
+    "save": "Guardar nueva contraseña"
+  },
+  "Login": {
+    "enterEmail" : "Introduce tu correo abajo para iniciar sesión en tu cuenta.",
+    "noAccount" : "No tienes una cuenta?",
+    "forgotPassword" : "Olvidaste tu contraseña?",
+    "loginIn": "Iniciando sesión",
+    "signInGoogle": "Iniciar sesión con Google",
+    "authForm": "Formulario de autenticación"
+  },
+  "SignUp" : {
+    "createAccount" : "Crea nueva cuenta",
+    "repeatPassword" : "Repite tu contraseña",
+    "creatingAccount" : "Creando cuenta",
+    "noMatch" : "Las contraseñas no coinciden"
+  },
+  "trustBadges": {
+    "items": [
+      {
+        "title": "PAGOS SEGUROS",
+        "description": "Aceptamos Tarjetas de Crédito y Giros a través de Mercado Pago."
+      },
+      {
+        "title": "ENVÍO EXPRESS",
+        "description": "En menos de 2 días tendrás el paquete en tus manos."
+      },
+      {
+        "title": "CAMBIOS RÁPIDOS Y FÁCILES",
+        "description": "Tienes hasta 30 días para realizar cambios y/o devoluciones."
+      },
+      {
+        "title": "CALIDAD PREMIUM",
+        "description": "Todos nuestros productos son fabricados con los más altos estándares de calidad en Colombia."
+      }
+    ]
   }
 }

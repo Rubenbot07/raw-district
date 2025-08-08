@@ -1,6 +1,9 @@
 import { SearchProductCard } from '@/components/search/search-product-card';
+import { useTranslations } from 'next-intl';
 
 export const SearchSuggestions = ({ suggestions, onClose }) => {
+  const t = useTranslations('Search');
+  
   return (
     <section
       className="md:w-full py-3 flex flex-col gap-4"
@@ -10,7 +13,7 @@ export const SearchSuggestions = ({ suggestions, onClose }) => {
         id="search-suggestions-heading"
         className="py-1 border-b-[1px] border-gray-300 text-sm font-medium"
       >
-        Products
+        {t('products')}
       </h2>
 
       <ul className="flex gap-2" role="list">

@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { getProductById } from "@/actions/get-product-by-id";
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
+import { useTranslations } from "next-intl";
 
-export const OrderSummaryItem = ({ productId, quantity, size, unit_price, subtotal }) => {
+export const OrderSummaryItem = ({ productId, quantity, size, subtotal }) => {
+  const formattedPrice = useFormatPrice();
   const [product, setProduct] = useState(null);
-
+  const tCommon = useTranslations("Common");
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -22,7 +24,7 @@ export const OrderSummaryItem = ({ productId, quantity, size, unit_price, subtot
   if (!product) {
     return (
       <div className="py-3 text-sm text-gray-500">
-        Loading product...
+        {tCommon("loading")}
       </div>
     );
   }
@@ -49,14 +51,14 @@ export const OrderSummaryItem = ({ productId, quantity, size, unit_price, subtot
         </div>
         <div className="flex flex-col justify-center">
           <span className="text-sm font-medium">{product.name}</span>
-          <span className="text-xs text-gray-500">Size: {size}</span>
+          <span className="text-xs text-gray-500">{tCommon("size")}: {size}</span>
         </div>
       </div>
 
       {/* Right: Price & Quantity */}
       <div className="text-sm text-right sm:text-left">
         <span>
-          Total: {formatPrice(subtotal)}{" "}
+          {tCommon("total")}: {formattedPrice(subtotal)}{" "}
           <span className="text-gray-500">({quantity})</span>
         </span>
       </div>

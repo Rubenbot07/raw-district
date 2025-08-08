@@ -2,7 +2,7 @@
 import { getSizeById } from "@/actions/get-size-by-id";
 import { CartItemQuantityHandler } from "@/components/cart/cart-item-quantity-handler";
 import { useState, useEffect } from "react";
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
 import { useCartStore } from "@/app/stores/cartStore";
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
@@ -13,7 +13,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const setCartUpdated = useCartStore((state) => state.setCartUpdated);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const removeFromCartLocal = useCartStore((state) => state.removeFromCartLocal);
-  const formattedPrice = formatPrice(product.price)  
+  const formattedPrice = useFormatPrice()  
   const t = useTranslations("Cart");
   const tCommon = useTranslations("Common");
   
@@ -64,7 +64,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
           <strong>{tCommon("size")}:</strong> {productSize?.size}
         </p>
 
-        <p className="text-sm font-semibold">{formattedPrice}</p>
+        <p className="text-sm font-semibold">{formattedPrice(product.price)}</p>
 
         {/* Quantity selector */}
         <CartItemQuantityHandler

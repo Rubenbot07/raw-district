@@ -8,6 +8,7 @@ import { signInWithEmail } from "@/actions/sign-in-email";
 import { getUser } from "@/actions/get-user";
 import { createCart } from "@/actions/create-cart";
 import { useUserStore } from "@/app/stores/userStore";
+import { useTranslations } from "next-intl";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
@@ -16,6 +17,8 @@ export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const fetchUser = useUserStore.getState().fetchUser;
   const router = useRouter();
+  const tCommon = useTranslations("Common");
+  const tLogin = useTranslations("Login");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -43,17 +46,17 @@ export function LoginForm() {
       className="max-w-md mx-auto border border-gray-200 rounded-lg p-6"
     >
       <h1 id="login-title" className="text-2xl font-semibold mb-2">
-        Login
+        {tCommon("login")}
       </h1>
       <p className="text-sm text-gray-600 mb-6">
-        Enter your email below to login to your account.
+        {tLogin("enterEmail")}
       </p>
 
       <form onSubmit={handleLogin} noValidate>
         <div className="flex flex-col gap-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium">
-              Email
+              {tCommon("email")}
             </label>
             <input
               id="email"
@@ -71,13 +74,13 @@ export function LoginForm() {
           <div>
             <div className="flex justify-between items-center mb-1">
               <label htmlFor="password" className="text-sm font-medium">
-                Password
+                {tCommon("password")}
               </label>
               <Link
                 href="/auth/forgot-password"
                 className="text-sm underline hover:text-blue-600"
               >
-                Forgot your password?
+                {tLogin("forgotPassword")}
               </Link>
             </div>
             <input
@@ -105,14 +108,14 @@ export function LoginForm() {
             aria-disabled={isLoading}
             aria-busy={isLoading}
           >
-            {isLoading ? "Logging in..." : "Login"}
+            {isLoading ? tLogin("loginIn") : tCommon("login")}
           </button>
         </div>
 
         <p className="mt-4 text-center text-sm">
-          Don’t have an account?{" "}
+          {tLogin("noAccount")}{" "}
           <Link href="/auth/sign-up" className="underline hover:text-blue-600">
-            Sign up
+            {tCommon("signUp")}
           </Link>
         </p>
       </form>

@@ -2,10 +2,13 @@
 import { useState, useEffect } from 'react';
 import { SearchSuggestions, PopularSearches, SearchModalButton } from '@/components/search';
 import { Search, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const SearchInput = ({ onClose }) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+
+  const t = useTranslations('Search');
 
   const handleClose = () => {
     setQuery('');
@@ -50,7 +53,7 @@ export const SearchInput = ({ onClose }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar productos..."
+          placeholder={t('searchProducts')}
           aria-label="Search products"
           className="w-full px-3 py-1 rounded outline-none"
         />
@@ -62,7 +65,7 @@ export const SearchInput = ({ onClose }) => {
             onClick={() => setQuery('')}
             aria-label="Clear search input"
           >
-            CLEAR
+            {t('clear')}
           </button>
         )}
 

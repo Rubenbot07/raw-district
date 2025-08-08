@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import { getOrderById } from "@/actions/get-order-by-id";
 import { OrderSummaryItem } from "@/components/orders/order-summary-item";
 import { OrderSummaryDetail } from "@/components/orders/order-summary-detail";
+import { useTranslations } from "next-intl";
 
 export const OrderSummary = ({ orderItems = [], orderId }) => {
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(false);
+  const t = useTranslations("OrderSummary");
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -36,9 +38,9 @@ export const OrderSummary = ({ orderItems = [], orderId }) => {
       aria-labelledby="order-summary-title"
       className="flex flex-col gap-6 max-w-4xl mx-auto p-4"
     >
-      <h2 id="order-summary-title" className="text-xl font-semibold">
-        Order Summary
-      </h2>
+      <h1 id="order-summary-title" className="text-xl font-semibold">
+        {t("title")}
+      </h1>
 
       <div role="list" className="flex flex-col p-4 border border-black rounded-[8px]">
         {orderItems.length > 0 ? (
@@ -53,12 +55,12 @@ export const OrderSummary = ({ orderItems = [], orderId }) => {
             />
           ))
         ) : (
-          <p className="text-sm text-gray-500">No products found in this order.</p>
+          <p className="text-sm text-gray-500">{t("notFound")}</p>
         )}
       </div>
 
       {loading ? (
-        <p className="text-sm text-gray-500">Loading order details...</p>
+        <p className="text-sm text-gray-500">{t("loading")}</p>
       ) : (
         order && <OrderSummaryDetail order={order} />
       )}

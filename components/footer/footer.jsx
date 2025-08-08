@@ -43,7 +43,7 @@ export const Footer = () => {
 
         {/* Contacto */}
         <address className="flex flex-col gap-2 w-1/2 not-italic text-sm" aria-label="Company contact information">
-          <h3 className="font-medium text-3xl">Contact</h3>
+          <h3 className="font-medium text-3xl">{t("contact")}</h3>
           <ul className="text-sm space-y-1">
             <li>RAWDISTRIC</li>
             <li>NIT: 000 000 000</li>

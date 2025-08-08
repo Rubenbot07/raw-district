@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export const CategoryCard = ({ category }) => {
+  const t = useTranslations("Category");
   return (
     <Link
       href={`/category/?category=${category.slug}`}
@@ -25,7 +27,7 @@ export const CategoryCard = ({ category }) => {
           className="text-3xl font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10"
           aria-hidden="true"
         >
-          {category.name.toUpperCase()}
+          {t(category.slug).toLocaleUpperCase() || category.name}
         </h2>
       </div>
     </Link>

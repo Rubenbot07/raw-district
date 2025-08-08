@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserWrapper } from '@/components/profile/user-wrapper';
+import { useTranslations } from 'next-intl';
 
 export function AuthButton({ user }) {
   const pathname = usePathname();
-
+  const t = useTranslations('Common');
   const hiddenOnRoutes = ['/auth'];
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
 
@@ -18,12 +19,12 @@ export function AuthButton({ user }) {
         <UserWrapper user={user} />
       ) : (
         <UserWrapper>
-          <div className="flex flex-col gap-2 w-16">
+          <div className="flex flex-col gap-2 w-auto">
             <div>
-              <Link href="/auth/login">Sign in</Link>
+              <Link href="/auth/login">{t('login')}</Link>
             </div>
             <div>
-              <Link href="/auth/sign-up">Sign up</Link>
+              <Link href="/auth/sign-up">{t('signUp')}</Link>
             </div>
           </div>
         </UserWrapper>

@@ -6,6 +6,7 @@ import { useState, useTransition } from "react";
 import { signUp } from "@/actions/sign-up";
 import { createCart } from "@/actions/create-cart";
 import { useUserStore } from "@/app/stores/userStore";
+import { useTranslations } from "next-intl";
 
 export function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -14,7 +15,8 @@ export function SignUpForm() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
-
+  const tCommon = useTranslations("Common");
+  const tSignUp = useTranslations("SignUp");
   const router = useRouter();
   const fetchUser = useUserStore.getState().fetchUser;
 
@@ -24,7 +26,7 @@ export function SignUpForm() {
     setError(null);
 
     if (password !== repeatPassword) {
-      setError("Passwords do not match");
+      setError(tSignUp("noMatch"));
       setIsLoading(false);
       return;
     }
@@ -51,15 +53,15 @@ export function SignUpForm() {
       className="max-w-md mx-auto border border-gray-200 rounded-lg p-6"
     >
       <h1 id="signup-title" className="text-2xl font-semibold mb-2">
-        Sign up
+        {tCommon("signUp")}
       </h1>
-      <p className="text-sm text-gray-600 mb-6">Create a new account</p>
+      <p className="text-sm text-gray-600 mb-6">{tSignUp("createAccount")}</p>
 
       <form onSubmit={handleSignUp} noValidate>
         <div className="flex flex-col gap-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium">
-              Email
+              {tCommon("email")}
             </label>
             <input
               id="email"
@@ -76,7 +78,7 @@ export function SignUpForm() {
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium">
-              Password
+              {tCommon("password")}
             </label>
             <input
               id="password"
@@ -92,7 +94,7 @@ export function SignUpForm() {
 
           <div>
             <label htmlFor="repeat-password" className="block text-sm font-medium">
-              Repeat Password
+              {tSignUp("repeatPassword")}
             </label>
             <input
               id="repeat-password"
@@ -119,14 +121,14 @@ export function SignUpForm() {
             aria-busy={isLoading || isPending}
             aria-disabled={isLoading || isPending}
           >
-            {isLoading || isPending ? "Creating an account..." : "Sign up"}
+            {isLoading || isPending ? tSignUp("creatingAccount") : tCommon("signUp")}
           </button>
         </div>
 
         <p className="mt-4 text-center text-sm">
-          Already have an account?{" "}
+          {tCommon("alreadyHaveAccount")}?{" "}
           <Link href="/auth/login" className="underline hover:text-blue-600">
-            Login
+            {tCommon("login")}
           </Link>
         </p>
       </form>

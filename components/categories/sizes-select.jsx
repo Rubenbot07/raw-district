@@ -3,11 +3,12 @@ import { useTranslations } from 'next-intl';
 
 export const SizesSelect = ({ sizes, selectedSize, onSelectSize }) => {
   const t = useTranslations('Sizes');
+  const tCommon = useTranslations('Common');
   return (
     <fieldset className="flex justify-between max-w-xs" role="radiogroup" aria-label="Select a size">
       <legend className="sr-only">{t('sizeOptions')}</legend>
       <div>
-        <p className="text-xs font-semibold">{t('sizeName')}</p>
+        <p className="text-xs font-semibold">{tCommon('size')}</p>
         <p className="text-[10px] font-medium" id="selected-size-label">
           {selectedSize?.size || 'None selected'}
         </p>

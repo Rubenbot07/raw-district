@@ -1,5 +1,5 @@
 'use client';
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
 import { ChevronDown } from "lucide-react";
 import { CheckoutSummaryCart } from "@/components/checkout/checkout-summary-cart";
 import { useState } from "react";
@@ -18,9 +18,8 @@ export const CheckoutSummary = () => {
 
   const totalPrice = getCartTotalPriceLocal() || 0;
   const totalQuantity = getCartTotalQuantityLocal() || 0;
-  const formattedPrice = formatPrice(totalPrice);
+  const formattedPrice = useFormatPrice();
   const tax = totalPrice * 0.19;
-
   return (
     <section className="max-w-xl lg:max-w-5xl mx-auto" aria-labelledby="checkout-summary-title">
       <h2 id="checkout-summary-title" className="sr-only">{tCheckout("title")}</h2>
@@ -42,7 +41,7 @@ export const CheckoutSummary = () => {
               <ChevronDown />
             </span>
           </div>
-          <p className="font-medium text-xl">{formattedPrice}</p>
+          <p className="font-medium text-xl">{formattedPrice(totalPrice)}</p>
         </button>
       </div>
 
@@ -56,10 +55,10 @@ export const CheckoutSummary = () => {
         >
           <CheckoutSummaryCart cart={cart} cartItems={cartItems}>
             <CheckoutSummaryDetail
-              totalPrice={formattedPrice}
+              totalPrice={formattedPrice(totalPrice)}
               totalQuantity={totalQuantity}
-              shippingPrice={formatPrice(50000)}
-              tax={formatPrice(tax)}
+              shippingPrice={formattedPrice(50000)}
+              tax={formattedPrice(tax)}
             />
           </CheckoutSummaryCart>
         </div>
@@ -69,10 +68,10 @@ export const CheckoutSummary = () => {
       <div className="hidden lg:block" role="region" aria-label="Order summary details for desktop">
         <CheckoutSummaryCart cartItems={cartItems}>
           <CheckoutSummaryDetail
-            totalPrice={formattedPrice}
+            totalPrice={formattedPrice(totalPrice)}
             totalQuantity={totalQuantity}
-            shippingPrice={formatPrice(50000)}
-            tax={formatPrice(tax)}
+            shippingPrice={formattedPrice(50000)}
+            tax={formattedPrice(tax)}
           />
         </CheckoutSummaryCart>
       </div>

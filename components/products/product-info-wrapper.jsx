@@ -1,6 +1,6 @@
 'use client';
 
-import { formatPrice } from "@/utils/formatPrice";
+import { useFormatPrice } from "@/utils/formatPrice";
 import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore";
 import { BuyNow } from "@/components/products/buy-now";
@@ -9,6 +9,7 @@ import { Truck, Medal, Shield, MessagesSquare, CircleAlert } from "lucide-react"
 export const ProductInfoWrapper = ({ product, children }) => {
   const selectedSize = useProductSelectionStore((state) => state.selectedSize);
   const lowStock = selectedSize?.stock <= 5 || product.product_sizes[0].stock <= 5;
+  const formatPrice = useFormatPrice();
 
   return (
     <section className="flex flex-col gap-8 lg:w-3/4 xl:w-4/6 xl:mx-auto p-2" aria-labelledby="product-info-title">
