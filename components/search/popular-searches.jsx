@@ -23,7 +23,7 @@ export const PopularSearches = ({ onClose }) => {
             onClick={onClose}
             className="hover:underline focus:outline-none focus:ring-2 focus:ring-black rounded"
           >
-            {tCategory('tshirts')}
+            {tCategory('t-shirts')}
           </Link>
         </li>
         <li>

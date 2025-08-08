@@ -20,7 +20,8 @@
     "login": "Login",
     "signUp": "Sign up",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "fullName": "Full name"
   },
   "RotatingBanner": {
     "securePayment": "PAY SECURELY WITH MERCADO PAGO",

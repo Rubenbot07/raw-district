@@ -2,6 +2,7 @@ import { useFormatPrice } from "@/utils/formatPrice";
 import Link from "next/link";
 
 export const SearchProductCard = ({ product, onClick }) => {
+  const formatPrice = useFormatPrice();
   return (
     <article className="max-w-60 text-xs">
       <Link
@@ -18,7 +19,7 @@ export const SearchProductCard = ({ product, onClick }) => {
           />
         </div>
         <p className="line-clamp-2 mt-1">{product.name}</p>
-        <p className="text-[10px] text-gray-500">{useFormatPrice(product.price)}</p>
+        <p className="text-[10px] text-gray-500">{formatPrice(product.price)}</p>
       </Link>
     </article>
   );

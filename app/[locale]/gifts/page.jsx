@@ -1,6 +1,6 @@
 import { getProducts } from "@/actions/get-products";
 import { FilteredProducts } from "@/components/products/filtered-products";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 export const metadata = {
   title: "Gifts",
@@ -25,7 +25,7 @@ export default async function GiftsFilterPage({ searchParams }) {
 
   const { products, error, total } = await getProducts(filters, { from, to });
 
-  const tError = useTranslations('Error');
+  const tError = await getTranslations('Error');
 
   if (error) {
     return (

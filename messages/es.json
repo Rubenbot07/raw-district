@@ -20,7 +20,8 @@
     "login" : "Iniciar sesión",
     "signUp" : "Registrarme",
     "email" : "Correo",
-    "password" : "Contraseña"
+    "password" : "Contraseña",
+    "fullName" : "Nombre completo"
   },
   "RotatingBanner": {
     "securePayment": "PAGA SEGURO CON MERCADO PAGO",
