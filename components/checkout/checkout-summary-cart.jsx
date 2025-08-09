@@ -56,7 +56,7 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
               </div>
 
               <span className="text-sm" aria-hidden="true">
-                {formatPrice(item.products.price * item.quantity)}
+                ${formatPrice(item.products.price * item.quantity)}
               </span>
             </div>
           );

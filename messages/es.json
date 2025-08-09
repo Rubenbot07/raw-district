@@ -64,10 +64,28 @@
     "noShippingDetails": "No hay detalles de entrega disponibles"
   },
   "Product": {
+    "buyNowButton": "COMPRAR AHORA",
+    "processing": "Procesando",
     "loading" : "Cargando producto",
     "Error" : "Error al cargar el producto",
     "notFound" : "Producto no encontrado",
-    "notFoundDescription" : "El producto que buscas no fue encontrado o ha sido eliminado."
+    "productsNotFound" : "Productos no encontrados",
+    "notFoundDescription" : "El producto que buscas no fue encontrado o ha sido eliminado.",
+    "selectSize" : "Seleccionar talla",
+    "hurry" : "Apúntate, solo quedan",
+    "leftInStock" : "en stock",
+    "shippingInfo": "Información de Envío",
+    "withdrawal": "Retiro disponible en",
+    "Melonn" : "Melonn Dosquebradas",
+    "usually" : "Está usualmente listo en 4 horas",
+    "freeShipping" : "ENVÍO GRATIS EN COMPRAS SUPERIORES A $200,000",
+    "description": "DESCRIPCIÓN",
+    "composition": "Composición",
+    "productBenefits": "Beneficios del producto",
+    "premiumQuality": "Calidad Premium",
+    "expressShipping": "Envío Express",
+    "securePayment": "Pago seguro",
+    "customerSupport": "Dudas? Escríbenos a (+57) 300 6870774"
   },
   "Profile": {
     "title" : "Perfil",
@@ -262,6 +280,40 @@
       {
         "title": "CALIDAD PREMIUM",
         "description": "Todos nuestros productos son fabricados con los más altos estándares de calidad en Colombia."
+      }
+    ]
+  },
+  "FAQ": {
+    "title": "FAQs",
+    "items" : [
+      {
+        "question": "Me pueden asesorar?",
+        "answer": "Por supuesto! Escribenos al Whatsapp (+57) 300 6870774."
+      },
+      {
+        "question": "Recomendaciones de lavado",
+        "answer": "Revisar las instrucciones de lavado en la etiqueta de la prenda. La etiqueta se encuentra en la parte interna de la prenda. Sin embargo recomendamos lavar nuestros productos con agua fría y dejar secar naturalmente. No secar en secadora, ni planchar los estampados."
+      },
+      {
+        "question": "Formas de pago",
+        "answer": "Los pagos en el sitio web se procesan a través de Mercado Pago y son 100% seguros. Aceptamos giros."
+      }
+    ]
+  },
+  "ShippingInfo": {
+    "title": "Información de Envío",
+    "items": [
+      {
+        "question": "Envío Exprés",
+        "answer": "En Dosquebradas el tiempo de entrega es de 0 a 2 días hábiles y a nivel nacional de 1 a 3 días hábiles."
+      },
+      {
+        "question": "Rastrea tu compra",
+        "answer": "Una vez confirmada tu compra, recibirás un correo electrónico con un enlace de seguimiento en tiempo real."
+      },
+      {
+        "question": "Confirmación de compra",
+        "answer": "Recibirás un correo electrónico de confirmación una vez que tu compra esté confirmada. Por favor, revisa tu carpeta de spam/correo no deseado o promociones antes de contactarnos."
       }
     ]
   }

@@ -41,7 +41,7 @@ export const CheckoutSummary = () => {
               <ChevronDown />
             </span>
           </div>
-          <p className="font-medium text-xl">{formattedPrice(totalPrice)}</p>
+          <p className="font-medium text-xl">${formattedPrice(totalPrice)}</p>
         </button>
       </div>
 

@@ -58,7 +58,7 @@ export const OrderSummaryItem = ({ productId, quantity, size, subtotal }) => {
       {/* Right: Price & Quantity */}
       <div className="text-sm text-right sm:text-left">
         <span>
-          {tCommon("total")}: {formattedPrice(subtotal)}{" "}
+          {tCommon("total")}: ${formattedPrice(subtotal)}{" "}
           <span className="text-gray-500">({quantity})</span>
         </span>
       </div>

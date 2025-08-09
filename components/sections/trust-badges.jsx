@@ -15,7 +15,7 @@ export const TrustBadges = () => {
     >
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 w-full mx-auto max-w-[1700px] items-center px-4 py-8">
         {items.map((item, i) => {
-          const Icon = icons[i];
+          const Icon = icons[i] || Lock;
           return (
             <li key={i} className="flex flex-col gap-2 items-center text-center">
               <Icon size={40} strokeWidth={1.2} aria-hidden="true" />

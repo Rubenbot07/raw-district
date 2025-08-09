@@ -24,7 +24,7 @@ export const OrderDetail = ({ quantity, total, paymentMethod, shipping_method, s
 
       <div className="flex justify-between">
         <span>Subtotal ({quantity} {tCommon("item")}{quantity !== 1 ? 's' : ''})</span>
-        <span>{totalPrice}</span>
+        <span>${totalPrice}</span>
       </div>
 
       <div className="flex justify-between">
@@ -39,7 +39,7 @@ export const OrderDetail = ({ quantity, total, paymentMethod, shipping_method, s
 
       <div className="flex justify-between text-base font-medium">
         <span>{tCommon("total")}</span>
-        <span>{totalPrice}</span>
+        <span>${totalPrice}</span>
       </div>
 
       <p className="text-gray-500 text-sm">{tOrderSummary("includes")} {tax} {tOrderSummary("taxes")}</p>

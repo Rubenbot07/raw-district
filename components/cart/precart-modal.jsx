@@ -102,7 +102,7 @@ export const PreCartModal = () => {
                     <InfinitiveLoopSlider productImages={product.product_images} />
                     <div className="flex flex-col gap-6 p-4">
                       <p className="font-medium" id="product-name">{product.name}</p>
-                      <p className="text-xs">{formattedPrice(product.price)}</p>
+                      <p className="text-xs">${formattedPrice(product.price)}</p>
                       <SizesWrapper product={product} />
                       <p className="text-xs">{product.description}</p>
                     </div>

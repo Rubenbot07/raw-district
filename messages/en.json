@@ -64,10 +64,27 @@
     "noShippingDetails": "No shipping details available"
   },
   "Product": {
+    "buyNowButton": "BUY NOW",
+    "processing": "Processing",
     "loading" : "Loading product",
     "Error" : "Error loading product",
     "notFound" : "Product not found",
-    "notFoundDescription" : "The product you are looking for does not exist or may have been removed."
+    "productsNotFound" : "Products not found",
+    "notFoundDescription" : "The product you are looking for does not exist or may have been removed.",
+    "selectSize" : "Select size",
+    "hurry" : "Hurry, only",
+    "leftInStock" : "left in stock",
+    "shippingInfo": "Shipping Information",
+    "withdrawal": "Withdrawal available at",
+    "usually" : "It is usually ready in 4 hours",
+    "freeShipping" : "FREE SHIPPING FOR PURCHASES OVER $200,000",
+    "description": "DESCRIPTION",
+    "composition": "Composition",
+    "productBenefits": "Product Benefits",
+    "premiumQuality": "Premium Quality",
+    "expressShipping": "Express Shipping",
+    "securePayment": "Secure Payment",
+    "customerSupport": "Doubts? Write to us (+57) 300 6870774"
   },
   "Profile": {
     "title" : "Profile",
@@ -264,5 +281,40 @@
         "description": "All our products are manufactured with the most high quality standards in Colombia."
       }
     ]
+  },
+  "FAQ": {
+    "title": "FAQs",
+    "items" : [
+      {
+        "question": "Can you advise me?",
+        "answer": "Of course! Write to su on Whatsapp (+57) 300 6870774."
+      },
+      {
+        "question": "Washing recommendations",
+        "answer": "Review the washing instructions on the garment label. The label is located on the inside of the garment. However, we recommend washing our products with cold water and letting them dry naturally. Do not tumble dry or iron the prints."
+      },
+      {
+        "question": "Payment methods",
+        "answer": "Payments on the website are processed through Mercado Pago and are 100% secure. We accept money orders."
+      }
+    ]
+  },
+  "ShippingInfo": {
+    "title": "Shipping Information",
+    "items": [
+      {
+        "question": "Express Shipping",
+        "answer": "In Dosquebradas the delivery time is 0 to 2 business days and nationally 1 to 3 business days."
+      },
+      {
+        "question": "Track your purchase",
+        "answer": "Once your purchase is confirmed, you will receive an email with a real-time tracking link."
+      },
+      {
+        "question": "Purchase Confirmation",
+        "answer": "You will receive a confirmation email once your purchase is confirmed. Please check your spam/junk or promotions folder before contacting us."
+      }
+    ]
   }
+  
 }

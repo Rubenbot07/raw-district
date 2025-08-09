@@ -5,12 +5,13 @@ import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { useProductSelectionStore } from "@/app/stores/productSelectionStore";
 import { BuyNow } from "@/components/products/buy-now";
 import { Truck, Medal, Shield, MessagesSquare, CircleAlert } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const ProductInfoWrapper = ({ product, children }) => {
   const selectedSize = useProductSelectionStore((state) => state.selectedSize);
   const lowStock = selectedSize?.stock <= 5 || product.product_sizes[0].stock <= 5;
   const formatPrice = useFormatPrice();
-
+  const t = useTranslations('Product');
   return (
     <section className="flex flex-col gap-8 lg:w-3/4 xl:w-4/6 xl:mx-auto p-2" aria-labelledby="product-info-title">
       {/* Título y precio */}
@@ -18,13 +19,13 @@ export const ProductInfoWrapper = ({ product, children }) => {
         <h1 id="product-info-title" className="text-3xl font-medium">
           {product.name}
         </h1>
-        <p className="text-md">{formatPrice(product.price)}</p>
+        <p className="text-md">${formatPrice(product.price)}</p>
       </header>
 
       {/* Tallas */}
       {product.categories.name !== "Caps" && (
         <section className="w-2/3" aria-labelledby="size-options">
-          <h2 id="size-options" className="sr-only">Select size</h2>
+          <h2 id="size-options" className="sr-only">{t("selectSize")}</h2>
           {children}
         </section>
       )}
@@ -34,7 +35,7 @@ export const ProductInfoWrapper = ({ product, children }) => {
         <div className="flex gap-2 items-center" role="alert" aria-live="polite">
           <CircleAlert size={20} color="#f79554" aria-hidden="true" />
           <p className="text-xs">
-            Hurry, only {selectedSize?.stock || product.product_sizes[0].stock} left in stock
+            {t("hurry")} {selectedSize?.stock || product.product_sizes[0].stock} {t("leftInStock")}
           </p>
         </div>
       )}
@@ -57,44 +58,44 @@ export const ProductInfoWrapper = ({ product, children }) => {
 
       {/* Info de retiro y envío */}
       <section aria-labelledby="shipping-info" className="flex flex-col gap-2">
-        <h2 id="shipping-info" className="sr-only">Shipping Information</h2>
+        <h2 id="shipping-info" className="sr-only">{t("shippingInfo")}</h2>
         <p className="text-xs">
-          Withdrawal available at <strong>Melonn Dosquebradas</strong>
+          {t("withdrawal")} <strong>Melonn Dosquebradas</strong>
         </p>
-        <p className="text-[10px]">It is usually ready in 4 hours</p>
+        <p className="text-[10px]">{t("usually")}</p>
         <div className="flex gap-2 items-center text-[10px]">
           <Truck size={20} color="#0eb453" aria-hidden="true" />
-          <span>FREE SHIPPING ON PURCHASES OVER $200,000</span>
+          <span>{t("freeShipping")}</span>
         </div>
       </section>
 
       {/* Descripción */}
       <section aria-labelledby="product-description" className="flex flex-col gap-4 text-xs">
         <h2 id="product-description" className="underline text-sm">
-          DESCRIPTION
+          {t("description")}
         </h2>
         <p>{product.description}</p>
-        <p>Composition: {product.composition}</p>
+        <p>{t("composition")}: {product.composition}</p>
       </section>
 
       {/* Características extra */}
       <section className="flex flex-col gap-2 text-xs" aria-labelledby="product-benefits">
-        <h2 id="product-benefits" className="sr-only">Product benefits</h2>
+        <h2 id="product-benefits" className="sr-only">{t("productBenefits")}</h2>
         <div className="flex gap-2">
           <Medal size={20} strokeWidth={1.5} aria-hidden="true" />
-          <span>Premium Quality</span>
+          <span>{t("premiumQuality")}</span>
         </div>
         <div className="flex gap-2">
           <Truck size={20} strokeWidth={1.5} aria-hidden="true" />
-          <span>Express Shipping</span>
+          <span>{t("expressShipping")}</span>
         </div>
         <div className="flex gap-2">
           <Shield size={20} strokeWidth={1.5} aria-hidden="true" />
-          <span>Secure Payment</span>
+          <span>{t("securePayment")}</span>
         </div>
         <div className="flex gap-2">
           <MessagesSquare size={20} strokeWidth={1.5} aria-hidden="true" />
-          <span>Doubts? Write to us (+57) 3006870774</span>
+          <span>{t("customerSupport")}</span>
         </div>
       </section>
     </section>

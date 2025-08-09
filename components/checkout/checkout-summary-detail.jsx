@@ -21,7 +21,7 @@ export const CheckoutSummaryDetail = ({
         {/* Subtotal */}
         <div className="flex justify-between">
           <dt>Subtotal ({totalQuantity} {totalQuantity === 1 ? tCommon("item") : `${tCommon("item")}s`})</dt>
-          <dd>{totalPrice}</dd>
+          <dd>${totalPrice}</dd>
         </div>
 
         {/* Shipping */}
@@ -33,7 +33,7 @@ export const CheckoutSummaryDetail = ({
         {/* Total */}
         <div className="flex justify-between text-lg font-medium">
           <dt>{tCommon("total")}</dt>
-          <dd>{totalPrice}</dd>
+          <dd>${totalPrice}</dd>
         </div>
       </dl>
 

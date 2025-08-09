@@ -111,7 +111,7 @@ export const Cart =  () => {
                     </div>
                     <div className="flex justify-between items-center w-full">
                       <p className="font-semibold">{tCommon('total')}</p>
-                      <p className="font-semibold text-xl">{formattedPrice(totalPrice)}</p>
+                      <p className="font-semibold text-xl">${formattedPrice(totalPrice)}</p>
                     </div>
                     <CheckoutButton />
                   </div>

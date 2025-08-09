@@ -19,7 +19,7 @@ export const SearchProductCard = ({ product, onClick }) => {
           />
         </div>
         <p className="line-clamp-2 mt-1">{product.name}</p>
-        <p className="text-[10px] text-gray-500">{formatPrice(product.price)}</p>
+        <p className="text-[10px] text-gray-500">${formatPrice(product.price)}</p>
       </Link>
     </article>
   );

@@ -64,7 +64,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
           <strong>{tCommon("size")}:</strong> {productSize?.size}
         </p>
 
-        <p className="text-sm font-semibold">{formattedPrice(product.price)}</p>
+        <p className="text-sm font-semibold">${formattedPrice(product.price)}</p>
 
         {/* Quantity selector */}
         <CartItemQuantityHandler

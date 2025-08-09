@@ -70,7 +70,7 @@ export const OrdersWrapper = () => {
 
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
                     <p className="font-semibold">
-                      {tCommon("total")}: {formatPrice(order.total_price)}{" "}
+                      {tCommon("total")}: ${formatPrice(order.total_price)}{" "}
                       <span className="text-gray-500">({order.total_quantity} {tCommon("item")}s)</span>
                     </p>
                     <span
