@@ -67,6 +67,7 @@ export const ProductCard = ({ product }) => {
               src={image1?.thumbnail_url || "/placeholder.jpg"}
               alt={product?.name}
               fill
+              loading="lazy"
               sizes="(min-width: 768px) 400px, 300px"
               className={`object-cover rounded-lg transition-opacity duration-500 ${
                 hovered && image2 ? "opacity-0" : "opacity-100"
@@ -80,6 +81,7 @@ export const ProductCard = ({ product }) => {
                 alt=""
                 aria-hidden="true"
                 fill
+                loading="lazy"
                 sizes="(min-width: 768px) 400px, 300px"
                 className={`object-cover rounded-lg absolute top-0 left-0 transition-opacity duration-500 ${
                   hovered ? "opacity-100" : "opacity-0"
