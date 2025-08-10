@@ -32,6 +32,7 @@ export const Nav = async () => {
                 height={26}
                 className="cursor-pointer"
                 priority
+                fetchPriority="high"
               />
             </Link>
           </div>

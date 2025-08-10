@@ -18,6 +18,7 @@ export const CategoryCard = ({ category }) => {
           sizes="(max-width: 768px) 90vw, (max-width: 1024px) 40vw, 100vw"
           className="object-cover object-center rounded-lg transition-transform duration-500 group-hover:scale-110"
           priority
+          fetchPriority="high"
         />
         <div
           aria-hidden="true"
