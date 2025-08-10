@@ -25,6 +25,8 @@ export const ProductImageSlider = ({ productImages, productName }) => {
               src={productImages[currentImage].image_url}
               alt={productName}
               className="object-cover"
+              priority
+              loading="lazy"
             />
           </motion.div>
         </AnimatePresence>
