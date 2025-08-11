@@ -5,6 +5,7 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
   const formatPrice = useFormatPrice();
   const t = useTranslations("Checkout");
   const tCommon = useTranslations("Common");
+  const tProductInfo = useTranslations("ProductInfo");
 
   return (
     <section
@@ -49,7 +50,7 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
                 </div>
 
                 <div>
-                  <p className="text-sm font-medium">{item.products.name}</p>
+                  <p className="text-sm font-medium">{tProductInfo(`${item.products.i18n_key}.name`)}</p>
                   <p className="text-xs text-gray-500">{tCommon("size")}: {size}</p>
                   <p className="sr-only">Quantity: {item.quantity}</p>
                 </div>

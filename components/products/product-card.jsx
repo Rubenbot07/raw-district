@@ -12,6 +12,7 @@ export const ProductCard = ({ product }) => {
   const image1 = product?.product_images.find((image) => image?.position === 1);
   const image2 = product?.product_images.find((image) => image?.position === 2);
   const t = useTranslations("Cart");
+  const tProductInfo = useTranslations("ProductInfo");
   const [hovered, setHovered] = useState(false);
   const [onFocus, setOnFocus] = useState(false);
 
@@ -78,7 +79,7 @@ export const ProductCard = ({ product }) => {
             {image2 && (
               <Image
                 src={image2?.thumbnail_url}
-                alt=""
+                alt={tProductInfo((`${product?.i18n_key}.name`))}
                 aria-hidden="true"
                 fill
                 loading="lazy"
@@ -95,7 +96,7 @@ export const ProductCard = ({ product }) => {
               id={nameId}
               className="leading-relaxed min-h-[calc(1em*1.625*2)] line-clamp-2 md:line-clamp-none md:min-h-0"
             >
-              {product?.name}
+              {product ? tProductInfo((`${product?.i18n_key}.name`)) : ""} 
             </p>
             <p className="text-xs text-gray-500" id={priceId}>${formattedPrice(product?.price)}</p>
           </div>

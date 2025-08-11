@@ -25,7 +25,6 @@ export const Cart =  () => {
   const tCommon = useTranslations('Common');
   const t = useTranslations('Cart');
 
-  
   // Foco automático en botón de cerrar
   useEffect(() => {
     if (openCart && closeButtonRef.current) {

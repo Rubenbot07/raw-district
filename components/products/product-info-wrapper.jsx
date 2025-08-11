@@ -12,12 +12,13 @@ export const ProductInfoWrapper = ({ product, children }) => {
   const lowStock = selectedSize?.stock <= 5 || product.product_sizes[0].stock <= 5;
   const formatPrice = useFormatPrice();
   const t = useTranslations('Product');
+  const tProductInfo = useTranslations('ProductInfo');
   return (
     <section className="flex flex-col gap-8 lg:w-3/4 xl:w-4/6 xl:mx-auto p-2" aria-labelledby="product-info-title">
       {/* Título y precio */}
       <header className="flex flex-col text-start gap-4">
         <h1 id="product-info-title" className="text-3xl font-medium">
-          {product.name}
+          {product ? tProductInfo(`${product.i18n_key}.name`) : ""}
         </h1>
         <p className="text-md">${formatPrice(product.price)}</p>
       </header>
@@ -74,8 +75,8 @@ export const ProductInfoWrapper = ({ product, children }) => {
         <h2 id="product-description" className="underline text-sm">
           {t("description")}
         </h2>
-        <p>{product.description}</p>
-        <p>{t("composition")}: {product.composition}</p>
+        <p>{product ? tProductInfo(`${product.i18n_key}.description`) : ""}</p>
+        <p>{t("composition")}: {product ? tProductInfo(`${product.i18n_key}.composition`) : ""}</p>
       </section>
 
       {/* Características extra */}

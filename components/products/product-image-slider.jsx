@@ -26,7 +26,6 @@ export const ProductImageSlider = ({ productImages, productName }) => {
               alt={productName}
               className="object-cover"
               priority
-              loading="lazy"
             />
           </motion.div>
         </AnimatePresence>

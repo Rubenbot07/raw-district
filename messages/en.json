@@ -315,6 +315,247 @@
         "answer": "You will receive a confirmation email once your purchase is confirmed. Please check your spam/junk or promotions folder before contacting us."
       }
     ]
+  },
+  "ProductInfo": {
+    "cap_palm_trees_pink_cake": {
+      "name": "Cap Palm Trees - Pink Cake",
+      "description": "5-panel Trucker cap Pink Cake in cotton and back mesh. Palm Trees design embroidered on the front in high relief and embroidered on the sides with low relief.",
+      "composition": "100% Cotton"
+    },
+    "cap_lm_studios_black_and_white": {
+      "name": "Cap LM Studios - Black and White",
+      "description": "Cap with Trucker 5-panel White and Black color on cotton and back mesh. LM design embroidered on the front in high relief and embroidered on the sides with low relief.",
+      "composition": "100% Cotton"
+    },
+    "gradient_beanie_monoic_brown_and_white": {
+      "name": "Gradient Beanie Monoic - Brown and White",
+      "description": "Beanie made in brown and white knit fabric. It has a gradient finish and has the \"MONOIC\" logo woven on the front.",
+      "composition": "100% Cotton"
+    },
+    "logo_oversized_v2_t_shirt_dark_black": {
+      "name": "Logo Oversized V2 T-shirt - Dark Black",
+      "description": "Dark Black Short Sleeve T-shirt with fit oversized, made of high grammage premium cotton jersey. The shirt has a round rib collar and the \"Monoic\" logo is stamped on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "gradient_beanie_monoic_gray": {
+      "name": "Gradient Beanie Monoic - Gray",
+      "description": "Beanie made of black and gray knit fabric. It has a gradient finish and has the \"MONOIC\" logo woven on the front.",
+      "composition": "100% Cotton"
+    },
+    "rebuild_t_shirt_sand": {
+      "name": "Rebuild T-shirt - Sand",
+      "description": "Sand colored short sleeve t-shirt with oversized fit, made of high grammage premium cotton jersey. The t-shirt has a round rib collar and high-relief silkscreen print on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "logo_oversized_v2_t_shirt_off_white": {
+      "name": "Logo Oversized V2 T-shirt - Off White",
+      "description": "Off White short-sleeved t-shirt with fit oversized, made of high-grammed premium cotton jersey. The shirt has a round rib collar and the \"Monoic\" logo is stamped on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "logo_oversized_v2_lila_t_shirt": {
+      "name": "Logo Oversized V2 - Lila T-shirt",
+      "description": "Lila color short sleeve t-shirt with fit oversized, made of high grammage premium cotton jersey. The shirt has a round rib collar and the \"Monoic\" logo is stamped on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "cap_monoic_studios_black_and_white": {
+      "name": "Cap Monoic Studios - Black and White",
+      "description": "Cap with Trucker 5-panel White and Black color on cotton and back mesh. Monoic Studios design embroidered on the front in high relief and embroidered on the sides with low relief.",
+      "composition": "100% Cotton"
+    },
+    "sunset_dreams_cap_light_blue": {
+      "name": "Sunset Dreams Cap - Light Blue",
+      "description": "Tour with Trucker 5-panel trough Light Blue in cotton and back mesh. Sunset Dreams design embroidered on the front in high relief and embroidered on the sides with low relief.",
+      "composition": "100% Cotton"
+    },
+    "metro_t_shirt_dark_black": {
+      "name": "Metro T-shirt - Dark Black",
+      "description": "Dark Black Short Sleeve T-shirt with oversized fit, made of high grammage premium cotton jersey. The t-shirt has a round rib collar and a seamless screen print on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "logo_oversized_v2_t_shirt_worn_gray": {
+      "name": "Logo Oversized V2 T-shirt - Worn Gray",
+      "description": "Short sleeve shirt Gray Worn with fit oversized, made of high grammage premium cotton jersey. The shirt has a round rib collar and the \"Monoic\" logo is stamped on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "denim_jacket_classic_blue": {
+      "name": "Denim Jacket - Classic Blue",
+      "description": "Classic Blue short-sleeved denim jacket, with two front pockets and monogram at the bottom left of the garment. Made of 100% cotton for a casual and fresh look.",
+      "composition": "100% cotton"
+    },
+    "denim_jacket_dark_black": {
+      "name": "Denim Jacket - Dark Black",
+      "description": "Dark Black short-sleeved denim jacket with two front pockets and monogram at the bottom left of the garment. Made of 100% cotton for a casual and fresh look.",
+      "composition": "100% cotton"
+    },
+    "denim_jacket_baby_blue": {
+      "name": "Denim Jacket - Baby Blue",
+      "description": "Baby Blue short-sleeved denim jacket, with two front pockets and monogram at the bottom left of the garment. Made of 100% cotton for a casual and fresh look.",
+      "composition": "100% cotton"
+    },
+    "monoic_windbreaker_jacket_beige": {
+      "name": "Monoic Windbreaker Jacket - Beige",
+      "description": "Windbreaker Jacket Monoic color Beige. Folding jacket with elastic waist and hood adjusters, double front pocket, zip neck closure and adjustable velcro wrists. Monogram embroidery in the front center of the jacket and \"Monoic\" in left sleeve in black.",
+      "composition": "85% Nylon and 15% Spandex"
+    },
+    "monoic_windbreaker_jacket_gray": {
+      "name": "Monoic Windbreaker Jacket - Gray",
+      "description": "Windbreaker Jacket Monoic Gray color. Folding jacket with elastic waist and hood adjusters, double front pocket, zip neck closure and adjustable velcro wrists. Monogram embroidery in the front center of the jacket and \"Monoic\" in left sleeve in black.",
+      "composition": "85% Nylon and 15% Spandex"
+    },
+    "monoic_windbreaker_jacket_dark_black": {
+      "name": "Monoic Windbreaker Jacket - Dark Black",
+      "description": "Windbreaker Jacket Monoic Dark Black color. Folding jacket with elastic waist and hood adjusters, double front pocket, zip neck closure and adjustable velcro wrists. Monogram embroidery in the front center of the jacket and \"Monoic\" in white left sleeve.",
+      "composition": "85% Nylon and 15% Spandex"
+    },
+    "hoodie_basic_v2_off_white": {
+      "name": "Hoodie Basic V2 - Off White",
+      "description": "Hoodie basic V2 color Off White made of high grammage cotton. Pre shrunken and dyed in a piece made to obtain the highest quality and finish. Fists and waist in Rib, front pocket kangaroo type and our logo \"Monoic\" in high relief screen printing on the left breastplate.",
+      "composition": "100% cotton 400gsm"
+    },
+    "quarter_zip_v2_worn_gray": {
+      "name": "Quarter Zip V2 - worn Gray",
+      "description": "Quarter Zip V2 oversized in worn Gray color made of high grammage Premium Cotton. The garment has rib cuffs and our \"Monoic\" print in high-relief silkscreen on the white back.",
+      "composition": "100% cotton 410gsm"
+    },
+    "hoodie_basic_v2_lila": {
+      "name": "Hoodie Basic V2 - Lila",
+      "description": "Hoodie Basic V2 Lilac color made of high grammage cotton. Pre shrunken and dyed in a piece made to obtain the highest quality and finish. Fists and waist in Rib, front pocket kangaroo type and our logo \"Monoic\" in high relief screen printing on the left breastplate.",
+      "composition": "100% cotton 400gsm"
+    },
+    "trashed_hoodie_rush_worn_black": {
+      "name": "Trashed Hoodie Rush - Worn Black",
+      "description": "Trashed Hoodie in Worn Black, color, has an oversized fit and is made of high grammage cotton. The hoodie is pre-shrunk and dyed in a piece made to obtain the highest quality and finish. The cuffs and waist are in rib with a wear that gives it the \"transhed\" aesthetic, and the front kangaroo pocket was removed. It is stamped in seamless screen printing with our multi-colored NYC design on the back.",
+      "composition": "100% cotton 410gsm"
+    },
+    "hoodie_sunset_dreams_light_blue": {
+      "name": "Hoodie Sunset Dreams - Light Blue",
+      "description": "Hoodie Sunset Dreams in Light Blue, has a new fit oversized and is made of high grammage cotton. The hoodie is pre-shrunk and dyed in a piece made to obtain the highest quality and finish. The cuffs and waist are on Rib, it has a kangaroo-like front pocket, and it's stamped in touchless screen printing on our Sunset Dreams chart on the back.",
+      "composition": "100% cotton 410gsm"
+    },
+    "basic_hoodie_navy_blue": {
+      "name": "Basic Hoodie - Navy Blue",
+      "description": "Basic Navy Blue Hoodie made of heavyweight cotton. Pre-shrunk and dyed in a ready-made piece to obtain maximum quality and finish. Rib cuffs and waist, front kangaroo pocket and rubber with \"Monoic\" logo on the left pectoral.",
+      "composition": "100% cotton 400gsm"
+    },
+    "hoodie_basic_v2_dark_black": {
+      "name": "Hoodie Basic V2 - Dark Black",
+      "description": "Basic Hoodie V2 Dark Black color made of high grammage cotton. Pre shrunken and dyed in a piece made to obtain the highest quality and finish. Fists and waist in Rib, front pocket kangaroo type and our logo \"Monoic\" in high relief screen printing on the left breastplate.",
+      "composition": "100% cotton 400gsm"
+    },
+    "zip_jacket_monoic_studios_light_gray": {
+      "name": "Zip Jacket Monoic Studios - Light Gray",
+      "description": "Jacket made of Light Gray cotton with front zipper, high neck and front pockets. Pre shrunken jacket, cuffs and waist at Rib. Fear Will Lose print in touchless screen printing on the back.",
+      "composition": "100% cotton 400gsm"
+    },
+    "cargo_pants_cream": {
+      "name": "Cargo Pants - Cream",
+      "description": "Cargo Straight boot pants in Ripstop cotton. Cream color with front, side and back pockets with a slightly loose fit. Monogram embroidered on right pocket and \"Monoic Studios\" embroidered on left side pocket.",
+      "composition": "Ripstop Cotton"
+    },
+    "wide_fit_jean_classic_washed_blue": {
+      "name": "Wide Fit Jean Classic - Washed Blue",
+      "description": "Jean made in Cotton Denim with a Wide Fit. Color \"Washed Blue\" giving a washing effect. Metallic \"Monogram\" applique under the left front pocket and MONOIC frame at the back of the waist..",
+      "composition": "100% cotton"
+    },
+    "logo_oversized_v2_t_shirt_mint_green": {
+      "name": "Logo Oversized V2 T-shirt - Mint Green",
+      "description": "Mint Green Short Sleeve T-shirt with fit oversized, made of high grammage premium cotton jersey. The shirt has a round rib collar and the \"Monoic\" logo is stamped on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "fly_high_cap_olive_green": {
+      "name": "Fly High Cap - Olive Green",
+      "description": "Cap with New 5-panel Trucker last without structure on the front, olive green in cotton. Fly High design embroidered on the front with high relief, and embroidered on the sides with low relief.",
+      "composition": "100% Cotton"
+    },
+    "wide_fit_jean_distressed_denim": {
+      "name": "Wide Fit Jean - Distressed Denim",
+      "description": "Dark Black short-sleeved denim jacket with two front pockets and monogram at the bottom left of the garment. Made of 100% cotton for a casual and fresh look.",
+      "composition": "100% cotton"
+    },
+    "monoic_trousers_dark_black": {
+      "name": "Monoic Trousers - Dark Black",
+      "description": "Trousers with a straight boot fit (large size, consider choosing a size smaller than usual). Dark Black color with 4 pockets between front and rear. Made of 100% cotton.",
+      "composition": "100% cotton"
+    },
+    "zip_knit_sweater_dark_black": {
+      "name": "Zip Knit Sweater - Dark Black",
+      "description": "Zip Knit Sweater Monoic Dark Black color, sweater with a Slim fit made of cotton. The sweater is pre-shrunken, with fists and waist at Rib. rubber with \"Monoic\" logo on the left arm.",
+      "composition": "100% cotton 600gsm"
+    },
+    "polo_sweater_cream": {
+      "name": "Polo Sweater - Cream",
+      "description": "Knit Polo Sweater Monoic cream color, sweater with a slightly oversized regular fit made of cotton. The sweater is pre-shrunken, with fists, neck and waist at Rib. MONOIC embroidery on the chest.",
+      "composition": "100% cotton 600gsm"
+    },
+    "limited_edition_aviator_leather_jacket_black": {
+      "name": "Limited Edition | Aviator Leather Jacket - Black",
+      "description": "Our star product from the collection. Designed for those looking for a timeless garment, this jacket not only resists the passage of time, but improves with it. Limited to solo 15 units, is made of 100% calf leather with a slightly boxy fit, following the highest quality standards to guarantee a unique and durable appearance. It has two front pockets, a metal monogram on the left breastplate and \"Monoic New York\" embroidery on the back. Fists and waist in rib.",
+      "composition": "100% leather"
+    },
+    "nyc_t_shirt_dark_black": {
+      "name": "NYC T-shirt - Dark Black",
+      "description": "Dark Black Short Sleeve T-shirt with oversized fit, made of high grammage premium cotton jersey. The t-shirt has a round rib collar and a seamless screen print on the back.",
+      "composition": "100% cotton250gsm"
+    },
+    "cap_monoic_studios_cobalt_blue": {
+      "name": "Cap Monoic Studios - Cobalt Blue",
+      "description": "Cap with Trucker 5-panel blue Cobalt blue last on cotton and back mesh. Monoic Studios design embroidered on the front in high relief and embroidered on the sides with low relief.",
+      "composition": "100% Cotton"
+    },
+    "hoodie_basic_v2_mint_green": {
+      "name": "Hoodie Basic V2 - Mint Green",
+      "description": "Basic Hoodie V2 Mint Green made of high grammage cotton. Pre shrunken and dyed in a piece made to obtain the highest quality and finish. Fists and waist in Rib, front pocket kangaroo type and our logo \"Monoic\" in high relief screen printing on the left breastplate.",
+      "composition": "100% cotton 400gsm"
+    },
+    "wide_fit_jean_raw_denim": {
+      "name": "Wide Fit Jean - Raw Denim",
+      "description": "Jean made in Cotton Denim with a Wide Fit. Metallic \"Monogram\" applique under the left front pocket and MONOIC frame at the back of the waist.",
+      "composition": "100% cotton"
+    },
+    "trousers_monoic_navy_blue": {
+      "name": "Trousers Monoic - Navy Blue",
+      "description": "Trousers with a straight boot fit (large size, consider choosing a size smaller than usual). Navy blue color with 4 pockets between front and rear. Made of 100% cotton.",
+      "composition": "100% cotton"
+    },
+    "wide_fit_jean_rusty": {
+      "name": "Wide Fit Jean - Rusty",
+      "description": "Jean made in Cotton Denim with a Wide Fit. Color \"Soft Sand\" giving a sand-colored washing effect. Metallic \"Monogram\" applique under the left front pocket and MONOIC frame at the back of the waist.",
+      "composition": "100% cotton"
+    },
+    "wide_fit_jean_mouse_gray": {
+      "name": "Wide Fit Jean - Mouse Gray",
+      "description": "Jean made in Cotton Denim with a Wide Fit. Metallic \"Monogram\" applique under the left front pocket and MONOIC frame at the back of the waist.",
+      "composition": "100% cotton"
+    },
+    "gradient_fuzzy_black_and_white_sweater": {
+      "name": "Gradient Fuzzy - Black and White Sweater",
+      "description": "Sweater Monoic color Black and White, sweater with a slightly oversized fit made of rabbit fur fabric. The sweater is pre-shrunken, with fists, neck and waist at Rib. Very soft to the touch and MONOIC embroidery on the chest.",
+      "composition": "100% Nylon"
+    },
+    "gradient_knit_sweater_monoic_ny_gray_and_black": {
+      "name": "Gradient Knit Sweater Monoic NY - Gray and Black",
+      "description": "Knit Sweater Monoic NY Gray and Black color, sweater with a slightly oversized fit made of 100% cotton. The sweater is pre-shrunken, with fists, neck and waist at Rib. Monoic New York print on the back.",
+      "composition": "100% cotton"
+    },
+    "gradient_fuzzy_sweater_white_and_brown": {
+      "name": "Gradient Fuzzy - Sweater White and Brown",
+      "description": "Sweater Monoic color Coffee and White, sweater with a slightly oversized fit made of rabbit fur fabric. The sweater is pre-shrunken, with fists, neck and waist at Rib. Very soft to the touch and MONOIC embroidery on the chest.",
+      "composition": "100% Nylon"
+    },
+    "knit_cardigan_dark_black": {
+      "name": "Knit Cardigan - Dark Black",
+      "description": "Knit Cardigan Monoic Dark Black color, sweater with a slightly oversized regular fit made of 100% cotton. The sweater is pre-shrunken, with fists and waist at Rib. MONOIC metal monogram on the left breastplate.",
+      "composition": "100% cotton"
+    },
+    "knit_cardigan_baby_pink": {
+      "name": "Knit Cardigan - Baby Pink",
+      "description": "Knit Cardigan Monoic Baby Pink, sweater with a slightly oversized regular fit made of 100% cotton. The sweater is pre-shrunken, with fists and waist at Rib. MONOIC metal monogram on the left breastplate.",
+      "composition": "100% cotton"
+    },
+    "zip_knit_sweater_cream": {
+      "name": "Zip Knit Sweater - Cream",
+      "description": "Zip Knit Sweater Monoic color Cream, sweater with a Slim fit made of cotton. The sweater is pre-shrunken, with fists and waist at Rib. rubber with \"Monoic\" logo on the left arm.",
+      "composition": "100% cotton 600gsm"
+    }
   }
-  
 }

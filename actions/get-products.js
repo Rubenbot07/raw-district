@@ -2,7 +2,7 @@
 import { cache } from 'react';
 import { supabase } from '../lib/supabase/supabaseClient';
 
-export const getProducts = cache(async (filters = {}, { from = 0, to = 14 } = {}) => {
+export const getProducts = cache(async (filters = {}, { from = 0, to = 50 } = {}) => {
   let query = supabase
     .from('products')
     .select(`

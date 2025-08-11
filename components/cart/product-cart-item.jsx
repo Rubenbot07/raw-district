@@ -15,6 +15,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   const removeFromCartLocal = useCartStore((state) => state.removeFromCartLocal);
   const formattedPrice = useFormatPrice()  
   const t = useTranslations("Cart");
+  const tProductInfo = useTranslations("ProductInfo");
   const tCommon = useTranslations("Common");
   
   useEffect(() => {
@@ -41,7 +42,6 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
       console.error("Error removing item from cart:", error);
     }
   }
-
   return (
      <article
       className="bg-white p-4 flex items-center gap-4"
@@ -57,7 +57,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
 
       <div className="flex flex-col gap-2 w-full">
         <header className="text-xs font-medium" id={`product-name-${itemId}`}>
-          {product.name}
+          {product ? tProductInfo(`${product.i18n_key}.name`) : ""}
         </header>
 
         <p className="text-xs">

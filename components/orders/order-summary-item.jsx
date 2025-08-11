@@ -9,6 +9,7 @@ export const OrderSummaryItem = ({ productId, quantity, size, subtotal }) => {
   const formattedPrice = useFormatPrice();
   const [product, setProduct] = useState(null);
   const tCommon = useTranslations("Common");
+  const tProductInfo = useTranslations("ProductInfo");
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -50,7 +51,7 @@ export const OrderSummaryItem = ({ productId, quantity, size, subtotal }) => {
           )}
         </div>
         <div className="flex flex-col justify-center">
-          <span className="text-sm font-medium">{product.name}</span>
+          <span className="text-sm font-medium">{product ? `${tProductInfo(`${product.i18n_key}.name`)}` : ""}</span>
           <span className="text-xs text-gray-500">{tCommon("size")}: {size}</span>
         </div>
       </div>

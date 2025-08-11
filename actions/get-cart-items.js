@@ -10,6 +10,7 @@ export async function getCartItems(cartId) {
         name,
         price,
         description,
+        i18n_key,
         categories (
           name
         ),

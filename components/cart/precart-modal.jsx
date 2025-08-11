@@ -8,6 +8,7 @@ import { useProductSelectionStore } from "@/app/stores/productSelectionStore";
 import { useFormatPrice } from "@/utils/formatPrice";
 import { X } from "lucide-react";
 import {FocusTrap} from 'focus-trap-react';
+import { useTranslations } from 'next-intl';
 
 export const PreCartModal = () => {
   const [product, setProduct] = useState([]);
@@ -19,6 +20,7 @@ export const PreCartModal = () => {
   const closeButtonRef = useRef(null);
 
   const formattedPrice = useFormatPrice();
+  const t = useTranslations('ProductInfo');
 
   useEffect(() => {
     if (!selectedProductSlug) return;
@@ -101,10 +103,10 @@ export const PreCartModal = () => {
                   <div className="w-full">
                     <InfinitiveLoopSlider productImages={product.product_images} />
                     <div className="flex flex-col gap-6 p-4">
-                      <p className="font-medium" id="product-name">{product.name}</p>
+                      <p className="font-medium" id="product-name">{product ? t(`${product.i18n_key}.name`) : ""}</p>
                       <p className="text-xs">${formattedPrice(product.price)}</p>
                       <SizesWrapper product={product} />
-                      <p className="text-xs">{product.description}</p>
+                      <p className="text-xs">{product ? t(`${product.i18n_key}.description`) : ""}</p>
                     </div>
                   </div>
                 )}

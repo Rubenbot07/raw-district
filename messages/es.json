@@ -144,7 +144,7 @@
     "pants": "Pantalones",
     "caps": "Gorras",
     "jackets": "Chaquetas",
-    "hoodies": "Buzos",
+    "hoodies": "Hoodies",
     "sweaters": "Suéteres"
   },
     "Sizes" : {
@@ -316,5 +316,247 @@
         "answer": "Recibirás un correo electrónico de confirmación una vez que tu compra esté confirmada. Por favor, revisa tu carpeta de spam/correo no deseado o promociones antes de contactarnos."
       }
     ]
+  },
+"ProductInfo": {
+    "cap_palm_trees_pink_cake": {
+      "name": "Gorra Palm Trees - Rosa Pastel",
+      "description": "Gorra Trucker de 5 paneles en color Pastel Rosa, en algodón y malla trasera. Diseño Palm Trees bordado al frente en alto relieve y bordados en los costados en bajo relieve.",
+      "composition": "100% Algodón"
+    },
+    "cap_lm_studios_black_and_white": {
+      "name": "Gorra LM Studios - Negro y Blanco",
+      "description": "Gorra Trucker de 5 paneles en colores Blanco y Negro, en algodón y malla trasera. Diseño LM bordado al frente en alto relieve y bordados en los costados en bajo relieve.",
+      "composition": "100% Algodón"
+    },
+    "gradient_beanie_monoic_brown_and_white": {
+      "name": "Gorro Degradado Monoic - Marrón y Blanco",
+      "description": "Gorro tejido en colores marrón y blanco con acabado degradado. Lleva el logotipo \"MONOIC\" tejido en la parte frontal.",
+      "composition": "100% Algodón"
+    },
+    "logo_oversized_v2_t_shirt_dark_black": {
+      "name": "Camiseta Logo Oversized V2 - Negro Oscuro",
+      "description": "Camiseta de manga corta en Negro Oscuro con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y el logotipo \"Monoic\" estampado en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "gradient_beanie_monoic_gray": {
+      "name": "Gorro Degradado Monoic - Gris",
+      "description": "Gorro tejido en colores negro y gris con acabado degradado. Lleva el logotipo \"MONOIC\" tejido en la parte frontal.",
+      "composition": "100% Algodón"
+    },
+    "rebuild_t_shirt_sand": {
+      "name": "Camiseta Rebuild - Arena",
+      "description": "Camiseta de manga corta color arena con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y serigrafía en alto relieve en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "logo_oversized_v2_t_shirt_off_white": {
+      "name": "Camiseta Logo Oversized V2 - Blanco Roto",
+      "description": "Camiseta de manga corta en Blanco Roto con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y el logotipo \"Monoic\" estampado en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "logo_oversized_v2_lila_t_shirt": {
+      "name": "Camiseta Logo Oversized V2 - Lila",
+      "description": "Camiseta de manga corta color Lila con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y el logotipo \"Monoic\" estampado en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "cap_monoic_studios_black_and_white": {
+      "name": "Gorra Monoic Studios - Negro y Blanco",
+      "description": "Gorra Trucker de 5 paneles en colores Blanco y Negro, en algodón y malla trasera. Diseño Monoic Studios bordado al frente en alto relieve y bordados en los costados en bajo relieve.",
+      "composition": "100% Algodón"
+    },
+    "sunset_dreams_cap_light_blue": {
+      "name": "Gorra Sunset Dreams - Azul Claro",
+      "description": "Gorra Trucker de 5 paneles en color Azul Claro, en algodón y malla trasera. Diseño Sunset Dreams bordado al frente en alto relieve y bordados en los costados en bajo relieve.",
+      "composition": "100% Algodón"
+    },
+    "metro_t_shirt_dark_black": {
+      "name": "Camiseta Metro - Negro Oscuro",
+      "description": "Camiseta de manga corta en Negro Oscuro con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y serigrafía seamless en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "logo_oversized_v2_t_shirt_worn_gray": {
+      "name": "Camiseta Logo Oversized V2 - Gris Desgastado",
+      "description": "Camiseta de manga corta en Gris Desgastado con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y el logotipo \"Monoic\" estampado en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "denim_jacket_classic_blue": {
+      "name": "Chaqueta Denim - Azul Clásico",
+      "description": "Chaqueta denim de manga corta en Azul Clásico, con dos bolsillos delanteros y monograma en la parte inferior izquierda de la prenda. Confeccionada en 100% algodón para un look casual y fresco.",
+      "composition": "100% Algodón"
+    },
+    "denim_jacket_dark_black": {
+      "name": "Chaqueta Denim - Negro Oscuro",
+      "description": "Chaqueta denim de manga corta en Negro Oscuro, con dos bolsillos delanteros y monograma en la parte inferior izquierda de la prenda. Confeccionada en 100% algodón para un look casual y fresco.",
+      "composition": "100% Algodón"
+    },
+    "denim_jacket_baby_blue": {
+      "name": "Chaqueta Denim - Azul Bebé",
+      "description": "Chaqueta denim de manga corta en Azul Bebé, con dos bolsillos delanteros y monograma en la parte inferior izquierda de la prenda. Confeccionada en 100% algodón para un look casual y fresco.",
+      "composition": "100% Algodón"
+    },
+    "monoic_windbreaker_jacket_beige": {
+      "name": "Rompevientos Monoic - Beige",
+      "description": "Rompevientos Monoic color Beige. Chaqueta plegable con cintura elástica y ajustadores en la capucha, doble bolsillo delantero, cierre de cremallera en el cuello y puños con velcro ajustable. Monograma bordado en el centro delantero y \"Monoic\" en la manga izquierda en negro.",
+      "composition": "85% Nylon y 15% Elastano"
+    },
+    "monoic_windbreaker_jacket_gray": {
+      "name": "Rompevientos Monoic - Gris",
+      "description": "Rompevientos Monoic color Gris. Chaqueta plegable con cintura elástica y ajustadores en la capucha, doble bolsillo delantero, cierre de cremallera en el cuello y puños con velcro ajustable. Monograma bordado en el centro delantero y \"Monoic\" en la manga izquierda en negro.",
+      "composition": "85% Nylon y 15% Elastano"
+    },
+    "monoic_windbreaker_jacket_dark_black": {
+      "name": "Rompevientos Monoic - Negro Oscuro",
+      "description": "Rompevientos Monoic color Negro Oscuro. Chaqueta plegable con cintura elástica y ajustadores en la capucha, doble bolsillo delantero, cierre de cremallera en el cuello y puños con velcro ajustable. Monograma bordado en el centro delantero y \"Monoic\" en la manga izquierda en blanco.",
+      "composition": "85% Nylon y 15% Elastano"
+    },
+    "hoodie_basic_v2_off_white": {
+      "name": "Hoodie Básico V2 - Blanco Roto",
+      "description": "Hoodie básico V2 color Blanco Roto, confeccionado en algodón de alto gramaje. Pre-encogido y teñido en prenda para obtener la máxima calidad y acabado. Puños y cintura en canalé, bolsillo tipo canguro frontal y logo \"Monoic\" en serigrafía de alto relieve en el pecho izquierdo.",
+      "composition": "100% Algodón 400gsm"
+    },
+    "quarter_zip_v2_worn_gray": {
+      "name": "Quarter Zip V2 - Gris Desgastado",
+      "description": "Quarter Zip V2 oversize en color Gris Desgastado, confeccionado en algodón premium de alto gramaje. La prenda tiene puños de canalé y el estampado \"Monoic\" en serigrafía de alto relieve en la espalda.",
+      "composition": "100% Algodón 410gsm"
+    },
+    "hoodie_basic_v2_lila": {
+      "name": "Hoodie Básico V2 - Lila",
+      "description": "Hoodie básico V2 color Lila, confeccionado en algodón de alto gramaje. Pre-encogido y teñido en prenda para obtener la máxima calidad y acabado. Puños y cintura en canalé, bolsillo tipo canguro frontal y logo \"Monoic\" en serigrafía de alto relieve en el pecho izquierdo.",
+      "composition": "100% Algodón 400gsm"
+    },
+    "trashed_hoodie_rush_worn_black": {
+      "name": "Trashed Hoodie Rush - Negro Desgastado",
+      "description": "Hoodie estilo 'trashed' en Negro Desgastado con corte oversize, confeccionado en algodón de alto gramaje. Pre-encogido y teñido en prenda para un acabado de máxima calidad. Puños y cintura en canalé con desgaste que le da la estética 'trashed', sin el bolsillo canguro frontal. Estampado en serigrafía seamless con nuestro diseño multicolor NYC en la espalda.",
+      "composition": "100% Algodón 410gsm"
+    },
+    "hoodie_sunset_dreams_light_blue": {
+      "name": "Hoodie Sunset Dreams - Azul Claro",
+      "description": "Hoodie Sunset Dreams en color Azul Claro con nuevo fit oversize, confeccionado en algodón de alto gramaje. Pre-encogido y teñido en prenda para un acabado de alta calidad. Puños y cintura en canalé, bolsillo delantero tipo canguro y estampado en serigrafía touchless con el diseño Sunset Dreams en la espalda.",
+      "composition": "100% Algodón 410gsm"
+    },
+    "basic_hoodie_navy_blue": {
+      "name": "Hoodie Básico - Azul Marino",
+      "description": "Hoodie básico en color Azul Marino, confeccionado en algodón de gran peso. Pre-encogido y teñido en prenda para obtener máxima calidad y acabado. Puños y cintura en canalé, bolsillo canguro delantero y parche de goma con el logo \"Monoic\" en el pecho izquierdo.",
+      "composition": "100% Algodón 400gsm"
+    },
+    "hoodie_basic_v2_dark_black": {
+      "name": "Hoodie Básico V2 - Negro Oscuro",
+      "description": "Hoodie básico V2 en Negro Oscuro, confeccionado en algodón de alto gramaje. Pre-encogido y teñido en prenda para un acabado de alta calidad. Puños y cintura en canalé, bolsillo tipo canguro frontal y logo \"Monoic\" en serigrafía de alto relieve en el pecho izquierdo.",
+      "composition": "100% Algodón 400gsm"
+    },
+    "zip_jacket_monoic_studios_light_gray": {
+      "name": "Chaqueta con cremallera Monoic Studios - Gris Claro",
+      "description": "Chaqueta confeccionada en algodón Gris Claro con cremallera frontal, cuello alto y bolsillos delanteros. Chaqueta pre-encogida con puños y cintura en canalé. Estampado \"Fear Will Lose\" en serigrafía touchless en la espalda.",
+      "composition": "100% Algodón 400gsm"
+    },
+    "cargo_pants_cream": {
+      "name": "Pantalón Cargo - Crema",
+      "description": "Pantalón cargo de corte recto confeccionado en algodón Ripstop. Color Crema con bolsillos frontales, laterales y traseros, ajuste ligeramente holgado. Monograma bordado en el bolsillo derecho y \"Monoic Studios\" bordado en el bolsillo lateral izquierdo.",
+      "composition": "Algodón Ripstop"
+    },
+    "wide_fit_jean_classic_washed_blue": {
+      "name": "Jeans Wide Fit Classic - Azul Lavado",
+      "description": "Jeans confeccionados en denim de algodón con corte Wide Fit. Color \"Washed Blue\" que aporta efecto lavado. Aplique metálico \"Monogram\" bajo el bolsillo delantero izquierdo y marco MONOIC en la parte trasera de la cintura.",
+      "composition": "100% Algodón"
+    },
+    "logo_oversized_v2_t_shirt_mint_green": {
+      "name": "Camiseta Logo Oversized V2 - Verde Menta",
+      "description": "Camiseta de manga corta en Verde Menta con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y el logotipo \"Monoic\" estampado en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "fly_high_cap_olive_green": {
+      "name": "Gorra Fly High - Verde Oliva",
+      "description": "Gorra tipo 5-panel Trucker sin estructura frontal, en color Verde Oliva y algodón. Diseño Fly High bordado al frente en alto relieve y bordados en los costados en bajo relieve.",
+      "composition": "100% Algodón"
+    },
+    "wide_fit_jean_distressed_denim": {
+      "name": "Jeans Wide Fit - Distressed Denim",
+      "description": "Chaqueta denim de manga corta en Negro Oscuro con dos bolsillos delanteros y monograma en la parte inferior izquierda de la prenda. Confeccionada en 100% algodón para un look casual y fresco.",
+      "composition": "100% Algodón"
+    },
+    "monoic_trousers_dark_black": {
+      "name": "Pantalones Monoic - Negro Oscuro",
+      "description": "Pantalones con corte straight boot (ajuste amplio, se recomienda elegir una talla menos de lo habitual). Color Negro Oscuro con 4 bolsillos entre frontales y traseros. Confeccionados en 100% algodón.",
+      "composition": "100% Algodón"
+    },
+    "zip_knit_sweater_dark_black": {
+      "name": "Jersey con cremallera - Negro Oscuro",
+      "description": "Jersey con cremallera color Negro Oscuro, de corte slim y confeccionado en algodón. Prenda pre-encogida con puños y cintura en canalé. Parche de goma con el logo \"Monoic\" en la manga izquierda.",
+      "composition": "100% Algodón 600gsm"
+    },
+    "polo_sweater_cream": {
+      "name": "Polo de Punto - Crema",
+      "description": "Polo de punto color Crema, de corte ligeramente oversize y confeccionado en algodón. Prenda pre-encogida con puños, cuello y cintura en canalé. Bordado MONOIC en el pecho.",
+      "composition": "100% Algodón 600gsm"
+    },
+    "limited_edition_aviator_leather_jacket_black": {
+      "name": "Edición Limitada | Chaqueta Aviator de Cuero - Negro",
+      "description": "Nuestra prenda estrella de la colección. Diseñada para quienes buscan una pieza atemporal que mejora con el paso del tiempo. Limitada a solo 15 unidades, está elaborada en piel de ternero 100% con un fit ligeramente boxy, siguiendo los más altos estándares de calidad para garantizar una apariencia única y duradera. Cuenta con dos bolsillos delanteros, monograma metálico en el pecho izquierdo y bordado \"Monoic New York\" en la espalda. Puños y cintura en canalé.",
+      "composition": "100% Cuero"
+    },
+    "nyc_t_shirt_dark_black": {
+      "name": "Camiseta NYC - Negro Oscuro",
+      "description": "Camiseta de manga corta en Negro Oscuro con corte oversize, confeccionada en punto de algodón premium de alto gramaje. La prenda tiene cuello redondo de canalé y serigrafía seamless en la espalda.",
+      "composition": "100% Algodón 250gsm"
+    },
+    "cap_monoic_studios_cobalt_blue": {
+      "name": "Gorra Monoic Studios - Azul Cobalto",
+      "description": "Gorra Trucker de 5 paneles en color Azul Cobalto, en algodón y malla trasera. Diseño Monoic Studios bordado al frente en alto relieve y bordados en los costados en bajo relieve.",
+      "composition": "100% Algodón"
+    },
+    "hoodie_basic_v2_mint_green": {
+      "name": "Hoodie Básico V2 - Verde Menta",
+      "description": "Hoodie básico V2 en Verde Menta, confeccionado en algodón de alto gramaje. Pre-encogido y teñido en prenda para obtener la máxima calidad y acabado. Puños y cintura en canalé, bolsillo tipo canguro frontal y logo \"Monoic\" en serigrafía de alto relieve en el pecho izquierdo.",
+      "composition": "100% Algodón 400gsm"
+    },
+    "wide_fit_jean_raw_denim": {
+      "name": "Jeans Wide Fit - Raw Denim",
+      "description": "Jeans confeccionados en denim de algodón con corte Wide Fit. Aplique metálico \"Monogram\" bajo el bolsillo delantero izquierdo y marco MONOIC en la parte trasera de la cintura.",
+      "composition": "100% Algodón"
+    },
+    "trousers_monoic_navy_blue": {
+      "name": "Pantalones Monoic - Azul Marino",
+      "description": "Pantalones con corte straight boot (ajuste amplio, se recomienda elegir una talla menos de lo habitual). Color Azul Marino con 4 bolsillos entre frontales y traseros. Confeccionados en 100% algodón.",
+      "composition": "100% Algodón"
+    },
+    "wide_fit_jean_rusty": {
+      "name": "Jeans Wide Fit - Oxidado",
+      "description": "Jeans confeccionados en denim de algodón con corte Wide Fit. Color \"Soft Sand\" que aporta un efecto lavado arena. Aplique metálico \"Monogram\" bajo el bolsillo delantero izquierdo y marco MONOIC en la parte trasera de la cintura.",
+      "composition": "100% Algodón"
+    },
+    "wide_fit_jean_mouse_gray": {
+      "name": "Jeans Wide Fit - Gris Ratón",
+      "description": "Jeans confeccionados en denim de algodón con corte Wide Fit. Aplique metálico \"Monogram\" bajo el bolsillo delantero izquierdo y marco MONOIC en la parte trasera de la cintura.",
+      "composition": "100% Algodón"
+    },
+    "gradient_fuzzy_black_and_white_sweater": {
+      "name": "Jersey Fuzzy Degradado - Negro y Blanco",
+      "description": "Jersey tipo fuzzy en colores Negro y Blanco, con corte ligeramente oversize y tejido tipo pelo de conejo. Prenda pre-encogida con puños, cuello y cintura en canalé. Muy suave al tacto y bordado MONOIC en el pecho.",
+      "composition": "100% Nylon"
+    },
+    "gradient_knit_sweater_monoic_ny_gray_and_black": {
+      "name": "Jersey Degradado Monoic NY - Gris y Negro",
+      "description": "Jersey de punto Monoic NY en colores Gris y Negro, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños, cuello y cintura en canalé. Estampado Monoic New York en la espalda.",
+      "composition": "100% Algodón"
+    },
+    "gradient_fuzzy_sweater_white_and_brown": {
+      "name": "Jersey Fuzzy Degradado - Blanco y Marrón",
+      "description": "Jersey tipo fuzzy en colores Blanco y Marrón, con corte ligeramente oversize y tejido tipo pelo de conejo. Prenda pre-encogida con puños, cuello y cintura en canalé. Muy suave al tacto y bordado MONOIC en el pecho.",
+      "composition": "100% Nylon"
+    },
+    "knit_cardigan_dark_black": {
+      "name": "Cárdigan de Punto - Negro Oscuro",
+      "description": "Cárdigan de punto color Negro Oscuro, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños y cintura en canalé. Monograma metálico MONOIC en el pecho izquierdo.",
+      "composition": "100% Algodón"
+    },
+    "knit_cardigan_baby_pink": {
+      "name": "Cárdigan de Punto - Rosa Bebé",
+      "description": "Cárdigan de punto color Rosa Bebé, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños y cintura en canalé. Monograma metálico MONOIC en el pecho izquierdo.",
+      "composition": "100% Algodón"
+    },
+    "zip_knit_sweater_cream": {
+      "name": "Jersey con cremallera - Crema",
+      "description": "Jersey con cremallera color Crema, de corte slim y confeccionado en algodón. Prenda pre-encogida con puños y cintura en canalé. Parche de goma con el logo \"Monoic\" en la manga izquierda.",
+      "composition": "100% Algodón 600gsm"
+    }
   }
 }
