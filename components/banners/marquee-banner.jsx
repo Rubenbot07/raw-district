@@ -6,13 +6,14 @@ import { useTranslations } from 'next-intl';
 
 export const MarqueeBanner = ({ children, speed, z = 50 }) => {
   const t = useTranslations('Marquee'); // Namespace: Marquee.json
+  const tAriaLabel = useTranslations('AriaLabel');
 
   const contentDefault = (
     <>
       <p className="pl-10">
         <strong>{t('buyWhatsapp')}</strong>{" "}
         <Link
-          className="underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="underline focus:outline-none focus:ring-2"
           href="https://wa.me/3006870774"
           target="_blank"
           rel="noopener noreferrer"
@@ -35,7 +36,7 @@ export const MarqueeBanner = ({ children, speed, z = 50 }) => {
   return (
     <div
       role="region"
-      aria-label={t('ariaLabel')}
+      aria-label={tAriaLabel('marquee')}
       className={`relative z-${z}`}
     >
       <Marquee

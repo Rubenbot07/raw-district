@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 
 export const RotatingBanner = ({ contentMessages}) => {
   const t = useTranslations('RotatingBanner')
+  const tAriaLabel = useTranslations('AriaLabel')
   const [index, setIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
 
@@ -31,7 +32,7 @@ export const RotatingBanner = ({ contentMessages}) => {
   return (
     <div
       role="region"
-      aria-label="Rotating site announcements"
+      aria-label={tAriaLabel('rotatingBanner')}
       className={`w-full text-black text-center py-2 text-[10px] xl:text-[12px] transition-opacity duration-500 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
       {message?.link ? (

@@ -21,6 +21,7 @@ export const PreCartModal = () => {
 
   const formattedPrice = useFormatPrice();
   const t = useTranslations('ProductInfo');
+  const tAriaLabel = useTranslations('AriaLabel');
 
   useEffect(() => {
     if (!selectedProductSlug) return;
@@ -72,12 +73,12 @@ export const PreCartModal = () => {
             <div
               className="fixed inset-0 bg-black bg-opacity-40 z-50 pointer-events-auto"
               onClick={() => setOpenPreCart(false)}
-              aria-label="Close pre-cart modal overlay"
+              aria-label={tAriaLabel('closePrecartOverlay')}
             />
             <div
               role="dialog"
               aria-modal="true"
-              aria-label="Product preview before adding to cart"
+              aria-label={tAriaLabel('previewModal')}
               className={`
                 w-full h-[350px] bottom-0 rounded-t-xl
                 fixed md:top-0 md:right-0 z-50 md:h-full md:w-[360px] max-w-full bg-white shadow-lg transition-all duration-500 ease-in-out
@@ -90,7 +91,7 @@ export const PreCartModal = () => {
                 ref={closeButtonRef}
                 onClick={() => setOpenPreCart(false)}
                 className="absolute top-2 right-4 bg-white p-2 z-40"
-                aria-label="Close preview modal"
+                aria-label={tAriaLabel('closePreviewModal')}
               >
                 <X aria-hidden="true" />
               </button>

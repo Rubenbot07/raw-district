@@ -1,10 +1,13 @@
 'use client';
 import { useState } from "react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const InfinitiveLoopSlider = ({ productImages }) => {
   const [currentIndexImage, setCurrentIndexImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const tAriaLabel = useTranslations('AriaLabel');
+  const tImageCarousel = useTranslations('ImageCarousel');
 
   const handlePrev = () => {
     setCurrentIndexImage((prevIndex) =>
@@ -24,8 +27,8 @@ export const InfinitiveLoopSlider = ({ productImages }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       role="region"
-      aria-roledescription="carousel"
-      aria-label="Product image carousel"
+      aria-roledescription={tAriaLabel('carousel')}
+      aria-label={tAriaLabel('productImageCarousel')}
     >
       <div className="w-full h-auto overflow-hidden mb-4">
         <img
@@ -39,21 +42,21 @@ export const InfinitiveLoopSlider = ({ productImages }) => {
         <button
           onClick={handlePrev}
           className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform -translate-x-20 transition-transform duration-300 ease-in-out ${isHovered ? 'translate-x-2' : ''}`}
-          aria-label="Previous image"
+          aria-label={tAriaLabel('previousImage')}
         >
           <ArrowLeft aria-hidden="true" />
         </button>
         <button
           onClick={handleNext}
           className={`px-2 py-2 bg-white rounded hover:bg-gray-300 transform transition-transform duration-300 ease-in-out ${isHovered ? '-translate-x-2' : 'translate-x-20'}`}
-          aria-label="Next image"
+          aria-label={tAriaLabel('nextImage')}
         >
           <ArrowRight aria-hidden="true" />
         </button>
       </div>
 
       <div className="sr-only" aria-live="polite">
-        Showing image {currentIndexImage + 1} of {productImages.length}
+        {tImageCarousel('showingImage')} {currentIndexImage + 1} {tImageCarousel('of')} {productImages.length}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
   const t = useTranslations("Checkout");
   const tCommon = useTranslations("Common");
   const tProductInfo = useTranslations("ProductInfo");
+  const tAriaLabel = useTranslations("AriaLabel");
 
   return (
     <section
@@ -30,14 +31,14 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
               key={item.id}
               className="flex justify-between items-center"
               role="listitem"
-              aria-label={`${item.products.name}, size ${size}, quantity ${item.quantity}, total ${formatPrice(item.products.price * item.quantity)}`}
+              aria-label={`${item.products.name}, ${tCommon("size")} ${size}, ${tCommon("quantity")} ${item.quantity}, ${tCommon("total")} ${formatPrice(item.products.price * item.quantity)}`}
             >
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 min-w-14 relative">
                   <img
                     className="w-full h-full object-cover rounded-xl"
                     src={item.products.product_images[0].thumbnail_url}
-                    alt={`Image of ${item.products.name}`}
+                    alt={`${tAriaLabel("imageOf")} ${item.products.name}`}
                   />
                   <div>
                     <span
@@ -52,7 +53,7 @@ export const CheckoutSummaryCart = ({ cartItems, children }) => {
                 <div>
                   <p className="text-sm font-medium">{tProductInfo(`${item.products.i18n_key}.name`)}</p>
                   <p className="text-xs text-gray-500">{tCommon("size")}: {size}</p>
-                  <p className="sr-only">Quantity: {item.quantity}</p>
+                  <p className="sr-only">{tCommon("quantity")}: {item.quantity}</p>
                 </div>
               </div>
 

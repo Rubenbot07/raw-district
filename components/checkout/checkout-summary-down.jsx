@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 export const CheckoutSummaryDown = ({ cartItems }) => {
   const [open, setOpen] = useState(false);
   const t = useTranslations("OrderSummary");
+  const tAriaLabel = useTranslations("AriaLabel");
   const handleToggle = () => {
     setOpen((prev) => !prev);
   };
@@ -39,7 +40,7 @@ export const CheckoutSummaryDown = ({ cartItems }) => {
         <div
           id="checkout-summary-cart"
           role="region"
-          aria-label="Cart items in order summary"
+          aria-label={tAriaLabel("cartItemsOrderSummary")}
         >
           <CheckoutSummaryCart cartItems={cartItems} />
         </div>

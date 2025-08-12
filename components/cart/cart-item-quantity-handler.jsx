@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { ChevronDown } from "lucide-react";
 import { useCartStore } from "@/app/stores/cartStore";
 import { useUserStore } from "@/app/stores/userStore";
+import { useTranslations } from "next-intl";
 
 export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, setCartUpdated }) => {
   const addToCart = useCartStore((state) => state.addToCart);
@@ -10,6 +11,8 @@ export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, set
   const user = useUserStore((state) => state.user);
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
+  const tToast = useTranslations("Toast");
+  const tAriaLabel = useTranslations("AriaLabel");
 
   const handleQuantityChange = async (newQuantity) => {
     const previousQuantity = quantity;
@@ -27,13 +30,13 @@ export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, set
 
       if (!result.success) {
         updateItemQuantityLocal(itemId, previousQuantity);
-        toast.error("Failed to update product quantity in cart: " + result.error);
+        toast.error(`${tToast("updateQuantityError")} ${result.error}`);
         return;
       }
     }
 
     setCartUpdated(true);
-    toast.success(`Product quantity updated to ${newQuantity}`);
+    toast.success(`${tToast("updateQuantitySuccess")} ${newQuantity}`);
     setOpen(false);
     buttonRef.current?.focus(); // Devuelve el foco al botón principal
   };
@@ -51,7 +54,7 @@ export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, set
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Change quantity"
+        aria-label={tAriaLabel("changeQuantity")}
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center justify-between w-full border border-black p-2"
         ref={buttonRef}
@@ -67,7 +70,7 @@ export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, set
       {open && (
         <ul
           role="listbox"
-          aria-label="Select quantity"
+          aria-label={tAriaLabel("changeQuantity")}
           tabIndex={-1}
           className="absolute z-10 mt-1 w-full border border-black bg-white shadow-md max-h-40 overflow-y-auto text-sm"
         >

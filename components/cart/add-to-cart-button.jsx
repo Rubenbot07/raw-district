@@ -16,6 +16,7 @@ export const AddToCartButton = ({ product, product_size_id, productId, quantity 
   const addToCartLocal = useCartStore((state) => state.addToCartLocal);
   const user = useUserStore((state) => state.user);
   const tAddToCart = useTranslations("Cart");
+  const tToast = useTranslations("Toast");
 
 
   const handleAddToCart = async () => {
@@ -35,12 +36,12 @@ export const AddToCartButton = ({ product, product_size_id, productId, quantity 
 
     if (!result.success) {
       setCartItems(previousCart);
-      toast.error("Failed to add product to cart" + result.error);
+      toast.error(tToast("errorCart") + result.error);
     }
   }
 
   setCartUpdated(true);
-  toast.success("Product added to cart successfully");
+  toast.success(tToast("successCart"));
   setLoading(false);
 };
 

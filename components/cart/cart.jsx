@@ -24,6 +24,7 @@ export const Cart =  () => {
   const closeButtonRef = useRef(null);
   const tCommon = useTranslations('Common');
   const t = useTranslations('Cart');
+  const tAriaLabel = useTranslations('AriaLabel');
 
   // Foco automático en botón de cerrar
   useEffect(() => {
@@ -63,14 +64,14 @@ export const Cart =  () => {
                 openCart ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
               }`}
               onClick={() => setOpenCart(false)}
-              aria-label="Close cart overlay"
+              aria-label={tAriaLabel('closeCartOverlay')}
             />
             <div
               ref={cartRef}
               role="dialog"
               inert={!openCart ? true : false}
               aria-modal="true"
-              aria-label="Shopping cart"
+              aria-label={tAriaLabel('shoppingCart')}
               tabIndex={-1}
               className={`
                 fixed top-0 right-0 z-50 h-full w-full md:w-[350px] max-w-full bg-white shadow-lg transition-transform duration-500 ease-in-out
@@ -84,7 +85,7 @@ export const Cart =  () => {
                 <button
                   ref={closeButtonRef}
                   onClick={() => setOpenCart(false)}
-                  aria-label="Close cart"
+                  aria-label={tAriaLabel('closeCart')}
                 >
                   <X aria-hidden="true" />
                 </button>
@@ -128,7 +129,7 @@ export const Cart =  () => {
       {/* Botón flotante para abrir carrito */}
       <button
         onClick={() => setOpenCart(true)}
-        aria-label="Open cart"
+        aria-label={tAriaLabel('openCart')}
         className="px-1 py-2 relative"
       >
         <ShoppingCart strokeWidth={1.5} aria-hidden="true" />

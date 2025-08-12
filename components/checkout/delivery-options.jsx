@@ -21,7 +21,7 @@ export const DeliveryOptions = ({ delivery, setDelivery }) => {
                 <button
                     role="radio"
                     aria-checked={delivery === "shipping"}
-                    aria-label="Shipping"
+                    aria-label={tCommon("shipping")}
                     onClick={() => handleClick("shipping")}
                     className="text-left"
                 >
@@ -39,7 +39,7 @@ export const DeliveryOptions = ({ delivery, setDelivery }) => {
                 <button
                     role="radio"
                     aria-checked={delivery === "pickup"}
-                    aria-label="Pickup"
+                    aria-label={tCommon("pickup")}
                     onClick={() => handleClick("pickup")}
                     className="text-left"
                 >

@@ -4,13 +4,14 @@ import { useTranslations } from 'next-intl';
 export const SizesSelect = ({ sizes, selectedSize, onSelectSize }) => {
   const t = useTranslations('Sizes');
   const tCommon = useTranslations('Common');
+  const tAriaLabel = useTranslations('AriaLabel');
   return (
-    <fieldset className="flex justify-between max-w-xs" role="radiogroup" aria-label="Select a size">
+    <fieldset className="flex justify-between max-w-xs" role="radiogroup" aria-label={tAriaLabel('selectSize')}>
       <legend className="sr-only">{t('sizeOptions')}</legend>
       <div>
         <p className="text-xs font-semibold">{tCommon('size')}</p>
         <p className="text-[10px] font-medium" id="selected-size-label">
-          {selectedSize?.size || 'None selected'}
+          {selectedSize?.size || t('noneSelected')}
         </p>
       </div>
 

@@ -9,6 +9,7 @@ export const Payment = ({ payment, setPayment }) => {
     const walletId = useId();
     const cashId = useId();
     const t = useTranslations("Payment");
+    const tAriaLabel = useTranslations("AriaLabel");
 
     const handleClick = (target) => {
         if (payment === "mercado_pago" && target === "cash") {
@@ -41,7 +42,7 @@ export const Payment = ({ payment, setPayment }) => {
                     aria-checked={payment === "mercado_pago"}
                     aria-expanded={openWallet}
                     aria-controls={walletId}
-                    aria-label="Pay with Mercado Pago"
+                    aria-label={tAriaLabel("payWithMercadoPago")}
                     onClick={() => handleClick("mercado")}
                     className="text-left"
                 >
@@ -79,7 +80,7 @@ export const Payment = ({ payment, setPayment }) => {
                     aria-checked={payment === "cash_on_delivery"}
                     aria-expanded={openCash}
                     aria-controls={cashId}
-                    aria-label="Pay with cash on delivery"
+                    aria-label={tAriaLabel("payWithCashOnDelivery")}
                     onClick={() => handleClick("cash")}
                     className="text-left"
                 >

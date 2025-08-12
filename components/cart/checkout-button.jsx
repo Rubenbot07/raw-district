@@ -9,9 +9,10 @@ export const CheckoutButton = () => {
   const user = useUserStore((state) => state.user);
   const setOpenCart = useCartUIStore((state) => state.setOpenCart);
   const t = useTranslations("Cart");
+  const tAriaLabel = useTranslations("AriaLabel");
 
   const href = user ? "/checkouts" : "/auth/login";
-  const label = user ? "Proceed to checkout" : "Sign in to continue";
+  const label = user ? tAriaLabel("proceedCheckout") : tAriaLabel("loginToContinue");
 
   return (
     <div role="presentation">

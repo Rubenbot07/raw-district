@@ -5,12 +5,13 @@ import { getTranslations } from "next-intl/server";
 export default async function CategoriesWrapper() {
   const { categories, error } = await getCategories();
   const t = await getTranslations('Categories');
+  const tAriaLabel = await getTranslations('AriaLabel');
   if (error) {
     console.error('Error fetching categories:', error);
     return (
       <section
         role="region"
-        aria-label="Category list error"
+        aria-label={tAriaLabel('categoriesListError')}
         className="w-full text-red-600 text-sm text-center py-4"
       >
         {t('error')}
@@ -22,7 +23,7 @@ export default async function CategoriesWrapper() {
     return (
       <section
         role="region"
-        aria-label="No categories available"
+        aria-label={tAriaLabel('noCategories')}
         className="w-full text-gray-600 text-sm text-center py-4"
       >
         {t('notFound')}
@@ -33,7 +34,7 @@ export default async function CategoriesWrapper() {
   return (
     <section
       role="region"
-      aria-label="Browse by category"
+      aria-label={tAriaLabel('browseByCategory')}
       className="w-full"
     >
       <CategoryInfinitiveLoopSlider categories={categories} />

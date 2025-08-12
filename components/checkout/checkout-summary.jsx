@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 export const CheckoutSummary = () => {
   const [open, setOpen] = useState(false);
   const t = useTranslations("OrderSummary");
+  const tAriaLabel = useTranslations("AriaLabel");
   const tCheckout = useTranslations("Checkout");
   const cart = useCartStore((state) => state.cart);
   const cartItems = useCartStore((state) => state.cartItems);
@@ -51,7 +52,7 @@ export const CheckoutSummary = () => {
           id="checkout-summary-mobile"
           className="lg:hidden"
           role="region"
-          aria-label="Order summary details"
+          aria-label={tAriaLabel('orderSummaryDetails')}
         >
           <CheckoutSummaryCart cart={cart} cartItems={cartItems}>
             <CheckoutSummaryDetail
@@ -65,7 +66,7 @@ export const CheckoutSummary = () => {
       )}
 
       {/* Desktop Summary */}
-      <div className="hidden lg:block" role="region" aria-label="Order summary details for desktop">
+      <div className="hidden lg:block" role="region" aria-label={tAriaLabel('orderSummaryDetails')}>
         <CheckoutSummaryCart cartItems={cartItems}>
           <CheckoutSummaryDetail
             totalPrice={formattedPrice(totalPrice)}

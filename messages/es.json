@@ -48,8 +48,7 @@
     "freeShipping": "ENVÍO GRATIS",
     "ordersOver": "POR COMPRAS SUPERIORES A $200.000",
     "askBefore": "PREGUNTA ANTES DE",
-    "sameDay": "EN DOSQUEBRADAS Y RECIBE EL MISMO DÍA",
-    "ariaLabel": "Anuncios importantes de la tienda"
+    "sameDay": "EN DOSQUEBRADAS Y RECIBE EL MISMO DÍA"
   },
     "Error": {
     "LoadingProducts" : "Error al cargar los productos"
@@ -86,6 +85,10 @@
     "expressShipping": "Envío Express",
     "securePayment": "Pago seguro",
     "customerSupport": "Dudas? Escríbenos a (+57) 300 6870774"
+  },
+  "ImageCarousel": {
+    "showingImage": "Mostrando imagen",
+    "of": "de"
   },
   "Profile": {
     "title" : "Perfil",
@@ -129,6 +132,7 @@
     "checkout" : "FINALIZAR COMPRA",
     "loginCheckout" : "Inicia sesión para finalizar la compra",
     "add" : "AÑADIR",
+    "loadingAddToCart" : "Añadiendo al carrito",
     "yourCart" : "TU CARRITO",
     "cartEmpty" : "Tu carrito está vacío",
     "freeShipping" : "ENVÍO GRATIS",
@@ -151,7 +155,8 @@
     "loading" : "Cargando tallas",
     "editTitle" : "Error al cargar tallas",
     "notFound" : "Tallas no encontradas",
-    "sizeOptions" :  "Opciones de talla"
+    "sizeOptions" :  "Opciones de talla",
+    "noneSelected" : "Ninguna seleccionada"
   },
   "Checkout" : {
     "title" : "informacion Finalizar compra",
@@ -558,5 +563,52 @@
       "description": "Jersey con cremallera color Crema, de corte slim y confeccionado en algodón. Prenda pre-encogida con puños y cintura en canalé. Parche de goma con el logo \"Monoic\" en la manga izquierda.",
       "composition": "100% Algodón 600gsm"
     }
+  },
+  "AriaLabel" : {
+    "marquee" : "Anuncions importantes de la tienda",
+    "rotatingBanner" : "Anuncios rotativos de la tienda",
+    "changeQuantity" : "Cambiar cantidad",
+    "selectQuantity" : "Seleccionar cantidad",
+    "cartSection" : "Sección de carrito",
+    "openCart" : "Abrir carrito",
+    "closeCart" : "Cerrar carrito",
+    "shoppingCart" : "Carrito de compras",
+    "closeCartOverlay" : "Cerrar superposición del carrito",
+    "proceedCheckout" : "Continuar con la compra",
+    "loginToContinue" : "Iniciar sesión para continuar",
+    "carousel" : "carrusel",
+    "productImageCarousel" : "Carrusel de imagenes de producto",
+    "previousImage" : "Imagen anterior",
+    "nextImage" : "Imagen siguiente",
+    "closePrecartOverlay" : "Cerrar superposición del precarrito",
+    "previewModal" : "Previsualizar product antes de agregar al carrito",
+    "closePreviewModal" : "Cerrar modal de previsualización",
+    "cartItem" : "Elemento del carrito",
+    "thumbnail" : "Miniatura de",
+    "remove" : "Eliminar",
+    "fromCart" : "del carrito",
+    "categoriesList" : "Lista de categorias",
+    "categoriesListError" : "Error en lista de categorias",
+    "noCategories" : "No hay categorias disponibles",
+    "browseByCategory" : "Navega por categorias",
+    "browseProductsIn" : "Busca productos en",
+    "category" : "Categoria",
+    "selectSize" : "Selecciona una talla",
+    "processingOrder" : "Procesando tu pedido",
+    "buyNow" : "comprar ahora",
+    "currentEmail" : "Correo del usuario actual",
+    "missingFields" : "Por favor rellene los campos obligatorios",
+    "imageOf" : "imagen de",
+    "cartItemsOrderSummary" : "Artículos del carrito en el resumen de la orden",
+    "orderSummaryDetails" : "Detalles del resumen de la orden",
+    "payWithMercadoPago" : "Pagar con Mercado Pago",
+    "payWithCashOnDelivery" : "Pagar con pago contra entrega"
+  },
+  "Toast": {
+    "successCart" : "Producto agregado al carrito exitosamente",
+    "removeCart" : "Producto eliminado del carrito exitosamente",
+    "errorCart" : "Hubo un error al agregar el producto al carrito",
+    "updateQuantityError" : "Hubo un error al actualizar la cantidad del producto en el carrito",
+    "updateQuantitySuccess" : "Cantidad del producto actualizada a"
   }
 }

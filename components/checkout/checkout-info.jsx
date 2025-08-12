@@ -24,6 +24,7 @@ export const CheckoutInfo = () => {
   const getCartTotalQuantityLocal = useCartStore((state) => state.getCartTotalQuantityLocal);
   const router = useRouter();
   const t = useTranslations("Checkout");
+  const tArialabel = useTranslations("AriaLabel");
   const { handleCheckout } = useCheckoutHandler({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading });
 
   useQuickCartCleanup(); // 👈 this hook is used to clean the quick cart if user doesn't finish the checkout
@@ -46,7 +47,7 @@ const handleBuyNow = async () => {
 
     if (invalids.length > 0) {
       setInvalidFields(invalids);
-      alert("Please fill in all required fields.");
+      alert(tArialabel("missingFields"));
       return;
     }
 
@@ -72,7 +73,7 @@ const handleBuyNow = async () => {
 
       <div className="flex flex-col gap-2 border-b-[1px] border-gray-400 py-3">
         <p className="font-light text-sm text-gray-500">{t("account")}</p>
-        <p aria-label={`Current user email: ${user?.email}`}>{user?.email}</p>
+        <p aria-label={`${tArialabel("currentEmail")}: ${user?.email}`}>{user?.email}</p>
       </div>
 
       <DeliveryOptions delivery={delivery} setDelivery={setDelivery} />

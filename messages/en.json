@@ -48,8 +48,7 @@
     "freeShipping": "FREE SHIPPING",
     "ordersOver": "FOR PURCHASES OVER $200,000",
     "askBefore": "ASK BEFORE",
-    "sameDay": "IN DOSQUEBRADAS AND RECEIVE SAME DAY",
-    "ariaLabel": "Important store announcements"
+    "sameDay": "IN DOSQUEBRADAS AND RECEIVE SAME DAY"
   },
   "Error": {
     "LoadingProducts" : "Error loading products"
@@ -85,6 +84,10 @@
     "expressShipping": "Express Shipping",
     "securePayment": "Secure Payment",
     "customerSupport": "Doubts? Write to us (+57) 300 6870774"
+  },
+  "ImageCarousel": {
+    "showingImage": "Showing image",
+    "of": "of"
   },
   "Profile": {
     "title" : "Profile",
@@ -128,6 +131,7 @@
     "checkout" : "CHECKOUT",
     "loginCheckout" : "LOGIN TO CHECKOUT",
     "add" : "ADD",
+    "loadingAddToCart" : "Adding to cart",
     "yourCart" : "YOUR CART",
     "cartEmpty" : "Your cart is empty",
     "freeShipping" : "FREE SHIPPING",
@@ -150,7 +154,8 @@
     "loading" : "Loading size",
     "editTitle" : "Error loading size",
     "notFound" : "Size not found",
-    "sizeOptions" :  "Size Options"
+    "sizeOptions" :  "Size Options",
+    "noneSelected" : "None selected"
   },
   "Checkout" : {
     "title" : "Checkout information",
@@ -557,5 +562,52 @@
       "description": "Zip Knit Sweater Monoic color Cream, sweater with a Slim fit made of cotton. The sweater is pre-shrunken, with fists and waist at Rib. rubber with \"Monoic\" logo on the left arm.",
       "composition": "100% cotton 600gsm"
     }
+  },
+  "AriaLabel" : {
+    "marquee" : "Important store announcements",
+    "rotatingBanner" : "Rotating site announcements",
+    "changeQuantity" : "Change Quantity",
+    "selectQuantity" : "Select Quantity",
+    "cartSection" : "Cart Section",
+    "openCart" : "Open Cart",
+    "closeCart" : "Close Cart",
+    "shoppingCart" : "Shopping Cart",
+    "closeCartOverlay" : "Close Cart Overlay",
+    "proceedCheckout" : "Proceed to checkout",
+    "loginToContinue" : "Login to continue",
+    "carousel" : "carousel",
+    "productImageCarousel" : "Product Image Carousel",
+    "previousImage" : "Previous image",
+    "nextImage" : "Next image",
+    "closePrecartOverlay" : "Close Precart Overlay",
+    "previewModal" : "Product Preview before adding to cart",
+    "closePreviewModal" : "Close Preview Modal",
+    "cartItem" : "Cart Item",
+    "thumbnail" : "Thumbnail of",
+    "remove" : "Remove",
+    "fromCart" : "from cart",
+    "categoriesList" : "Categories List",
+    "categoriesListError" : "Categories List Error",
+    "noCategories" : "No categories available",
+    "browseByCategory" : "Browse by Category",
+    "browseProductsIn" : "Browse products in",
+    "category": "Category",
+    "selectSize": "Select a size",
+    "buyNow" : "buy now",
+    "processingOrder" : "Processing your order",
+    "currentEmail": "Current user email",
+    "missingFields" : "Please fill all required fields",
+    "imageOf" : "Image of",
+    "cartItemsOrderSummary" : "Cart items in order summary",
+    "OrderSummaryDetails" : "Order summary details",
+    "payWithMercadoPago" : "Pay with Mercado Pago",
+    "payWithCashOnDelivery" : "Pay with Cash on Delivery"
+  },
+  "Toast" : {
+    "successCart" : "Product added to cart successfully",
+    "removeCart" : "Product removed from cart successfully",
+    "errorCart" : "Failed to add product to cart",
+    "updateQuantityError": "Failed to update product quantity in cart",
+    "updateQuantitySuccess": "Product quantity updated to"
   }
 }
