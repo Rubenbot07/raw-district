@@ -13,6 +13,7 @@ import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 import { BodyScrollLock } from "@/components/system/body-scroll-lock";
 import SplashScreen from "@/components/splash-screen";
 import { ScrollTopButton } from "@/components/scroll-top-button";
+import Script from "next/script";
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -60,13 +61,34 @@ export default async function RootLayout({ children, params }) {
   const locale = params?.locale || "es";
 
   // Validar si el locale es válido
-  const supportedLocales = ['es', 'en']; // O importa desde routing
-  if (!hasLocale(supportedLocales, locale)) {
-    notFound();
-  }
+  const supportedLocales = ['es', 'en'];
+  if (!hasLocale(supportedLocales, locale)) notFound();
 
   return (
     <html lang={locale} suppressHydrationWarning className={workSans.variable}>
+      <head>
+        {/* Preconnect para acelerar fonts y Supabase */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://pbylxfkmoxfnmiayople.supabase.co" />
+
+        {/* Preload de fuente principal */}
+        <link
+          rel="preload"
+          as="font"
+          href="/_next/static/media/your-work-sans-font-file.woff2"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* Preload de imagen clave para LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/LogoRD.webp"
+          type="image/webp"
+        />
+      </head>
       <body className="font-sans min-h-screen flex flex-col">
         <NextIntlClientProvider locale={locale}>
           <SplashScreen>
