@@ -634,13 +634,17 @@
     "customerTrustServiceBenefits" : "Customer trust and service benefits",
     "userNav" : "User Navigation",
     "logoutOfYourAccount" : "Logout of your account",
-    "scrollToTop" : "Scroll to top"
+    "scrollToTop" : "Scroll to top",
+    "checkoutPage" : "Checkout Page",
+    "orderSummary" : "Order Summary",
+    "filteredGiftProducts" : "Filtered gift products"
   },
   "Toast" : {
     "successCart" : "Product added to cart successfully",
     "removeCart" : "Product removed from cart successfully",
     "errorCart" : "Failed to add product to cart",
     "updateQuantityError": "Failed to update product quantity in cart",
-    "updateQuantitySuccess": "Product quantity updated to"
+    "updateQuantitySuccess": "Product quantity updated to",
+    "successCheckout" : "Checkout completed successfully"
   }
 }

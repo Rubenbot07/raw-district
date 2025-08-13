@@ -11,9 +11,8 @@ import { MarqueeBanner } from '@/components/banners/marquee-banner';
 import { Footer } from '@/components/footer/footer';
 import { GlobalSetupProvider } from "@/components/system/global-setup-provider";
 import { BodyScrollLock } from "@/components/system/body-scroll-lock";
-import SplashScreen from "@/components/splash-screen";
-import { ScrollTopButton } from "@/components/scroll-top-button";
-import Script from "next/script";
+import SplashScreen from "@/components/ui/splash-screen";
+import { ScrollTopButton } from "@/components/ui/scroll-top-button";
 
 const workSans = Work_Sans({
   subsets: ['latin'],

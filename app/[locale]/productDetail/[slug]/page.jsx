@@ -5,17 +5,19 @@ import { getTranslations } from 'next-intl/server';
 export async function generateMetadata({ params }) {
   const { slug } = params;
   const { product } = await getProductDetail(slug);
+  const tProduct = await getTranslations("Product");
+  const tProductInfo = await getTranslations("ProductInfo");
 
   if (!product) {
     return {
-      title: 'Product not found',
-      description: 'This product does not exist or is unavailable.',
+      title: tProduct("notFound"),
+      description: tProduct("notFoundDescription"),
     };
   }
 
   return {
-    title: product.name,
-    description: product.description,
+    title: tProductInfo(`${product.i18n_key}.name`),
+    description: tProductInfo(`${product.i18n_key}.description`),
   };
 }
 

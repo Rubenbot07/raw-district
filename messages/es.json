@@ -635,13 +635,17 @@
     "customerTrustServiceBenefits" : "Beneficios del servicio y confianza del cliente",
     "userNav" : "Navegación de usuario",
     "logoutOfYourAccount" : "Cerrar sesión de tu cuenta",
-    "scrollToTop" : "Ir al principio de la pagina"
+    "scrollToTop" : "Ir al principio de la pagina",
+    "checkoutPage" : "Pagina de checkout",
+    "orderSummary" : "Resumen de la orden",
+    "filteredGiftProducts" : "Productos de regalo filtrados"
   },
   "Toast": {
     "successCart" : "Producto agregado al carrito exitosamente",
     "removeCart" : "Producto eliminado del carrito exitosamente",
     "errorCart" : "Hubo un error al agregar el producto al carrito",
     "updateQuantityError" : "Hubo un error al actualizar la cantidad del producto en el carrito",
-    "updateQuantitySuccess" : "Cantidad del producto actualizada a"
+    "updateQuantitySuccess" : "Cantidad del producto actualizada a",
+    "successCheckout" : "Compra completada exitosamente"
   }
 }

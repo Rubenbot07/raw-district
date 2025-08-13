@@ -26,6 +26,15 @@ export const ScrollTopButton = () => {
       top: 0,
       behavior: 'smooth',
     });
+
+    // Esperar a que el scroll termine antes de enfocar
+    setTimeout(() => {
+      const mainElement = document.querySelector('nav');
+      if (mainElement instanceof HTMLElement) {
+        mainElement.setAttribute('tabindex', '-1'); // Asegura que pueda recibir foco
+        mainElement.focus();
+      }
+    }, 500); // 0.5s para dar tiempo al scroll
   };
 
   if (!isVisible) return null;

@@ -4,10 +4,12 @@ import { createOrderItems } from '@/actions/create-order-items';
 import { updateCart } from '@/actions/update-cart';
 import { useCartStore } from '../stores/cartStore';
 import { toast } from 'react-toastify';
+import { useTranslations } from 'next-intl';
 
 export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCart, setCartUpdated, router, setLoading }) => {
   const restoreOriginalCart = useCartStore((state) => state.restoreOriginalCart);
   const loadCart = useCartStore((state) => state.loadCart);
+  const tToast = useTranslations("Toast");
   const handleCheckout = async ({ delivery, payment, formData }) => {
     setLoading(true);
     const createOrders = async (shipping_address_id) => {
@@ -38,7 +40,7 @@ export const useCheckoutHandler = ({ user, cart, cartItems, setCartItems, setCar
       setCart(newCart);
       setCartUpdated(true);
       setLoading(false);
-      toast.success('Checkout completed successfully');
+      toast.success(tToast("successCheckout"));
       router.refresh();
       router.push('/');
     };

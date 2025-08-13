@@ -26,6 +26,7 @@ export default async function GiftsFilterPage({ searchParams }) {
   const { products, error, total } = await getProducts(filters, { from, to });
 
   const tError = await getTranslations('Error');
+  const tAriaLabel = await getTranslations('AriaLabel');
 
   if (error) {
     return (
@@ -42,7 +43,7 @@ export default async function GiftsFilterPage({ searchParams }) {
   return (
     <main
       className="py-8"
-      aria-label="Filtered gift products"
+      aria-label={tAriaLabel("filteredGiftProducts")}
     >
       <FilteredProducts
         products={products}
