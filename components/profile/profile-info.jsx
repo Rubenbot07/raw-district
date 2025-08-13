@@ -7,13 +7,15 @@ export const ProfileInfo = ({ user }) => {
   const t = useTranslations("Profile");
   const tPurchaseForm = useTranslations("PurchaseForm");
   const tCommon = useTranslations("Common");
+  const tAriaLabel = useTranslations("AriaLabel");
+  
   return (
     <section
       className="flex flex-col gap-8 mx-auto w-full lg:max-w-4xl p-4 h-screen"
       aria-labelledby="profile-heading"
     >
       <div className="flex items-center gap-2">
-        <Link href="/" aria-label="Go back to homepage">
+        <Link href="/" aria-label={tAriaLabel("goHome")}>
           <ArrowLeft size={20} />
         </Link>
         <h1 id="profile-heading" className="text-2xl font-medium">
@@ -24,7 +26,7 @@ export const ProfileInfo = ({ user }) => {
       <div
         className="flex flex-col gap-2 bg-gray-100 p-4 rounded-[8px] text-sm"
         role="region"
-        aria-label="User profile information"
+        aria-label={tAriaLabel("userProfileInfo")}
       >
         <dl className="grid grid-cols-1 gap-4">
           <div>
@@ -49,7 +51,7 @@ export const ProfileInfo = ({ user }) => {
       <Link
         href="/profile/edit"
         className="bg-black text-white py-2 text-center rounded-[8px] self-start w-32"
-        aria-label="Edit profile"
+        aria-label={t("edit")}
       >
         {t("edit")}
       </Link>

@@ -5,17 +5,19 @@ import { getUser } from "@/actions/get-user";
 import { SearchWrapper } from "@/components/search/search-wrapper";
 import Image from "next/image";
 import { NavOptions } from "@/components/nav/nav-options";
+import { getTranslations } from "next-intl/server";
 
 export const Nav = async () => {
   const { user } = await getUser();
   const userId = user ? user.id : null;
+  const t = await getTranslations("AriaLabel");
 
   return (
     <header className="w-full sticky top-0 z-50 bg-white">
       <nav
         className="w-full h-16 flex items-center md:px-8"
         role="navigation"
-        aria-label="Main navigation"
+        aria-label={t("mainNav")}
       >
         <div className="w-full grid grid-cols-4 items-center p-3 text-sm relative">
           
@@ -24,7 +26,7 @@ export const Nav = async () => {
 
           {/* 🏷 Center: Logo */}
           <div className="flex items-center justify-center col-start-2 col-span-2">
-            <Link href="/" aria-label="Go to homepage">
+            <Link href="/" aria-label={t("goHome")}>
               <Image
                 src="/LogoRD.webp"
                 alt="RAWDISTRIC logo"
@@ -39,7 +41,7 @@ export const Nav = async () => {
           {/* 🛍 Right: Auth, Search, Cart */}
           <section
             className="flex items-center gap-1 md:gap-2 col-start-4 justify-end"
-            aria-label="User actions"
+            aria-label={t("userActions")}
           >
             <AuthButton user={user} />
 

@@ -84,7 +84,8 @@
     "premiumQuality": "Calidad Premium",
     "expressShipping": "Envío Express",
     "securePayment": "Pago seguro",
-    "customerSupport": "Dudas? Escríbenos a (+57) 300 6870774"
+    "customerSupport": "Dudas? Escríbenos a (+57) 300 6870774",
+    "imageNotAvailable": "Imagen no disponible"
   },
   "ImageCarousel": {
     "showingImage": "Mostrando imagen",
@@ -489,12 +490,12 @@
       "composition": "100% Algodón 600gsm"
     },
     "polo_sweater_cream": {
-      "name": "Polo de Punto - Crema",
-      "description": "Polo de punto color Crema, de corte ligeramente oversize y confeccionado en algodón. Prenda pre-encogida con puños, cuello y cintura en canalé. Bordado MONOIC en el pecho.",
+      "name": "Polo Tejido - Crema",
+      "description": "Polo tejido color Crema, de corte ligeramente oversize y confeccionado en algodón. Prenda pre-encogida con puños, cuello y cintura en canalé. Bordado MONOIC en el pecho.",
       "composition": "100% Algodón 600gsm"
     },
     "limited_edition_aviator_leather_jacket_black": {
-      "name": "Edición Limitada | Chaqueta Aviator de Cuero - Negro",
+      "name": "Edición Limitada | Chaqueta Aviador de Cuero - Negro",
       "description": "Nuestra prenda estrella de la colección. Diseñada para quienes buscan una pieza atemporal que mejora con el paso del tiempo. Limitada a solo 15 unidades, está elaborada en piel de ternero 100% con un fit ligeramente boxy, siguiendo los más altos estándares de calidad para garantizar una apariencia única y duradera. Cuenta con dos bolsillos delanteros, monograma metálico en el pecho izquierdo y bordado \"Monoic New York\" en la espalda. Puños y cintura en canalé.",
       "composition": "100% Cuero"
     },
@@ -534,8 +535,8 @@
       "composition": "100% Algodón"
     },
     "gradient_fuzzy_black_and_white_sweater": {
-      "name": "Jersey Fuzzy Degradado - Negro y Blanco",
-      "description": "Jersey tipo fuzzy en colores Negro y Blanco, con corte ligeramente oversize y tejido tipo pelo de conejo. Prenda pre-encogida con puños, cuello y cintura en canalé. Muy suave al tacto y bordado MONOIC en el pecho.",
+      "name": "Jersey Peluza Degradado - Negro y Blanco",
+      "description": "Jersey tipo peluza en colores Negro y Blanco, con corte ligeramente oversize y tejido tipo pelo de conejo. Prenda pre-encogida con puños, cuello y cintura en canalé. Muy suave al tacto y bordado MONOIC en el pecho.",
       "composition": "100% Nylon"
     },
     "gradient_knit_sweater_monoic_ny_gray_and_black": {
@@ -544,18 +545,18 @@
       "composition": "100% Algodón"
     },
     "gradient_fuzzy_sweater_white_and_brown": {
-      "name": "Jersey Fuzzy Degradado - Blanco y Marrón",
-      "description": "Jersey tipo fuzzy en colores Blanco y Marrón, con corte ligeramente oversize y tejido tipo pelo de conejo. Prenda pre-encogida con puños, cuello y cintura en canalé. Muy suave al tacto y bordado MONOIC en el pecho.",
+      "name": "Jersey Peluza Degradado - Blanco y Marrón",
+      "description": "Jersey tipo peluza en colores Blanco y Marrón, con corte ligeramente oversize y tejido tipo pelo de conejo. Prenda pre-encogida con puños, cuello y cintura en canalé. Muy suave al tacto y bordado MONOIC en el pecho.",
       "composition": "100% Nylon"
     },
     "knit_cardigan_dark_black": {
-      "name": "Cárdigan de Punto - Negro Oscuro",
-      "description": "Cárdigan de punto color Negro Oscuro, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños y cintura en canalé. Monograma metálico MONOIC en el pecho izquierdo.",
+      "name": "Cárdigan Tejido - Negro Oscuro",
+      "description": "Cárdigan tejido color Negro Oscuro, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños y cintura en canalé. Monograma metálico MONOIC en el pecho izquierdo.",
       "composition": "100% Algodón"
     },
     "knit_cardigan_baby_pink": {
-      "name": "Cárdigan de Punto - Rosa Bebé",
-      "description": "Cárdigan de punto color Rosa Bebé, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños y cintura en canalé. Monograma metálico MONOIC en el pecho izquierdo.",
+      "name": "Cárdigan Tejido - Rosa Bebé",
+      "description": "Cárdigan tejido color Rosa Bebé, con corte ligeramente oversize y confeccionado en 100% algodón. Prenda pre-encogida con puños y cintura en canalé. Monograma metálico MONOIC en el pecho izquierdo.",
       "composition": "100% Algodón"
     },
     "zip_knit_sweater_cream": {
@@ -596,13 +597,45 @@
     "selectSize" : "Selecciona una talla",
     "processingOrder" : "Procesando tu pedido",
     "buyNow" : "comprar ahora",
+    "buyThisProduct" : "Comprar este producto ahora",
     "currentEmail" : "Correo del usuario actual",
     "missingFields" : "Por favor rellene los campos obligatorios",
     "imageOf" : "imagen de",
     "cartItemsOrderSummary" : "Artículos del carrito en el resumen de la orden",
     "orderSummaryDetails" : "Detalles del resumen de la orden",
     "payWithMercadoPago" : "Pagar con Mercado Pago",
-    "payWithCashOnDelivery" : "Pagar con pago contra entrega"
+    "payWithCashOnDelivery" : "Pagar con pago contra entrega",
+    "socialMediaLinks" : "Enlaces de redes sociales",
+    "companyContactInfo" : "Información de contacto de la empresa",
+    "footerNav" : "Navegación de pie de pagina",
+    "openMenu" : "Abrir menú",
+    "closeMenu" : "Cerrar menú",
+    "mainNav" : "Navegación principal",
+    "userActions" : "Acciones de usuario",
+    "goHome" : "Ir a la pagina principal",
+    "productDetails" : "Detalles del producto",
+    "shippingAndFaqs" : "Envíos y preguntas frecuentes",
+    "productImage" : "Imagen del producto",
+    "of": "de",
+    "purchaseOptions" : "Opciones de compra",
+    "pagination" : "Paginación",
+    "goToPreviousPage" : "Ir a la pagina anterior",
+    "goToNextPage" : "Ir a la pagina siguiente",
+    "page" : "página",
+    "goToPage" : "Ir a la pagina",
+    "userProfileInfo" : "Información de perfil de usuario",
+    "searchProducts" : "Buscar productos",
+    "clearSearchInput" : "Limpiar campo de busqueda",
+    "closeSearch" : "Cerrar busqueda",
+    "searchFor" : "Buscar por",
+    "searchPageInput" : "Campo de busqueda de la pagina",
+    "viewDetailsFor" : "Ver detalles de",
+    "openSearch" : "Abrir busqueda",
+    "searchModal" : "Modal de busqueda",
+    "customerTrustServiceBenefits" : "Beneficios del servicio y confianza del cliente",
+    "userNav" : "Navegación de usuario",
+    "logoutOfYourAccount" : "Cerrar sesión de tu cuenta",
+    "scrollToTop" : "Ir al principio de la pagina"
   },
   "Toast": {
     "successCart" : "Producto agregado al carrito exitosamente",

@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const ScrollTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const t = useTranslations('AriaLabel');
 
   useEffect(() => {
     function toggleVisibility() {
@@ -32,7 +34,7 @@ export const ScrollTopButton = () => {
     <button
       onClick={scrollToTop}
       className="fixed bottom-6 right-6 p-2 bg-black text-white shadow-lg hover:bg-gray-800 transition"
-      aria-label="Scroll to top"
+      aria-label={t("scrollToTop")}
     >
       <ArrowUp size={24} />
     </button>

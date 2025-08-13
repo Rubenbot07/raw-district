@@ -12,6 +12,7 @@ export const BurguerMenu = () => {
   const triggerRef = useRef(null);
 
   const t = useTranslations('Nav');
+  const tAriaLabel = useTranslations('AriaLabel');
 
   // Restaurar foco al botón hamburguesa cuando se cierra el menú
   useEffect(() => {
@@ -25,7 +26,7 @@ export const BurguerMenu = () => {
       {/* Botón hamburguesa */}
       <button
         ref={triggerRef}
-        aria-label="Open menu"
+        aria-label={tAriaLabel("openMenu")}
         onClick={() => setIsOpen(true)}
         className="py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
       >
@@ -39,7 +40,7 @@ export const BurguerMenu = () => {
           onClick={() => setIsOpen(false)}
           role="button"
           tabIndex={0}
-          aria-label="Close menu overlay"
+          aria-label={tAriaLabel("closeMenu")}
           onKeyDown={(e) => e.key === "Enter" && setIsOpen(false)}
         />
       )}
@@ -64,7 +65,7 @@ export const BurguerMenu = () => {
             <div className="flex justify-between items-center">
               <h2 id="mobile-menu-title" className="text-base font-semibold">{t("burguerMenu")}</h2>
               <button
-                aria-label="Close menu"
+                aria-label={tAriaLabel("closeMenu")}
                 onClick={() => setIsOpen(false)}
                 className="p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
               >

@@ -46,12 +46,12 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
   return (
      <article
       className="bg-white p-4 flex items-center gap-4"
-      aria-label={`${tAriaLabel("cartItem")}: ${product.name}`}
+      aria-label={`${tAriaLabel("cartItem")}: ${tProductInfo(`${product.i18n_key}.name`)}`}
     >
       <figure className="w-20 h-20 py-2" aria-hidden="true">
         <img
           src={product.product_images[0]?.thumbnail_url}
-          alt={`${tAriaLabel("thumbnail")} ${product.name}`}
+          alt={`${tAriaLabel("thumbnail")} ${tProductInfo(`${product.i18n_key}.name`)}`}
           className="w-full h-full object-cover"
         />
       </figure>
@@ -79,7 +79,7 @@ export const ProductCartItem = ({ product, quantity, itemId, sizeId }) => {
         <button
           onClick={() => handleRemoveFromCart(itemId)}
           className="text-black text-start text-xs underline focus:outline-black focus-visible:ring-2"
-          aria-label={`${tAriaLabel("remove")} ${product.name} ${tAriaLabel("fromCart")}`}
+          aria-label={`${tAriaLabel("remove")} ${tProductInfo(`${product.i18n_key}.name`)} ${tAriaLabel("fromCart")}`}
         >
           {t("removeFromCart")}
         </button>

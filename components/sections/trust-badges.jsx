@@ -7,11 +7,12 @@ export const TrustBadges = () => {
   const t = useTranslations("trustBadges");
 
   const items = t.raw("items"); // raw para obtener array en vez de string
+  const tAriaLabel = useTranslations("AriaLabel");
 
   return (
     <section
       className="flex justify-center w-full p-4"
-      aria-label="Customer trust and service benefits"
+      aria-label={tAriaLabel("customerTrustServiceBenefits")}
     >
       <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 w-full mx-auto max-w-[1700px] items-center px-4 py-8">
         {items.map((item, i) => {

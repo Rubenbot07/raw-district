@@ -43,7 +43,7 @@ export const OrderSummaryItem = ({ productId, quantity, size, subtotal }) => {
           {imageUrl ? (
             <img
               src={imageUrl}
-              alt={product.name}
+              alt={tProductInfo(`${product.i18n_key}.name`)}
               className="w-full h-full object-cover rounded-xl"
             />
           ) : (

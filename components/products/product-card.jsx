@@ -13,6 +13,8 @@ export const ProductCard = ({ product }) => {
   const image2 = product?.product_images.find((image) => image?.position === 2);
   const t = useTranslations("Cart");
   const tProductInfo = useTranslations("ProductInfo");
+  const tToast = useTranslations("Toast");
+  const tProduct = useTranslations("Product");
   const [hovered, setHovered] = useState(false);
   const [onFocus, setOnFocus] = useState(false);
 
@@ -40,7 +42,7 @@ export const ProductCard = ({ product }) => {
           unit_price: product?.price,
           product_size_id: product?.product_sizes[0]?.id,
         });
-        toast.success("Product added to cart successfully");
+        toast.success(tToast("successCart"));
         setCartUpdated(true);
       } catch (error) {
         console.log(error);
@@ -66,7 +68,7 @@ export const ProductCard = ({ product }) => {
             {/* Imagen principal */}
             <Image
               src={image1?.thumbnail_url || "/placeholder.jpg"}
-              alt={product?.name}
+              alt={product ? "" : tProduct('imageNotAvailable')}
               fill
               loading="lazy"
               sizes="(min-width: 768px) 400px, 300px"
@@ -79,7 +81,7 @@ export const ProductCard = ({ product }) => {
             {image2 && (
               <Image
                 src={image2?.thumbnail_url}
-                alt={tProductInfo((`${product?.i18n_key}.name`))}
+                alt=""
                 aria-hidden="true"
                 fill
                 loading="lazy"
@@ -109,7 +111,6 @@ export const ProductCard = ({ product }) => {
           onClick={(e) => handleQuickAdd(e)}
           onFocus={() => setOnFocus(true)}
           onBlur={() => setOnFocus(false)}
-          aria-labelledby={nameId}
           aria-describedby={priceId}
         >
           {product.categories.name === "Caps" ? t("addToCart") : t("add")}

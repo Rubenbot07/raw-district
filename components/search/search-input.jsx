@@ -9,6 +9,7 @@ export const SearchInput = ({ onClose }) => {
   const [results, setResults] = useState([]);
 
   const t = useTranslations('Search');
+  const tAriaLabel = useTranslations("AriaLabel");
 
   const handleClose = () => {
     setQuery('');
@@ -44,7 +45,7 @@ export const SearchInput = ({ onClose }) => {
     <div
       className="relative w-full p-4 lg:w-3/4 mx-auto"
       role="search"
-      aria-label="Search products"
+      aria-label={t('searchProducts')}
     >
       <div className="flex items-center gap-5">
         <Search aria-hidden="true" />
@@ -54,7 +55,7 @@ export const SearchInput = ({ onClose }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t('searchProducts')}
-          aria-label="Search products"
+          aria-label={t('searchProducts')}
           className="w-full px-3 py-1 rounded outline-none"
         />
 
@@ -63,7 +64,7 @@ export const SearchInput = ({ onClose }) => {
             type="button"
             className="text-[10px]"
             onClick={() => setQuery('')}
-            aria-label="Clear search input"
+            aria-label={tAriaLabel("clearSearchInput")}
           >
             {t('clear')}
           </button>
@@ -72,7 +73,7 @@ export const SearchInput = ({ onClose }) => {
         <button
           type="button"
           onClick={handleClose}
-          aria-label="Close search"
+          aria-label={tAriaLabel("closeSearch")}
         >
           <X aria-hidden="true" />
         </button>

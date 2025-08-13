@@ -8,13 +8,14 @@ import { useTranslations } from 'next-intl';
 export function AuthButton({ user }) {
   const pathname = usePathname();
   const t = useTranslations('Common');
+  const tAriaLabel = useTranslations('AriaLabel');
   const hiddenOnRoutes = ['/auth'];
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
 
   if (shouldHide) return null;
 
   return (
-    <nav aria-label="User navigation">
+    <nav aria-label={tAriaLabel("userNav")}>
       {user ? (
         <UserWrapper user={user} />
       ) : (

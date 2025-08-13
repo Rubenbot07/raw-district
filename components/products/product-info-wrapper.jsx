@@ -13,6 +13,7 @@ export const ProductInfoWrapper = ({ product, children }) => {
   const formatPrice = useFormatPrice();
   const t = useTranslations('Product');
   const tProductInfo = useTranslations('ProductInfo');
+  const tAriaLabel = useTranslations('AriaLabel');
   return (
     <section className="flex flex-col gap-8 lg:w-3/4 xl:w-4/6 xl:mx-auto p-2" aria-labelledby="product-info-title">
       {/* Título y precio */}
@@ -42,7 +43,7 @@ export const ProductInfoWrapper = ({ product, children }) => {
       )}
 
       {/* Botones de acción */}
-      <section className="grid grid-cols-2 gap-3 py-4" aria-label="Purchase options">
+      <section className="grid grid-cols-2 gap-3 py-4" aria-label={tAriaLabel("purchaseOptions")}>
         <AddToCartButton
           product={product}
           productId={product.id}

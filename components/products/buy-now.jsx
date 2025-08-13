@@ -11,6 +11,7 @@ export const BuyNow = ({ productId, quantity = 1, unit_price, product_size_id })
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const t = useTranslations("Product");
+  const tArialabel = useTranslations("AriaLabel");
 
   const { handleBuyNow, restoreOriginalCart } = useBuyNow({
     productId,
@@ -40,7 +41,7 @@ export const BuyNow = ({ productId, quantity = 1, unit_price, product_size_id })
     <button
       onClick={handleClick}
       disabled={loading}
-      aria-label="Buy this product now"
+      aria-label={tArialabel("buyThisProduct")}
       aria-disabled={loading}
       className={`text-sm py-2 px-4 rounded-lg text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black ${
         loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-black hover:bg-gray-900'

@@ -11,13 +11,14 @@ export const NavOptions = () => {
   const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders'];
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
   const t = useTranslations('Nav');
+  const tAriaLabel = useTranslations('AriaLabel');
 
   if (shouldHide) return null;
 
   return (
     <div className="flex items-center gap-2 col-start-1">
       {/* Desktop Navigation */}
-      <nav aria-label="Main navigation" className="hidden md:flex">
+      <nav aria-label={tAriaLabel("mainNav")} className="hidden md:flex">
         <ul className="flex gap-4">
           <li>
             <GiftsNavDesktop />

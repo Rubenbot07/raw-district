@@ -54,7 +54,7 @@ export const CartItemQuantityHandler = ({ product, sizeId, itemId, quantity, set
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={tAriaLabel("changeQuantity")}
+        aria-label={`${tAriaLabel("changeQuantity")}  ${quantity}`}
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center justify-between w-full border border-black p-2"
         ref={buttonRef}

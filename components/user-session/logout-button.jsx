@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 export function LogoutButton() {
   const [loading, setLoading] = useState(false);
   const t = useTranslations("Profile");
+  const tAriaLabel = useTranslations("AriaLabel");
   const handleLogout = async () => {
     setLoading(true);
     try {
@@ -21,7 +22,7 @@ export function LogoutButton() {
     <button
       onClick={handleLogout}
       type="button"
-      aria-label="Log out of your account"
+      aria-label={tAriaLabel("logoutOfYourAccount")}
       disabled={loading}
       className="text-left"
     >

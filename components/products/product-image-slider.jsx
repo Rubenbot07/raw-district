@@ -2,9 +2,12 @@
 import { useState } from "react"
 import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
+import { useTranslations } from "next-intl"
 
-export const ProductImageSlider = ({ productImages, productName }) => {
+export const ProductImageSlider = ({ productImages, productKey }) => {
   const [currentImage, setCurrentImage] = useState(0)
+  const tAriaLabel = useTranslations('AriaLabel')
+  const tProductInfo = useTranslations('ProductInfo')
 
   return (
     <div className="md:hidden w-full p-4 flex flex-col gap-4">
@@ -23,7 +26,7 @@ export const ProductImageSlider = ({ productImages, productName }) => {
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               src={productImages[currentImage].image_url}
-              alt={productName}
+              alt={tProductInfo(`${productKey}.name`)}
               className="object-cover"
               priority
             />
@@ -38,12 +41,12 @@ export const ProductImageSlider = ({ productImages, productName }) => {
             key={index}
             onClick={() => setCurrentImage(index)}
             className="cursor-pointer"
-            aria-label={`Product image ${index + 1} of ${productImages.length}`}
+            aria-label={`${tAriaLabel('productImage')} ${index + 1} ${tAriaLabel('of')} ${productImages.length}`}
           >
             {/* aria-hidden evita que screen reader lea alt repetido */}
             <img
               src={image.thumbnail_url}
-              alt={productName}
+              alt={tProductInfo(`${productKey}.name`)}
               aria-hidden="true"
             />
             <div

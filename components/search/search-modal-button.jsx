@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 export const SearchModalButton = ({ onClose, query }) => {
   const router = useRouter();
   const t = useTranslations('Search');
+  const tAriaLabel = useTranslations("AriaLabel");
 
   const handleSearch = () => {
     onClose();
@@ -21,7 +22,7 @@ export const SearchModalButton = ({ onClose, query }) => {
           type="button"
           onClick={handleSearch}
           className="flex items-center gap-2 px-4 py-2 border-[1px] border-black"
-          aria-label={`Search for ${query}`}
+          aria-label={`${tAriaLabel("searchFor")} ${query}`}
         >
           <span>{t("search")} "{query}"</span>
           <ArrowRight size={10} aria-hidden="true" />

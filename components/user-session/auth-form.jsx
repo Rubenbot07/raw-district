@@ -18,7 +18,7 @@ export const AuthForm = () => {
         <button
           type="submit"
           className="flex justify-center mx-auto p-2 border border-gray-300 rounded-[8px] w-full gap-2 items-center"
-          aria-label="Sign in with Google"
+          aria-label={t("signInGoogle")}
         >
           <span>{t("signInGoogle")}</span>
           <GoogleIcon width={20} height={20} aria-hidden="true" />

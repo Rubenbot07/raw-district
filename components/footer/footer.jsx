@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 
 export const Footer = () => {
   const t = useTranslations("Footer");
+  const tAriaLabel = useTranslations("AriaLabel");
 
   const footerLinks = [
     { label: t("copyright"), href: "/" },
@@ -31,7 +32,7 @@ export const Footer = () => {
           <div>
             <h1 className="text-xl font-bold">RAWDISTRIC</h1>
           </div>
-          <div className="flex gap-4 p-4" aria-label="Social media links">
+          <div className="flex gap-4 p-4" aria-label={tAriaLabel("socialMediaLinks")}>
             <Link href="https://www.instagram.com/rawdistic/" aria-label="RAWDISTRIC on Instagram">
               <InstagramIcon width={20} height={20} strokeWidth={1.8} aria-hidden="true" />
             </Link>
@@ -42,7 +43,7 @@ export const Footer = () => {
         </div>
 
         {/* Contacto */}
-        <address className="flex flex-col gap-2 w-1/2 not-italic text-sm" aria-label="Company contact information">
+        <address className="flex flex-col gap-2 w-1/2 not-italic text-sm" aria-label={tAriaLabel("companyContactInfo")}>
           <h3 className="font-medium text-3xl">{t("contact")}</h3>
           <ul className="text-sm space-y-1">
             <li>RAWDISTRIC</li>
@@ -55,7 +56,7 @@ export const Footer = () => {
       </div>
 
       {/* Links generales */}
-      <nav aria-label="Footer navigation" className="w-full">
+      <nav aria-label={tAriaLabel("footerNav")} className="w-full">
         <ul className="flex flex-wrap gap-4 text-xs">
           {footerLinks.map((link, index) => (
             <li key={index}>
@@ -72,7 +73,7 @@ export const Footer = () => {
         <div>
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAA7VBMVEX////t6vLLxd6go9CGmcXWz+CCh8FKhMsAitwAnegArvYAvP8Av/8Ajt5Ifsbe2ulSZLIAtvwAwP8Awv8AlOJXbLbj3+uDfrYATbYAw/83br9JcMEAdckAqfIAxv8Aa8qNibxtbLCnqdBUesEAccsAnOgAhdYAW7fo6/UAfdOem8V1ebastNZDQpyTlMNJU6XL0OZVXqrx9/yIlskuMprBvdVDRKEAY7k5esl9i8KjpsoAUq0Atf1ui8soPZ4ANqp7mtKitdyHhbNdb7EAAH26y+Z1bqwAAIUAAHEwW65kj8oAAGsAIZA+OJIqHojeo/tKAAABXElEQVR4AcXRhYHCMAAF0I9LwhVS3B2quLs7+49zaXEW4LVxT/BTFqvNztmsFnxxOF1uj5dQSrwe35/TgRfB7wtQA2NM5EkgGArjLhJlMV4lEnc8EU+mCGOxdCYLU86aLxRLnnLFLwCo8oKUqfhlxRwnmLtRrRqg14wqCwfUdR5k3DSa1YYAQXuuJguI4M6Za8EQquNOR9taxSenCkO400UvJfVtTbzTB2gOuxWpglGMsnFmMGnl1VsXQUVnGnVTMT1CN0AISc8gID9fwNDJQx8zXqthKYmEUE+8A2DFI7UOtdujhIiSDss6xXgriUfqaG5UFdn81sP7s9TaAuhrI0/E8WgVhr2j54teY1xqJ4PL7cvUaI6lDv3gsWwOI9J6C1PkdC6TGLu9CqNMjLnPp1sbV7/s9yOpFDB5y6P1XqvjpZO77vf79W63W+/315wVn5rhfHbJZfPhJn7oH8WJK4f0iacgAAAAAElFTkSuQmCC"
-            alt="Mercado Pago"
+            alt="Mercado Pago Logo"
           />
         </div>
         <div>

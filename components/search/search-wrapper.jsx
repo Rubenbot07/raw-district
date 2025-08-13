@@ -5,6 +5,7 @@ import { Search } from 'lucide-react';
 import { SearchInput } from '@/components/search/search-input';
 import { usePathname } from 'next/navigation';
 import { FocusTrap } from 'focus-trap-react';
+import { useTranslations } from 'next-intl';
 
 export const SearchWrapper = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ export const SearchWrapper = () => {
   const buttonRef = useRef(null); // para devolver el foco
   const hiddenOnRoutes = ['/auth', '/checkouts', '/profile', '/orders'];
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
-
+  const tAriaLabel = useTranslations('AriaLabel');
   
   // Esc: cerrar modal
   useEffect(() => {
@@ -42,7 +43,7 @@ export const SearchWrapper = () => {
     <>
       <button
         ref={buttonRef}
-        aria-label="Open search"
+        aria-label={tAriaLabel("openSearch")}
         onClick={() => setIsOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
@@ -62,7 +63,7 @@ export const SearchWrapper = () => {
             id="search-panel"
             role="dialog"
             aria-modal="true"
-            aria-label="Search panel"
+            aria-label={tAriaLabel("searchModal")}
             className="fixed inset-0 z-50 flex flex-col"
           >
             {/* Overlay */}
