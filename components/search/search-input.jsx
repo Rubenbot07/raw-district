@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { SearchSuggestions, PopularSearches, SearchModalButton } from '@/components/search';
 import { Search, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export const SearchInput = ({ onClose }) => {
   const [query, setQuery] = useState('');
@@ -10,7 +10,8 @@ export const SearchInput = ({ onClose }) => {
 
   const t = useTranslations('Search');
   const tAriaLabel = useTranslations("AriaLabel");
-
+  const locale = useLocale();
+  console.log(locale)
   const handleClose = () => {
     setQuery('');
     onClose();
@@ -24,7 +25,7 @@ export const SearchInput = ({ onClose }) => {
       }
 
       try {
-        const res = await fetch(`/api/search-products?query=${encodeURIComponent(query)}`);
+        const res = await fetch(`/api/search-products?query=${encodeURIComponent(query)}&locale=${locale}`);
         if (!res.ok) throw new Error('Fetch error');
         const data = await res.json();
         setResults(data.results || []);

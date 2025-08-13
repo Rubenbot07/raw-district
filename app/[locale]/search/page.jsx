@@ -5,23 +5,32 @@ import { useSearchParams } from 'next/navigation';
 import { SearchPageInput } from '@/components/search/search-page-input';
 import { ProductCard } from '@/components/products/product-card';
 import { ProductsLayout } from '@/components/products/products-layout';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get('query') || '';
-  const limit = searchParams.get('limit') || 10;
-  const t = useTranslations("Search");
+  const limitParam = searchParams.get('limit') || '10';
+  const limit = parseInt(limitParam, 10) || 10;
+
+  const t = useTranslations('Search');
+  const locale = useLocale();
+
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchResults = async () => {
-      if (!query.trim()) return;
+      if (!query.trim()) {
+        setResults([]);
+        return;
+      }
 
       setLoading(true);
       try {
-        const res = await fetch(`/api/search-products?query=${query}&limit=${limit}`);
+        // construir params incluyendo locale
+        const params = new URLSearchParams({ query, limit: String(limit), locale });
+        const res = await fetch(`/api/search-products?${params.toString()}`);
         if (!res.ok) throw new Error(`Error: ${res.status}`);
         const data = await res.json();
         setResults(data.results || []);
@@ -34,7 +43,7 @@ export default function SearchPage() {
     };
 
     fetchResults();
-  }, [query, limit]);
+  }, [query, limit, locale]); // <-- asegurarse de re-fetch si cambia el locale
 
   return (
     <main
@@ -43,7 +52,7 @@ export default function SearchPage() {
     >
       <header>
         <h1 id="search-title" className="text-xl font-bold px-4">
-          {t("title")}
+          {t('title')}
         </h1>
       </header>
 
@@ -55,16 +64,16 @@ export default function SearchPage() {
       >
         {query.trim() ? (
           <p>
-            {results.length} {t("result")}{results.length !== 1 ? 's' : ''} {t("foundFor")} "<strong>{query}</strong>"
+            {results.length} {t('result')}{results.length !== 1 ? 's' : ''} {t('foundFor')} "<strong>{query}</strong>"
           </p>
         ) : (
-          <p className="text-gray-500">{t("enterSearch")}</p>
+          <p className="text-gray-500">{t('enterSearch')}</p>
         )}
       </section>
 
       {loading ? (
         <div className="w-full text-center p-8" role="status" aria-live="polite">
-          <p className="text-gray-500">{t("loading")}</p>
+          <p className="text-gray-500">{t('loading')}</p>
         </div>
       ) : results.length > 0 ? (
         <ProductsLayout>
@@ -74,7 +83,7 @@ export default function SearchPage() {
         </ProductsLayout>
       ) : query.trim() ? (
         <div className="w-full text-center p-8" role="alert">
-          <p>{t("notFound")} "<strong>{query}</strong>"</p>
+          <p>{t('notFound')} "<strong>{query}</strong>"</p>
         </div>
       ) : null}
     </main>

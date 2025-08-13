@@ -1,18 +1,23 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export const SearchModalButton = ({ onClose, query }) => {
   const router = useRouter();
   const t = useTranslations('Search');
   const tAriaLabel = useTranslations("AriaLabel");
+  const locale = useLocale(); 
 
-  const handleSearch = () => {
+ const handleSearch = () => {
     onClose();
-    if (query.trim()) {
-      router.push(`/search?query=${encodeURIComponent(query)}`);
-    }
+    const q = query.trim();
+    if (!q) return;
+
+    // Construye los query params de forma segura (encoding incluido)
+    const params = new URLSearchParams({ query: q, locale });
+
+    router.push(`/search?${params.toString()}`);
   };
 
   return (
