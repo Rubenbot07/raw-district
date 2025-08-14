@@ -1,8 +1,8 @@
 'use server'
-import { createClient } from '../lib/supabase/server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { redirect} from 'next/navigation'
 export const updateUserMetadata = async (formData) => {
-    const supabase = await createClient()
+    const supabase = await createSupabaseServerClient()
 
     const address = formData.get('address')
     const phone = formData.get('phone')

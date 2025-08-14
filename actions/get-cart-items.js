@@ -1,6 +1,8 @@
-import { supabase } from '@/lib/supabase/supabaseClient';
+'use server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
 
 export async function getCartItems(cartId) {
+  const supabase = createSupabaseServerClient();
   const { data, error } = await supabase
     .from('cart_items')
     .select(`

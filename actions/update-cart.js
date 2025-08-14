@@ -1,6 +1,8 @@
-import { supabase } from "@/lib/supabase/supabaseClient";
+'use server'
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createCart } from "@/actions/create-cart";
 export const updateCart = async (cartId) => {
+    const supabase = createSupabaseServerClient();
         const { error } = await supabase
         .from('cart')
         .update({ status: 'completed' })

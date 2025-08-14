@@ -2,7 +2,7 @@
 import { getActiveCart } from "@/actions/get-active-cart";
 import { getQuickCart } from "@/actions/get-quick-cart";
 import { getUser } from "./get-user";
-import { supabase } from "@/lib/supabase/supabaseClient";
+import { createSupabaseServerClient } from "@/lib/supabase/server"; // tu helper createServerClient
 
 export const addToCart = async ({
     productId,
@@ -10,14 +10,15 @@ export const addToCart = async ({
     unit_price,
     product_size_id,
     replaceQuantity = false,
-    type = "active" // Nuevo prop, default "active"
+    type = "active"
 }) => {
+    const supabase =  createSupabaseServerClient(); // 👈 aquí usamos el server client
+
     const { user, error: userError } = await getUser();
     if (!user) {
         return { data: null, error: userError?.message || "User not authenticated." };
     }
 
-    // Selecciona el cart según el tipo
     let cart;
     if (type === "quick") {
         cart = await getQuickCart(user.id);
@@ -29,17 +30,16 @@ export const addToCart = async ({
         return { data: null, error: `No ${type} cart found for user.` };
     }
 
-    const { data, error } = await supabase.rpc('get_available_stock', {
+    const { data: stockData, error: stockError } = await supabase.rpc('get_available_stock', {
         product_size_id_input: product_size_id
     });
 
-    if (error) {
-        console.error(error)
-        return { data: null, error: error.message }; 
+    if (stockError) {
+        console.error(stockError);
+        return { data: null, error: stockError.message };
     }
 
-    const availableStock = data;
-
+    const availableStock = stockData;
     if (availableStock < quantity) {
         return { data: null, error: `Only ${availableStock} units available.` };
     }

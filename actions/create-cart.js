@@ -1,38 +1,39 @@
-'use server'
-import { getUser } from "@/actions/get-user";
-import { supabase } from "@/lib/supabase/supabaseClient";
+'use server';
+
+import { createSupabaseServerClient } from '@/lib/supabase/server';
+
 export const createCart = async ({ type = 'active' } = {}) => {
-    const { user, error } = await getUser();
-    if (!user) throw new Error(error?.message || 'User not authenticated');
+  const supabase = createSupabaseServerClient();
 
-    // Si el tipo es 'active', busca si ya existe uno
-    if (type === 'active') {
-        const { data: existingCart, error: fetchError } = await supabase
-            .from('cart')
-            .select('*')
-            .eq('user_id', user.id)
-            .eq('status', 'active')
-            .single();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (!user) throw new Error(authError?.message || 'User not authenticated');
 
-        if (fetchError && fetchError.code !== 'PGRST116') {
-            throw new Error(`Error fetching cart: ${fetchError.message}`);
-        }
+  // Buscar carrito activo
+  if (type === 'active') {
+    const { data: existingCart, error: fetchError } = await supabase
+      .from('cart')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .single();
 
-        if (existingCart) {
-            return existingCart;
-        }
+    if (fetchError && fetchError.code !== 'PGRST116') {
+      throw new Error(`Error fetching cart: ${fetchError.message}`);
     }
 
-    // Crea el carrito (puede ser 'active', 'quick', etc.)
-    const { data: newCart, error: insertError } = await supabase
-        .from('cart')
-        .insert({ user_id: user.id, status: type })
-        .select()
-        .single();
+    if (existingCart) return existingCart;
+  }
 
-    if (insertError) {
-        throw new Error(`Error creating cart: ${insertError.message}`);
-    }
+  // Crear carrito
+  const { data: newCart, error: insertError } = await supabase
+    .from('cart')
+    .insert({ user_id: user.id, status: type })
+    .select()
+    .single();
 
-    return newCart;
-}
+  if (insertError) {
+    throw new Error(`Error creating cart: ${insertError.message}`);
+  }
+
+  return newCart;
+};

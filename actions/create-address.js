@@ -1,5 +1,8 @@
-import { supabase } from "@/lib/supabase/supabaseClient";
+'use server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
+
 export const createAddress = async ({user_id, email, first_name, last_name, address_line, phone, city, state, identification}) => {
+    const supabase = createSupabaseServerClient();
     const { data, error } = await supabase
     .from('addresses')
     .insert({

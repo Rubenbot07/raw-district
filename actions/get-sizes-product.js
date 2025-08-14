@@ -1,6 +1,9 @@
-import { supabase } from '@/lib/supabase/supabaseClient'
+'use server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
+
 
 export const getSizesProduct = async (productId) => {
+    const supabase = createSupabaseServerClient()
      const { data } = await supabase
                 .from('product_sizes')
                 .select('*')

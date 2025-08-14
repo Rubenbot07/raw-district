@@ -1,8 +1,10 @@
 'use server'
 import { cache } from 'react';
-import { supabase } from '../lib/supabase/supabaseClient';
+import { createSupabaseServerClient } from '@/lib/supabase/server'
+
 
 export const getProducts = cache(async (filters = {}, { from = 0, to = 50 } = {}) => {
+  const supabase = createSupabaseServerClient()
   let query = supabase
     .from('products')
     .select(`

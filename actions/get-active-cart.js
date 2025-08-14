@@ -1,7 +1,8 @@
 'use server';
-import { supabase } from '@/lib/supabase/supabaseClient';
+import { createSupabaseServerClient } from '@/lib/supabase/server'
 
 export async function getActiveCart(userId) {
+  const supabase = createSupabaseServerClient();
     if(!userId) {
         return { cart: null, error: 'User ID is required' };
     } 

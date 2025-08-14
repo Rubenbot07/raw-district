@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { createCart } from '@/actions/create-cart'
 import { getUser } from '@/actions/get-user'
 
@@ -9,7 +9,7 @@ export async function GET(request) {
   let next = searchParams.get('next') ?? '/'
   if (!next.startsWith('/')) next = '/'
   if (code) {
-    const supabase = await createClient()
+    const supabase = await createSupabaseServerClient()
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
       // Crear el carrito si es necesario

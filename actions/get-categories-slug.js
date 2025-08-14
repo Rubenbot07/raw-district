@@ -1,8 +1,9 @@
 'use server';
 import { cache } from 'react'
-import { supabase } from '@/lib/supabase/supabaseClient';
+import { createSupabaseServerClient } from '@/lib/supabase/server'
 
 export const getCategoryBySlug = cache(async (slug) => {
+    const supabase = createSupabaseServerClient()
     
     const { data, error } = await supabase
         .from('categories')

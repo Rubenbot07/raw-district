@@ -1,9 +1,9 @@
 'use server'
-import { createClient } from '../lib/supabase/server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { redirect} from 'next/navigation'
 
 const signInWith = provider => async () => {
-    const supabase = await createClient()
+    const supabase =  createSupabaseServerClient()
     const auth_callbackUrl = 'http://localhost:3000/auth/callback'
 
     const { data, error } = await supabase.auth.signInWithOAuth({

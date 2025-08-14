@@ -1,5 +1,8 @@
-import { supabase } from "../lib/supabase/supabaseClient";
+'use server'
+import { createSupabaseServerClient } from '@/lib/supabase/server'
+
 export const createOrderItems = async ({orderItems, orderId}) => {
+    const supabase = createSupabaseServerClient()
     
     const itemsPayload = orderItems.map((item) => ({
         order_id: orderId,
