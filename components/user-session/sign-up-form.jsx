@@ -17,6 +17,7 @@ export function SignUpForm() {
   const [isPending, startTransition] = useTransition();
   const tCommon = useTranslations("Common");
   const tSignUp = useTranslations("SignUp");
+  const tError = useTranslations('AuthErrors')
   const router = useRouter();
   const fetchUser = useUserStore.getState().fetchUser;
 
@@ -40,7 +41,9 @@ export function SignUpForm() {
           router.push("/auth/complete-profile-information");
         }, 300);
       } catch (error) {
-        setError(error instanceof Error ? error.message : "An error occurred");
+        const messageKey = error instanceof Error ? error.message : "default";
+        const normalized = messageKey.trim().replace(/\.$/, "");
+        setError(tError(normalized) || tError("default"));
       } finally {
         setIsLoading(false);
       }

@@ -646,5 +646,16 @@
     "updateQuantityError" : "Hubo un error al actualizar la cantidad del producto en el carrito",
     "updateQuantitySuccess" : "Cantidad del producto actualizada a",
     "successCheckout" : "Compra completada exitosamente"
+  },
+  "AuthErrors": {
+    "Invalid login credentials": "Credenciales inválidas",
+    "Email not confirmed": "Debes confirmar tu correo electrónico",
+    "User already registered": "Este correo ya está registrado",
+    "default": "Ocurrió un error",
+    "missing email or phone" : "Falta correo",
+    "Anonymous sign-ins are disabled": "El inicio de sesión anónimo está deshabilitado",
+    "Signup requires a valid password": "El registro requiere una contraseña válida",
+    "Unable to validate email address: invalid format": "No se pudo validar el correo electrónico: formato inválido",
+    "Password should be at least 6 characters" : "La contraseña debe tener al menos 6 caracteres"
   }
 }

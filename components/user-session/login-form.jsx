@@ -19,6 +19,7 @@ export function LoginForm() {
   const router = useRouter();
   const tCommon = useTranslations("Common");
   const tLogin = useTranslations("Login");
+  const tError = useTranslations('AuthErrors')
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -34,7 +35,8 @@ export function LoginForm() {
       await fetchUser();
       router.push("/");
     } catch (error) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+       const messageKey = error instanceof Error ? error.message : "default";
+       setError(tError(messageKey) || tError("default"));
     } finally {
       setIsLoading(false);
     }

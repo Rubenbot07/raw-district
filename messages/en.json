@@ -646,5 +646,16 @@
     "updateQuantityError": "Failed to update product quantity in cart",
     "updateQuantitySuccess": "Product quantity updated to",
     "successCheckout" : "Checkout completed successfully"
+  },
+    "AuthErrors": {
+    "Invalid login credentials": "Invalid login credentials",
+    "Email not confirmed": "Please confirm your email address",
+    "User already registered": "This email is already registered",
+    "default": "An error occurred",
+    "missing email or phone" : "Missing email",
+    "Anonymous sign-ins are disabled": "Anonymous sign-ins are disabled",
+    "Signup requires a valid password": "Signup requires a valid password",
+    "Unable to validate email address: invalid format": "Unable to validate email address: invalid format",
+    "Password should be at least 6 characters" : "Password should be at least 6 characters"
   }
 }
