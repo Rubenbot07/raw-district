@@ -10,6 +10,7 @@ export const UserWrapper = ({ user, children }) => {
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
   const t = useTranslations("Profile");
+  const tCommon = useTranslations("Common");
 
   const toggleMenu = () => setOpen((prev) => !prev);
   const closeMenu = () => setOpen(false);
@@ -62,12 +63,23 @@ export const UserWrapper = ({ user, children }) => {
           <div className="flex flex-col gap-4 items-start text-sm">
             {user ? (
               <>
-                <Link href="/profile" role="menuitem">{t("title")}</Link>
-                <Link href="/orders" role="menuitem">{t("orders") }</Link>
+                <Link onClick={closeMenu} href="/profile" role="menuitem">
+                    {t("title")}
+                </Link>
+                <Link onClick={closeMenu} href="/orders" role="menuitem">{t("orders") }</Link>
                 <LogoutButton />
               </>
             ) : (
-              children
+              <>
+                <div className="flex flex-col gap-2 w-auto">
+                  <div>
+                    <Link onClick={closeMenu} href="/auth/login">{tCommon('login')}</Link>
+                  </div>
+                  <div>
+                    <Link onClick={closeMenu} href="/auth/sign-up">{tCommon('signUp')}</Link>
+                  </div>
+                </div>
+              </>
             )}
           </div>
         </div>

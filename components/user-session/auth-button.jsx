@@ -16,20 +16,7 @@ export function AuthButton({ user }) {
 
   return (
     <nav aria-label={tAriaLabel("userNav")}>
-      {user ? (
-        <UserWrapper user={user} />
-      ) : (
-        <UserWrapper>
-          <div className="flex flex-col gap-2 w-auto">
-            <div>
-              <Link href="/auth/login">{t('login')}</Link>
-            </div>
-            <div>
-              <Link href="/auth/sign-up">{t('signUp')}</Link>
-            </div>
-          </div>
-        </UserWrapper>
-      )}
+      <UserWrapper user={user} />
     </nav>
   );
 }

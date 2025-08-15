@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 
 const signInWith = provider => async () => {
   const supabase = createSupabaseServerClient()
-  const auth_callbackUrl = `https://raw-district.vercel.app/auth/callback`
+  const auth_callbackUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
