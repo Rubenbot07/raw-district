@@ -58,7 +58,6 @@ export const viewport = {
 
 export default async function RootLayout({ children, params }) {
   const locale = params?.locale || "es";
-  console.log('Redirect URL en producción:', process.env.NEXT_PUBLIC_SITE_URL);
   // Validar si el locale es válido
   const supportedLocales = ['es', 'en'];
   if (!hasLocale(supportedLocales, locale)) notFound();
