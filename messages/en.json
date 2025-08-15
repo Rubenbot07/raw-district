@@ -601,7 +601,7 @@
     "missingFields" : "Please fill all required fields",
     "imageOf" : "Image of",
     "cartItemsOrderSummary" : "Cart items in order summary",
-    "OrderSummaryDetails" : "Order summary details",
+    "orderSummaryDetails" : "Order summary details",
     "payWithMercadoPago" : "Pay with Mercado Pago",
     "payWithCashOnDelivery" : "Pay with Cash on Delivery",
     "socialMediaLinks" : "Social Media Links",

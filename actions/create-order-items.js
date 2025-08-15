@@ -20,7 +20,7 @@ export const createOrderItems = async ({orderItems, orderId}) => {
     }    
 
     for (const item of itemsPayload) {
-        const { error: stockError } = await supabase.rpc("decrement_stock", {
+        const { error: stockError } = await supabase.rpc("update_stock", {
         p_product_id: item.product_id,
         p_size: item.size,
         p_quantity: item.quantity,
