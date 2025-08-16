@@ -60,7 +60,6 @@ export const PreCartModal = () => {
 
   return (
     <>
-      {openPreCart && (
         <FocusTrap
         active={openPreCart}
         focusTrapOptions={{
@@ -71,18 +70,21 @@ export const PreCartModal = () => {
         >
           <div>
             <div
-              className="fixed inset-0 bg-black bg-opacity-40 z-50 pointer-events-auto"
+              className={`fixed inset-0 bg-black bg-opacity-40 z-50 transition-opacity duration-300 ${
+                openPreCart ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
               onClick={() => setOpenPreCart(false)}
               aria-label={tAriaLabel('closePrecartOverlay')}
             />
             <div
+              inert={!openPreCart ? true : false}
               role="dialog"
               aria-modal="true"
               aria-label={tAriaLabel('previewModal')}
               className={`
                 w-full h-[350px] bottom-0 rounded-t-xl
                 fixed md:top-0 md:right-0 z-50 md:h-full md:w-[360px] max-w-full bg-white shadow-lg transition-all duration-500 ease-in-out
-                flex flex-col justify-start
+                flex flex-col justify-start 
                 ${openPreCart ? 'md:translate-x-0  translate-y-0 opacity-100' : 'md:translate-x-full translate-y-full md:translate-y-0 opacity-0'}
               `}
               style={{ willChange: 'transform' }}
@@ -99,7 +101,7 @@ export const PreCartModal = () => {
               {loading && <PreCartModalLoadingSkeleton />}
 
 
-              <div className="flex flex-col gap-4 min-h-[500px] overflow-y-scroll no-scrollbar">
+              <div className="flex flex-col gap-4 md:min-h-[500px] md:overflow-y-scroll no-scrollbar">
                 {product && product.product_sizes && (
                   <div className="w-full">
                     <InfinitiveLoopSlider productImages={product.product_images} />
@@ -124,7 +126,6 @@ export const PreCartModal = () => {
             </div>
           </div>
         </FocusTrap>
-      )}
     </>
   );
 };
