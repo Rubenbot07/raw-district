@@ -33,19 +33,6 @@ export const Cart =  () => {
     }
   }, [openCart]);
   
-  // Cerrar con tecla Escape
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setOpenCart(false);
-      }
-    };
-    if (openCart) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [openCart]);
-  
   if (shouldHide) return null;
   return (
     <>
@@ -71,6 +58,7 @@ export const Cart =  () => {
               role="dialog"
               inert={!openCart ? true : false}
               aria-modal="true"
+              onKeyDown={(e) => e.key === 'Escape' && setOpenCart(false)}
               aria-label={tAriaLabel('shoppingCart')}
               tabIndex={-1}
               className={`
