@@ -83,7 +83,7 @@ export const PreCartModal = () => {
               aria-label={tAriaLabel('previewModal')}
               className={`
                 w-full h-[350px] bottom-0 rounded-t-xl
-                fixed md:top-0 md:right-0 z-50 md:h-full md:w-[360px] max-w-full bg-white shadow-lg transition-all duration-500 ease-in-out
+                fixed md:top-0 md:right-0 z-50 md:h-full md:min-h-screen md:w-[360px] max-w-full bg-white shadow-lg transition-all duration-500 ease-in-out
                 flex flex-col justify-start 
                 ${openPreCart ? 'md:translate-x-0  translate-y-0 opacity-100' : 'md:translate-x-full translate-y-full md:translate-y-0 opacity-0'}
               `}
@@ -101,7 +101,7 @@ export const PreCartModal = () => {
               {loading && <PreCartModalLoadingSkeleton />}
 
 
-              <div className="flex flex-col gap-4 md:min-h-[700px] md:overflow-y-scroll no-scrollbar">
+              <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4 ">
                 {product && product.product_sizes && (
                   <div className="w-full">
                     <InfinitiveLoopSlider productImages={product.product_images} />
