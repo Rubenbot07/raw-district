@@ -101,7 +101,7 @@ export const PreCartModal = () => {
               {loading && <PreCartModalLoadingSkeleton />}
 
 
-              <div className="flex flex-col gap-4 md:min-h-[500px] md:overflow-y-scroll no-scrollbar">
+              <div className="flex flex-col gap-4 md:min-h-[700px] md:overflow-y-scroll no-scrollbar">
                 {product && product.product_sizes && (
                   <div className="w-full">
                     <InfinitiveLoopSlider productImages={product.product_images} />
