@@ -48,7 +48,7 @@ export const Footer = () => {
           <ul className="text-sm space-y-1">
             <li>RAWDISTRIC</li>
             <li>NIT: 000 000 000</li>
-            <li><a href="tel:+573006870774" className="hover:underline">+57 300 687 0774</a></li>
+            <li><a href="https://wa.me/3006870774" target="_blank" className="hover:underline">+57 300 687 0774</a></li>
             <li><a href="mailto:support@rawdistic.com" className="hover:underline">support@rawdistic.com</a></li>
             <li>Dosquebradas, Colombia</li>
           </ul>

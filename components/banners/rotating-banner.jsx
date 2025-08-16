@@ -11,7 +11,7 @@ export const RotatingBanner = ({ contentMessages}) => {
 
   const defaultMessages = [
     { id: 1, content: <><strong>{t('securePayment')}</strong></> },
-    { id: 2, content: <><strong>{t('needHelp')}</strong></>, link: { href: "https://wa.me/3006870774", text: t('writeToUs') } },
+    { id: 2, content: <><strong>{t('needHelp')}</strong></>, link: { href: "https://wa.me/3006870774", text: t('writeToUs') }},
     { id: 3, content: <><strong>{t('freeShipping')}</strong></> },
   ]
 

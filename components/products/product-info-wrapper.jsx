@@ -6,6 +6,7 @@ import { useProductSelectionStore } from "@/app/stores/productSelectionStore";
 import { BuyNow } from "@/components/products/buy-now";
 import { Truck, Medal, Shield, MessagesSquare, CircleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export const ProductInfoWrapper = ({ product, children }) => {
   const selectedSize = useProductSelectionStore((state) => state.selectedSize);
@@ -95,9 +96,11 @@ export const ProductInfoWrapper = ({ product, children }) => {
           <Shield size={20} strokeWidth={1.5} aria-hidden="true" />
           <span>{t("securePayment")}</span>
         </div>
-        <div className="flex gap-2">
-          <MessagesSquare size={20} strokeWidth={1.5} aria-hidden="true" />
-          <span>{t("customerSupport")}</span>
+        <div>
+          <a className="flex gap-2"  href={'https://wa.me/3006870774'} target="_blank">          
+            <MessagesSquare size={20} strokeWidth={1.5} aria-hidden="true" />
+            <span>{t("customerSupport")}</span>
+          </a>
         </div>
       </section>
     </section>

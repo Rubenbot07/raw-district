@@ -21,6 +21,10 @@ export const SearchWrapper = () => {
       if (e.key === 'Escape') {
         setIsOpen(false);
       }
+
+      if(e.key === 'Enter') {
+        console.log('Enter');
+      }
     };
     
     if (isOpen) {
