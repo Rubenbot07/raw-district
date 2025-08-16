@@ -29,6 +29,7 @@ export const SearchPageInput = ({ query }) => {
           id="search-input"
           type="text"
           className="outline-none w-3/4"
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           placeholder={t("searchProducts")}
           value={input}
           onChange={(e) => setInput(e.target.value)}

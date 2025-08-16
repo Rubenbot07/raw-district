@@ -1,21 +1,30 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { SearchSuggestions, PopularSearches, SearchModalButton } from '@/components/search';
 import { Search, X } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 export const SearchInput = ({ onClose }) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const router = useRouter();
 
   const t = useTranslations('Search');
   const tAriaLabel = useTranslations("AriaLabel");
   const locale = useLocale();
-  console.log(locale)
   const handleClose = () => {
     setQuery('');
     onClose();
   };
+
+  const handleSubmit = useCallback(() => {
+    const q = query.trim();
+    if (!q) return;
+    const params = new URLSearchParams({ query: q, locale });
+    handleClose();
+    router.push(`/search?${params.toString()}`);
+  }, [query, locale, router]);
 
   useEffect(() => {
     const fetchResults = async (query) => {
@@ -55,6 +64,12 @@ export const SearchInput = ({ onClose }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleSubmit();
+            }
+          }}
           placeholder={t('searchProducts')}
           aria-label={t('searchProducts')}
           className="w-full px-3 py-1 rounded outline-none"
@@ -70,12 +85,11 @@ export const SearchInput = ({ onClose }) => {
             {t('clear')}
           </button>
         )}
-
         <button
           type="button"
           onClick={handleClose}
           aria-label={tAriaLabel("closeSearch")}
-        >
+          >
           <X aria-hidden="true" />
         </button>
       </div>
@@ -87,7 +101,6 @@ export const SearchInput = ({ onClose }) => {
           <SearchSuggestions suggestions={results} onClose={onClose} />
         )}
       </div>
-
       <SearchModalButton query={query} onClose={onClose} />
     </div>
   );

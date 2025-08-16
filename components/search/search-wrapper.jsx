@@ -15,25 +15,6 @@ export const SearchWrapper = () => {
   const shouldHide = hiddenOnRoutes.some(route => pathname.startsWith(route));
   const tAriaLabel = useTranslations('AriaLabel');
   
-  // Esc: cerrar modal
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setIsOpen(false);
-      }
-
-      if(e.key === 'Enter') {
-        console.log('Enter');
-      }
-    };
-    
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-    }
-    
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
-  
   // Devuelve foco al botón al cerrar
   const handleClose = () => {
     setIsOpen(false);
@@ -67,6 +48,11 @@ export const SearchWrapper = () => {
             id="search-panel"
             role="dialog"
             aria-modal="true"
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                handleClose();
+              }
+            }}
             aria-label={tAriaLabel("searchModal")}
             className="fixed inset-0 z-50 flex flex-col"
           >
