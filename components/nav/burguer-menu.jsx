@@ -16,6 +16,7 @@ export const BurguerMenu = () => {
 
   // Restaurar foco al botón hamburguesa cuando se cierra el menú
   useEffect(() => {
+    console.log(isOpen);
     if (!isOpen && triggerRef.current) {
       (triggerRef.current).focus();
     }
@@ -46,7 +47,6 @@ export const BurguerMenu = () => {
       )}
 
       {/* Menú con focus trap */}
-      {isOpen && (
         <FocusTrap
           focusTrapOptions={{
             clickOutsideDeactivates: true,
@@ -60,7 +60,7 @@ export const BurguerMenu = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="mobile-menu-title"
-            className="fixed top-0 left-0 z-50 w-full min-h-72 bg-white shadow-lg p-8 rounded-md transition-transform duration-500 ease-in-out translate-y-0 opacity-100"
+            className={`fixed top-0 left-0 z-50 w-full min-h-72 bg-white shadow-lg p-8 rounded-md transition-transform duration-500 ease-in-out ${isOpen ? "translate-y-0 " : "-translate-y-full"}`}
           >
             <div className="flex justify-between items-center">
               <h2 id="mobile-menu-title" className="text-base font-semibold">{t("burguerMenu")}</h2>
@@ -98,7 +98,6 @@ export const BurguerMenu = () => {
             </ul>
           </div>
         </FocusTrap>
-      )}
     </div>
   );
 };
