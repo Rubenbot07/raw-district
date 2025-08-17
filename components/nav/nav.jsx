@@ -40,7 +40,7 @@ export const Nav = async () => {
 
           {/* 🛍 Right: Auth, Search, Cart */}
           <section
-            className="flex items-center gap-1 md:gap-2 col-start-4 justify-end"
+            className="flex items-center gap-1 md:gap-3 col-start-4 justify-end"
             aria-label={t("userActions")}
           >
             <AuthButton user={user} />

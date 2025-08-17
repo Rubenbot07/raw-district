@@ -34,11 +34,10 @@ export const SearchWrapper = () => {
         aria-expanded={isOpen}
         aria-controls="search-panel"
       >
-        <Search strokeWidth={1.5} />
+        <Search className='w-[22px] h-[22px] md:w-6 md:h-6' strokeWidth={1.5} />
       </button>
-
-      {isOpen && (
-        <FocusTrap
+      <FocusTrap
+          active={isOpen}
           focusTrapOptions={{
             onDeactivate: handleClose,
             clickOutsideDeactivates: true,
@@ -48,6 +47,7 @@ export const SearchWrapper = () => {
             id="search-panel"
             role="dialog"
             aria-modal="true"
+            inert={!isOpen}
             onKeyDown={(e) => {
               if (e.key === 'Escape') {
                 handleClose();
@@ -58,20 +58,21 @@ export const SearchWrapper = () => {
           >
             {/* Overlay */}
             <div
-              className="absolute inset-0 bg-black bg-opacity-40"
+              className={`fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300 ${
+                isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
               onClick={handleClose}
               aria-hidden="true"
             />
 
             {/* Modal panel */}
             <div
-              className="relative bg-white w-full min-h-32 px-4 pt-8 pb-4 transform transition-all duration-500 ease-in-out translate-y-0 opacity-100"
+              className={`flex-1 min-h-0 max-h-fit overflow-y-auto no-scrollbar z-50 relative bg-white w-full px-4 pt-8 pb-4 transform transition-all duration-500 ease-in-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full'}`}
             >
               <SearchInput onClose={handleClose} />
             </div>
           </div>
         </FocusTrap>
-      )}
     </>
   );
 };

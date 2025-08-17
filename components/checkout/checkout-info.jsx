@@ -33,7 +33,6 @@ export const CheckoutInfo = () => {
   const totalQuantity = getCartTotalQuantityLocal() || 0;
 
 const handleBuyNow = async () => {
-  console.log(invalidFields)
   if (delivery === "shipping") {
     const requiredFields = [
       "name", "surname", "identification",

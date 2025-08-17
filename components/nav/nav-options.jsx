@@ -16,7 +16,7 @@ export const NavOptions = () => {
   if (shouldHide) return null;
 
   return (
-    <div className="flex items-center gap-2 col-start-1">
+    <div className="flex items-center gap-5 col-start-1">
       {/* Desktop Navigation */}
       <nav aria-label={tAriaLabel("mainNav")} className="hidden md:flex">
         <ul className="flex gap-4">

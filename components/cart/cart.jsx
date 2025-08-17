@@ -120,8 +120,8 @@ export const Cart =  () => {
         aria-label={tAriaLabel('openCart')}
         className="px-1 py-2 relative"
       >
-        <ShoppingCart strokeWidth={1.5} aria-hidden="true" />
-        <span className="absolute top-1 -right-1 bg-black text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">
+        <ShoppingCart className='w-[22px] h-[22px] md:w-6 md:h-6' strokeWidth={1.5} aria-hidden="true" />
+        <span className="absolute top-1 -right-1 md:top-1 md-right-1 bg-black text-white rounded-full  w-[14px] h-[14px] md:w-4 md:h-4 text-xs flex items-center justify-center">
           {totalQuantity}
         </span>
       </button>

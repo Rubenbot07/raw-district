@@ -39,9 +39,9 @@ export const UserWrapper = ({ user, children }) => {
         aria-haspopup="true"
         aria-expanded={open}
         aria-controls="user-menu"
-        className="flex items-center gap-1 "
+        className="flex items-center "
       >
-        <CircleUserRound strokeWidth={1.5} />
+        <CircleUserRound strokeWidth={1.5}  className="w-[22px] h-[22px] md:w-6 md:h-6"/>
         <span className={`transition-transform ${open ? "rotate-180" : ""}`}>
           <ChevronDown size={10} />
         </span>

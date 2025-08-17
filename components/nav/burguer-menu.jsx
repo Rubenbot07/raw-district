@@ -30,7 +30,7 @@ export const BurguerMenu = () => {
         onClick={() => setIsOpen(true)}
         className="py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black"
       >
-        <AlignJustify size={20} aria-hidden="true" />
+        <AlignJustify className="w-[22px] h-[22px] md:w-6 md:h-6" aria-hidden="true" />
       </button>
 
       {/* Overlay */}
