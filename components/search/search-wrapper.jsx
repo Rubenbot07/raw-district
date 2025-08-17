@@ -33,6 +33,7 @@ export const SearchWrapper = () => {
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls="search-panel"
+        className='flex items-center'
       >
         <Search className='w-[22px] h-[22px] md:w-6 md:h-6' strokeWidth={1.5} />
       </button>
