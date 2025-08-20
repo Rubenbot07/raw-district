@@ -1,4 +1,4 @@
-Rawdistric — Streetwear e-commerce 👟🖤
+<h1>Rawdistric — Streetwear e-commerce 👟🖤 </h1>
 
 A compact, production-ready streetwear storefront built from scratch with Next.js + Supabase. Clean UI, persistent guest cart (Zustand), and i18n-ready.
 
