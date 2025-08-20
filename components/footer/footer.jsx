@@ -18,8 +18,8 @@ export const Footer = () => {
     { label: t("termsConditions"), href: "/" },
     { label: t("about"), href: "/" },
     { label: t("contact"), href: "/" },
-    { label: t("instagram"), href: "https://www.instagram.com/rawdistic/" },
-    { label: t("linkedin"), href: "https://www.linkedin.com/company/rawdistic/" }
+    { label: t("instagram"), href: "https://www.instagram.com/rubenbot77/" },
+    { label: t("linkedin"), href: "https://www.linkedin.com/in/ruben-dario-botero-mazo-383573364" }
   ];
 
   return (
@@ -33,10 +33,10 @@ export const Footer = () => {
             <h1 className="text-xl font-bold">RAWDISTRIC</h1>
           </div>
           <div className="flex gap-4 p-4" aria-label={tAriaLabel("socialMediaLinks")}>
-            <Link href="https://www.instagram.com/rawdistic/" aria-label="RAWDISTRIC on Instagram">
+            <Link href="https://www.instagram.com/rubenbot77/" aria-label="RAWDISTRIC on Instagram">
               <InstagramIcon width={20} height={20} strokeWidth={1.8} aria-hidden="true" />
             </Link>
-            <Link href="https://www.linkedin.com/company/rawdistic/" aria-label="RAWDISTRIC on LinkedIn">
+            <Link href="https://www.linkedin.com/in/ruben-dario-botero-mazo-383573364" aria-label="RAWDISTRIC on LinkedIn">
               <LinkedinIcon width={20} height={20} aria-hidden="true" />
             </Link>
           </div>
